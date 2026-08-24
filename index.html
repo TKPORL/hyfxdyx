@@ -3,7 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>黄油分享 · 单游戏 | 每日更新</title>
+<title>Tsinho黄油站 · 单游戏每日分享</title>
+<meta name="description" content="Tsinho黄油站单游戏分享，每天自动同步最新黄油游戏资源，PC/安卓双平台，网盘下载免费无付费，支持搜索与平台筛选。">
+<meta name="keywords" content="黄油游戏,PC游戏,安卓游戏,单机游戏,游戏资源,Tsinho">
+<link rel="canonical" href="https://tkporl.github.io/hyfxdyx/">
+<meta property="og:title" content="Tsinho黄油站 · 单游戏每日分享">
+<meta property="og:description" content="每天自动同步最新黄油游戏资源，PC/安卓双平台网盘下载，免费无付费。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tkporl.github.io/hyfxdyx/">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
@@ -42,6 +49,10 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .pg.on{border-color:#e5484d;background:#e5484d;color:#fff}
 .pg.off{opacity:.35;cursor:default}
 .pginfo{font-size:12px;color:#999;margin-left:6px}
+.pfbar{display:flex;gap:8px;flex-wrap:wrap;margin:-6px 0 16px}
+.pbtn{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 14px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:.2s}
+.pbtn:hover{border-color:#e5484d;color:#e5484d}
+.pbtn.on{border-color:#e5484d;background:#e5484d;color:#fff}
 .sect{display:flex;align-items:baseline;gap:10px;margin-bottom:18px}
 .sect h2{font-size:19px;color:#2b2b2b;position:relative;padding-left:12px}
 .sect h2::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:4px;border-radius:2px;background:#e5484d}
@@ -75,6 +86,19 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .mrhx-top{position:fixed;right:18px;bottom:22px;width:42px;height:42px;border:none;border-radius:50%;background:#fff;color:#e5484d;font-size:18px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.12);cursor:pointer;opacity:0;pointer-events:none;transition:.25s;z-index:50}
 .mrhx-top.show{opacity:1;pointer-events:auto}
 .mrhx-top:hover{transform:translateY(-3px);background:#fdf1f1}
+.mrhx-popup{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;animation:mrhxPopFade .3s ease both}
+.mrhx-popup.show{display:flex}
+.mrhx-popup-inner{background:#fff;border-radius:16px;padding:24px 22px 18px;max-width:520px;width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.25);position:relative;text-align:center;animation:mrhxPopSlide .3s ease both}
+.mrhx-popup-close{position:absolute;top:10px;right:12px;width:30px;height:30px;border:none;border-radius:50%;background:#faf9f7;color:#666;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.mrhx-popup-close:hover{background:#fdf1f1;color:#e5484d}
+.mrhx-popup-content h3{font-size:16px;color:#2b2b2b;margin-bottom:10px}
+.mrhx-popup-content p{font-size:13px;color:#666;line-height:1.5;margin-bottom:2px}
+.mrhx-popup-content a{color:#e5484d;font-weight:600;text-decoration:none}
+.mrhx-popup-content a:hover{text-decoration:underline}
+.mrhx-popup-ok{margin-top:14px;padding:8px 24px;border:none;border-radius:10px;background:#e5484d;color:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.mrhx-popup-ok:hover{background:#c93a3f;transform:translateY(-2px)}
+@keyframes mrhxPopFade{from{opacity:0}to{opacity:1}}
+@keyframes mrhxPopSlide{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
 footer{border-top:1px solid #ecebe9;padding:24px 20px;text-align:center;color:#999;font-size:12px}
 footer b{color:#e5484d}
 @media (max-width:720px){
@@ -125,14 +149,34 @@ footer b{color:#e5484d}
     <span class="tag">求助资源区</span>
     <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上 →</span>
   </a>
-  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；顶部可搜索（搜"关键词"而非全名）；点卡片上的按钮直接跳转网盘下载</div>
+  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；顶部可搜索（搜"关键词"而非全名）</div>
   <div class="sect"><h2>全部游戏</h2><span id="cnt"></span></div>
+  <div class="pfbar" id="pfbar">
+    <button type="button" class="pbtn on" data-pf="">全部</button>
+    <button type="button" class="pbtn" data-pf="PC">PC</button>
+    <button type="button" class="pbtn" data-pf="安卓">安卓</button>
+  </div>
   <div class="ggrid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
   <div class="pgbar" id="pgbar" style="display:none"></div>
 </main>
 <footer>数据自动同步自 <b>Tsinho黄油站</b> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版</footer>
 <button type="button" class="mrhx-top" id="mrhxTopBtn" title="回到顶部">↑</button>
+<div class="mrhx-popup" id="annPopup" role="dialog" aria-modal="true">
+  <div class="mrhx-popup-inner">
+    <button type="button" class="mrhx-popup-close" aria-label="关闭公告">×</button>
+    <div class="mrhx-popup-content">
+      <h3>【公告】</h3>
+      <p>各位老师好，欢迎收藏本站 防迷路！</p>
+      <p>本站每天自动同步 Tsinho黄油站 的游戏资源</p>
+      <p>纯公益 · 无任何付费内容</p>
+      <p>找不到想玩的游戏？点顶部「求助区」留言求游戏</p>
+      <p>官方QQ群：1081159850</p>
+      <p>Telegram频道：<a href="https://t.me/Tsinhox" target="_blank" rel="noreferrer">t.me/Tsinhox</a></p>
+    </div>
+    <button type="button" class="mrhx-popup-ok">我知道了</button>
+  </div>
+</div>
 <script>
 (function () {
   var PAGE_SIZE = 36;
@@ -140,6 +184,15 @@ footer b{color:#e5484d}
   var filtered = null;
   var cur = 0;
   var LOADING = true;
+  var PF = '';
+
+  function platOk(p) {
+    if (!PF) return true;
+    var s = p || '';
+    var isAZ = /安卓/i.test(s);
+    if (PF === '安卓') return isAZ;
+    return /PC/i.test(s) && !isAZ;
+  }
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -170,7 +223,11 @@ footer b{color:#e5484d}
     return h;
   }
 
-  function list() { return filtered || GAMES; }
+  function list() {
+    var base = filtered || GAMES;
+    if (!PF) return base;
+    return base.filter(function (g) { return platOk(g.platform); });
+  }
 
   function render() {
     var grid = document.getElementById('grid');
@@ -220,6 +277,15 @@ footer b{color:#e5484d}
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  document.getElementById('pfbar').addEventListener('click', function (e) {
+    var b = e.target.closest('.pbtn');
+    if (!b || b.classList.contains('on')) return;
+    PF = b.getAttribute('data-pf') || '';
+    [].slice.call(this.querySelectorAll('.pbtn')).forEach(function (x) { x.classList.toggle('on', x === b); });
+    cur = 0;
+    render();
+  });
+
   var timer = null;
   document.getElementById('kw').addEventListener('input', function () {
     clearTimeout(timer);
@@ -236,8 +302,7 @@ footer b{color:#e5484d}
     }, 200);
   });
 
-  var st = document.getElementById('searchToggle');
-  if (st) st.onclick = function () {
+  var st = document.getElementById('searchToggle');  if (st) st.onclick = function () {
     document.body.classList.toggle('search-open');
     if (document.body.classList.contains('search-open')) {
       var kw = document.getElementById('kw');
@@ -267,6 +332,24 @@ footer b{color:#e5484d}
       document.getElementById('empty').style.display = '';
       document.getElementById('empty').textContent = '数据加载失败，请稍后刷新重试';
     });
+
+  (function () {
+    var k = 'hyfx_ann_dismissed';
+    var v = localStorage.getItem(k);
+    if (v) {
+      var t = parseInt(v, 10);
+      if (!isNaN(t) && Date.now() - t < 10800000) return;
+    }
+    var el = document.getElementById('annPopup');
+    if (!el) return;
+    el.classList.add('show');
+    var close = function () {
+      try { localStorage.setItem(k, String(Date.now())); } catch (e) {}
+      el.classList.remove('show');
+    };
+    el.querySelector('.mrhx-popup-close').onclick = close;
+    el.querySelector('.mrhx-popup-ok').onclick = close;
+  })();
 })();
 </script>
 </body>
