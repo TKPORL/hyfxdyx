@@ -1,0 +1,58 @@
+# 黄油分享 · 单游戏
+
+每天自动爬取 [Tsinho黄油站](https://tkporl.github.io/mrhyfx/) 所有帖子里的游戏卡片（游戏名称 / 介绍 / 封面图 / 网盘下载链接），生成静态页面部署在 GitHub Pages 上，风格与原站一致。
+
+## 工作原理
+
+```
+GitHub Actions (每天 UTC 01:00 / 北京时间 09:00)
+        │
+        ▼
+scripts/crawl.py
+  1. 抓取原站首页 → 解析全部帖子列表（新帖在前）
+  2. 逐个抓取帖子详情页 → 解析每张游戏卡片
+  3. 图片直接引用原站图床地址，不做下载
+  4. 汇总生成 data/games.json
+        │
+        ▼
+git 自动 commit + push → GitHub Pages 自动发布 index.html
+        │
+        ▼
+首页读取 data/games.json 渲染所有游戏卡片（支持搜索、分页、按新旧排序）
+```
+
+## 首次部署步骤
+
+1. 在 GitHub 上创建空仓库 `TKPORL/hyfxdyx`（不要勾选初始化 README）
+2. 推送本仓库：
+   ```bash
+   git push -u origin main
+   ```
+3. 打开仓库 **Settings → Pages → Source** 选择 **GitHub Actions**（工作流也会自动尝试开启）
+4. 手动触发一次验证：仓库 **Actions → Daily Crawl → Run workflow**
+5. 运行成功后访问：`https://tkporl.github.io/hyfxdyx/`
+
+## 本地运行爬虫
+
+```bash
+python scripts/crawl.py
+```
+
+只需 Python 3 标准库，无需安装依赖。
+
+## 自定义
+
+| 内容 | 位置 |
+| --- | --- |
+| 爬取频率 | `.github/workflows/crawl.yml` 里的 `cron` |
+| 站点导航链接 | `index.html` 头部 `<nav>` |
+| 每页显示数量 | `index.html` 里 `PAGE_SIZE` |
+
+## 目录结构
+
+```
+├── .github/workflows/crawl.yml   # 定时爬取 + 发布工作流
+├── scripts/crawl.py              # 爬虫脚本
+├── index.html                    # 首页（渲染游戏卡片）
+└── data/games.json               # 爬取生成的数据
+```
