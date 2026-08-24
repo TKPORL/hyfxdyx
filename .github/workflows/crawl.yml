@@ -1,6 +1,8 @@
 name: Daily Crawl
 
 on:
+  push:
+    branches: [main]
   schedule:
     - cron: '0 1 * * *' # UTC 01:00 = 北京时间每天早上 9:00
   workflow_dispatch: {} # 允许在 Actions 页面手动触发
