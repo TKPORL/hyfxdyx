@@ -26,14 +26,16 @@ nav a.nav-req{color:#e58d0a;border-color:#f0ddb8;background:#fdf8ee;font-weight:
 nav a.nav-req:hover{color:#c47a05;border-color:#e58d0a;background:#fdf3e3;transform:translateY(-1px)}
 @keyframes mrhxCard{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
-.upd{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2e2e2;border-left:4px solid #e5484d;border-radius:12px;padding:14px 18px;margin-bottom:26px;font-size:14px;color:#666;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .5s ease both;flex-wrap:wrap}
+.upd{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2e2e2;border-left:4px solid #e5484d;border-radius:12px;padding:14px 18px;margin-bottom:12px;font-size:14px;color:#666;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .5s ease both}
 .upd b{color:#e5484d}
-.upd .tag{background:#fdf1f1;color:#e5484d;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600}
-.upd-note{font-size:12.5px;color:#999;margin:-14px 0 20px;padding-left:4px;line-height:1.7}
-.req{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2ead9;border-left:4px solid #e58d0a;border-radius:12px;padding:14px 18px;margin:-6px 0 24px;font-size:14px;color:#666;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .55s ease both;flex-wrap:wrap;transition:.25s;line-height:1.6}
+.upd .tag{background:#fdf1f1;color:#e5484d;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
+.upd .txt{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.upd-note{font-size:12.5px;color:#999;margin:0 0 22px;padding-left:4px;line-height:1.7}
+.req{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2ead9;border-left:4px solid #e58d0a;border-radius:12px;padding:14px 18px;margin-bottom:14px;font-size:14px;color:#666;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .55s ease both;transition:.25s}
 .req:hover{border-color:#ecc987;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
 .req b{color:#e58d0a}
 .req .tag{background:#fdf3e3;color:#e58d0a;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
+.req .txt{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:22px 0 6px}
 .pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:.2s}
 .pg:hover:not(.off){border-color:#e5484d;color:#e5484d}
@@ -63,6 +65,13 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .g-dl.g-dl-o{background:#e58d0a}
 .g-dl.g-dl-o:hover{background:#cc7a05}
 .empty{text-align:center;color:#999;padding:40px 0}
+.gcard.skel{position:relative;pointer-events:none;animation:none}
+.gcard.skel::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.85) 50%,transparent 70%);transform:translateX(-100%);animation:skelShine 1.2s infinite}
+@keyframes skelShine{to{transform:translateX(100%)}}
+.gcard.skel .g-cover{background:#f1efec;border-radius:0}
+.gcard.skel .sbar{height:13px;border-radius:6px;background:#f1efec;margin-top:2px}
+.gcard.skel .sbar.w70{width:70%}
+.gcard.skel .sbar.w45{width:45%;height:11px}
 .mrhx-top{position:fixed;right:18px;bottom:22px;width:42px;height:42px;border:none;border-radius:50%;background:#fff;color:#e5484d;font-size:18px;font-weight:700;box-shadow:0 4px 14px rgba(0,0,0,.12);cursor:pointer;opacity:0;pointer-events:none;transition:.25s;z-index:50}
 .mrhx-top.show{opacity:1;pointer-events:auto}
 .mrhx-top:hover{transform:translateY(-3px);background:#fdf1f1}
@@ -73,6 +82,7 @@ footer b{color:#e5484d}
   .hwrap{padding:12px 14px 10px;gap:10px;flex-wrap:wrap}
   .site{font-size:17px;order:1}
   .mrhx-search-toggle{order:2;display:inline-flex;margin-left:auto}
+  body.search-open .mrhx-search-toggle{display:none}
   .site-header-right{order:3;flex:1 1 100%;min-width:0;gap:8px}
   nav{width:100%;gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;padding-bottom:2px;justify-content:flex-start}
   nav a{padding:4px 9px;font-size:12px;white-space:nowrap;flex-shrink:0}
@@ -101,9 +111,8 @@ footer b{color:#e5484d}
         <button type="submit">搜索</button>
       </form>
       <nav>
-        <a href="index.html">首页</a>
         <a class="nav-req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">求助区</a>
-        <a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">原站</a>
+        <a href="https://link3.cc/Tsinho" target="_blank" rel="noreferrer">官网</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2uR1zzgWrrPy9" target="_blank" rel="noreferrer">全部黄油</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2wFGs9i5mE1mr" target="_blank" rel="noreferrer">解压教程</a>
       </nav>
@@ -111,12 +120,12 @@ footer b{color:#e5484d}
   </div>
 </header>
 <main>
-  <div class="upd"><span class="tag">游戏资源</span>本站共收录 <b id="totalNum">…</b> 款游戏资源 · 数据更新于 <b id="updAt"></b></div>
-  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；右上角可搜索（搜"关键词"而非全名）；点卡片上的按钮直接跳转网盘下载</div>
+  <div class="upd"><span class="tag">游戏资源</span><span class="txt">本站收录 <b id="totalNum">…</b> 款游戏 · 更新于 <b id="updAt"></b></span></div>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
     <span class="tag">求助资源区</span>
-    <span>没有找到想玩的游戏？点这里进入 <b>求助贴</b> 留言求游戏，站长看到会尽快补上 →</span>
+    <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上 →</span>
   </a>
+  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；顶部可搜索（搜"关键词"而非全名）；点卡片上的按钮直接跳转网盘下载</div>
   <div class="sect"><h2>全部游戏</h2><span id="cnt"></span></div>
   <div class="ggrid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
@@ -130,6 +139,7 @@ footer b{color:#e5484d}
   var GAMES = [];
   var filtered = null;
   var cur = 0;
+  var LOADING = true;
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -163,6 +173,17 @@ footer b{color:#e5484d}
   function list() { return filtered || GAMES; }
 
   function render() {
+    var grid = document.getElementById('grid');
+    if (LOADING) {
+      var s = '';
+      for (var i = 0; i < 9; i++) {
+        s += '<div class="gcard skel"><div class="g-cover"></div><div class="g-body"><div class="sbar"></div><div class="sbar w70"></div><div class="sbar w45"></div></div></div>';
+      }
+      grid.innerHTML = s;
+      document.getElementById('cnt').textContent = '加载中…';
+      document.getElementById('pgbar').style.display = 'none';
+      return;
+    }
     var data = list();
     var pages = Math.max(1, Math.ceil(data.length / PAGE_SIZE));
     if (cur >= pages) cur = pages - 1;
@@ -234,11 +255,15 @@ footer b{color:#e5484d}
     .then(function (r) { return r.json(); })
     .then(function (d) {
       GAMES = d.games || [];
+      LOADING = false;
       document.getElementById('totalNum').textContent = d.total != null ? d.total : GAMES.length;
       document.getElementById('updAt').textContent = d.updated_at || '—';
       render();
     })
     .catch(function () {
+      LOADING = false;
+      document.getElementById('grid').innerHTML = '';
+      render();
       document.getElementById('empty').style.display = '';
       document.getElementById('empty').textContent = '数据加载失败，请稍后刷新重试';
     });
