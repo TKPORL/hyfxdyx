@@ -1,10 +1,10 @@
-name: Daily Crawl
+name: Sync Source Site
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: '0 1 * * *' # UTC 01:00 = 北京时间每天早上 9:00
+    - cron: '*/15 * * * *' # 每15分钟检测源站更新；数据有变化才提交和发布
   workflow_dispatch: {} # 允许在 Actions 页面手动触发
 
 permissions:
@@ -19,6 +19,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.changed.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,28 +28,35 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 爬取游戏卡片
+      - name: 爬取游戏卡片（自动同步新增与删除）
         run: python scripts/crawl.py
 
+      - name: 检测数据是否变化
+        id: changed
+        run: |
+          count=$(git status --porcelain | wc -l)
+          if [ "${{ github.event_name }}" = "push" ]; then count=$((count+1)); fi
+          echo "changed=$count" >> "$GITHUB_OUTPUT"
+          echo "本次需要发布的变更标记: $count"
+
       - name: 提交并推送更新
+        if: steps.changed.outputs.changed != '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          if git diff --cached --quiet; then
-            echo "没有新变化，跳过提交"
-          else
-            git commit -m "chore: 每日爬取更新 $(date -u +%F)"
-            git push
-          fi
+          git commit -m "chore: 同步源站更新 $(date -u '+%F %T')"
+          git push
 
       - name: 上传 Pages 构件
+        if: steps.changed.outputs.changed != '0'
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
 
   deploy:
     needs: build
+    if: needs.build.outputs.changed != '0'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

@@ -9,10 +9,8 @@
 body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
 header{background:#fff;border-bottom:1px solid #ecebe9;position:sticky;top:0;z-index:10}
 .hwrap{max-width:900px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;gap:20px}
-.site{font-size:21px;font-weight:800;letter-spacing:1px;color:#2b2b2b;text-decoration:none;flex-shrink:0}
-.site img.site-logo{width:140px;height:auto;border-radius:10px;vertical-align:middle;display:inline-block}
+.site{font-size:21px;font-weight:800;letter-spacing:1px;color:#2b2b2b;text-decoration:none;flex-shrink:0;white-space:nowrap}
 .site em{font-style:normal;color:#e5484d}
-.site small{font-size:11px;font-weight:400;color:#999;display:block;letter-spacing:0}
 .site-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:1;min-width:0}
 nav{width:100%;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
 nav a{padding:7px 14px;border-radius:99px;font-size:13px;color:#666;text-decoration:none;border:1px solid #ecebe9;background:#faf9f7;transition:.2s}
@@ -21,6 +19,8 @@ nav a{padding:7px 14px;border-radius:99px;font-size:13px;color:#666;text-decorat
 .mrhx-search input:focus{border-color:#e5484d;background:#fff}
 .mrhx-search button{border:none;background:#e5484d;color:#fff;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s}
 .mrhx-search button:hover{background:#c93a3f}
+.mrhx-search-toggle{display:none;align-items:center;border:1px solid #ecebe9;background:#faf9f7;color:#666;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0;font-family:inherit;transition:.2s}
+.mrhx-search-toggle:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}
 nav a:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3;transform:translateY(-1px)}
 nav a.nav-req{color:#e58d0a;border-color:#f0ddb8;background:#fdf8ee;font-weight:600}
 nav a.nav-req:hover{color:#c47a05;border-color:#e58d0a;background:#fdf3e3;transform:translateY(-1px)}
@@ -69,14 +69,16 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 footer{border-top:1px solid #ecebe9;padding:24px 20px;text-align:center;color:#999;font-size:12px}
 footer b{color:#e5484d}
 @media (max-width:720px){
-  .hwrap{padding:12px 14px;gap:10px}
-  .site{font-size:17px}
-  .site img.site-logo{width:100px;height:auto}
-  .site small{display:none}
-  nav{gap:6px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;padding-bottom:2px}
-  nav a{padding:5px 10px;font-size:12px;white-space:nowrap;flex-shrink:0}
+  header{position:static}
+  .hwrap{padding:12px 14px 10px;gap:10px;flex-wrap:wrap}
+  .site{font-size:17px;order:1}
+  .mrhx-search-toggle{order:2;display:inline-flex;margin-left:auto}
+  .site-header-right{order:3;flex:1 1 100%;min-width:0;gap:8px}
+  nav{width:100%;gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;padding-bottom:2px;justify-content:flex-start}
+  nav a{padding:4px 9px;font-size:12px;white-space:nowrap;flex-shrink:0}
   nav::-webkit-scrollbar{display:none}
-  .mrhx-search{order:3;width:100%;margin-left:0;justify-content:flex-end}
+  .mrhx-search{display:none;width:100%;margin-left:0}
+  body.search-open .mrhx-search{display:flex}
   .mrhx-search input{flex:1;width:auto}
   main{padding:18px 14px 32px}
   .upd{padding:12px 14px;font-size:13px}
@@ -91,7 +93,8 @@ footer b{color:#e5484d}
 <body>
 <header>
   <div class="hwrap">
-    <a class="site" href="index.html"><img src="https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/logo.webp" alt="黄油分享 · 单游戏" class="site-logo"></a>
+    <a class="site" href="index.html"><span>Tsinho<em>黄油站</em></span></a>
+    <button type="button" class="mrhx-search-toggle" id="searchToggle">搜索</button>
     <div class="site-header-right">
       <form class="mrhx-search" onsubmit="return false;" role="search">
         <input type="text" id="kw" placeholder="搜索游戏…" autocomplete="off">
@@ -99,8 +102,8 @@ footer b{color:#e5484d}
       </form>
       <nav>
         <a href="index.html">首页</a>
-        <a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">原站</a>
         <a class="nav-req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">求助区</a>
+        <a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">原站</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2uR1zzgWrrPy9" target="_blank" rel="noreferrer">全部黄油</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2wFGs9i5mE1mr" target="_blank" rel="noreferrer">解压教程</a>
       </nav>
@@ -211,6 +214,15 @@ footer b{color:#e5484d}
       render();
     }, 200);
   });
+
+  var st = document.getElementById('searchToggle');
+  if (st) st.onclick = function () {
+    document.body.classList.toggle('search-open');
+    if (document.body.classList.contains('search-open')) {
+      var kw = document.getElementById('kw');
+      if (kw) kw.focus();
+    }
+  };
 
   var tb = document.getElementById('mrhxTopBtn');
   window.addEventListener('scroll', function () {

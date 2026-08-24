@@ -5,21 +5,25 @@
 ## 工作原理
 
 ```
-GitHub Actions (每天 UTC 01:00 / 北京时间 09:00)
+GitHub Actions（每15分钟自动检测）
         │
         ▼
 scripts/crawl.py
-  1. 抓取原站首页 → 解析全部帖子列表（新帖在前）
+  1. 抓取原站首页 → 解析全部帖子列表
   2. 逐个抓取帖子详情页 → 解析每张游戏卡片
   3. 图片直接引用原站图床地址，不做下载
-  4. 汇总生成 data/games.json
+  4. 与本地 data/games.json 全量比对：
+     无变化 → 跳过；有新增/修改/删除 → 重新生成
         │
         ▼
-git 自动 commit + push → GitHub Pages 自动发布 index.html
+数据有变化时：git 自动 commit + push → GitHub Pages 自动发布
         │
         ▼
 首页读取 data/games.json 渲染所有游戏卡片（支持搜索、分页、按新旧排序）
 ```
+
+> 同步机制说明：源站新增帖子/游戏会自动爬取收录；源站删除帖子/游戏后，
+> 下一次检测（最多约15分钟）也会自动从本站移除，保持完全同步。
 
 ## 首次部署步骤
 
@@ -44,7 +48,7 @@ python scripts/crawl.py
 
 | 内容 | 位置 |
 | --- | --- |
-| 爬取频率 | `.github/workflows/crawl.yml` 里的 `cron` |
+| 检测频率 | `.github/workflows/crawl.yml` 里的 `cron`（当前每15分钟） |
 | 站点导航链接 | `index.html` 头部 `<nav>` |
 | 每页显示数量 | `index.html` 里 `PAGE_SIZE` |
 

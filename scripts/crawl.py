@@ -162,10 +162,21 @@ def main():
         'total': len(games),
         'games': games,
     }
+    old_games = None
+    if os.path.exists(OUT_FILE):
+        try:
+            with open(OUT_FILE, encoding='utf-8') as f:
+                old_games = json.load(f).get('games')
+        except Exception:
+            old_games = None
+    if old_games == payload['games']:
+        print('数据无变化（源站没有新增/修改/删除），跳过写入')
+        return
     with open(OUT_FILE, 'w', encoding='utf-8') as f:
         json.dump(payload, f, ensure_ascii=False, indent=1)
-    print('完成: %d 帖子 / %d 张卡片, 用时 %.1fs -> data/games.json'
-          % (len(posts), len(games), time.time() - t0))
+    diff = len(games) - (len(old_games) if isinstance(old_games, list) else 0)
+    print('检测到变化（卡片数 %+d），已更新 data/games.json' % diff)
+    print('完成: %d 帖子 / %d 张卡片, 用时 %.1fs' % (len(posts), len(games), time.time() - t0))
 
 
 if __name__ == '__main__':
