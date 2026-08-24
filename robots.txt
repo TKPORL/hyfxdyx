@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /data/
+Disallow: /scripts/
 Allow: /
 
 Sitemap: https://tkporl.github.io/hyfxdyx/sitemap.xml
