@@ -45,8 +45,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "chore: 同步源站更新 $(date -u '+%F %T')"
-          git push
+          if git diff --cached --quiet; then
+            echo "数据无变化，跳过提交（仍会发布最新代码）"
+          else
+            git commit -m "chore: 同步源站更新 $(date -u '+%F %T')"
+            git push
+          fi
 
       - name: 上传 Pages 构件
         if: steps.changed.outputs.changed != '0'
