@@ -22,12 +22,18 @@ nav a{padding:7px 14px;border-radius:99px;font-size:13px;color:#666;text-decorat
 .mrhx-search button{border:none;background:#e5484d;color:#fff;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s}
 .mrhx-search button:hover{background:#c93a3f}
 nav a:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3;transform:translateY(-1px)}
+nav a.nav-req{color:#e58d0a;border-color:#f0ddb8;background:#fdf8ee;font-weight:600}
+nav a.nav-req:hover{color:#c47a05;border-color:#e58d0a;background:#fdf3e3;transform:translateY(-1px)}
 @keyframes mrhxCard{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .upd{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2e2e2;border-left:4px solid #e5484d;border-radius:12px;padding:14px 18px;margin-bottom:26px;font-size:14px;color:#666;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .5s ease both;flex-wrap:wrap}
 .upd b{color:#e5484d}
 .upd .tag{background:#fdf1f1;color:#e5484d;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600}
 .upd-note{font-size:12.5px;color:#999;margin:-14px 0 20px;padding-left:4px;line-height:1.7}
+.req{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2ead9;border-left:4px solid #e58d0a;border-radius:12px;padding:14px 18px;margin:-6px 0 24px;font-size:14px;color:#666;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .55s ease both;flex-wrap:wrap;transition:.25s;line-height:1.6}
+.req:hover{border-color:#ecc987;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
+.req b{color:#e58d0a}
+.req .tag{background:#fdf3e3;color:#e58d0a;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
 .pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:22px 0 6px}
 .pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:.2s}
 .pg:hover:not(.off){border-color:#e5484d;color:#e5484d}
@@ -74,6 +80,7 @@ footer b{color:#e5484d}
   .mrhx-search input{flex:1;width:auto}
   main{padding:18px 14px 32px}
   .upd{padding:12px 14px;font-size:13px}
+  .req{padding:12px 14px;font-size:13px;margin:-4px 0 20px}
   .ggrid{grid-template-columns:repeat(2,1fr);gap:10px}
   .g-title{font-size:13px}
 }
@@ -93,6 +100,7 @@ footer b{color:#e5484d}
       <nav>
         <a href="index.html">首页</a>
         <a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">原站</a>
+        <a class="nav-req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">求助区</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2uR1zzgWrrPy9" target="_blank" rel="noreferrer">全部黄油</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2wFGs9i5mE1mr" target="_blank" rel="noreferrer">解压教程</a>
       </nav>
@@ -102,6 +110,10 @@ footer b{color:#e5484d}
 <main>
   <div class="upd"><span class="tag">游戏资源</span>本站共收录 <b id="totalNum">…</b> 款游戏资源 · 数据更新于 <b id="updAt"></b></div>
   <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；右上角可搜索（搜"关键词"而非全名）；点卡片上的按钮直接跳转网盘下载</div>
+  <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
+    <span class="tag">求助资源区</span>
+    <span>没有找到想玩的游戏？点这里进入 <b>求助贴</b> 留言求游戏，站长看到会尽快补上 →</span>
+  </a>
   <div class="sect"><h2>全部游戏</h2><span id="cnt"></span></div>
   <div class="ggrid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
