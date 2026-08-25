@@ -67,6 +67,15 @@ main.adm{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .trend .bar{width:100%;max-width:16px;background:#e5484d;border-radius:3px 3px 0 0;opacity:.85;min-height:2px;transition:.2s}
 .trend .tb:hover .bar{opacity:1;background:#c93a3f}
 .trend .blab{font-size:9px;color:#bbb;white-space:nowrap}
+/* 求助区留言 */
+.cm-item{border:1px solid #ecebe9;border-radius:12px;padding:10px 14px;margin-bottom:8px;background:#fff}
+.cm-meta{display:flex;gap:8px;align-items:center;font-size:12px;color:#999;margin-bottom:4px;flex-wrap:wrap}
+.cm-nick{font-weight:700;color:#2b2b2b}
+.cm-badge{border-radius:99px;padding:1px 8px;font-size:10.5px;font-weight:700;flex-shrink:0}
+.cm-badge.admin{background:#fdf3e3;color:#e58d0a}
+.cm-badge.pin{background:#fdf1f1;color:#e5484d}
+.cm-content{font-size:13px;color:#444;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.cm-reply{margin-left:20px;border-left:3px solid #f0eae4}
 .loglist{list-style:none}.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:12.5px;color:#666}
 .loglist li:last-child{border-bottom:none}
 .loglist .lt{color:#bbb;flex-shrink:0;font-family:Consolas,monospace}
@@ -163,6 +172,10 @@ html.dark .loglist li{border-bottom-color:#2a2b33;color:#a7a5ab}
 html.dark .loglist .lt{color:#6f6d75}
 html.dark .empty-box,html.dark .trend .blab,html.dark .empty-log{color:#77757c}
 html.dark #pane-data .kv span:first-child{color:#77757c}
+html.dark .cm-item{background:#202129;border-color:#2d2e37}
+html.dark .cm-nick{color:#eceaea}
+html.dark .cm-content{color:#b9b7bc}
+html.dark .cm-reply{border-left-color:#34353f}
 /* ===== 弹窗编辑器 ===== */
 .modal-mask{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
 .modal-mask.show{display:flex}
@@ -237,6 +250,7 @@ html.dark #pane-data .kv span:first-child{color:#77757c}
   <button type="button" class="tab on" data-tab="dash">仪表盘</button>
   <button type="button" class="tab" data-tab="games">游戏管理</button>
   <button type="button" class="tab" data-tab="data">数据管理</button>
+  <button type="button" class="tab" data-tab="cm">求助区留言</button>
   <button type="button" class="tab" data-tab="set">设置</button>
 </nav>
 <main class="adm">
@@ -350,6 +364,19 @@ html.dark #pane-data .kv span:first-child{color:#77757c}
         <p>丢弃所有本地覆盖与改动，回到 data/games.json 的原始爬取数据（不可撤销，请先导出备份）。</p>
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.restoreBase()">恢复官方数据</button>
       </div>
+    </div>
+  </section>
+
+  <!-- 求助区留言 -->
+  <section class="pane" id="pane-cm">
+    <div class="panel">
+      <h3>求助区最新留言</h3>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.loadComments()">刷新留言</button>
+        <a class="btn btn-ghost btn-sm" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">打开求助区</a>
+        <span id="cmState" style="font-size:12px;color:#999"></span>
+      </div>
+      <div id="cmList"><div class="empty-box">加载中…</div></div>
     </div>
   </section>
 
@@ -986,6 +1013,66 @@ html.dark #pane-data .kv span:first-child{color:#77757c}
     renderDirty();
   }
 
+  /* ---------- 求助区留言（Supabase 公开只读接口） ---------- */
+  var SB_URL = 'https://kydmccknlbpczeqppbtc.supabase.co/rest/v1/comments';
+  var SB_KEY = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
+  var cmLoaded = false;
+  function loadComments() {
+    var list = $('cmList'), st = $('cmState');
+    if (!list || !st) return;
+    st.textContent = '加载中…';
+    list.innerHTML = '<div class="empty-box">加载中…</div>';
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', SB_URL + '?url=eq./qzt.html&select=id,pid,nick,is_admin,pinned,content,created_at&order=created_at.desc');
+    xhr.setRequestHeader('apikey', SB_KEY);
+    xhr.setRequestHeader('Authorization', 'Bearer ' + SB_KEY);
+    xhr.onload = function () {
+      cmLoaded = true;
+      if (xhr.status < 200 || xhr.status >= 300) {
+        st.textContent = '加载失败 HTTP ' + xhr.status;
+        list.innerHTML = '<div class="empty-box">加载失败，请稍后点「刷新留言」重试</div>';
+        return;
+      }
+      var arr = [];
+      try { arr = JSON.parse(xhr.responseText) || []; } catch (e) {}
+      st.textContent = '共 ' + arr.length + ' 条 · 同步于 ' + now();
+      if (!arr.length) { list.innerHTML = '<div class="empty-box">还没有留言</div>'; return; }
+      var tops = arr.filter(function (c) { return !c.pid; });
+      var reps = {};
+      arr.forEach(function (c) { if (c.pid) (reps[c.pid] = reps[c.pid] || []).push(c); });
+      list.innerHTML = tops.map(function (c) { return cmHtml(c, reps[c.id] || []); }).join('');
+    };
+    xhr.onerror = function () {
+      st.textContent = '网络错误';
+      list.innerHTML = '<div class="empty-box">网络错误，请稍后重试</div>';
+    };
+    xhr.send();
+  }
+  function cmTime(s) {
+    var d = new Date(s);
+    if (isNaN(d.getTime())) return '';
+    function p2(x) { return (x < 10 ? '0' : '') + x; }
+    return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + ' ' + p2(d.getHours()) + ':' + p2(d.getMinutes());
+  }
+  function cmHtml(c, replies) {
+    var h = '<div class="cm-item">';
+    h += '<div class="cm-meta"><span class="cm-nick">' + esc(c.nick || '匿名') + '</span>' +
+      (c.is_admin ? '<span class="cm-badge admin">站长</span>' : '') +
+      (c.pinned ? '<span class="cm-badge pin">置顶</span>' : '') +
+      '<span>' + esc(cmTime(c.created_at)) + '</span></div>';
+    h += '<div class="cm-content">' + esc(c.content || '') + '</div>';
+    if (replies.length) {
+      h += replies.map(function (r) {
+        return '<div class="cm-item cm-reply"><div class="cm-meta"><span class="cm-nick">' + esc(r.nick || '匿名') + '</span>' +
+          (r.is_admin ? '<span class="cm-badge admin">站长</span>' : '') +
+          '<span>' + esc(cmTime(r.created_at)) + '</span></div>' +
+          '<div class="cm-content">' + esc(r.content || '') + '</div></div>';
+      }).join('');
+    }
+    h += '</div>';
+    return h;
+  }
+
   /* ---------- GitHub 图床上传 ---------- */
   function ghToken() {
     try { return localStorage.getItem(LS_GH) || ''; } catch (e) { return ''; }
@@ -1078,6 +1165,7 @@ html.dark #pane-data .kv span:first-child{color:#77757c}
     });
     if (name === 'data') renderDataPane();
     if (name === 'set') { loadAnnForm(); renderGhState(); }
+    if (name === 'cm' && !cmLoaded) loadComments();
   }
 
   var tmr = null;
@@ -1170,6 +1258,7 @@ html.dark #pane-data .kv span:first-child{color:#77757c}
     changePw: changePw,
     saveAnnounce: saveAnnounce,
     pickUpload: pickUpload,
+    loadComments: loadComments,
     saveGhToken: function () {
       var v = $('ghTokenInput').value.trim();
       if (!v) { toast('请先粘贴 Token', true); return; }
