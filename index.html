@@ -105,8 +105,8 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 footer{border-top:1px solid #ecebe9;padding:24px 20px;text-align:center;color:#999;font-size:12px}
 footer b{color:#e5484d}
 footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
-.visit-line{margin-top:9px;font-size:12.5px;color:#888}
-.visit-line b{color:#e5484d;font-weight:700}
+footer a{color:#e5484d;text-decoration:none}
+footer a:hover{text-decoration:underline}
 .seo-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:720px){
   header{position:static}
@@ -163,14 +163,16 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
     <button type="button" class="pbtn on" data-pf="">全部</button>
     <button type="button" class="pbtn" data-pf="PC">PC</button>
     <button type="button" class="pbtn" data-pf="安卓">安卓</button>
+    <button type="button" class="pbtn" id="randBtn">随机看看</button>
+    <button type="button" class="pbtn" id="againBtn" style="display:none">换一批</button>
   </div>
   <div class="ggrid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
   <div class="pgbar" id="pgbar" style="display:none"></div>
 </main>
-<footer>数据自动同步自 <b>Tsinho黄油站</b> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版
-  <div class="visit-line">本站总访问 <b><span id="vercount_value_site_pv">--</span></b> 次 · 独立访客 <b><span id="vercount_value_site_uv">--</span></b> 人</div>
+<footer>数据自动同步自 <b><a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">Tsinho黄油站</a></b> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版
   <div class="seo-line">Tsinho黄油站 · Tsinho工作室 | 每日更新黄油游戏：PC黄油 · 安卓黄油 · 单机黄油游戏下载</div>
+  <div style="display:none" aria-hidden="true"><span id="vercount_value_site_pv"></span><span id="vercount_value_site_uv"></span></div>
 </footer>
 <button type="button" class="mrhx-top" id="mrhxTopBtn" title="回到顶部">↑</button>
 <div class="mrhx-popup" id="annPopup" role="dialog" aria-modal="true">
@@ -196,6 +198,8 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
   var cur = 0;
   var LOADING = true;
   var PF = '';
+  var RANDOM = false;
+  var shuffledCache = null;
 
   function platOk(p) {
     if (!PF) return true;
@@ -234,10 +238,20 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
     return h;
   }
 
+  function shuffleArr(a) {
+    for (var i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
   function list() {
     var base = filtered || GAMES;
-    if (!PF) return base;
-    return base.filter(function (g) { return platOk(g.platform); });
+    if (PF) base = base.filter(function (g) { return platOk(g.platform); });
+    if (!RANDOM) return base;
+    if (!shuffledCache) shuffledCache = shuffleArr(base.slice());
+    return shuffledCache;
   }
 
   function render() {
@@ -288,11 +302,35 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
+  function setRandom(on) {
+    RANDOM = on;
+    shuffledCache = null;
+    cur = 0;
+    document.getElementById('randBtn').classList.toggle('on', RANDOM);
+    document.getElementById('againBtn').style.display = RANDOM ? '' : 'none';
+    render();
+  }
+
   document.getElementById('pfbar').addEventListener('click', function (e) {
     var b = e.target.closest('.pbtn');
-    if (!b || b.classList.contains('on')) return;
+    if (!b) return;
+    if (b.id === 'randBtn') {
+      setRandom(!RANDOM);
+      if (RANDOM) window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (b.id === 'againBtn') {
+      if (!RANDOM) return;
+      shuffledCache = null;
+      cur = 0;
+      render();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (b.classList.contains('on')) return;
     PF = b.getAttribute('data-pf') || '';
-    [].slice.call(this.querySelectorAll('.pbtn')).forEach(function (x) { x.classList.toggle('on', x === b); });
+    [].slice.call(this.querySelectorAll('.pbtn')).forEach(function (x) { x.classList.toggle('on', x === b || (RANDOM && x.id === 'randBtn')); });
+    shuffledCache = null;
     cur = 0;
     render();
   });
@@ -308,6 +346,7 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
           return (g.name + ' ' + g.desc + ' ' + g.platform + ' ' + (g.post || '')).toLowerCase().indexOf(kw) > -1;
         });
       }
+      shuffledCache = null;
       cur = 0;
       render();
     }, 200);
@@ -374,21 +413,33 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
   })();
 
   (function () {
+    var GATE_KEY = 'tsinhoht_pv_last';
+    var WINDOW_MS = 6 * 60 * 60 * 1000;
+    var last = 0;
+    try { last = parseInt(localStorage.getItem(GATE_KEY) || '0', 10) || 0; } catch (e) {}
+    if (Date.now() - last > WINDOW_MS) {
+      var cs = document.createElement('script');
+      cs.src = 'https://cn.vercount.one/js';
+      cs.defer = true;
+      cs.onload = function () {
+        try { localStorage.setItem(GATE_KEY, String(Date.now())); } catch (e) {}
+      };
+      document.body.appendChild(cs);
+    }
     var pv = document.getElementById('vercount_value_site_pv');
     var uv = document.getElementById('vercount_value_site_uv');
     if (!pv || !uv) return;
     var n = 0;
     var tm = setInterval(function () {
       n++;
-      var p = pv.textContent, u = uv.textContent;
-      if (/^\d+$/.test(p.trim()) && /^\d+$/.test(u.trim())) {
+      var p = pv.textContent.trim(), u = uv.textContent.trim();
+      if (/^\d+$/.test(p) && /^\d+$/.test(u)) {
         clearInterval(tm);
-        try { localStorage.setItem('tsinhoht_visit', JSON.stringify({ pv: p.trim(), uv: u.trim(), t: Date.now() })); } catch (e) {}
+        try { localStorage.setItem('tsinhoht_visit', JSON.stringify({ pv: p, uv: u, t: Date.now() })); } catch (e) {}
       } else if (n > 12) clearInterval(tm);
     }, 400);
   })();
 })();
 </script>
-<script defer src="https://cn.vercount.one/js"></script>
 </body>
 </html>
