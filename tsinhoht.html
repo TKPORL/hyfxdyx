@@ -61,8 +61,12 @@ main.adm{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .panel h3::before{content:'';width:4px;height:15px;border-radius:2px;background:#e5484d}
 .dirtybar{display:none;align-items:center;gap:12px;background:#fdf3e3;border:1px solid #f0ddb8;border-left:4px solid #e58d0a;border-radius:12px;padding:11px 16px;margin-bottom:16px;font-size:13px;color:#8a5a08}
 .dirtybar.show{display:flex}
-.loglist{list-style:none}
-.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:12.5px;color:#666}
+.trend{display:flex;align-items:flex-end;gap:4px;height:96px;padding-top:6px;overflow-x:auto}
+.trend .tb{flex:1 0 auto;min-width:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%}
+.trend .bar{width:100%;max-width:16px;background:#e5484d;border-radius:3px 3px 0 0;opacity:.85;min-height:2px;transition:.2s}
+.trend .tb:hover .bar{opacity:1;background:#c93a3f}
+.trend .blab{font-size:9px;color:#bbb;white-space:nowrap}
+.loglist{list-style:none}.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:12.5px;color:#666}
 .loglist li:last-child{border-bottom:none}
 .loglist .lt{color:#bbb;flex-shrink:0;font-family:Consolas,monospace}
 .empty-log{color:#bbb;font-size:12.5px;text-align:center;padding:14px 0}
@@ -217,6 +221,11 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <div class="stat"><div class="num" id="visT" style="font-size:14px;color:#999;line-height:1.9">暂无记录</div><div class="lab">数据记录时间</div></div>
       </div>
       <p style="font-size:11.5px;color:#bbb;line-height:1.7">数据由前台页面访问时自动缓存到本浏览器；后台不加载计数脚本，避免污染统计数据。</p>
+    </div>
+    <div class="panel">
+      <h3>每日更新趋势</h3>
+      <div class="trend" id="trendBox"></div>
+      <p style="font-size:11.5px;color:#bbb;margin-top:8px">按来源帖子日期统计每日收录游戏数（最近 30 个更新日，后台新增的暂无日期不计入）。</p>
     </div>
     <div class="panel">
       <h3>操作日志</h3>
@@ -664,6 +673,37 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     $('logEmpty').style.display = arr.length ? 'none' : '';
   }
   function fmtNum(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function renderTrend() {
+    var box = $('trendBox');
+    if (!box || !DATA) return;
+    var nowD = new Date(), y0 = nowD.getFullYear(), m0 = nowD.getMonth() + 1;
+    function p2(x) { return (x < 10 ? '0' : '') + x; }
+    var map = {};
+    DATA.games.forEach(function (g) {
+      var m = /\/(\d{1,2})\.(\d{1,2})(?:\.html|[^0-9.]|$)/.exec(String(g.post_url || ''));
+      if (!m) return;
+      var mo = +m[1], day = +m[2];
+      if (mo < 1 || mo > 12 || day < 1 || day > 31) return;
+      var y = y0;
+      if (mo > m0) y--;
+      var k = y + '-' + p2(mo) + '-' + p2(day);
+      map[k] = (map[k] || 0) + 1;
+    });
+    var keys = Object.keys(map).sort().slice(-30);
+    if (!keys.length) {
+      box.innerHTML = '<span style="font-size:12px;color:#bbb">暂无可统计的日期数据</span>';
+      return;
+    }
+    var max = 1;
+    keys.forEach(function (k) { if (map[k] > max) max = map[k]; });
+    box.innerHTML = keys.map(function (k) {
+      var pp = k.split('-');
+      var h = Math.round(map[k] / max * 70) + 3;
+      return '<div class="tb" title="' + (+pp[1]) + '月' + (+pp[2]) + '日：' + map[k] + ' 款">' +
+        '<div class="bar" style="height:' + h + 'px"></div>' +
+        '<div class="blab">' + (+pp[1]) + '/' + (+pp[2]) + '</div></div>';
+    }).join('');
+  }
   function renderVisit() {
     var d = null;
     try { d = JSON.parse(localStorage.getItem('tsinhoht_visit') || 'null'); } catch (e) {}
@@ -686,6 +726,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     renderDirty();
     renderLog();
     renderVisit();
+    renderTrend();
   }
   function renderDirty() {
     $('dirtyBar').className = 'dirtybar' + (isDirty() ? ' show' : '');
