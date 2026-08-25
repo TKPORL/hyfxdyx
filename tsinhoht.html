@@ -92,6 +92,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
 .plat-tag.custom-add{background:#21a35d}
 .gt-acts{white-space:nowrap}
 .gt-acts button{margin-right:4px}
+.gt-acts .btn.pined{color:#e58d0a;border-color:#f0ddb8;background:#fdf8ee}
 .link-mini{font-size:11px;color:#3da8f5;text-decoration:none}
 .tablewrap{overflow-x:auto;border-radius:14px;border:1px solid #ecebe9}
 .pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:20px 0 6px}
@@ -252,7 +253,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
           <th>游戏</th>
           <th>来源帖子</th>
           <th style="width:90px">链接数</th>
-          <th style="width:170px">操作</th>
+          <th style="width:225px">操作</th>
         </tr></thead>
         <tbody id="gtBody"></tbody>
       </table>
@@ -529,6 +530,9 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     if (DATA.announce === undefined && BASE && BASE.announce && typeof BASE.announce === 'object') {
       DATA.announce = BASE.announce;
     }
+    if (DATA.pinned === undefined && BASE && Object.prototype.toString.call(BASE.pinned) === '[object Array]') {
+      DATA.pinned = BASE.pinned;
+    }
     SNAP = JSON.stringify(DATA);
     loading = false;
     cur = 0;
@@ -566,16 +570,19 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     for (var i = cur * PAGE_SIZE; i < Math.min((cur + 1) * PAGE_SIZE, arr.length); i++) {
       var g = arr[i];
       var custom = !bid[g.id];
+      var isPin = (DATA.pinned || []).indexOf(g.id) > -1;
       h += '<tr>';
       h += '<td><input type="checkbox" data-chk="' + esc(g.id) + '"' + (sel[g.id] ? ' checked' : '') + '></td>';
       h += '<td>' + (g.cover ? '<img class="gt-cover" loading="lazy" src="' + esc(g.cover) + '" alt="" onerror="this.style.visibility=\'hidden\'">' : '') + '</td>';
-      h += '<td><div class="gt-name">' + esc(g.name) + '</div>' +
-           '<div style="margin-top:3px"><span class="plat-tag ' + platClass(g.platform) + (custom ? ' custom-add' : '') + '">' +
-           (custom ? '自定义·' : '') + esc(g.platform || '无平台') + '</span></div>' +
-           (g.desc ? '<div class="gt-desc" style="margin-top:3px">' + esc(g.desc) + '</div>' : '') + '</td>';
+      h += '<td><div class="gt-name">' + esc(g.name) +
+        (isPin ? ' <span class="plat-tag mix" title="置顶推荐">荐</span>' : '') + '</div>' +
+        '<div style="margin-top:3px"><span class="plat-tag ' + platClass(g.platform) + (custom ? ' custom-add' : '') + '">' +
+        (custom ? '自定义·' : '') + esc(g.platform || '无平台') + '</span></div>' +
+        (g.desc ? '<div class="gt-desc" style="margin-top:3px">' + esc(g.desc) + '</div>' : '') + '</td>';
       h += '<td style="font-size:12px;color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(g.post || '—') + '</td>';
       h += '<td>' + g.links.length + '</td>';
       h += '<td class="gt-acts">' +
+           '<button type="button" class="btn btn-ghost btn-sm' + (isPin ? ' pined' : '') + '" onclick="ADM.togglePin(\'' + esc(g.id) + '\')">' + (isPin ? '已置顶' : '置顶') + '</button>' +
            '<button type="button" class="btn btn-ghost btn-sm" onclick="ADM.editById(\'' + esc(g.id) + '\')">编辑</button>' +
            '<button type="button" class="btn btn-ghost btn-sm" onclick="ADM.dupById(\'' + esc(g.id) + '\')">复制</button>' +
            '<button type="button" class="btn btn-ghost btn-sm" style="color:#e5484d" onclick="ADM.delById(\'' + esc(g.id) + '\')">删除</button>' +
@@ -764,8 +771,26 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     log('删除游戏：' + g.name);
     toast('已删除（同步时将同时从源数据移除）');
   }
-  function dupGame(id) {
+  function nameOf(id) {
     var g = DATA.games.filter(function (x) { return x.id === id; })[0];
+    return g ? g.name : id;
+  }
+  function togglePin(id) {
+    var pins = Object.prototype.toString.call(DATA.pinned) === '[object Array]' ? DATA.pinned.slice() : [];
+    var i = pins.indexOf(id);
+    if (i > -1) {
+      pins.splice(i, 1);
+      log('取消置顶：' + nameOf(id));
+    } else {
+      pins.push(id);
+      log('置顶推荐：' + nameOf(id));
+    }
+    DATA.pinned = pins.length ? pins : null;
+    renderGames();
+    renderDirty();
+    toast((DATA.pinned || []).indexOf(id) > -1 ? '已置顶，将展示在首页最前' : '已取消置顶');
+  }
+  function dupGame(id) {    var g = DATA.games.filter(function (x) { return x.id === id; })[0];
     if (!g) return;
     var c = JSON.parse(JSON.stringify(g));
     c.id = g.id + '-copy' + Math.floor(Math.random() * 1e4).toString(36);
@@ -786,6 +811,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       games: DATA.games
     };
     if (DATA.announce) p.announce = DATA.announce;
+    if (DATA.pinned && DATA.pinned.length) p.pinned = DATA.pinned;
     return p;
   }
   function download(name, obj) {
@@ -817,6 +843,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     DATA.games = games.map(normalizeGame);
     DATA.remove_ids = removeIds.filter(function (x) { return typeof x === 'string'; });
     if ('announce' in d) DATA.announce = (d.announce && typeof d.announce === 'object') ? d.announce : null;
+    if ('pinned' in d) DATA.pinned = Object.prototype.toString.call(d.pinned) === '[object Array]' ? d.pinned : null;
     DATA.total = DATA.games.length;
     DATA.updated_at = now();
     cur = 0;
@@ -837,6 +864,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       remove_ids: []
     };
     DATA.announce = (BASE.announce && typeof BASE.announce === 'object') ? BASE.announce : null;
+    DATA.pinned = Object.prototype.toString.call(BASE.pinned) === '[object Array]' ? BASE.pinned : null;
     SNAP = JSON.stringify(DATA);
     sel = {};
     cur = 0;
@@ -1025,6 +1053,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       var g = DATA.games.filter(function (x) { return x.id === id; })[0];
       if (g) openEditor(g);
     },
+    togglePin: togglePin,
     dupById: dupGame,
     delById: delGame,
     closeEditor: function () { $('editMask').classList.remove('show'); editing = null; },

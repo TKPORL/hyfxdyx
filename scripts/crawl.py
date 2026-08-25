@@ -202,6 +202,12 @@ def main():
             'lines': [str(x) for x in ov_announce['lines']],
         }
 
+    # 后台设置的置顶/推荐位（游戏 id 列表，按顺序置顶展示）
+    pinned = None
+    ov_pinned = (override or {}).get('pinned')
+    if isinstance(ov_pinned, list):
+        pinned = [str(x) for x in ov_pinned]
+
     os.makedirs(DATA_DIR, exist_ok=True)
     payload = {
         'site': 'Tsinho黄油站',
@@ -212,6 +218,8 @@ def main():
     }
     if announce:
         payload['announce'] = announce
+    if pinned:
+        payload['pinned'] = pinned
     old_data = None
     if os.path.exists(OUT_FILE):
         try:
@@ -221,7 +229,8 @@ def main():
             old_data = None
     old_games = old_data.get('games') if isinstance(old_data, dict) else None
     old_announce = old_data.get('announce') if isinstance(old_data, dict) else None
-    if old_games == payload['games'] and old_announce == payload.get('announce'):
+    old_pinned = old_data.get('pinned') if isinstance(old_data, dict) else None
+    if old_games == payload['games'] and old_announce == payload.get('announce') and old_pinned == payload.get('pinned'):
         print('数据无变化（源站没有新增/修改/删除），跳过写入')
         return
     with open(OUT_FILE, 'w', encoding='utf-8') as f:
