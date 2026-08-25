@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-08-25 03:57:21",
- "total": 317,
+ "updated_at": "2026-08-25 06:26:44",
+ "total": 320,
  "games": [
   {
    "id": "2026825-0",
@@ -6716,6 +6716,64 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1opJPI1L9lEq04wkGb4i81g?pwd=txch"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-28",
+   "name": "元宇宙大营救（Zetria）",
+   "platform": "PC",
+   "desc": "更新[动作ACT/动态/异种X] v1.4.7 官中步兵版+存档 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/bsfbcnbdus.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/bsfbcnbdus.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2wFGANX7cbU6f"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1tDONOdf05iJ8_X_3N4K_7Q?pwd=txch"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-29",
+   "name": "光凛天使:心愿心辉",
+   "platform": "PC",
+   "desc": "更新[回合RPG/战斗H/羞辱] ver1.0.1 AI汉化版+全回想存档 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/xvkc33olrd.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/xvkc33olrd.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1aeh0bgeqhlsku4ygmrGoew?pwd=txch"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-30",
+   "name": "堕落圣女·萨莉尔",
+   "platform": "",
+   "desc": "更新[探索ACT/异种X/动态] β_2.17.0 生肉版 [1.90G]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/613f4drqh6.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/613f4drqh6.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1Qew83nApp76ytpA2XKIuHg?pwd=txch"
     }
    ],
    "post": "求助资源贴（可以在这贴求黄油游戏哈）",
