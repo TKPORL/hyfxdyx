@@ -12,6 +12,7 @@ import urllib.request
 BASE = 'https://tkporl.github.io/mrhyfx/'
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 OUT_FILE = os.path.join(DATA_DIR, 'games.json')
+OVERRIDE_FILE = os.path.join(DATA_DIR, 'games.override.json')
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'}
 
 
@@ -118,6 +119,39 @@ def parse_cards(post_html):
     return cards
 
 
+def load_override():
+    """读取后台管理页导出的 data/games.override.json（不存在或格式错误时返回 None）"""
+    if not os.path.exists(OVERRIDE_FILE):
+        return None
+    try:
+        with open(OVERRIDE_FILE, encoding='utf-8') as f:
+            d = json.load(f)
+    except Exception:
+        print('警告: %s 解析失败，忽略后台覆盖数据' % OVERRIDE_FILE)
+        return None
+    return d if isinstance(d, dict) else None
+
+
+def merge_override(games, override):
+    """合并后台改动：同 id 覆盖、新 id 追加到最前、remove_ids 移除"""
+    ovgames = [g for g in (override.get('games') or []) if isinstance(g, dict) and g.get('id')]
+    remove_ids = set(i for i in (override.get('remove_ids') or []) if isinstance(i, str))
+    if not ovgames and not remove_ids:
+        return games
+    by_id = {g['id']: g for g in ovgames}
+    kept = []
+    for g in games:
+        gid = g.get('id')
+        if gid in remove_ids and gid not in by_id:
+            continue
+        kept.append(by_id[gid] if gid in by_id else g)
+    existing = set(g.get('id') for g in kept)
+    additions = [g for g in ovgames if g['id'] not in existing]
+    merged = additions + kept
+    print('后台覆盖: 覆盖/新增 %d 条, 标记移除 %d 条' % (len(ovgames), len(remove_ids & set(g.get('id') for g in games))))
+    return merged
+
+
 def main():
     t0 = time.time()
     print('抓取首页: %s' % BASE)
@@ -153,6 +187,11 @@ def main():
                 'post': p['title'],
                 'post_url': url,
             })
+
+    # 应用后台管理页的覆盖数据（新增/修改/删除在自动同步时保留）
+    override = load_override()
+    if override:
+        games = merge_override(games, override)
 
     os.makedirs(DATA_DIR, exist_ok=True)
     payload = {

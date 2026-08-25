@@ -36,6 +36,18 @@ scripts/crawl.py
 4. 手动触发一次验证：仓库 **Actions → Daily Crawl → Run workflow**
 5. 运行成功后访问：`https://tkporl.github.io/hyfxdyx/`
 
+## 后台管理（tsinhoht.html）
+
+访问 `https://tkporl.github.io/hyfxdyx/tsinhoht.html` 进入后台（默认密码 `tsinho123`，登录后可在「设置」修改）。
+
+功能：仪表盘统计、游戏增删改查（搜索 / 筛选 / 排序 / 批量删除 / 复制）、数据导入导出、操作日志、修改密码。
+
+改动生效流程：
+
+1. 后台编辑 → 「保存并应用」→ 打开首页立即预览（仅本浏览器可见）
+2. 确认无误 → 「导出 games.override.json」→ 提交到仓库 `data/games.override.json`
+3. 爬虫每次自动同步时会合并该文件：同 ID 覆盖、新 ID 追加到最前、`remove_ids` 中的条目被移除，因此后台改动不会被自动同步覆盖
+
 ## 本地运行爬虫
 
 ```bash
@@ -56,7 +68,8 @@ python scripts/crawl.py
 
 ```
 ├── .github/workflows/crawl.yml   # 定时爬取 + 发布工作流
-├── scripts/crawl.py              # 爬虫脚本
+├── scripts/crawl.py              # 爬虫脚本（自动合并后台覆盖数据）
 ├── index.html                    # 首页（渲染游戏卡片）
+├── tsinhoht.html                 # 后台管理页
 └── data/games.json               # 爬取生成的数据
 ```

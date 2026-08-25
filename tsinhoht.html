@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>后台管理 - Tsinho黄油站</title>
+<link rel="icon" href="favicon.webp" type="image/webp">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
+button{font-family:inherit}
+input,select,textarea{font-family:inherit}
+/* ===== 登录 ===== */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.login-card{background:#fff;border:1px solid #ecebe9;border-radius:16px;padding:34px 30px 28px;width:100%;max-width:380px;box-shadow:0 10px 40px rgba(0,0,0,.06)}
+.login-card .logo{text-align:center;font-size:22px;font-weight:800;letter-spacing:1px;margin-bottom:4px}
+.login-card .logo em{font-style:normal;color:#e5484d}
+.login-card .sub{text-align:center;font-size:12.5px;color:#999;margin-bottom:24px}
+.login-card label{display:block;font-size:12.5px;color:#666;margin:14px 0 6px;font-weight:600}
+.login-card input{width:100%;padding:10px 12px;border:1px solid #e2e0dc;border-radius:10px;font-size:14px;background:#faf9f7;color:#333;outline:none;transition:.2s}
+.login-card input:focus{border-color:#e5484d;background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;text-decoration:none}
+.btn-pri{background:#e5484d;color:#fff}
+.btn-pri:hover{background:#c93a3f;transform:translateY(-1px)}
+.btn-ghost{background:#fff;color:#666;border:1px solid #e2ded8}
+.btn-ghost:hover{border-color:#e5484d;color:#e5484d}
+.btn-warn{background:#e58d0a;color:#fff}
+.btn-warn:hover{background:#cc7a05}
+.btn-blue{background:#3da8f5;color:#fff}
+.btn-blue:hover{background:#2b90dd}
+.btn-sm{padding:5px 11px;border-radius:99px;font-size:12px}
+.btn-block{width:100%;padding:11px;font-size:14px;margin-top:20px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.login-err{display:none;margin-top:12px;text-align:center;font-size:12.5px;color:#e5484d;background:#fdf1f1;border-radius:8px;padding:7px 10px}
+.login-tip{margin-top:16px;text-align:center;font-size:11.5px;color:#bbb;line-height:1.7}
+/* ===== 主体布局 ===== */
+#app{display:none}
+header.adm{background:#fff;border-bottom:1px solid #ecebe9;position:sticky;top:0;z-index:20}
+.hwrap{max-width:1080px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.site{font-size:19px;font-weight:800;letter-spacing:1px;color:#2b2b2b;text-decoration:none;white-space:nowrap}
+.site em{font-style:normal;color:#e5484d}
+.badge-admin{font-size:10.5px;font-weight:700;color:#fff;background:#e58d0a;border-radius:99px;padding:2px 9px;letter-spacing:1px}
+.hright{margin-left:auto;display:flex;align-items:center;gap:8px}
+.tabs{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;gap:6px;overflow-x:auto;background:#fff;border-bottom:1px solid #ecebe9}
+.tabs::-webkit-scrollbar{display:none}
+.tab{border:none;background:none;padding:12px 15px 10px;font-size:13.5px;font-weight:600;color:#888;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.2s}
+.tab:hover{color:#e5484d}
+.tab.on{color:#e5484d;border-bottom-color:#e5484d}
+main.adm{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
+.pane{display:none}
+.pane.on{display:block}
+/* ===== 仪表盘 ===== */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
+.stat{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:16px 18px}
+.stat .num{font-size:26px;font-weight:800;color:#2b2b2b}
+.stat .num.red{color:#e5484d}.stat .num.org{color:#e58d0a}.stat .num.blu{color:#3da8f5}
+.stat .lab{font-size:12px;color:#999;margin-top:3px}
+.panel{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:18px 20px;margin-bottom:16px}
+.panel h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.panel h3::before{content:'';width:4px;height:15px;border-radius:2px;background:#e5484d}
+.dirtybar{display:none;align-items:center;gap:12px;background:#fdf3e3;border:1px solid #f0ddb8;border-left:4px solid #e58d0a;border-radius:12px;padding:11px 16px;margin-bottom:16px;font-size:13px;color:#8a5a08}
+.dirtybar.show{display:flex}
+.loglist{list-style:none}
+.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:12.5px;color:#666}
+.loglist li:last-child{border-bottom:none}
+.loglist .lt{color:#bbb;flex-shrink:0;font-family:Consolas,monospace}
+.empty-log{color:#bbb;font-size:12.5px;text-align:center;padding:14px 0}
+/* ===== 游戏管理 ===== */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.searchbox{display:flex;align-items:center;flex:1;min-width:200px;max-width:320px;background:#fff;border:1px solid #e2e0dc;border-radius:99px;padding:7px 14px;transition:.2s}
+.searchbox:focus-within{border-color:#e5484d}
+.searchbox input{border:none;background:none;outline:none;flex:1;font-size:13px;color:#333}
+.pbtn{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 14px;font-size:12.5px;cursor:pointer;transition:.2s}
+.pbtn:hover{border-color:#e5484d;color:#e5484d}
+.pbtn.on{border-color:#e5484d;background:#e5484d;color:#fff}
+.selctl{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 12px;font-size:12.5px;outline:none;cursor:pointer}
+.batchbar{display:none;align-items:center;gap:10px;background:#fdf1f1;border:1px solid #f0b4b6;border-radius:12px;padding:9px 14px;margin-bottom:12px;font-size:13px;color:#c93a3f}
+.batchbar.show{display:flex}
+table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px solid #ecebe9;border-radius:14px;overflow:hidden}
+.gtable th,.gtable td{padding:10px 12px;font-size:13px;text-align:left;border-bottom:1px solid #f4f2ef;vertical-align:middle}
+.gtable th{background:#faf9f7;font-size:12px;color:#999;font-weight:600;white-space:nowrap}
+.gtable tr:last-child td{border-bottom:none}
+.gtable tbody tr{transition:.15s}
+.gtable tbody tr:hover{background:#fdf8f8}
+.gt-cover{width:52px;height:39px;object-fit:cover;border-radius:6px;background:#f4f2ef;display:block}
+.gt-name{font-weight:600;color:#2b2b2b;max-width:300px}
+.gt-desc{font-size:11.5px;color:#999;max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plat-tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:10px;font-weight:600;color:#fff;background:#e5484d;white-space:nowrap}
+.plat-tag.az{background:#3da8f5}
+.plat-tag.mix{background:#e58d0a}
+.plat-tag.custom-add{background:#21a35d}
+.gt-acts{white-space:nowrap}
+.gt-acts button{margin-right:4px}
+.link-mini{font-size:11px;color:#3da8f5;text-decoration:none}
+.tablewrap{overflow-x:auto;border-radius:14px;border:1px solid #ecebe9}
+.pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:20px 0 6px}
+.pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;cursor:pointer;transition:.2s}
+.pg:hover:not(.off){border-color:#e5484d;color:#e5484d}
+.pg.on{border-color:#e5484d;background:#e5484d;color:#fff}
+.pg.off{opacity:.35;cursor:default}
+.pginfo{font-size:12px;color:#999;margin-left:6px}
+.empty-box{text-align:center;color:#999;padding:50px 0;font-size:14px}
+/* ===== 数据管理 ===== */
+.dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.dl-item{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.dl-item b{font-size:13.5px}
+.dl-item p{font-size:12px;color:#999;line-height:1.65;flex:1}
+.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #f0eeeb;font-size:13px}
+.kv:last-child{border-bottom:none}
+.kv span:first-child{color:#999}
+.kv span:last-child{font-weight:600}
+.tag-src{display:inline-block;padding:1px 9px;border-radius:99px;font-size:11px;font-weight:700}
+.tag-src.local{background:#fdf1f1;color:#e5484d}
+.tag-src.remote{background:#edf7ef;color:#21a35d}
+/* ===== 设置 ===== */
+.form-row{margin-bottom:14px}
+.form-row label{display:block;font-size:12.5px;color:#666;margin-bottom:6px;font-weight:600}
+.form-row input{width:100%;max-width:340px;padding:9px 12px;border:1px solid #e2e0dc;border-radius:10px;font-size:13.5px;background:#faf9f7;outline:none;transition:.2s}
+.form-row input:focus{border-color:#e5484d;background:#fff}
+/* ===== 弹窗编辑器 ===== */
+.modal-mask{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
+.modal-mask.show{display:flex}
+.modal{background:#fff;border-radius:16px;width:100%;max-width:640px;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:popIn .25s ease both}
+@keyframes popIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+.modal-h{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;border-bottom:1px solid #f2f0ee}
+.modal-h b{font-size:15px}
+.modal-x{width:30px;height:30px;border:none;border-radius:50%;background:#faf9f7;color:#666;font-size:17px;cursor:pointer}
+.modal-x:hover{background:#fdf1f1;color:#e5484d}
+.modal-b{padding:16px 20px}
+.modal-f{padding:12px 20px 16px;border-top:1px solid #f2f0ee;display:flex;gap:10px;justify-content:flex-end}
+.frow{margin-bottom:13px}
+.frow label{display:block;font-size:12.5px;color:#666;margin-bottom:5px;font-weight:600}
+.frow label i{color:#e5484d;font-style:normal}
+.frow input[type=text],.frow select,.frow textarea{width:100%;padding:9px 11px;border:1px solid #e2e0dc;border-radius:9px;font-size:13px;background:#faf9f7;color:#333;outline:none;transition:.2s}
+.frow input:focus,.frow select:focus,.frow textarea:focus{border-color:#e5484d;background:#fff}
+.frow textarea{resize:vertical;min-height:64px;line-height:1.7}
+.fgrid{display:grid;grid-template-columns:1fr 150px;gap:10px}
+.linkrows .lrow{display:flex;gap:6px;margin-bottom:6px}
+.linkrows .lrow input{padding:8px 10px;border:1px solid #e2e0dc;border-radius:9px;font-size:12.5px;background:#faf9f7;outline:none;transition:.2s}
+.linkrows .lrow input:focus{border-color:#e5484d;background:#fff}
+.linkrows .lrow .lu{flex:1}
+.linkrows .lrow .ll{width:130px;flex-shrink:0}
+.lrow-del{width:32px;flex-shrink:0;border:none;border-radius:9px;background:#fdf1f1;color:#e5484d;font-size:14px;cursor:pointer}
+.lrow-del:hover{background:#f9d9da}
+.addlink{border:1px dashed #d8d4ce;background:#faf9f7;color:#888;border-radius:9px;padding:7px 12px;font-size:12.5px;cursor:pointer;width:100%}
+.addlink:hover{border-color:#e5484d;color:#e5484d}
+.cover-prev{width:86px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #ecebe9;background:#f4f2ef;margin-top:6px;display:none}
+/* ===== Toast ===== */
+.toast{position:fixed;left:50%;bottom:36px;transform:translateX(-50%) translateY(20px);background:#2b2b2b;color:#fff;font-size:13px;padding:10px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:.25s;z-index:99999;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.err{background:#c93a3f}
+@media (max-width:720px){
+  .hwrap{padding:11px 14px}
+  main.adm{padding:16px 12px 50px}
+  .tabs{padding:0 8px}
+  .gt-desc{display:none}
+  .fgrid{grid-template-columns:1fr}
+  .gtable th:nth-child(4),.gtable td:nth-child(4){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 登录界面 -->
+<div class="login-wrap" id="loginWrap">
+  <div class="login-card">
+    <div class="logo">Tsinho<em>黄油站</em></div>
+    <div class="sub">后台管理系统 · 仅限管理员访问</div>
+    <label for="pwInput">管理密码</label>
+    <input type="password" id="pwInput" placeholder="请输入后台密码" autocomplete="current-password">
+    <button type="button" class="btn btn-pri btn-block" id="loginBtn">登 录</button>
+    <div class="login-err" id="loginErr"></div>
+    <div class="login-tip">默认密码：tsinho123 · 登录后可在「设置」中修改<br>数据仅保存在本浏览器，导出后提交仓库才对全站生效</div>
+  </div>
+</div>
+
+<!-- 后台主体 -->
+<div id="app">
+<header class="adm">
+  <div class="hwrap">
+    <a class="site" href="index.html"><span>Tsinho<em>黄油站</em></span></a>
+    <span class="badge-admin">后台管理</span>
+    <div class="hright">
+      <a class="btn btn-ghost btn-sm" href="index.html" target="_blank">查看前台</a>
+      <button type="button" class="btn btn-ghost btn-sm" id="logoutBtn">退出登录</button>
+    </div>
+  </div>
+</header>
+<nav class="tabs" id="tabs">
+  <button type="button" class="tab on" data-tab="dash">仪表盘</button>
+  <button type="button" class="tab" data-tab="games">游戏管理</button>
+  <button type="button" class="tab" data-tab="data">数据管理</button>
+  <button type="button" class="tab" data-tab="set">设置</button>
+</nav>
+<main class="adm">
+
+  <!-- 仪表盘 -->
+  <section class="pane on" id="pane-dash">
+    <div class="dirtybar" id="dirtyBar"><span>有未保存的更改（仅在本浏览器生效）</span><button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">立即保存并应用</button></div>
+    <div class="stats" id="statBox"></div>
+    <div class="panel">
+      <h3>快捷操作</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.goto('games');ADM.openEditor(null)">＋ 新增游戏</button>
+        <button type="button" class="btn btn-blue btn-sm" onclick="ADM.exportOverride()">导出 override 文件</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('games')">管理游戏列表</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('data')">导入 / 导出数据</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>操作日志</h3>
+      <ul class="loglist" id="logList"></ul>
+      <div class="empty-log" id="logEmpty" style="display:none">暂无操作记录</div>
+    </div>
+  </section>
+
+  <!-- 游戏管理 -->
+  <section class="pane" id="pane-games">
+    <div class="toolbar">
+      <div class="searchbox"><input type="text" id="admKw" placeholder="搜索名称 / 简介 / 来源帖…"></div>
+      <button type="button" class="pbtn on" data-pf="">全部</button>
+      <button type="button" class="pbtn" data-pf="PC">PC</button>
+      <button type="button" class="pbtn" data-pf="安卓">安卓</button>
+      <select class="selctl" id="sortSel">
+        <option value="default">默认排序（新→旧）</option>
+        <option value="name">按名称 A→Z</option>
+        <option value="plat">按平台分组</option>
+      </select>
+      <span style="flex:1"></span>
+      <button type="button" class="btn btn-pri btn-sm" onclick="ADM.openEditor(null)">＋ 新增游戏</button>
+    </div>
+    <div class="batchbar" id="batchBar">
+      已选 <b id="selCnt">0</b> 项
+      <button type="button" class="btn btn-pri btn-sm" onclick="ADM.batchDelete()">删除所选</button>
+      <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.clearSel()">取消选择</button>
+    </div>
+    <div class="tablewrap">
+      <table class="gtable">
+        <thead><tr>
+          <th style="width:34px"><input type="checkbox" id="chkAll"></th>
+          <th style="width:70px">封面</th>
+          <th>游戏</th>
+          <th>来源帖子</th>
+          <th style="width:90px">链接数</th>
+          <th style="width:170px">操作</th>
+        </tr></thead>
+        <tbody id="gtBody"></tbody>
+      </table>
+    </div>
+    <div class="empty-box" id="gtEmpty" style="display:none">没有匹配的游戏</div>
+    <div class="pgbar" id="admPg"></div>
+  </section>
+
+  <!-- 数据管理 -->
+  <section class="pane" id="pane-data">
+    <div class="panel">
+      <h3>当前数据状态</h3>
+      <div class="kv"><span>数据来源</span><span id="srcTag">—</span></div>
+      <div class="kv"><span>游戏总数（含改动）</span><span id="stTotal">—</span></div>
+      <div class="kv"><span>本地新增/修改条目</span><span id="stCustom">—</span></div>
+      <div class="kv"><span>已标记删除（同步时移除）</span><span id="stRemoved">—</span></div>
+      <div class="kv"><span>数据更新时间</span><span id="stUpd">—</span></div>
+      <div class="kv"><span>未保存更改</span><span id="stDirty">—</span></div>
+    </div>
+    <div class="dl-grid">
+      <div class="dl-item">
+        <b>① 应用到前台预览</b>
+        <p>把当前改动保存到本浏览器，打开首页立即看到效果（仅本人可见，用于发布前检查）。</p>
+        <button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">保存并应用</button>
+      </div>
+      <div class="dl-item">
+        <b>② 导出 games.override.json（推荐）</b>
+        <p>提交到仓库 data/games.override.json 后，爬虫每次自动同步都会保留你的新增、修改和删除，不会被覆盖。</p>
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.exportOverride()">导出 Override</button>
+      </div>
+      <div class="dl-item">
+        <b>③ 导出 games.json（全量备份）</b>
+        <p>导出完整站点数据文件。注意：直接替换 data/games.json 会被下一次自动同步覆盖，建议用②。</p>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.exportFull()">导出完整 JSON</button>
+      </div>
+      <div class="dl-item">
+        <b>④ 导入 JSON 数据</b>
+        <p>导入之前导出的 games.json / games.override.json 或任意符合格式的数据文件，导入后可继续编辑。</p>
+        <input type="file" id="importFile" accept=".json,application/json" style="display:none">
+        <button type="button" class="btn btn-blue btn-sm" onclick="document.getElementById('importFile').click()">选择文件导入</button>
+      </div>
+      <div class="dl-item">
+        <b>⑤ 恢复官方同步数据</b>
+        <p>丢弃所有本地覆盖与改动，回到 data/games.json 的原始爬取数据（不可撤销，请先导出备份）。</p>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.restoreBase()">恢复官方数据</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 设置 -->
+  <section class="pane" id="pane-set">
+    <div class="panel">
+      <h3>修改后台密码</h3>
+      <div class="form-row"><label>当前密码</label><input type="password" id="oldPw" autocomplete="current-password"></div>
+      <div class="form-row"><label>新密码（至少 6 位）</label><input type="password" id="newPw" autocomplete="new-password"></div>
+      <div class="form-row"><label>确认新密码</label><input type="password" id="newPw2" autocomplete="new-password"></div>
+      <button type="button" class="btn btn-pri" onclick="ADM.changePw()">确认修改</button>
+      <p style="font-size:12px;color:#bbb;margin-top:14px;line-height:1.8">密码保存在浏览器本地（localStorage），仅保护此浏览器的后台入口；后台页面本身无服务器，请勿在公共电脑登录。</p>
+    </div>
+    <div class="panel">
+      <h3>关于本后台</h3>
+      <p style="font-size:12.5px;color:#888;line-height:2">
+        本后台为纯静态页面，配合 GitHub Pages 使用：<br>
+        1. 改动先保存在浏览器 → 前台即时预览；<br>
+        2. 确认无误后「导出 games.override.json」并提交到仓库 data/ 目录；<br>
+        3. 爬虫每次自动同步时会合并该文件：同 ID 覆盖、新 ID 追加到最前、remove_ids 中的条目被移除；<br>
+        4. 想彻底放弃某条删除标记，可在「恢复官方数据」后重新导出空的 override 文件。
+      </p>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<!-- 编辑弹窗 -->
+<div class="modal-mask" id="editMask">
+  <div class="modal">
+    <div class="modal-h"><b id="editTitle">新增游戏</b><button type="button" class="modal-x" onclick="ADM.closeEditor()">×</button></div>
+    <div class="modal-b">
+      <input type="hidden" id="fId">
+      <div class="frow"><label>游戏名称 <i>*</i></label><input type="text" id="fName" placeholder="必填"></div>
+      <div class="frow fgrid">
+        <div><label>平台</label>
+          <select id="fPlat">
+            <option value="PC">PC</option>
+            <option value="安卓">安卓</option>
+            <option value="PC/安卓">PC + 安卓</option>
+            <option value="">不标注</option>
+          </select>
+        </div>
+        <div><label>来源帖子名称</label><input type="text" id="fPost" placeholder="如：8月24号黄油分享"></div>
+      </div>
+      <div class="frow"><label>简介</label><textarea id="fDesc" placeholder="[类型/标签] 版本信息…"></textarea></div>
+      <div class="frow"><label>封面图 URL</label><input type="text" id="fCover" placeholder="https://…"><img class="cover-prev" id="coverPrev" alt=""></div>
+      <div class="frow"><label>图集 URL（每行一个，第一张为封面备选）</label><textarea id="fImgs" placeholder="每行一个图片地址"></textarea></div>
+      <div class="frow"><label>下载链接</label>
+        <div class="linkrows" id="linkRows"></div>
+        <button type="button" class="addlink" onclick="ADM.addLinkRow('','')">＋ 添加一条下载链接</button>
+      </div>
+      <div class="frow"><label>来源帖子链接（可选）</label><input type="text" id="fPostUrl" placeholder="https://…"></div>
+    </div>
+    <div class="modal-f">
+      <button type="button" class="btn btn-ghost" onclick="ADM.closeEditor()">取消</button>
+      <button type="button" class="btn btn-pri" onclick="ADM.saveEditor()">保存</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function () {
+  var LS_DATA = 'tsinhoht_data';
+  var LS_PW = 'tsinhoht_pw';
+  var SS_LOGIN = 'tsinhoht_login';
+  var LS_LOG = 'tsinhoht_log';
+  var DEFAULT_PW = 'tsinho123';
+  var PAGE_SIZE = 20;
+
+  var BASE = null;   // 官方同步原始数据 {games:[...]}
+  var DATA = null;   // 当前工作数据（含 remove_ids）
+  var SNAP = '';     // 上次保存时的快照（脏检查）
+  var kw = '', PF = '', sortMode = 'default', cur = 0;
+  var sel = {};      // id -> true
+  var loading = true;
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function hash(s) {
+    var x = 5381;
+    for (var i = 0; i < String(s).length; i++) x = ((x << 5) + x + String(s).charCodeAt(i)) >>> 0;
+    return 'h' + x.toString(16);
+  }
+  function pwHash() {
+    try { return localStorage.getItem(LS_PW) || hash(DEFAULT_PW); } catch (e) { return hash(DEFAULT_PW); }
+  }
+  function now() {
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()) + ' ' + p(d.getHours()) + ':' + p(d.getMinutes());
+  }
+  function toast(msg, err) {
+    var t = $('toast');
+    t.textContent = msg;
+    t.className = 'toast show' + (err ? ' err' : '');
+    clearTimeout(t._tm);
+    t._tm = setTimeout(function () { t.className = 'toast' + (err ? ' err' : ''); }, 2200);
+  }
+  function log(action) {
+    var arr = [];
+    try { arr = JSON.parse(localStorage.getItem(LS_LOG) || '[]') || []; } catch (e) {}
+    arr.unshift({ t: now(), a: action });
+    if (arr.length > 50) arr.length = 50;
+    try { localStorage.setItem(LS_LOG, JSON.stringify(arr)); } catch (e) {}
+    renderLog();
+  }
+  function isDirty() { return DATA && JSON.stringify(DATA) !== SNAP; }
+
+  /* ---------- 登录 ---------- */
+  function tryLogin() {
+    var v = $('pwInput').value;
+    if (!v) return;
+    if (hash(v) !== pwHash()) {
+      $('loginErr').style.display = 'block';
+      $('loginErr').textContent = '密码错误，请重试';
+      $('pwInput').value = '';
+      $('loginBtn').disabled = true;
+      setTimeout(function () { $('loginBtn').disabled = false; }, 1500);
+      return;
+    }
+    try { sessionStorage.setItem(SS_LOGIN, '1'); } catch (e) {}
+    $('loginErr').style.display = 'none';
+    enterApp();
+  }
+  function enterApp() {
+    $('loginWrap').style.display = 'none';
+    $('app').style.display = 'block';
+    boot();
+  }
+
+  /* ---------- 数据加载 ---------- */
+  function normalizeGame(g, i) {
+    g = g || {};
+    return {
+      id: String(g.id || ('custom-' + Date.now().toString(36) + '-' + Math.floor(Math.random() * 1e6).toString(36))),
+      name: String(g.name || '').trim() || ('未命名-' + (i + 1)),
+      platform: String(g.platform || ''),
+      desc: String(g.desc || ''),
+      cover: String(g.cover || ''),
+      images: Array.isArray(g.images) ? g.images.map(String) : [],
+      links: Array.isArray(g.links) ? g.links.filter(function (l) { return l && l.url; }).map(function (l) {
+        return { label: String(l.label || '下载'), url: String(l.url) };
+      }) : [],
+      post: String(g.post || ''),
+      post_url: String(g.post_url || '')
+    };
+  }
+  function baseIds() {
+    var s = {};
+    ((BASE && BASE.games) || []).forEach(function (g) { s[g.id] = 1; });
+    return s;
+  }
+  function boot() {
+    loading = true;
+    renderStat();
+    fetch('data/games.json?v=' + Date.now())
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        BASE = d;
+        initWorking();
+      })
+      .catch(function () {
+        BASE = null;
+        initWorking();
+        toast('无法读取 data/games.json（请通过 http:// 访问），可先「导入JSON」', true);
+      });
+  }
+  function initWorking() {
+    var saved = null;
+    try { saved = JSON.parse(localStorage.getItem(LS_DATA) || 'null'); } catch (e) {}
+    if (saved && Array.isArray(saved.games)) {
+      DATA = saved;
+      if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
+      log('载入本地覆盖数据（' + DATA.games.length + ' 条）');
+    } else if (BASE && Array.isArray(BASE.games)) {
+      DATA = {
+        site: BASE.site || 'Tsinho黄油站',
+        source: BASE.source || '',
+        updated_at: BASE.updated_at || now(),
+        total: BASE.games.length,
+        games: BASE.games.map(normalizeGame),
+        remove_ids: []
+      };
+    } else {
+      DATA = { site: 'Tsinho黄油站', source: '', updated_at: now(), total: 0, games: [], remove_ids: [] };
+    }
+    SNAP = JSON.stringify(DATA);
+    loading = false;
+    cur = 0;
+    renderAll();
+  }
+
+  /* ---------- 渲染 ---------- */
+  function platClass(p) {
+    if (!p) return '';
+    var az = /安卓/.test(p), pc = /PC/i.test(p);
+    if (az && pc) return 'mix';
+    return az ? 'az' : '';
+  }
+  function filteredList() {
+    var arr = DATA.games.slice();
+    var k = kw.toLowerCase();
+    if (k) arr = arr.filter(function (g) {
+      return (g.name + ' ' + g.desc + ' ' + g.platform + ' ' + g.post).toLowerCase().indexOf(k) > -1;
+    });
+    if (PF === '安卓') arr = arr.filter(function (g) { return /安卓/.test(g.platform); });
+    else if (PF === 'PC') arr = arr.filter(function (g) { return /PC/i.test(g.platform) && !/安卓/.test(g.platform); });
+    if (sortMode === 'name') arr.sort(function (a, b) { return a.name.localeCompare(b.name, 'zh-Hans-CN'); });
+    else if (sortMode === 'plat') arr.sort(function (a, b) { return (a.platform || '').localeCompare(b.platform || ''); });
+    return arr;
+  }
+  function pageOf(arr) { return Math.max(1, Math.ceil(arr.length / PAGE_SIZE)); }
+  function renderGames() {
+    var tb = $('gtBody');
+    if (loading) { tb.innerHTML = '<tr><td colspan="6" style="text-align:center;color:#999;padding:30px">加载中…</td></tr>'; $('admPg').innerHTML = ''; return; }
+    var arr = filteredList();
+    var pages = pageOf(arr);
+    if (cur >= pages) cur = pages - 1;
+    var bid = baseIds();
+    var h = '';
+    for (var i = cur * PAGE_SIZE; i < Math.min((cur + 1) * PAGE_SIZE, arr.length); i++) {
+      var g = arr[i];
+      var custom = !bid[g.id];
+      h += '<tr>';
+      h += '<td><input type="checkbox" data-chk="' + esc(g.id) + '"' + (sel[g.id] ? ' checked' : '') + '></td>';
+      h += '<td>' + (g.cover ? '<img class="gt-cover" loading="lazy" src="' + esc(g.cover) + '" alt="" onerror="this.style.visibility=\'hidden\'">' : '') + '</td>';
+      h += '<td><div class="gt-name">' + esc(g.name) + '</div>' +
+           '<div style="margin-top:3px"><span class="plat-tag ' + platClass(g.platform) + (custom ? ' custom-add' : '') + '">' +
+           (custom ? '自定义·' : '') + esc(g.platform || '无平台') + '</span></div>' +
+           (g.desc ? '<div class="gt-desc" style="margin-top:3px">' + esc(g.desc) + '</div>' : '') + '</td>';
+      h += '<td style="font-size:12px;color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(g.post || '—') + '</td>';
+      h += '<td>' + g.links.length + '</td>';
+      h += '<td class="gt-acts">' +
+           '<button type="button" class="btn btn-ghost btn-sm" onclick="ADM.editById(\'' + esc(g.id) + '\')">编辑</button>' +
+           '<button type="button" class="btn btn-ghost btn-sm" onclick="ADM.dupById(\'' + esc(g.id) + '\')">复制</button>' +
+           '<button type="button" class="btn btn-ghost btn-sm" style="color:#e5484d" onclick="ADM.delById(\'' + esc(g.id) + '\')">删除</button>' +
+           '</td>';
+      h += '</tr>';
+    }
+    tb.innerHTML = h || '';
+    $('gtEmpty').style.display = arr.length ? 'none' : '';
+    var bar = $('admPg');
+    if (pages <= 1) { bar.innerHTML = arr.length ? '' : ''; renderBatch(); return; }
+    var start = Math.max(0, Math.min(cur - 3, pages - 7));
+    var end = Math.min(pages, start + 7);
+    var ph = '<button type="button" class="pg" data-p="-1">&lsaquo;</button>';
+    if (start > 0) ph += '<button type="button" class="pg" data-p="0">1</button><span class="pginfo">…</span>';
+    for (var p = start; p < end; p++) ph += '<button type="button" class="pg" data-p="' + p + '">' + (p + 1) + '</button>';
+    if (end < pages) ph += '<span class="pginfo">…</span><button type="button" class="pg" data-p="' + (pages - 1) + '">' + pages + '</button>';
+    ph += '<button type="button" class="pg" data-p="-2">&rsaquo;</button>';
+    ph += '<span class="pginfo">共 ' + arr.length + ' 条 · ' + pages + ' 页</span>';
+    bar.innerHTML = ph;
+    [].slice.call(bar.querySelectorAll('.pg')).forEach(function (b) {
+      var bp = b.getAttribute('data-p');
+      if (bp === '-1') bp = cur - 1; else if (bp === '-2') bp = cur + 1; else bp = +bp;
+      b.classList.toggle('on', bp === cur);
+      b.classList.toggle('off', (bp === cur - 1 && cur === 0) || (bp === cur + 1 && cur === pages - 1));
+      b.setAttribute('data-p', bp);
+    });
+    renderBatch();
+  }
+  function renderBatch() {
+    var n = Object.keys(sel).length;
+    $('batchBar').className = 'batchbar' + (n ? ' show' : '');
+    $('selCnt').textContent = n;
+    $('chkAll').checked = false;
+  }
+  function renderStat() {
+    if (!DATA) {
+      $('statBox').innerHTML = '<div class="stat"><div class="num">…</div><div class="lab">加载中</div></div>';
+      return;
+    }
+    var games = DATA.games;
+    var pc = 0, az = 0;
+    games.forEach(function (g) {
+      if (/安卓/.test(g.platform)) az++;
+      else if (/PC/i.test(g.platform)) pc++;
+    });
+    var bid = baseIds();
+    var custom = games.filter(function (g) { return !bid[g.id]; }).length;
+    var cards = [
+      ['总游戏数', games.length, 'red'],
+      ['PC 游戏', pc, ''],
+      ['安卓游戏', az, 'blu'],
+      ['后台新增/修改', custom, 'org']
+    ];
+    $('statBox').innerHTML = cards.map(function (c) {
+      return '<div class="stat"><div class="num ' + c[2] + '">' + c[1] + '</div><div class="lab">' + c[0] + '</div></div>';
+    }).join('');
+  }
+  function renderDataPane() {
+    if (!DATA) return;
+    var isLocal = false;
+    try { isLocal = !!localStorage.getItem(LS_DATA); } catch (e) {}
+    var tag = $('srcTag');
+    if (isLocal) { tag.innerHTML = '<span class="tag-src local">本地覆盖版（含你的改动）</span>'; }
+    else { tag.innerHTML = '<span class="tag-src remote">官方同步数据（data/games.json）</span>'; }
+    $('stTotal').textContent = DATA.games.length + ' 款';
+    var bid = baseIds();
+    var customN = DATA.games.filter(function (g) { return !bid[g.id]; }).length;
+    $('stCustom').textContent = customN + ' 条';
+    $('stRemoved').textContent = (DATA.remove_ids || []).length + ' 条';
+    $('stUpd').textContent = DATA.updated_at || '—';
+    $('stDirty').textContent = isDirty() ? '是（尚未保存）' : '否';
+  }
+  function renderLog() {
+    var arr = [];
+    try { arr = JSON.parse(localStorage.getItem(LS_LOG) || '[]') || []; } catch (e) {}
+    $('logList').innerHTML = arr.slice(0, 12).map(function (x) {
+      return '<li><span class="lt">' + esc(x.t) + '</span><span>' + esc(x.a) + '</span></li>';
+    }).join('');
+    $('logEmpty').style.display = arr.length ? 'none' : '';
+  }
+  function renderAll() {
+    renderStat();
+    renderGames();
+    renderDataPane();
+    renderDirty();
+    renderLog();
+  }
+  function renderDirty() {
+    $('dirtyBar').className = 'dirtybar' + (isDirty() ? ' show' : '');
+    renderDataPane();
+  }
+
+  /* ---------- 编辑器 ---------- */
+  var editing = null;
+  function openEditor(g) {
+    editing = g;
+    $('editTitle').textContent = g ? '编辑游戏：' + g.name : '新增游戏';
+    $('fId').value = g ? g.id : '';
+    $('fName').value = g ? g.name : '';
+    $('fPlat').value = g ? (['PC', '安卓', 'PC/安卓', ''].indexOf(g.platform) > -1 ? g.platform : 'PC') : 'PC';
+    $('fDesc').value = g ? g.desc : '';
+    $('fCover').value = g ? g.cover : '';
+    $('fImgs').value = g ? g.images.join('\n') : '';
+    $('fPost').value = g ? g.post : '';
+    $('fPostUrl').value = g ? g.post_url : '';
+    var lr = $('linkRows');
+    lr.innerHTML = '';
+    var links = g ? g.links : [];
+    if (!links.length) links = [{ label: '移动云盘（不限速）', url: '' }];
+    links.forEach(function (l) { addLinkRow(l.label, l.url); });
+    updCoverPrev();
+    $('editMask').classList.add('show');
+    setTimeout(function () { $('fName').focus(); }, 60);
+  }
+  function addLinkRow(label, url) {
+    var row = document.createElement('div');
+    row.className = 'lrow';
+    row.innerHTML = '<input type="text" class="ll" placeholder="按钮文字" value="' + esc(label) + '">' +
+                    '<input type="text" class="lu" placeholder="https:// 网盘分享链接" value="' + esc(url) + '">' +
+                    '<button type="button" class="lrow-del" title="删除此行">×</button>';
+    row.querySelector('.lrow-del').onclick = function () { row.remove(); };
+    $('linkRows').appendChild(row);
+  }
+  function saveEditor() {
+    var name = $('fName').value.trim();
+    if (!name) { toast('请填写游戏名称', true); $('fName').focus(); return; }
+    var imgs = $('fImgs').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+    var cover = $('fCover').value.trim() || (imgs[0] || '');
+    var links = [].slice.call($('linkRows').querySelectorAll('.lrow')).map(function (row) {
+      var u = row.querySelector('.lu').value.trim();
+      if (!u) return null;
+      return { label: row.querySelector('.ll').value.trim() || '下载链接', url: u };
+    }).filter(Boolean);
+    var obj = {
+      id: $('fId').value,
+      name: name,
+      platform: $('fPlat').value,
+      desc: $('fDesc').value.trim(),
+      cover: cover,
+      images: imgs,
+      links: links,
+      post: $('fPost').value.trim(),
+      post_url: $('fPostUrl').value.trim()
+    };
+    if (editing) {
+      var idx = DATA.games.findIndex(function (g) { return g.id === editing.id; });
+      if (idx > -1) { obj.id = editing.id; DATA.games[idx] = obj; }
+      log('修改游戏：' + name);
+    } else {
+      obj.id = 'custom-' + Date.now().toString(36) + Math.floor(Math.random() * 1e4).toString(36);
+      DATA.games.unshift(obj);
+      log('新增游戏：' + name);
+    }
+    DATA.total = DATA.games.length;
+    closeEditor();
+    renderAll();
+    toast('已保存（记得导出提交才会全站生效）');
+  }
+  function delGame(id) {
+    var g = DATA.games.filter(function (x) { return x.id === id; })[0];
+    if (!g) return;
+    if (!confirm('确定删除「' + g.name + '」吗？')) return;
+    DATA.games = DATA.games.filter(function (x) { return x.id !== id; });
+    var bid = baseIds();
+    if (bid[id] && DATA.remove_ids.indexOf(id) === -1) DATA.remove_ids.push(id);
+    delete sel[id];
+    DATA.total = DATA.games.length;
+    renderAll();
+    log('删除游戏：' + g.name);
+    toast('已删除（同步时将同时从源数据移除）');
+  }
+  function dupGame(id) {
+    var g = DATA.games.filter(function (x) { return x.id === id; })[0];
+    if (!g) return;
+    var c = JSON.parse(JSON.stringify(g));
+    c.id = g.id + '-copy' + Math.floor(Math.random() * 1e4).toString(36);
+    c.name = g.name + '（副本）';
+    var idx = DATA.games.findIndex(function (x) { return x.id === id; });
+    DATA.games.splice(idx + 1, 0, c);
+    DATA.total = DATA.games.length;
+    renderAll();
+    openEditor(c);
+    log('复制游戏：' + g.name);
+  }
+
+  /* ---------- 数据操作 ---------- */
+  function payloadFull() {
+    return {
+      site: DATA.site, source: DATA.source,
+      updated_at: now(), total: DATA.games.length,
+      games: DATA.games
+    };
+  }
+  function download(name, obj) {
+    var blob = new Blob([JSON.stringify(obj, null, 1)], { type: 'application/json;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800);
+  }
+  function saveLocal(silent) {
+    try {
+      localStorage.setItem(LS_DATA, JSON.stringify(DATA));
+    } catch (e) { toast('保存失败：浏览器存储不可用', true); return; }
+    SNAP = JSON.stringify(DATA);
+    DATA.updated_at = DATA.updated_at || now();
+    renderDirty();
+    if (!silent) { log('保存并应用到前台预览'); toast('已保存，打开首页即可看到效果'); }
+  }
+  function importJson(text) {
+    var d;
+    try { d = JSON.parse(text); } catch (e) { toast('文件不是合法 JSON', true); return; }
+    var games = null, removeIds = [];
+    if (Array.isArray(d)) games = d;
+    else if (d && Array.isArray(d.games)) { games = d.games; if (Array.isArray(d.remove_ids)) removeIds = d.remove_ids; }
+    if (!games) { toast('格式不对：需要 games 数组', true); return; }
+    if (!confirm('导入 ' + games.length + ' 条数据，将覆盖当前列表，继续？')) return;
+    DATA.games = games.map(normalizeGame);
+    DATA.remove_ids = removeIds.filter(function (x) { return typeof x === 'string'; });
+    DATA.total = DATA.games.length;
+    DATA.updated_at = now();
+    cur = 0;
+    renderAll();
+    log('导入数据：' + games.length + ' 条');
+    toast('导入成功，请检查后保存');
+  }
+  function restoreBase() {
+    if (!BASE || !Array.isArray(BASE.games)) { toast('官方数据未加载成功，无法恢复', true); return; }
+    if (!confirm('确定丢弃全部本地改动，恢复为官方同步数据吗？（建议先导出备份）')) return;
+    try { localStorage.removeItem(LS_DATA); } catch (e) {}
+    DATA = {
+      site: BASE.site || 'Tsinho黄油站',
+      source: BASE.source || '',
+      updated_at: BASE.updated_at || now(),
+      total: BASE.games.length,
+      games: BASE.games.map(normalizeGame),
+      remove_ids: []
+    };
+    SNAP = JSON.stringify(DATA);
+    sel = {};
+    cur = 0;
+    renderAll();
+    log('恢复官方同步数据');
+    toast('已恢复官方数据');
+  }
+  function changePw() {
+    var o = $('oldPw').value, n = $('newPw').value, n2 = $('newPw2').value;
+    if (hash(o) !== pwHash()) { toast('当前密码错误', true); return; }
+    if (n.length < 6) { toast('新密码至少 6 位', true); return; }
+    if (n !== n2) { toast('两次输入的新密码不一致', true); return; }
+    try { localStorage.setItem(LS_PW, hash(n)); } catch (e) { toast('保存失败', true); return; }
+    $('oldPw').value = $('newPw').value = $('newPw2').value = '';
+    log('修改了后台密码');
+    toast('密码修改成功');
+  }
+
+  /* ---------- 事件绑定 ---------- */
+  $('loginBtn').onclick = tryLogin;
+  $('pwInput').addEventListener('keydown', function (e) { if (e.key === 'Enter') tryLogin(); });
+  $('logoutBtn').onclick = function () {
+    try { sessionStorage.removeItem(SS_LOGIN); } catch (e) {}
+    $('app').style.display = 'none';
+    $('loginWrap').style.display = 'flex';
+    $('pwInput').value = '';
+  };
+
+  [].slice.call(document.querySelectorAll('#tabs .tab')).forEach(function (t) {
+    t.onclick = function () { goto(t.getAttribute('data-tab')); };
+  });
+  function goto(name) {
+    [].slice.call(document.querySelectorAll('#tabs .tab')).forEach(function (t) {
+      t.classList.toggle('on', t.getAttribute('data-tab') === name);
+    });
+    [].slice.call(document.querySelectorAll('.pane')).forEach(function (p) {
+      p.classList.toggle('on', p.id === 'pane-' + name);
+    });
+    if (name === 'data') renderDataPane();
+  }
+
+  var tmr = null;
+  $('admKw').addEventListener('input', function () {
+    clearTimeout(tmr);
+    tmr = setTimeout(function () { kw = $('admKw').value.trim(); cur = 0; renderGames(); }, 200);
+  });
+  document.getElementById('pane-games').querySelector('.toolbar').addEventListener('click', function (e) {
+    var b = e.target.closest('.pbtn');
+    if (!b || b.classList.contains('on')) return;
+    PF = b.getAttribute('data-pf') || '';
+    [].slice.call(this.querySelectorAll('.pbtn')).forEach(function (x) { x.classList.toggle('on', x === b); });
+    cur = 0;
+    renderGames();
+  });
+  $('sortSel').onchange = function () { sortMode = this.value; cur = 0; renderGames(); };
+  $('admPg').addEventListener('click', function (e) {
+    var b = e.target.closest('.pg');
+    if (!b || b.classList.contains('off')) return;
+    cur = parseInt(b.getAttribute('data-p'), 10);
+    renderGames();
+  });
+  $('gtBody').addEventListener('change', function (e) {
+    var c = e.target;
+    if (c.tagName !== 'INPUT' || !c.hasAttribute('data-chk')) return;
+    var id = c.getAttribute('data-chk');
+    if (c.checked) sel[id] = 1; else delete sel[id];
+    renderBatch();
+  });
+  $('chkAll').addEventListener('change', function () {
+    var on = this.checked;
+    filteredList().slice(cur * PAGE_SIZE, (cur + 1) * PAGE_SIZE).forEach(function (g) {
+      if (on) sel[g.id] = 1; else delete sel[g.id];
+    });
+    renderGames();
+  });
+
+  $('fCover').addEventListener('input', updCoverPrev);
+  function updCoverPrev() {
+    var u = $('fCover').value.trim();
+    var img = $('coverPrev');
+    if (u) { img.src = u; img.style.display = 'block'; img.onerror = function () { img.style.display = 'none'; }; }
+    else img.style.display = 'none';
+  }
+  $('editMask').addEventListener('click', function (e) { if (e.target === this) closeEditor(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeEditor();
+  });
+
+  window.ADM = {
+    goto: goto,
+    openEditor: function (g) { openEditor(g); },
+    editById: function (id) {
+      var g = DATA.games.filter(function (x) { return x.id === id; })[0];
+      if (g) openEditor(g);
+    },
+    dupById: dupGame,
+    delById: delGame,
+    closeEditor: function () { $('editMask').classList.remove('show'); editing = null; },
+    addLinkRow: addLinkRow,
+    saveEditor: saveEditor,
+    saveLocal: saveLocal,
+    exportFull: function () { download('games.json', payloadFull()); log('导出 games.json 全量备份'); toast('已开始下载 games.json'); },
+    exportOverride: function () {
+      var o = payloadFull();
+      o.remove_ids = DATA.remove_ids || [];
+      download('games.override.json', o);
+      log('导出 games.override.json');
+      toast('已下载，提交到仓库 data/ 目录即可长期生效');
+    },
+    batchDelete: function () {
+      var ids = Object.keys(sel);
+      if (!ids.length) return;
+      if (!confirm('确定删除所选 ' + ids.length + ' 个游戏吗？')) return;
+      var bid = baseIds();
+      DATA.games = DATA.games.filter(function (g) { return !sel[g.id]; });
+      ids.forEach(function (id) {
+        if (bid[id] && DATA.remove_ids.indexOf(id) === -1) DATA.remove_ids.push(id);
+        delete sel[id];
+      });
+      DATA.total = DATA.games.length;
+      renderAll();
+      log('批量删除 ' + ids.length + ' 个游戏');
+      toast('已删除 ' + ids.length + ' 项');
+    },
+    clearSel: function () { sel = {}; renderGames(); },
+    importJson: importJson,
+    restoreBase: restoreBase,
+    changePw: changePw
+  };
+
+  $('importFile').addEventListener('change', function () {
+    var f = this.files[0];
+    this.value = '';
+    if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () { importJson(String(rd.result)); };
+    rd.readAsText(f, 'utf-8');
+  });
+
+  /* ---------- 启动 ---------- */
+  (function () {
+    var ok = false;
+    try { ok = sessionStorage.getItem(SS_LOGIN) === '1'; } catch (e) {}
+    if (ok) enterApp();
+    else setTimeout(function () { try { $('pwInput').focus(); } catch (e) {} }, 100);
+  })();
+})();
+</script>
+</body>
+</html>
