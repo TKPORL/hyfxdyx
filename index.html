@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var t=localStorage.getItem('tsinhoht_theme');if(!t&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)t='dark';if(t==='dark')document.documentElement.classList.add('dark')}catch(e){}})()</script>
 <title>Tsinho黄油站 - 单机黄油游戏每日分享（PC/安卓）</title>
 <meta name="description" content="Tsinho黄油站（Tsinho工作室）每日更新黄油游戏资源：PC黄油、安卓黄油、单机黄油游戏网盘下载，免费无付费，支持搜索与平台筛选。">
 <meta name="keywords" content="Tsinho,tsinho,Tsinho黄油站,Tsinho工作室,黄油站,黄油,黄油游戏,黄油推荐,单机黄油,PC黄油,安卓黄油,galgame,美少女游戏,单游戏,游戏资源下载">
@@ -108,6 +109,36 @@ footer b{color:#e5484d}
 footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
 footer a{color:#e5484d;text-decoration:none}
 footer a:hover{text-decoration:underline}
+.theme-btn{border:1px solid #ecebe9;background:#faf9f7;color:#666;border-radius:99px;padding:7px 14px;font-size:13px;cursor:pointer;font-family:inherit;transition:.2s}
+.theme-btn:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}
+/* ===== 夜间模式 ===== */
+html.dark body{background:#15161c;color:#d6d4d1}
+html.dark header{background:#1d1e25;border-bottom-color:#2b2c35}
+html.dark .site{color:#eceaea}
+html.dark nav a,html.dark .mrhx-search-toggle,html.dark .theme-btn{background:#23242c;border-color:#34353f;color:#a7a5ab}
+html.dark nav a:hover,html.dark .mrhx-search-toggle:hover,html.dark .theme-btn:hover{background:#26272f;color:#ef6b70;border-color:#5b3a3c;transform:translateY(-1px)}
+html.dark nav a.nav-req{background:#2b251c;border-color:#4a4030;color:#d99b3f;font-weight:600}
+html.dark nav a.nav-req:hover{color:#e5a54a;background:#332b1f;border-color:#6b5230;transform:translateY(-1px)}
+html.dark .mrhx-search input{background:#23242c;border-color:#34353f;color:#ddd}
+html.dark .mrhx-search input:focus{border-color:#e5484d;background:#23242c}
+html.dark .upd,.req,.gcard{background:#202129;border-color:#2d2e37}
+html.dark .upd-note{color:#77757c}
+html.dark .g-title{color:#eceaea}
+html.dark .g-desc{color:#8f8d95}
+html.dark .g-post{color:#6f6d75}
+html.dark .g-cover{background:#26272f}
+html.dark .gcard.skel .g-cover,html.dark .gcard.skel .sbar{background:#26272f}
+html.dark .empty{color:#77757c}
+html.dark .pg,html.dark .pbtn{background:#202129;border-color:#34353f;color:#a7a5ab}
+html.dark .pginfo{color:#77757c}
+html.dark footer{border-top-color:#2b2c35;color:#8b898f}
+html.dark footer .seo-line{color:#5f5e66}
+html.dark .mrhx-top{background:#202129;color:#ef6b70}
+html.dark .mrhx-top:hover{background:#26272f;transform:translateY(-3px)}
+html.dark .mrhx-popup-inner{background:#24252d}
+html.dark .mrhx-popup-content p{color:#b9b7bc}
+html.dark .mrhx-popup-close{background:#2c2d36;color:#aaa}
+html.dark .g-dl-dead{background:#4a4b54}
 .seo-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:720px){
   header{position:static}
@@ -148,6 +179,7 @@ footer a:hover{text-decoration:underline}
         <a href="https://link3.cc/Tsinho" target="_blank" rel="noreferrer">官网</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2uR1zzgWrrPy9" target="_blank" rel="noreferrer">全部黄油</a>
         <a href="https://yun.139.com/shareweb/#/w/i/2wFGs9i5mE1mr" target="_blank" rel="noreferrer">解压教程</a>
+        <button type="button" class="theme-btn" id="themeBtn" title="切换夜间/日间模式">夜间</button>
       </nav>
     </div>
   </div>
@@ -471,6 +503,24 @@ footer a:hover{text-decoration:underline}
       } else if (n > 12) clearInterval(tm);
     }, 400);
   })();
+})();
+</script>
+<script>
+(function () {
+  function cur() { return document.documentElement.classList.contains('dark') ? 'dark' : 'light'; }
+  function label() {
+    var t = cur() === 'dark' ? '日间' : '夜间';
+    [].slice.call(document.querySelectorAll('.theme-btn')).forEach(function (b) { b.textContent = t; });
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.theme-btn');
+    if (!b) return;
+    var dark = cur() !== 'dark';
+    document.documentElement.classList.toggle('dark', dark);
+    try { localStorage.setItem('tsinhoht_theme', dark ? 'dark' : 'light'); } catch (err) {}
+    label();
+  });
+  label();
 })();
 </script>
 </body>
