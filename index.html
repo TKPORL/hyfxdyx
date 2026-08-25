@@ -105,6 +105,8 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 footer{border-top:1px solid #ecebe9;padding:24px 20px;text-align:center;color:#999;font-size:12px}
 footer b{color:#e5484d}
 footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
+.visit-line{margin-top:9px;font-size:12.5px;color:#888}
+.visit-line b{color:#e5484d;font-weight:700}
 .seo-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:720px){
   header{position:static}
@@ -167,6 +169,7 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
   <div class="pgbar" id="pgbar" style="display:none"></div>
 </main>
 <footer>数据自动同步自 <b>Tsinho黄油站</b> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版
+  <div class="visit-line">本站总访问 <b><span id="vercount_value_site_pv">--</span></b> 次 · 独立访客 <b><span id="vercount_value_site_uv">--</span></b> 人</div>
   <div class="seo-line">Tsinho黄油站 · Tsinho工作室 | 每日更新黄油游戏：PC黄油 · 安卓黄油 · 单机黄油游戏下载</div>
 </footer>
 <button type="button" class="mrhx-top" id="mrhxTopBtn" title="回到顶部">↑</button>
@@ -369,7 +372,23 @@ footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
     el.querySelector('.mrhx-popup-close').onclick = close;
     el.querySelector('.mrhx-popup-ok').onclick = close;
   })();
+
+  (function () {
+    var pv = document.getElementById('vercount_value_site_pv');
+    var uv = document.getElementById('vercount_value_site_uv');
+    if (!pv || !uv) return;
+    var n = 0;
+    var tm = setInterval(function () {
+      n++;
+      var p = pv.textContent, u = uv.textContent;
+      if (/^\d+$/.test(p.trim()) && /^\d+$/.test(u.trim())) {
+        clearInterval(tm);
+        try { localStorage.setItem('tsinhoht_visit', JSON.stringify({ pv: p.trim(), uv: u.trim(), t: Date.now() })); } catch (e) {}
+      } else if (n > 12) clearInterval(tm);
+    }, 400);
+  })();
 })();
 </script>
+<script defer src="https://cn.vercount.one/js"></script>
 </body>
 </html>

@@ -209,6 +209,15 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       </div>
     </div>
     <div class="panel">
+      <h3>访问统计</h3>
+      <div class="stats" style="margin-bottom:6px">
+        <div class="stat"><div class="num red" id="visPv">--</div><div class="lab">本站总访问量（PV）</div></div>
+        <div class="stat"><div class="num blu" id="visUv">--</div><div class="lab">独立访客数（UV）</div></div>
+        <div class="stat"><div class="num" id="visT" style="font-size:14px;color:#999;line-height:1.9">暂无记录</div><div class="lab">数据记录时间</div></div>
+      </div>
+      <p style="font-size:11.5px;color:#bbb;line-height:1.7">数据由前台页面访问时自动缓存到本浏览器；后台不加载计数脚本，避免污染统计数据。</p>
+    </div>
+    <div class="panel">
       <h3>操作日志</h3>
       <ul class="loglist" id="logList"></ul>
       <div class="empty-log" id="logEmpty" style="display:none">暂无操作记录</div>
@@ -610,12 +619,29 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     }).join('');
     $('logEmpty').style.display = arr.length ? 'none' : '';
   }
+  function fmtNum(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function renderVisit() {
+    var d = null;
+    try { d = JSON.parse(localStorage.getItem('tsinhoht_visit') || 'null'); } catch (e) {}
+    if (d && d.pv && d.uv) {
+      $('visPv').textContent = fmtNum(d.pv);
+      $('visUv').textContent = fmtNum(d.uv);
+      var dt = new Date(d.t), p2 = function (x) { return (x < 10 ? '0' : '') + x; };
+      $('visT').textContent = dt.getFullYear() + '-' + p2(dt.getMonth() + 1) + '-' + p2(dt.getDate()) +
+        ' ' + p2(dt.getHours()) + ':' + p2(dt.getMinutes());
+    } else {
+      $('visPv').textContent = '--';
+      $('visUv').textContent = '--';
+      $('visT').textContent = '暂无记录（前台被访问后自动更新）';
+    }
+  }
   function renderAll() {
     renderStat();
     renderGames();
     renderDataPane();
     renderDirty();
     renderLog();
+    renderVisit();
   }
   function renderDirty() {
     $('dirtyBar').className = 'dirtybar' + (isDirty() ? ' show' : '');
