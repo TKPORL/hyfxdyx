@@ -305,6 +305,26 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   <!-- 设置 -->
   <section class="pane" id="pane-set">
     <div class="panel">
+      <h3>首页公告编辑</h3>
+      <div class="form-row"><label>公告标题</label><input type="text" id="annTitle" placeholder="如：【公告】" style="max-width:340px"></div>
+      <div class="form-row"><label>公告内容（每行一条，网址会自动变成可点击链接；全部清空并保存则恢复默认公告）</label>
+        <textarea id="annLines" placeholder="各位老师好，欢迎收藏本站 防迷路！&#10;官方QQ群：1081159850&#10;https://t.me/Tsinhox"
+          style="width:100%;max-width:560px;min-height:140px;padding:9px 11px;border:1px solid #e2e0dc;border-radius:10px;font-size:13px;background:#faf9f7;color:#333;outline:none;line-height:1.8;resize:vertical"></textarea></div>
+      <button type="button" class="btn btn-pri" onclick="ADM.saveAnnounce()">保存公告</button>
+      <p style="font-size:11.5px;color:#bbb;margin-top:12px;line-height:1.8">保存后：① 数据管理 →「保存并应用」可立即在前台预览；② 「导出 Override」提交仓库后全站生效。</p>
+    </div>
+    <div class="panel">
+      <h3>图床上传（GitHub 仓库直链）</h3>
+      <div class="form-row"><label>GitHub Token（fine-grained，需对 TKPORL/hyfxdyx 的 Contents 读写权限）</label>
+        <input type="password" id="ghTokenInput" autocomplete="off" placeholder="粘贴 Token 后点击保存，仅存于本浏览器" style="max-width:380px"></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.saveGhToken()">保存 Token</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.clearGhToken()">清除</button>
+        <span id="ghState" style="font-size:12px;font-weight:600"></span>
+      </div>
+      <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">配置后，在「游戏管理」新增/编辑弹窗里点「上传本地图片」即可把图片提交到仓库 assets/admin/ 目录并自动转成 jsDelivr 直链填入表单；首次上传会触发一次自动部署，新链接若短暂打不开是 CDN 缓存延迟。</p>
+    </div>
+    <div class="panel">
       <h3>修改后台密码</h3>
       <div class="form-row"><label>当前密码</label><input type="password" id="oldPw" autocomplete="current-password"></div>
       <div class="form-row"><label>新密码（至少 6 位）</label><input type="password" id="newPw" autocomplete="new-password"></div>
@@ -346,8 +366,20 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <div><label>来源帖子名称</label><input type="text" id="fPost" placeholder="如：8月24号黄油分享"></div>
       </div>
       <div class="frow"><label>简介</label><textarea id="fDesc" placeholder="[类型/标签] 版本信息…"></textarea></div>
-      <div class="frow"><label>封面图 URL</label><input type="text" id="fCover" placeholder="https://…"><img class="cover-prev" id="coverPrev" alt=""></div>
-      <div class="frow"><label>图集 URL（每行一个，第一张为封面备选）</label><textarea id="fImgs" placeholder="每行一个图片地址"></textarea></div>
+      <div class="frow">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <label style="margin-bottom:5px">封面图 URL</label>
+          <button type="button" class="btn btn-blue btn-sm" onclick="ADM.pickUpload('fCover',false)">上传本地图片</button>
+        </div>
+        <input type="text" id="fCover" placeholder="https://… 或点上方「上传本地图片」自动生成"><img class="cover-prev" id="coverPrev" alt="">
+      </div>
+      <div class="frow">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:8px">
+          <label style="margin-bottom:5px">图集 URL（每行一个，第一张为封面备选）</label>
+          <button type="button" class="btn btn-blue btn-sm" onclick="ADM.pickUpload('fImgs',true)">批量上传到图集</button>
+        </div>
+        <textarea id="fImgs" placeholder="每行一个图片地址，也可点上方批量上传"></textarea>
+      </div>
       <div class="frow"><label>下载链接</label>
         <div class="linkrows" id="linkRows"></div>
         <button type="button" class="addlink" onclick="ADM.addLinkRow('','')">＋ 添加一条下载链接</button>
@@ -369,8 +401,10 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   var LS_PW = 'tsinhoht_pw';
   var SS_LOGIN = 'tsinhoht_login';
   var LS_LOG = 'tsinhoht_log';
+  var LS_GH = 'tsinhoht_gh_token';
   var DEFAULT_PW = 'tsinho123';
   var PAGE_SIZE = 20;
+  var GH_CONF = { owner: 'TKPORL', repo: 'hyfxdyx', branch: 'main', dir: 'assets/admin' };
 
   var BASE = null;   // 官方同步原始数据 {games:[...]}
   var DATA = null;   // 当前工作数据（含 remove_ids）
@@ -491,6 +525,9 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       };
     } else {
       DATA = { site: 'Tsinho黄油站', source: '', updated_at: now(), total: 0, games: [], remove_ids: [] };
+    }
+    if (DATA.announce === undefined && BASE && BASE.announce && typeof BASE.announce === 'object') {
+      DATA.announce = BASE.announce;
     }
     SNAP = JSON.stringify(DATA);
     loading = false;
@@ -743,11 +780,13 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
 
   /* ---------- 数据操作 ---------- */
   function payloadFull() {
-    return {
+    var p = {
       site: DATA.site, source: DATA.source,
       updated_at: now(), total: DATA.games.length,
       games: DATA.games
     };
+    if (DATA.announce) p.announce = DATA.announce;
+    return p;
   }
   function download(name, obj) {
     var blob = new Blob([JSON.stringify(obj, null, 1)], { type: 'application/json;charset=utf-8' });
@@ -777,6 +816,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     if (!confirm('导入 ' + games.length + ' 条数据，将覆盖当前列表，继续？')) return;
     DATA.games = games.map(normalizeGame);
     DATA.remove_ids = removeIds.filter(function (x) { return typeof x === 'string'; });
+    if ('announce' in d) DATA.announce = (d.announce && typeof d.announce === 'object') ? d.announce : null;
     DATA.total = DATA.games.length;
     DATA.updated_at = now();
     cur = 0;
@@ -796,6 +836,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       games: BASE.games.map(normalizeGame),
       remove_ids: []
     };
+    DATA.announce = (BASE.announce && typeof BASE.announce === 'object') ? BASE.announce : null;
     SNAP = JSON.stringify(DATA);
     sel = {};
     cur = 0;
@@ -812,6 +853,98 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     $('oldPw').value = $('newPw').value = $('newPw2').value = '';
     log('修改了后台密码');
     toast('密码修改成功');
+  }
+
+  /* ---------- 首页公告 ---------- */
+  function loadAnnForm() {
+    if (!DATA) return;
+    var a = DATA.announce || null;
+    $('annTitle').value = a ? (a.title || '') : '';
+    $('annLines').value = a && Array.isArray(a.lines) ? a.lines.join('\n') : '';
+  }
+  function saveAnnounce() {
+    var title = $('annTitle').value.trim();
+    var lines = $('annLines').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+    if (!lines.length) {
+      DATA.announce = null;
+      log('公告恢复为默认内容');
+      toast('已恢复默认公告（导出提交后全站生效）');
+    } else {
+      DATA.announce = { title: title || '【公告】', lines: lines };
+      log('保存首页公告（' + lines.length + ' 行）');
+      toast('公告已保存，记得「保存并应用」预览 / 导出提交全站生效');
+    }
+    renderDirty();
+  }
+
+  /* ---------- GitHub 图床上传 ---------- */
+  function ghToken() {
+    try { return localStorage.getItem(LS_GH) || ''; } catch (e) { return ''; }
+  }
+  function renderGhState() {
+    var ok = !!ghToken();
+    var el = $('ghState');
+    el.textContent = ok ? '已配置' : '未配置';
+    el.style.color = ok ? '#21a35d' : '#e5484d';
+    $('ghTokenInput').placeholder = ok ? '已保存（重新粘贴可覆盖）' : '粘贴 Token 后点击保存，仅存于本浏览器';
+  }
+  function ghUpload(file, cb) {
+    var token = ghToken();
+    if (!token) { toast('请先在「设置」配置 GitHub Token', true); return; }
+    if (!/^image\//.test(file.type)) { toast('跳过非图片文件：' + file.name, true); return; }
+    if (file.size > 5 * 1024 * 1024) { toast('图片过大（>5MB）：' + file.name, true); return; }
+    var rd = new FileReader();
+    rd.onload = function () {
+      var b64 = String(rd.result).split(',')[1];
+      var ext = (String(file.name).split('.').pop() || 'png').toLowerCase().replace(/[^a-z0-9]/g, '') || 'png';
+      var d = new Date(), p2 = function (n) { return (n < 10 ? '0' : '') + n; };
+      var name = '' + d.getFullYear() + p2(d.getMonth() + 1) + p2(d.getDate()) + '-' +
+        p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds()) + '-' +
+        Math.floor(Math.random() * 1e4).toString(36) + '.' + ext;
+      var path = GH_CONF.dir + '/' + name;
+      var xhr = new XMLHttpRequest();
+      xhr.open('PUT', 'https://api.github.com/repos/' + GH_CONF.owner + '/' + GH_CONF.repo + '/contents/' + path);
+      xhr.setRequestHeader('Authorization', 'Bearer ' + token);
+      xhr.setRequestHeader('Accept', 'application/vnd.github+json');
+      xhr.onload = function () {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          cb('https://cdn.jsdelivr.net/gh/' + GH_CONF.owner + '/' + GH_CONF.repo + '@' + GH_CONF.branch + '/' + path);
+        } else {
+          var msg = '上传失败 HTTP ' + xhr.status;
+          try { msg = JSON.parse(xhr.responseText).message || msg; } catch (e) {}
+          toast(msg + (xhr.status === 401 ? '（Token 无效或无权限）' : ''), true);
+        }
+      };
+      xhr.onerror = function () { toast('网络错误，上传失败', true); };
+      xhr.send(JSON.stringify({ message: 'upload: ' + name, content: b64, branch: GH_CONF.branch }));
+    };
+    rd.readAsDataURL(file);
+  }
+  function pickUpload(targetId, multiple) {
+    if (!ghToken()) { goto('set'); toast('请先配置 GitHub Token 再上传', true); return; }
+    var inp = document.createElement('input');
+    inp.type = 'file';
+    inp.accept = 'image/*';
+    inp.multiple = !!multiple;
+    inp.onchange = function () {
+      var files = [].slice.call(inp.files).filter(function (f) { return /^image\//.test(f.type) && f.size <= 5 * 1024 * 1024; });
+      if (!files.length) return;
+      var left = files.length;
+      toast('开始上传 ' + left + ' 张图片…');
+      files.forEach(function (f) {
+        ghUpload(f, function (url) {
+          if (targetId === 'fImgs') {
+            var ta = $('fImgs');
+            ta.value = (ta.value.trim() ? ta.value.replace(/\s+$/, '\n') : '') + url;
+          } else {
+            $(targetId).value = url;
+            updCoverPrev();
+          }
+          if (--left === 0) toast('全部上传完成，链接已填入表单');
+        });
+      });
+    };
+    inp.click();
   }
 
   /* ---------- 事件绑定 ---------- */
@@ -835,6 +968,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       p.classList.toggle('on', p.id === 'pane-' + name);
     });
     if (name === 'data') renderDataPane();
+    if (name === 'set') { loadAnnForm(); renderGhState(); }
   }
 
   var tmr = null;
@@ -923,7 +1057,23 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     clearSel: function () { sel = {}; renderGames(); },
     importJson: importJson,
     restoreBase: restoreBase,
-    changePw: changePw
+    changePw: changePw,
+    saveAnnounce: saveAnnounce,
+    pickUpload: pickUpload,
+    saveGhToken: function () {
+      var v = $('ghTokenInput').value.trim();
+      if (!v) { toast('请先粘贴 Token', true); return; }
+      try { localStorage.setItem(LS_GH, v); } catch (e) { toast('保存失败：浏览器存储不可用', true); return; }
+      $('ghTokenInput').value = '';
+      renderGhState();
+      log('配置了 GitHub 图床 Token');
+      toast('Token 已保存，可以在编辑游戏时上传本地图片了');
+    },
+    clearGhToken: function () {
+      try { localStorage.removeItem(LS_GH); } catch (e) {}
+      renderGhState();
+      toast('已清除 Token');
+    }
   };
 
   $('importFile').addEventListener('change', function () {

@@ -366,11 +366,26 @@ footer a:hover{text-decoration:underline}
   }, { passive: true });
   tb.onclick = function () { window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
+  function applyAnnounce(a) {
+    if (!a || !a.lines || !a.lines.length) return;
+    var box = document.querySelector('#annPopup .mrhx-popup-content');
+    if (!box) return;
+    var h = '<h3>' + esc(a.title || '【公告】') + '</h3>';
+    a.lines.forEach(function (line) {
+      var t = esc(String(line));
+      h += '<p>' + t.replace(/(https?:\/\/[^\s<]+)/g, function (u) {
+        var show = u.replace(/^https?:\/\//, '').replace(/&amp;/g, '&');
+        return '<a href="' + u + '" target="_blank" rel="noreferrer">' + show + '</a>';
+      }) + '</p>';
+    });
+    box.innerHTML = h;
+  }
   function applyData(d) {
     GAMES = d.games || [];
     LOADING = false;
     document.getElementById('totalNum').textContent = d.total != null ? d.total : GAMES.length;
     document.getElementById('updAt').textContent = d.updated_at || '—';
+    applyAnnounce(d.announce);
     render();
   }
   (function () {

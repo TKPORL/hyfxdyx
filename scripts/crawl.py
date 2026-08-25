@@ -193,6 +193,15 @@ def main():
     if override:
         games = merge_override(games, override)
 
+    # 后台编辑的首页公告随覆盖文件一并生效
+    announce = None
+    ov_announce = (override or {}).get('announce')
+    if isinstance(ov_announce, dict) and ov_announce.get('lines'):
+        announce = {
+            'title': str(ov_announce.get('title') or '【公告】'),
+            'lines': [str(x) for x in ov_announce['lines']],
+        }
+
     os.makedirs(DATA_DIR, exist_ok=True)
     payload = {
         'site': 'Tsinho黄油站',
@@ -201,14 +210,18 @@ def main():
         'total': len(games),
         'games': games,
     }
-    old_games = None
+    if announce:
+        payload['announce'] = announce
+    old_data = None
     if os.path.exists(OUT_FILE):
         try:
             with open(OUT_FILE, encoding='utf-8') as f:
-                old_games = json.load(f).get('games')
+                old_data = json.load(f)
         except Exception:
-            old_games = None
-    if old_games == payload['games']:
+            old_data = None
+    old_games = old_data.get('games') if isinstance(old_data, dict) else None
+    old_announce = old_data.get('announce') if isinstance(old_data, dict) else None
+    if old_games == payload['games'] and old_announce == payload.get('announce'):
         print('数据无变化（源站没有新增/修改/删除），跳过写入')
         return
     with open(OUT_FILE, 'w', encoding='utf-8') as f:
