@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-08-25 10:04:57",
- "total": 322,
+ "updated_at": "2026-08-25 11:16:52",
+ "total": 324,
  "games": [
   {
    "id": "2026825-0",
@@ -6814,6 +6814,42 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1iNjZGO2eE7HW3vktxp9b4g?pwd=txch"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-33",
+   "name": "didnapper2",
+   "platform": "PC",
+   "desc": "新汉化[日式RPG] Didnapper2 v1.2.3 内嵌AI汉化版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/sywgv3o22h.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/sywgv3o22h.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1rhUbPIHy7Fwbo6yVD2w6Yg?pwd=txch"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-34",
+   "name": "烟雨侦探社",
+   "platform": "PC",
+   "desc": "含攻略,含第四章的内容 [2D/RPG/神作/稀有/含攻略]烟雨侦探社 正式版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/jtbkmmdlh9.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/jtbkmmdlh9.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ac14lA3eEK6RpkktgO5CbQ?pwd=txch"
     }
    ],
    "post": "求助资源贴（可以在这贴求黄油游戏哈）",
