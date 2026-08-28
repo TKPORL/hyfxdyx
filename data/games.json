@@ -1,26 +1,1072 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-08-28 01:12:38",
- "total": 378,
+ "updated_at": "2026-08-28 12:45:41",
+ "total": 444,
  "games": [
   {
-   "id": "2026827pcaz-0",
-   "name": "在恶魔面前大声说要做后宫",
-   "platform": "PC+安卓",
-   "desc": "在恶魔面前大声说要做后宫-官中步兵版+存档 [PC+安卓joi]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/amn5li6evr.webp",
+   "id": "2026828pc-0",
+   "name": "暗文化祭泡泡浴街",
+   "platform": "PC",
+   "desc": "【3D/官中/动态】暗文化祭泡泡浴街1.0.2 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/g6c8av9r7m.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/amn5li6evr.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/g6c8av9r7m.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KXtEay"
+     "url": "https://yun.139.com/shareweb/#/w/i/2wFGTca9BQXre"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-1",
+   "name": "魅控APP",
+   "platform": "PC",
+   "desc": "【SLG/动态/官中】魅控APP.v1.0.0 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/clgpomd7jr.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/clgpomd7jr.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1E7YrWY6s"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1dZ5h8KynX8JwWmHV82D9Jg?pwd=txch"
+     "url": "https://pan.baidu.com/s/1EPHd56J9wRG_kbo2meK32w?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-2",
+   "name": "乙女寿司屋",
+   "platform": "PC",
+   "desc": "【SLG/3D动态/官中】乙女寿司屋 v1.0 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/ccql5ho2ne.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/ccql5ho2ne.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DrUHq2"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1metW1zMnj4WG_-vipCw8vQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-3",
+   "name": "秘密的健康检查.桃香篇",
+   "platform": "PC",
+   "desc": "【SLG】秘密的健康检查.桃香篇v1.1.8(20260820)AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/h623mo4bv3.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/h623mo4bv3.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DAfuic"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1_-xRBfpjxO7SNs-gmhJFvw?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-4",
+   "name": "吉尔维娅",
+   "platform": "PC",
+   "desc": "【SLG】吉尔维娅1.0.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/1i7g0sux70.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/1i7g0sux70.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8Dnmvi2"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1IromHVAGWeSV4Ptv3t0f_A?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-5",
+   "name": "社恐保育员小姐与临时职员的我直到COSPLAY内射为止的14天",
+   "platform": "PC",
+   "desc": "【SLG】社恐保育员小姐与临时职员的我.直到COSPLAY内射为止的14天v20260817AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/jsiupi4m28.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/jsiupi4m28.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KaGulk"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1yXMirkMBCJYyJKDkqLNTUw?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-6",
+   "name": "轻松的生存生活.全裸岛上的少女们",
+   "platform": "PC",
+   "desc": "【SLG】轻松的生存生活.全裸岛上的少女们 V1.6.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/6lmtvcxq2r.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/6lmtvcxq2r.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KjEXzn"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1PKY8j8VmaEbgCfPTJ9Vtzg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-7",
+   "name": "命运的雌小鬼：夏季篇",
+   "platform": "PC",
+   "desc": "【SLG】命运的雌小鬼：夏季篇.被学生的妹妹和她的雌小鬼伙伴当成钱包后用小弟弟教训了她们 V1.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/q8fbxxy7l1.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/q8fbxxy7l1.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8bTsr9z"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1noIgzrCB7dLky3Oxz9ZvPA?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-8",
+   "name": "循环列车",
+   "platform": "PC",
+   "desc": "【SLG/动态/官中】循环列车.用骚扰应用程序对那个女孩进行恶作剧 V1.1.2 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/dtxqsycnyq.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/dtxqsycnyq.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2Ujvfhg"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1_lM8_J2DKXgrgAOppwzVsA?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-9",
+   "name": "嘿陌生人! 我赌你会爱上我",
+   "platform": "PC",
+   "desc": "【SLG】嘿陌生人! 我赌你会爱上我 v0.9.22+DLCAI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/g8t1jzfaqo.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/g8t1jzfaqo.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xope23kNCfbl"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/19Mkbwbq8vp3CrG_aMhTTbg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-10",
+   "name": "童貞彼氏に隠れて寝取られ調教される30日間の性奴●生",
+   "platform": "PC",
+   "desc": "[SLG/生肉/NTR] 清楚●●は大家のオナホになる 〜童貞彼氏に隠れて寝取られ調教される30日間の性奴●生活〜 v26.06.04 生肉版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/vv1nhse037.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/vv1nhse037.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/14ajJGB3VzgTsfZ39dsU49g?pwd=f652"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-11",
+   "name": "破綻百出",
+   "platform": "PC",
+   "desc": "[SLG/动态/官中] 破綻百出！～与姨妈和堂妹的同居生活～ スキだらけ！～叔母と従妹同棲ライフ～ v1.70 动态官中版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/hzb9eaf5a6.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/hzb9eaf5a6.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/16M24_8jbWCqTgU_dR6Nvqg?pwd=076t"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-12",
+   "name": "催○偶像",
+   "platform": "PC",
+   "desc": "[SLG/动态/官中] 催○偶像 用催○APP和女大学生主播色色的故事 催眠アイドル 女子大生ライバーと催眠アプリでエッチしちゃう話 Hypnotic Idol v1.033 动态官中版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/0kjbxcxodk.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/0kjbxcxodk.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1yxBAFtE6TjTKfAARYVaVEQ?pwd=12kh"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-13",
+   "name": "夜幕之花",
+   "platform": "PC",
+   "desc": "【日系RPG/官中/动态】夜幕之花 Night Bloom.v0.698 官中步兵版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/h3h6iz9pa4.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/h3h6iz9pa4.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KaL1mf"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1jK3kYAZHheg1sDtBhV2o3w?pwd=l51y"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-14",
+   "name": "咖啡店的夏日限定.秘密的现做饮料",
+   "platform": "PC",
+   "desc": "【SLG/动态】咖啡店的夏日限定.秘密的现做饮料 v20260807官中【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/xvxhf02loy.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/xvxhf02loy.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7Krrhko"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/10sI0uZDreNPtPJ8br948LQ?pwd=8p1z"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-15",
+   "name": "魔性的少女",
+   "platform": "PC",
+   "desc": "【SLG/动态/官中】魔性的少女 V1.07 官中步兵版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/pbkfxzs7ha.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/pbkfxzs7ha.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop2qbkj2Bew"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1V1aArLAqdVQxYeVaPMz2_Q?pwd=oh90"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-16",
+   "name": "我与魅魔",
+   "platform": "PC",
+   "desc": "【日系/RPG】我与魅魔 V2.03AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/aiqercxf95.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/aiqercxf95.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1S8SFQR04"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1JyuM8dpv9XCiY7ycUu4mAA?pwd=xjva"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-17",
+   "name": "日本性癖化计划",
+   "platform": "PC",
+   "desc": "【SLG】日本性癖化计划 v1.0.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/61h69g7nw9.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/61h69g7nw9.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1S8SJxA15"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1vebIg3gsB4EqLvLCP-pqFg?pwd=jg9t"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-18",
+   "name": "牢牢卡住",
+   "platform": "PC",
+   "desc": "【3D/RPG】牢牢卡住 v1.0 EA4AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/wx8docit4k.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/wx8docit4k.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1E7Ys3495"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1aL8t_iz_j1r00YRlbL9_bA?pwd=0zz9"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-19",
+   "name": "比基尼勇者与色欲之咒",
+   "platform": "PC",
+   "desc": "[RPG/AI汉化] 比基尼勇者与色欲之咒 -被魅魔喜爱而和全体村民H的RPG- ビキニ勇者と色欲の呪い -サキュバスに好かれて村人全員とエッチしちゃうRPG- v1.05 AI汉化版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/cf5h6nbyns.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/cf5h6nbyns.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1UjJB9_gTdurUTLVezuuyTA?pwd=6076"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-20",
+   "name": "NTR手机",
+   "platform": "PC",
+   "desc": "[SLG/动态/步兵/官中/NTR] NTR手机 NTR PHONE v0.44.0 动态步兵官中版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/b50kdiv5g3.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/b50kdiv5g3.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1OgywoY48fj1ZyIL1MFe29g?pwd=iq2y"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-21",
+   "name": "rand Order 戦記",
+   "platform": "PC",
+   "desc": "[RPG/生肉] Grand Order 戦記 v1.02 生肉版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/gznml7vd1v.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/gznml7vd1v.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1oR_lpBFclg5e2SjcbxG7-w?pwd=8z9n"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-22",
+   "name": "未婚妻禁忌之地",
+   "platform": "PC",
+   "desc": "[SLG/动态/AI汉化/NTR] 未婚妻禁忌之地 Fiancée Forbidden Destination v0.2 Final 动态AI汉化版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/vsntkul78f.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/vsntkul78f.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1oNCO2CpNEuLPap_zpBfS1g?pwd=vp8p"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pc-23",
+   "name": "飞机杯青梅竹马的伊织酱",
+   "platform": "PC",
+   "desc": "[SLG/生肉] 飞机杯青梅竹马的伊织酱 オナホなじみの伊織ちゃん v26.08.04 生肉版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/z6knakrn38.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pc/z6knakrn38.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2UjzM8p"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1_VpB17HFtE4pWDnUV_90SQ?pwd=46o7"
+    }
+   ],
+   "post": "8月28号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pc.html"
+  },
+  {
+   "id": "2026828pcaz-0",
+   "name": "老师的大胸清纯母亲是令人憧憬的元同班同学",
+   "platform": "PC+安卓",
+   "desc": "【ADV/类型】老师的大胸清纯母亲是令人憧憬的元同班同学.所以母子NTR中出怀孕的故事.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/cf8exihrh2.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/cf8exihrh2.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1s74pj5kt"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1OKUYXKk1bp_82hclYc9R9w?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-1",
+   "name": "永鹭妖奇谭.深入妖狩的淫靡鬼术",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】永鹭妖奇谭.深入妖狩的淫靡鬼术v20260821AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/0llqbcvu85.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/0llqbcvu85.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8Dw73m6"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/13FkPOkLgjlDNdY3LU-JONg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-2",
+   "name": "放学后的按摩.在他不知情中被融化",
+   "platform": "PC+安卓",
+   "desc": "【SLG】放学后的按摩.在他不知情中被融化.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/v59g570pgi.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/v59g570pgi.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1v7hJ8uh8"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1AhYGzBZ-uRKmPtkwSvNoBQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-3",
+   "name": "爱丽丝梦游仙境",
+   "platform": "PC+安卓",
+   "desc": "【欧美/SLG/动态/更新】爱丽丝梦游仙境v15.3 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/r4xbgdz4no.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/r4xbgdz4no.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1Y9jkzaip"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1aEcB6JzLqTgMCSBs3SC9xA?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-4",
+   "name": "盯裆猫重制",
+   "platform": "PC+安卓",
+   "desc": "【同人/SLG/动态/更新】盯裆猫重制v1.3f AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/y1vwxicw4q.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/y1vwxicw4q.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7Khjqc2"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/17re3rCUWJQGWYUmynN4JSA?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-5",
+   "name": "不破的爱",
+   "platform": "PC+安卓",
+   "desc": "【日系/SLG/动态/更新】不破的爱v0.7赞助 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/bkvurzdw4j.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/bkvurzdw4j.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KarHqk"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1o2dnNhGs73JWzjEby7znyg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-6",
+   "name": "深渊欲望",
+   "platform": "PC+安卓",
+   "desc": "注意:画廊已解锁。 【亚洲/SLG/动态/更新】深渊欲望v0.4.3 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/hk0lsai4ox.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/hk0lsai4ox.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop2qbkiLj8w"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1EnZLK41MXgQ6AN9bkhocbw?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-7",
+   "name": "纪律对决.赢与繁殖",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】纪律对决.赢与繁殖.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/lfxs6songf.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/lfxs6songf.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopeb41vKMgp"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ouQrbf1Eb_IatYVj0PSbMQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-8",
+   "name": "达莉娅的考验",
+   "platform": "PC+安卓",
+   "desc": "【欧美/SLG/动态/更新】达莉娅的考验v0.5 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/nz1c8l7wkm.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/nz1c8l7wkm.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopeD62wbBba"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1rsirZ3s7rz3RTqCS_AUNiw?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-9",
+   "name": "我的反乌托邦机器人女友",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】我的反乌托邦机器人女友0.97.11AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/hgmhal7hk5.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/hgmhal7hk5.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8bTddog"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/10iFdFdnSWKktFAuMhFCsYQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-10",
+   "name": "大侠狂想曲",
+   "platform": "PC",
+   "desc": "[SLG/动态/官中] 大侠狂想曲 v26.08.22 动态官中版[PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/2t66ppvfao.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/2t66ppvfao.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1L8q5jryh"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1sH769crXX9nGnoHKULlDZQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-11",
+   "name": "破碎面纱Act4",
+   "platform": "PC+安卓",
+   "desc": "【欧美/SLG/动态/更新】破碎面纱Act4v4.8 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/07ql27l5i5.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/07ql27l5i5.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2Unhqxj"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1zkKOWqH3As3G4lcvLfnnZg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-12",
+   "name": "夜袭姬之愿",
+   "platform": "PC+安卓",
+   "desc": "【SLG】夜袭姬之愿.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/l290uyt5oy.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/l290uyt5oy.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xope23kNsoq1"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1QPZR8RK39ViIA-YbZTjg2Q?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-13",
+   "name": "援交少女的夏休",
+   "platform": "PC+安卓",
+   "desc": "【日系RPG/官中】援交少女的夏休 v20260818 官中版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/4myyt3pfh3.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/4myyt3pfh3.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopee4eKQGq6"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1jmFyp763hcjNMYNSa_tmNQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-14",
+   "name": "与病弱青梅竹马的你相伴三日",
+   "platform": "PC+安卓",
+   "desc": "【SLG】与病弱青梅竹马的你相伴三日 v20260717AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/8m9umj8fzq.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/8m9umj8fzq.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8Dnfyal"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1zEs_dlVo5X20kIXcwMIeBg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-15",
+   "name": "魔王米涅莉亚与无名村的色情陷阱迷宫",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】魔王米涅莉亚与无名村的色情陷阱迷宫v20260818AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/t9r5o6a4kp.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/t9r5o6a4kp.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1E7YwvJ83"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1Bz92Jip1ku9E7-ci0cpO5w?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-16",
+   "name": "和我两情相悦的宅女",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】和我两情相悦的宅女 v20260820AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/vaow0n0kbr.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/vaow0n0kbr.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop249LSWXcf"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1-Q4VrUA2OtwFwK7RPhqN8A?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-17",
+   "name": "北极光：起源",
+   "platform": "PC+安卓",
+   "desc": "【亚洲/SLG/动态/更新】北极光：起源v0.5赞助 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/pzwxo08a86.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/pzwxo08a86.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V966T5jh"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1SP05VGhvky8B3j9WRn_PZQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-18",
+   "name": "高等洗脑VS催眠应用",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】高等洗脑VS催眠应用.擅自开战吧v20260818AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/90k3ydfqd6.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/90k3ydfqd6.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8bTn02m"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1OoRwzZc4ueGOnqyKMl3YFw?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-19",
+   "name": "Show First 3.战国自言",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】Show First 3.战国自言2.1AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/tuzpoykocg.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/tuzpoykocg.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DrRUs9"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/17wW5tjankfrw7k6BAD1EBA?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-20",
+   "name": "金星之旅",
+   "platform": "PC+安卓",
+   "desc": "【SLG/动态/官中】金星之旅 v0.4 官中步兵版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/2cwzrandme.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/2cwzrandme.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V966U174"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1I91l1Tg38dwZA02EFLogkg?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-21",
+   "name": "以太骑士：水手服水手女英雄凄绝拷问",
+   "platform": "PC",
+   "desc": "【日系/RPG】以太骑士：水手服水手女英雄凄绝拷问1.0AI汉化【PC+安】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/pbuhyrm02b.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/pbuhyrm02b.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V9650k4e"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/14V0oKEa46mjkZ-_GtPdQxQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-22",
+   "name": "每日NTR忍者村之妻",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】每日NTR忍者村之妻.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/7fcdb49y3w.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/7fcdb49y3w.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1Y9jkL7cv"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1vU5UOM5y4zvBoBIzR6i__A?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-23",
+   "name": "星辰婚礼与六位女主角一起经营酒馆的甜蜜恋爱",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】星辰婚礼与六位女主角一起经营酒馆的甜蜜恋爱RPG.v1.1.1AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/roxucouxek.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/roxucouxek.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V96516yh"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1euz9SgXbkf9b-SDnJCG7mA?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026828pcaz-24",
+   "name": "体匠传说：隐藏的传承",
+   "platform": "PC+安卓",
+   "desc": "更新[日式SLG/NTR/像素动态] 体匠传说：隐藏的传承 Bodysmith Tales Hidden Legacy v0.2.3.0 官中版 [PC+安卓 500M]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/tynayrltg4.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026828pcaz/tynayrltg4.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DrTzch"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1e_Z4ejeXW-0H8IS1RCqFKQ?pwd=txch"
+    }
+   ],
+   "post": "8月28号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026828pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-0",
+   "name": "老师的大胸清纯母亲是令人憧憬的元同班同学",
+   "platform": "PC+安卓",
+   "desc": "【ADV/类型】老师的大胸清纯母亲是令人憧憬的元同班同学.所以母子NTR中出怀孕的故事.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/gtdabyt3q0.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/gtdabyt3q0.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1s74pj5kt"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1OKUYXKk1bp_82hclYc9R9w?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -28,21 +1074,21 @@
   },
   {
    "id": "2026827pcaz-1",
-   "name": "黑暗魅魔",
+   "name": "永鹭妖奇谭.深入妖狩的淫靡鬼术",
    "platform": "PC+安卓",
-   "desc": "黑暗魅魔-官中步兵版+存档",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/725m2k879z.webp",
+   "desc": "【日系/RPG】永鹭妖奇谭.深入妖狩的淫靡鬼术v20260821AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/ysdfspni85.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/725m2k879z.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/ysdfspni85.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2UzfTpf"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8Dw73m6"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1eck11dd6vSJQI-0utqZWzw?pwd=txch"
+     "url": "https://pan.baidu.com/s/13FkPOkLgjlDNdY3LU-JONg?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -50,21 +1096,21 @@
   },
   {
    "id": "2026827pcaz-2",
-   "name": "抖音性爱系统",
+   "name": "放学后的按摩.在他不知情中被融化",
    "platform": "PC+安卓",
-   "desc": "抖音性爱系统-官中步兵版 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/huayy7bhbp.webp",
+   "desc": "【SLG】放学后的按摩.在他不知情中被融化.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/4xx4iimuiz.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/huayy7bhbp.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/4xx4iimuiz.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://pan.baidu.com/s/16Hwf5lhxpUnuMTt6j7lF1A?pwd=txch"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1v7hJ8uh8"
     },
     {
      "label": "百度网盘",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1p6RR8Xnh"
+     "url": "https://pan.baidu.com/s/1AhYGzBZ-uRKmPtkwSvNoBQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -72,21 +1118,21 @@
   },
   {
    "id": "2026827pcaz-3",
-   "name": "我可爱的恶魔",
+   "name": "爱丽丝梦游仙境",
    "platform": "PC+安卓",
-   "desc": "我可爱的恶魔-官中步兵版+存档 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/jsquecybej.webp",
+   "desc": "【欧美/SLG/动态/更新】爱丽丝梦游仙境v15.3 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/mx07mhsxl5.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/jsquecybej.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/mx07mhsxl5.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1f6aYDasn"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1Y9jkzaip"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1fMBddk7iW5wy-ysu0sbfmQ?pwd=txch"
+     "url": "https://pan.baidu.com/s/1aEcB6JzLqTgMCSBs3SC9xA?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -94,21 +1140,21 @@
   },
   {
    "id": "2026827pcaz-4",
-   "name": "光：第一间奏",
+   "name": "盯裆猫重制",
    "platform": "PC+安卓",
-   "desc": "光：第一间奏 汉化-步兵版 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/rcfggvyjjh.webp",
+   "desc": "【同人/SLG/动态/更新】盯裆猫重制v1.3f AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/39jqhxc1ng.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/rcfggvyjjh.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/39jqhxc1ng.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1y7wCSTgd"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7Khjqc2"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1kWExgGxGjdMQ2XaT6KMmpg?pwd=txch"
+     "url": "https://pan.baidu.com/s/17re3rCUWJQGWYUmynN4JSA?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -116,21 +1162,21 @@
   },
   {
    "id": "2026827pcaz-5",
-   "name": "胸部被拉长后，人生就此终结了！！！-内嵌AI汉化版 [PC+安卓joi]",
+   "name": "不破的爱",
    "platform": "PC+安卓",
-   "desc": "胸部被拉长后，人生就此终结了！！！-内嵌AI汉化版 [PC+安卓joi]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/ny5zt5d9xh.webp",
+   "desc": "【日系/SLG/动态/更新】不破的爱v0.7赞助 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/a2u7o68hxk.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/ny5zt5d9xh.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/a2u7o68hxk.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1m6CwzPcp"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KarHqk"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/10hOfbvaONs7x9pdLFU6qaQ?pwd=txch"
+     "url": "https://pan.baidu.com/s/1o2dnNhGs73JWzjEby7znyg?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -138,21 +1184,21 @@
   },
   {
    "id": "2026827pcaz-6",
-   "name": "NTR生活+CG存档",
+   "name": "深渊欲望",
    "platform": "PC+安卓",
-   "desc": "【PC+安卓/汉化/动态/NTR/SLG】NTR生活 NTRライフ+CG存档【PC+安卓】 解压码：唯ai雪莉酒 视频压缩包解压说明： PS：不可以直接双击压缩包！右键菜单选择winrar选项的解压到当前文件夹！ PS：使用手机解压必须用RAR，第一层视频解压成功后，第二层如果报错！那就换个解压软件比如ZAchiver",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/xfuip8k2bd.webp",
+   "desc": "注意:画廊已解锁。 【亚洲/SLG/动态/更新】深渊欲望v0.4.3 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/lk43cpjui2.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/xfuip8k2bd.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/lk43cpjui2.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopdF1MmoB8b"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop2qbkiLj8w"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/18VfNa0aEtldbauB9QGwPSQ?pwd=txch"
+     "url": "https://pan.baidu.com/s/1EnZLK41MXgQ6AN9bkhocbw?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -160,17 +1206,21 @@
   },
   {
    "id": "2026827pcaz-7",
-   "name": "酩酊消沉",
-   "platform": "PC",
-   "desc": "酩酊消沉 生肉版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/0oya56ula1.webp",
+   "name": "纪律对决.赢与繁殖",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】纪律对决.赢与繁殖.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/cvrlrvlawz.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/0oya56ula1.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/cvrlrvlawz.webp"
    ],
    "links": [
     {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopeb41vKMgp"
+    },
+    {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1aM3LevohC3pD0xaKRDfcrg?pwd=txch"
+     "url": "https://pan.baidu.com/s/1ouQrbf1Eb_IatYVj0PSbMQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -178,21 +1228,21 @@
   },
   {
    "id": "2026827pcaz-8",
-   "name": "贫穷乐队的幕后～稚气声线的傲娇鼓手",
+   "name": "达莉娅的考验",
    "platform": "PC+安卓",
-   "desc": "贫穷乐队的幕后～稚气声线的傲娇鼓手～ 生肉版 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/w7nr6dzwcq.webp",
+   "desc": "【欧美/SLG/动态/更新】达莉娅的考验v0.5 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/z5iybdmlsi.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/w7nr6dzwcq.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/z5iybdmlsi.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xope83Nrubq1"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopeD62wbBba"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1QbhqYAHnsJxfPLcvoIPFgg?pwd=txch"
+     "url": "https://pan.baidu.com/s/1rsirZ3s7rz3RTqCS_AUNiw?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -200,21 +1250,21 @@
   },
   {
    "id": "2026827pcaz-9",
-   "name": "淫魔与失落的圣杯",
+   "name": "我的反乌托邦机器人女友",
    "platform": "PC+安卓",
-   "desc": "淫魔与失落的圣杯-汉化版 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/f1siic8gfb.webp",
+   "desc": "【日系/RPG】我的反乌托邦机器人女友0.97.11AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/mlmhar5ytz.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/f1siic8gfb.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/mlmhar5ytz.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopdM2dSKprv"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8bTddog"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/16B_GCmvHTYovymCJDXGZrQ?pwd=txch"
+     "url": "https://pan.baidu.com/s/10iFdFdnSWKktFAuMhFCsYQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -222,21 +1272,21 @@
   },
   {
    "id": "2026827pcaz-10",
-   "name": "北极光：起源",
-   "platform": "PC+安卓",
-   "desc": "北极光：起源 赞助-AI汉化版【PC+安卓】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/of91hr8g5h.webp",
+   "name": "大侠狂想曲",
+   "platform": "PC",
+   "desc": "[SLG/动态/官中] 大侠狂想曲 v26.08.22 动态官中版[PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/722owsk74w.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/of91hr8g5h.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/722owsk74w.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopdF1MmzGeq"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1L8q5jryh"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1lBuAlpOoQ4B-Fts5cWmDtw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1sH769crXX9nGnoHKULlDZQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -244,21 +1294,21 @@
   },
   {
    "id": "2026827pcaz-11",
-   "name": "NTR生活",
+   "name": "破碎面纱Act4",
    "platform": "PC+安卓",
-   "desc": "NTR生活-内嵌AI汉化版+存档 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/mku7zrktkv.webp",
+   "desc": "【欧美/SLG/动态/更新】破碎面纱Act4v4.8 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/m344cowqu7.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/mku7zrktkv.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/m344cowqu7.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1y7wJ2Dlw"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2Unhqxj"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1ziG5Dj12Rk2cEgaOpLYQXw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1zkKOWqH3As3G4lcvLfnnZg?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -266,21 +1316,21 @@
   },
   {
    "id": "2026827pcaz-12",
-   "name": "莎拉和爸爸第二部",
+   "name": "夜袭姬之愿",
    "platform": "PC+安卓",
-   "desc": "莎拉和爸爸第二部 汉化步兵 [PC+安卓]",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/g4o538hz9n.webp",
+   "desc": "【SLG】夜袭姬之愿.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/gce1m0hknx.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/g4o538hz9n.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/gce1m0hknx.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1f6aWo6nq"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xope23kNsoq1"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1kYV6LZ2ZDllttebyNeJKHA?pwd=txch"
+     "url": "https://pan.baidu.com/s/1QPZR8RK39ViIA-YbZTjg2Q?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -288,21 +1338,21 @@
   },
   {
    "id": "2026827pcaz-13",
-   "name": "s级繁殖者 S Rank Breeder v3.5 内嵌AI汉化动态步兵",
+   "name": "援交少女的夏休",
    "platform": "PC+安卓",
-   "desc": "【汉化/动态/SLG】s级繁殖者 S Rank Breeder v3.5 内嵌AI汉化动态步兵【PC+安卓】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/7rotauqllc.webp",
+   "desc": "【日系RPG/官中】援交少女的夏休 v20260818 官中版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/2jbl013tte.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/7rotauqllc.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/2jbl013tte.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xope23kZDi3m"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopee4eKQGq6"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1hAyZ8frlaQ7P0aFUmnBTIw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1jmFyp763hcjNMYNSa_tmNQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -310,17 +1360,21 @@
   },
   {
    "id": "2026827pcaz-14",
-   "name": "SPITE：拿下老板的妻子、妹妹和母亲~V1.7.0+全CG回想~SPITE Taking the Boss’s Wife【PC+安卓】",
+   "name": "与病弱青梅竹马的你相伴三日",
    "platform": "PC+安卓",
-   "desc": "【官中/SLG】SPITE：拿下老板的妻子、妹妹和母亲~V1.7.0+全CG回想~SPITE Taking the Boss’s Wife【PC+安卓】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/c86bx0kn5b.webp",
+   "desc": "【SLG】与病弱青梅竹马的你相伴三日 v20260717AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/30d37jp7hp.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/c86bx0kn5b.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/30d37jp7hp.webp"
    ],
    "links": [
     {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8Dnfyal"
+    },
+    {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/14wPz8Jy8eO2yTVLlki4d6w?pwd=txch"
+     "url": "https://pan.baidu.com/s/1zEs_dlVo5X20kIXcwMIeBg?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -328,17 +1382,219 @@
   },
   {
    "id": "2026827pcaz-15",
-   "name": "小偷淫荡之夜/シーフ・淫・ザ・ナイト【PC+安卓】",
+   "name": "魔王米涅莉亚与无名村的色情陷阱迷宫",
    "platform": "PC+安卓",
-   "desc": "【RPG/汉化/动态】小偷淫荡之夜/シーフ・淫・ザ・ナイト【PC+安卓】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/z5dugexx0n.webp",
+   "desc": "【日系/RPG】魔王米涅莉亚与无名村的色情陷阱迷宫v20260818AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/vxms7lhk57.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/z5dugexx0n.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/vxms7lhk57.webp"
    ],
    "links": [
     {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1E7YwvJ83"
+    },
+    {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1nNP8Gd5MWF6MRUPlo78TOA?pwd=txch"
+     "url": "https://pan.baidu.com/s/1Bz92Jip1ku9E7-ci0cpO5w?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-16",
+   "name": "和我两情相悦的宅女",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】和我两情相悦的宅女 v20260820AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/57lzg0fnuz.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/57lzg0fnuz.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop249LSWXcf"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1-Q4VrUA2OtwFwK7RPhqN8A?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-17",
+   "name": "北极光：起源",
+   "platform": "PC+安卓",
+   "desc": "【亚洲/SLG/动态/更新】北极光：起源v0.5赞助 AI汉化版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/clbouw5wp1.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/clbouw5wp1.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V966T5jh"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1SP05VGhvky8B3j9WRn_PZQ?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-18",
+   "name": "高等洗脑VS催眠应用",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】高等洗脑VS催眠应用.擅自开战吧v20260818AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/8zvlbrceqz.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/8zvlbrceqz.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8bTn02m"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1OoRwzZc4ueGOnqyKMl3YFw?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-19",
+   "name": "Show First 3.战国自言",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】Show First 3.战国自言2.1AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/6bs6rz04b8.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/6bs6rz04b8.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DrRUs9"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/17wW5tjankfrw7k6BAD1EBA?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-20",
+   "name": "金星之旅",
+   "platform": "PC+安卓",
+   "desc": "【SLG/动态/官中】金星之旅 v0.4 官中步兵版【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/xdi1w3uz98.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/xdi1w3uz98.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V966U174"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1I91l1Tg38dwZA02EFLogkg?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-21",
+   "name": "以太骑士：水手服水手女英雄凄绝拷问",
+   "platform": "PC",
+   "desc": "【日系/RPG】以太骑士：水手服水手女英雄凄绝拷问1.0AI汉化【PC+安】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/q1dbbqkrif.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/q1dbbqkrif.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V9650k4e"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/14V0oKEa46mjkZ-_GtPdQxQ?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-22",
+   "name": "每日NTR忍者村之妻",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】每日NTR忍者村之妻.v1.0.0AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/8au7iz0dsd.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/8au7iz0dsd.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1Y9jkL7cv"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1vU5UOM5y4zvBoBIzR6i__A?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-23",
+   "name": "星辰婚礼与六位女主角一起经营酒馆的甜蜜恋爱",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG】星辰婚礼与六位女主角一起经营酒馆的甜蜜恋爱RPG.v1.1.1AI汉化【PC+安卓】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/hobhue18b7.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/hobhue18b7.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1V96516yh"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1euz9SgXbkf9b-SDnJCG7mA?pwd=txch"
+    }
+   ],
+   "post": "8月27号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pcaz.html"
+  },
+  {
+   "id": "2026827pcaz-24",
+   "name": "体匠传说：隐藏的传承",
+   "platform": "PC+安卓",
+   "desc": "更新[日式SLG/NTR/像素动态] 体匠传说：隐藏的传承 Bodysmith Tales Hidden Legacy v0.2.3.0 官中版 [PC+安卓 500M]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/2117hdzh70.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pcaz/2117hdzh70.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DrTzch"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1e_Z4ejeXW-0H8IS1RCqFKQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC+安卓）",
@@ -346,21 +1602,21 @@
   },
   {
    "id": "2026827pc-0",
-   "name": "大师",
+   "name": "魅控APP",
    "platform": "PC",
-   "desc": "大师-官中步兵版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/g9bctdv8gd.webp",
+   "desc": "【SLG/动态/官中】魅控APP.v1.0.0 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/y6ktcps4ib.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/g9bctdv8gd.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/y6ktcps4ib.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DVdwju"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1E7YrWY6s"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1_oOm9hPOLUngWuOk38QMig?pwd=txch"
+     "url": "https://pan.baidu.com/s/1EPHd56J9wRG_kbo2meK32w?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -368,21 +1624,21 @@
   },
   {
    "id": "2026827pc-1",
-   "name": "黑暗魅魔",
+   "name": "乙女寿司屋",
    "platform": "PC",
-   "desc": "黑暗魅魔-官中步兵版+存档",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/figl6v0wac.webp",
+   "desc": "【SLG/3D动态/官中】乙女寿司屋 v1.0 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8tzo7oynwa.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/figl6v0wac.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8tzo7oynwa.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1p6RNNQku"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DrUHq2"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1Bo5TD7BPQwe57110cxpYLA?pwd=txch"
+     "url": "https://pan.baidu.com/s/1metW1zMnj4WG_-vipCw8vQ?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -390,21 +1646,21 @@
   },
   {
    "id": "2026827pc-2",
-   "name": "多萝丝协议",
+   "name": "秘密的健康检查.桃香篇",
    "platform": "PC",
-   "desc": "多萝丝协议-官中版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/sat4sj75ut.webp",
+   "desc": "【SLG】秘密的健康检查.桃香篇v1.1.8(20260820)AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/yqsbsj5n15.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/sat4sj75ut.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/yqsbsj5n15.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopdM2dSjrol"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8DAfuic"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/10se8qZin1cjNixgggOnBRA?pwd=txch"
+     "url": "https://pan.baidu.com/s/1_-xRBfpjxO7SNs-gmhJFvw?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -412,21 +1668,21 @@
   },
   {
    "id": "2026827pc-3",
-   "name": "异世界天堂",
+   "name": "吉尔维娅",
    "platform": "PC",
-   "desc": "异世界天堂-官中步兵版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/vw87antvc7.webp",
+   "desc": "【SLG】吉尔维娅1.0.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/aa3gupqzpe.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/vw87antvc7.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/aa3gupqzpe.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1p6RNQhb3"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1P8Dnmvi2"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1XUZe6c-6ODee91JcYsjp2Q?pwd=txch"
+     "url": "https://pan.baidu.com/s/1IromHVAGWeSV4Ptv3t0f_A?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -434,21 +1690,21 @@
   },
   {
    "id": "2026827pc-4",
-   "name": "堕落魔女",
+   "name": "社恐保育员小姐与临时职员的我直到COSPLAY内射为止的14天",
    "platform": "PC",
-   "desc": "堕落魔女-内嵌AI汉化版+去码版+存档 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/zthe7q4vsf.webp",
+   "desc": "【SLG】社恐保育员小姐与临时职员的我.直到COSPLAY内射为止的14天v20260817AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/s8hko9jqmq.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/zthe7q4vsf.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/s8hko9jqmq.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1f6aYuz14"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KaGulk"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/19XObmxOzA4oJZCmTghCclw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1yXMirkMBCJYyJKDkqLNTUw?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -456,21 +1712,21 @@
   },
   {
    "id": "2026827pc-5",
-   "name": "今日您要指名谁？～泡姬们的极致服务",
+   "name": "轻松的生存生活.全裸岛上的少女们",
    "platform": "PC",
-   "desc": "今日您要指名谁？～泡姬们的极致服务～ 生肉版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/sp1udfq1b7.webp",
+   "desc": "【SLG】轻松的生存生活.全裸岛上的少女们 V1.6.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/ee1ojmjrmi.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/sp1udfq1b7.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/ee1ojmjrmi.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopek4GjUkzf"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KjEXzn"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1n8aTyxxMeTFN7KolpZMXkg?pwd=txch"
+     "url": "https://pan.baidu.com/s/1PKY8j8VmaEbgCfPTJ9Vtzg?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -478,21 +1734,21 @@
   },
   {
    "id": "2026827pc-6",
-   "name": "在别馆与女仆的疗养生活",
+   "name": "命运的雌小鬼：夏季篇",
    "platform": "PC",
-   "desc": "在别馆与女仆的疗养生活-AI汉化版+存档 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/3c03nzeqj4.webp",
+   "desc": "【SLG】命运的雌小鬼：夏季篇.被学生的妹妹和她的雌小鬼伙伴当成钱包后用小弟弟教训了她们 V1.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/zdxjcggyic.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/3c03nzeqj4.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/zdxjcggyic.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1f6aVYg8g"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8bTsr9z"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1vQS2Y6bntcdnilwKD3_dLw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1noIgzrCB7dLky3Oxz9ZvPA?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -500,21 +1756,21 @@
   },
   {
    "id": "2026827pc-7",
-   "name": "新官中 DeviL：圣石少女篇",
+   "name": "循环列车",
    "platform": "PC",
-   "desc": "新官中 DeviL：圣石少女篇-官中步兵版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8pfdx8f4yc.webp",
+   "desc": "【SLG/动态/官中】循环列车.用骚扰应用程序对那个女孩进行恶作剧 V1.1.2 官中版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/6bhfdxlgbu.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8pfdx8f4yc.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/6bhfdxlgbu.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1s757ymgt"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2Ujvfhg"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1Wp-zmpihk7nAqhwLRpv1xQ?pwd=txch"
+     "url": "https://pan.baidu.com/s/1_lM8_J2DKXgrgAOppwzVsA?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -522,21 +1778,21 @@
   },
   {
    "id": "2026827pc-8",
-   "name": "阿斯特罗·玛迪",
+   "name": "嘿陌生人! 我赌你会爱上我",
    "platform": "PC",
-   "desc": "新汉化 阿斯特罗·玛迪-汉化版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/xe6six7ct4.webp",
+   "desc": "【SLG】嘿陌生人! 我赌你会爱上我 v0.9.22+DLCAI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/pfzkuxus2v.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/xe6six7ct4.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/pfzkuxus2v.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1f6aVZfmn"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xope23kNCfbl"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/16x0Azd_hJfN0a8b2Tt1e9g?pwd=txch"
+     "url": "https://pan.baidu.com/s/19Mkbwbq8vp3CrG_aMhTTbg?pwd=txch"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -544,21 +1800,17 @@
   },
   {
    "id": "2026827pc-9",
-   "name": "地下少女：服从之路",
+   "name": "童貞彼氏に隠れて寝取られ調教される30日間の性奴●生",
    "platform": "PC",
-   "desc": "地下少女：服从之路-官中步兵版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/n6jzqeisc8.webp",
+   "desc": "[SLG/生肉/NTR] 清楚●●は大家のオナホになる 〜童貞彼氏に隠れて寝取られ調教される30日間の性奴●生活〜 v26.06.04 生肉版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/b3y455kjxe.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/n6jzqeisc8.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/b3y455kjxe.webp"
    ],
    "links": [
     {
-     "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KXnXg3"
-    },
-    {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1giX4Qdb-55M13MQUbODR2Q?pwd=txch"
+     "url": "https://pan.baidu.com/s/14ajJGB3VzgTsfZ39dsU49g?pwd=f652"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -566,21 +1818,17 @@
   },
   {
    "id": "2026827pc-10",
-   "name": "巨乳哥特辣妹",
+   "name": "破綻百出",
    "platform": "PC",
-   "desc": "巨乳哥特辣妹-官中步兵版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/qcidnepri5.webp",
+   "desc": "[SLG/动态/官中] 破綻百出！～与姨妈和堂妹的同居生活～ スキだらけ！～叔母と従妹同棲ライフ～ v1.70 动态官中版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/pjxrdslskr.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/qcidnepri5.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/pjxrdslskr.webp"
    ],
    "links": [
     {
-     "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xopdC1y8YHyv"
-    },
-    {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1BzO_5OFqiLEo8o3BE8tAug?pwd=txch"
+     "url": "https://pan.baidu.com/s/16M24_8jbWCqTgU_dR6Nvqg?pwd=076t"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -588,21 +1836,17 @@
   },
   {
    "id": "2026827pc-11",
-   "name": "脚下",
+   "name": "催○偶像",
    "platform": "PC",
-   "desc": "脚下 生肉-步兵版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/61w5wki2x5.webp",
+   "desc": "[SLG/动态/官中] 催○偶像 用催○APP和女大学生主播色色的故事 催眠アイドル 女子大生ライバーと催眠アプリでエッチしちゃう話 Hypnotic Idol v1.033 动态官中版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/venrgpsb17.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/61w5wki2x5.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/venrgpsb17.webp"
    ],
    "links": [
     {
-     "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1p6RNTu23"
-    },
-    {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/10Gbg9tuep4V17BRflwS3Mw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1yxBAFtE6TjTKfAARYVaVEQ?pwd=12kh"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -610,21 +1854,21 @@
   },
   {
    "id": "2026827pc-12",
-   "name": "这个世界上只有我一个男人～我的肉棒撑不住啦!",
+   "name": "夜幕之花",
    "platform": "PC",
-   "desc": "这个世界上只有我一个男人～我的肉棒撑不住啦!～-汉化版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/i6h24oj3a8.webp",
+   "desc": "【日系RPG/官中/动态】夜幕之花 Night Bloom.v0.698 官中步兵版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/gew99apzvb.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/i6h24oj3a8.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/gew99apzvb.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1s75bUAov"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KaL1mf"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1aeqxvagX6lswfx74IVotNA?pwd=txch"
+     "url": "https://pan.baidu.com/s/1jK3kYAZHheg1sDtBhV2o3w?pwd=l51y"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -632,21 +1876,21 @@
   },
   {
    "id": "2026827pc-13",
-   "name": "巨乳人妻精灵的淫欲按摩",
+   "name": "咖啡店的夏日限定.秘密的现做饮料",
    "platform": "PC",
-   "desc": "巨乳人妻精灵的淫欲按摩 生肉版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/c7u2ekao7h.webp",
+   "desc": "【SLG/动态】咖啡店的夏日限定.秘密的现做饮料 v20260807官中【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8ed3zdp9t4.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/c7u2ekao7h.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8ed3zdp9t4.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1H8ctsubp"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7Krrhko"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1FetgVKqWQIo3uPzvihp44Q?pwd=txch"
+     "url": "https://pan.baidu.com/s/10sI0uZDreNPtPJ8br948LQ?pwd=8p1z"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -654,21 +1898,21 @@
   },
   {
    "id": "2026827pc-14",
-   "name": "不朽回忆-外传",
+   "name": "魔性的少女",
    "platform": "PC",
-   "desc": "不朽回忆-外传 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/f1uclseciu.webp",
+   "desc": "【SLG/动态/官中】魔性的少女 V1.07 官中步兵版【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/hufcqnn7ny.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/f1uclseciu.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/hufcqnn7ny.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1y7wCMw5a"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop2qbkj2Bew"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/19uQ7MjSpHVAc3eAfgm36RQ?pwd=txch"
+     "url": "https://pan.baidu.com/s/1V1aArLAqdVQxYeVaPMz2_Q?pwd=oh90"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -676,21 +1920,21 @@
   },
   {
    "id": "2026827pc-15",
-   "name": "青梅竹马的色情角色扮演摄影会",
+   "name": "我与魅魔",
    "platform": "PC",
-   "desc": "青梅竹马的色情角色扮演摄影会-AI汉化版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/g71ogs93ib.webp",
+   "desc": "【日系/RPG】我与魅魔 V2.03AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/p257hbrtjm.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/g71ogs93ib.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/p257hbrtjm.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1B7KXqXxl"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1S8SFQR04"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/13NFXzi0aIFoZ9JyxMgqbxw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1JyuM8dpv9XCiY7ycUu4mAA?pwd=xjva"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -698,21 +1942,21 @@
   },
   {
    "id": "2026827pc-16",
-   "name": "处男勇者与村姑",
+   "name": "日本性癖化计划",
    "platform": "PC",
-   "desc": "处男勇者与村姑-官中版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/bd5uxv8qcw.webp",
+   "desc": "【SLG】日本性癖化计划 v1.0.0AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/kz2uo0c3mn.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/bd5uxv8qcw.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/kz2uo0c3mn.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1m6Cz8Ehb"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1S8SJxA15"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1Wqa2dIo4wT8H2H0fc7jfcg?pwd=txch"
+     "url": "https://pan.baidu.com/s/1vebIg3gsB4EqLvLCP-pqFg?pwd=jg9t"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -720,21 +1964,21 @@
   },
   {
    "id": "2026827pc-17",
-   "name": "洗脑学园 咒人之壶",
+   "name": "牢牢卡住",
    "platform": "PC",
-   "desc": "洗脑学园 咒人之壶-官中步兵版+存档 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8mn563xtw0.webp",
+   "desc": "【3D/RPG】牢牢卡住 v1.0 EA4AI汉化【PC】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/qavkepozmp.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/8mn563xtw0.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/qavkepozmp.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1f6aYAo37"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xop1E7Ys3495"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1t_SypaZSMxCH_owRE_qsCA?pwd=txch"
+     "url": "https://pan.baidu.com/s/1aL8t_iz_j1r00YRlbL9_bA?pwd=0zz9"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -742,21 +1986,93 @@
   },
   {
    "id": "2026827pc-18",
-   "name": "新官中 为了报答恩人学长、我成为了美少女！",
+   "name": "比基尼勇者与色欲之咒",
    "platform": "PC",
-   "desc": "新官中 为了报答恩人学长、我成为了美少女！-官中版 【PC】",
-   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/olfiofdayp.webp",
+   "desc": "[RPG/AI汉化] 比基尼勇者与色欲之咒 -被魅魔喜爱而和全体村民H的RPG- ビキニ勇者と色欲の呪い -サキュバスに好かれて村人全員とエッチしちゃうRPG- v1.05 AI汉化版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/248uzc189l.webp",
    "images": [
-    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/olfiofdayp.webp"
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/248uzc189l.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1UjJB9_gTdurUTLVezuuyTA?pwd=6076"
+    }
+   ],
+   "post": "8月27号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pc.html"
+  },
+  {
+   "id": "2026827pc-19",
+   "name": "NTR手机",
+   "platform": "PC",
+   "desc": "[SLG/动态/步兵/官中/NTR] NTR手机 NTR PHONE v0.44.0 动态步兵官中版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/nrdcqu89dx.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/nrdcqu89dx.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1OgywoY48fj1ZyIL1MFe29g?pwd=iq2y"
+    }
+   ],
+   "post": "8月27号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pc.html"
+  },
+  {
+   "id": "2026827pc-20",
+   "name": "rand Order 戦記",
+   "platform": "PC",
+   "desc": "[RPG/生肉] Grand Order 戦記 v1.02 生肉版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/a2hu4qexgq.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/a2hu4qexgq.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1oR_lpBFclg5e2SjcbxG7-w?pwd=8z9n"
+    }
+   ],
+   "post": "8月27号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pc.html"
+  },
+  {
+   "id": "2026827pc-21",
+   "name": "未婚妻禁忌之地",
+   "platform": "PC",
+   "desc": "[SLG/动态/AI汉化/NTR] 未婚妻禁忌之地 Fiancée Forbidden Destination v0.2 Final 动态AI汉化版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/m3dshm4ej7.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/m3dshm4ej7.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1oNCO2CpNEuLPap_zpBfS1g?pwd=vp8p"
+    }
+   ],
+   "post": "8月27号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026827pc.html"
+  },
+  {
+   "id": "2026827pc-22",
+   "name": "飞机杯青梅竹马的伊织酱",
+   "platform": "PC",
+   "desc": "[SLG/生肉] 飞机杯青梅竹马的伊织酱 オナホなじみの伊織ちゃん v26.08.04 生肉版 [PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/3p8qlbn9ms.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/2026827pc/3p8qlbn9ms.webp"
    ],
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.com/shareweb/#/w/i/2xop1p6RR7719"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xopdW2UjzM8p"
     },
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1AXztc_hsiRMZ4qsgJVmP5Q?pwd=txch"
+     "url": "https://pan.baidu.com/s/1_VpB17HFtE4pWDnUV_90SQ?pwd=46o7"
     }
    ],
    "post": "8月27号黄油（PC）",
@@ -8014,6 +9330,78 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1huXxpoCXEteifC9BY-yIFQ?pwd=txch"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-39",
+   "name": "学校故事",
+   "platform": "PC+安卓",
+   "desc": "更新【沙盒SLG/后宫/动态】学校故事 School Tales v10.7 官中步兵【PC+安卓5.34G】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/5ap0si270f.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/5ap0si270f.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1959Zh1MdNvd6vmDye5odeg?pwd=h625"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-40",
+   "name": "学校的物语",
+   "platform": "PC",
+   "desc": "解压码：唯ai雪莉酒 【PC/汉化/动态/SLG】学校の物语Gakko No Monogatari V0.37+游戏存档+攻略【PC】 用School Story.html启动，guide指南里有人物当前攻略，Player_Guide.html有完整攻略 【注意！！！0.36+0.37是补丁包一共3.6G，需要自己打进0.35整合包里，复制粘贴覆盖过去就行，由之前版本的直接下载补丁包，没有的下载补丁包后里面有0.35整合版的下载连接，！！】 包含大量AI去码步兵以及最新版本有很多AI生成视频，效果很棒！ HTML沙盒SLG游戏 下载后直接用浏览器打开，可以直接开浏览器自带的翻译 全程动态CG+步兵《少量视频AI去码，有好有差，好的和步兵无区别，差的就是变成了薄码》+真人，而且有着非常高的游戏性【当然更多的视频还是骑兵！】 【用谷歌浏览器下载一个可以自动翻译当前网页的翻译插件】 PS：右键不能翻译解决办法——右键记事本打开index.html,在里面找 (javaScriptcodetotogglethe＇hidden＂……一直到Youcanremovethealertorcustomize…..false) 把这些删了保存就能右键翻译【此方法来自网友，没测试过】 用School Story.html启动，页面右边会附带当前人物攻略，也有全人物攻略",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/mg8n1vm3pm.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/mg8n1vm3pm.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/11Ypap285-1WjDMBOsZTMKA?pwd=y0i3"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-41",
+   "name": "用洗脑APP肆意玩弄狂妄大小姐（催眠APP）",
+   "platform": "PC",
+   "desc": "更新[互动SLG/抚摸触摸/动态] 用洗脑APP肆意玩弄狂妄大小姐 洗脳アプリで高飛車なお嬢様を好き放題するシミュレーション V1.24 官中版+存档 [1.50G PC]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/8cccx2gtag.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/8cccx2gtag.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1unm1kl_ab4zUF7EUE6-BsA?pwd=ik45"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-42",
+   "name": "女退魔师蕾卡",
+   "platform": "PC+安卓",
+   "desc": "新汉化[精品RPG/战斗H/动态] 女退魔师蕾卡 女退魔師レイカ V1.0 内嵌AI汉化版 [PC+安卓-1.30G]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/ojdkfw9lfd.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/ojdkfw9lfd.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1CZw58XRWL5SkIKI5J6lCGQ?pwd=6vfz"
     }
    ],
    "post": "求助资源贴（可以在这贴求黄油游戏哈）",
