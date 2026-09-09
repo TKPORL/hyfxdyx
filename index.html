@@ -406,18 +406,26 @@ footer a:hover{text-decoration:underline}
     render();
   }
   (function () {
-    var ov = null;
-    try { ov = localStorage.getItem('tsinhoht_data'); } catch (e) {}
-    if (ov) {
+    function getCache() {
       try {
-        var od = JSON.parse(ov);
-        if (od && Object.prototype.toString.call(od.games) === '[object Array]') { applyData(od); return; }
+        var ov = localStorage.getItem('tsinhoht_data');
+        if (ov) {
+          var od = JSON.parse(ov);
+          if (od && Object.prototype.toString.call(od.games) === '[object Array]') return od;
+        }
       } catch (e) {}
+      return null;
+    }
+    function applyAndCache(d) {
+      applyData(d);
+      try { localStorage.setItem('tsinhoht_data', JSON.stringify(d)); } catch (e) {}
     }
     fetch('data/games.json?v=' + Date.now())
       .then(function (r) { return r.json(); })
-      .then(applyData)
+      .then(applyAndCache)
       .catch(function () {
+        var cached = getCache();
+        if (cached) { applyData(cached); return; }
         LOADING = false;
         document.getElementById('grid').innerHTML = '';
         render();
