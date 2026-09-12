@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-10 09:45:27",
- "total": 627,
+ "updated_at": "2026-09-12 06:29:38",
+ "total": 628,
  "games": [
   {
    "id": "2026910pc-0",
@@ -13112,6 +13112,24 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/16C9YGMOCAFyl3bcjRGlx2g?pwd=839m"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-77",
+   "name": "梦魇骑士 ~圣洁少女与堕落魔法",
+   "platform": "",
+   "desc": "魔改[回合RPG/战斗H/动态] 梦魇骑士 ~圣洁少女与堕落魔法~ ナイトメアナイト~聖なる騎士と堕欲の魔術~ 官方中文步兵版+全回想存档 [800M]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/pjw66ruqaz.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/pjw66ruqaz.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1rbdPTdYBcBE6Goh2se14TQ?pwd=839m"
     }
    ],
    "post": "求助资源贴（可以在这贴求黄油游戏哈）",
