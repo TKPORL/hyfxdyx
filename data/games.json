@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-13 11:45:10",
- "total": 652,
+ "updated_at": "2026-09-13 15:14:49",
+ "total": 653,
  "games": [
   {
    "id": "2026913pc-0",
@@ -104,7 +104,7 @@
    "links": [
     {
      "label": "移动云盘（不限速）",
-     "url": "https://yun.139.comhttps://pan.baidu.com/s/1khYc1gbeBKDyWMbRjU_H0A?pwd=839mhttps://pan.baidu.com/s/1khYc1gbeBKDyWMbRjU_H0A?pwd=839m/shareweb/#/w/i/2xG3sVgLQCAkj"
+     "url": "https://yun.139.com/shareweb/#/w/i/2xG3sVgLQCAkj"
     },
     {
      "label": "百度网盘",
@@ -13641,6 +13641,24 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1o0LIGAStfv415f6WK3U4kA?pwd=839m"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-79",
+   "name": "PRIMAL×HEARTS2",
+   "platform": "",
+   "desc": "解压码：奈乃香 把【】删了，就能正常玩了， 解压教程：将mov后缀文件改enc 使用Paranoia File & Text Encryption 解密，密码DGYGR",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/sfbxzkd80p.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/sfbxzkd80p.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1nLpd3i-CUjYKUpkyxYBEgA?pwd=839m"
     }
    ],
    "post": "求助资源贴（可以在这贴求黄油游戏哈）",
