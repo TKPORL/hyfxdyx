@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-13 06:09:38",
- "total": 651,
+ "updated_at": "2026-09-13 11:45:10",
+ "total": 652,
  "games": [
   {
    "id": "2026913pc-0",
@@ -13623,6 +13623,24 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1rbdPTdYBcBE6Goh2se14TQ?pwd=839m"
+    }
+   ],
+   "post": "求助资源贴（可以在这贴求黄油游戏哈）",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-78",
+   "name": "暴君",
+   "platform": "PC+安卓",
+   "desc": "更新[欧美SLG/乱伦/动态/汉化版] 暴君 The Tyrant v0.9.7 [PC+安卓5.80G]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/9hyuubcwlm.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/9hyuubcwlm.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1o0LIGAStfv415f6WK3U4kA?pwd=839m"
     }
    ],
    "post": "求助资源贴（可以在这贴求黄油游戏哈）",
