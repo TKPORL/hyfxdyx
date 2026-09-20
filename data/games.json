@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-20 17:05:36",
- "total": 744,
+ "updated_at": "2026-09-20 19:25:38",
+ "total": 746,
  "games": [
   {
    "id": "2026920pcaz-0",
@@ -12952,7 +12952,7 @@
    "id": "8.1.1-10",
    "name": "通学痴汉车辆",
    "platform": "PC+安卓",
-   "desc": "[互动SLG/抚摸触摸] AI汉化版+存档 [PC+安卓 2.70G]",
+   "desc": "[互动SLG/抚摸触摸] AI汉化版+存档 [PC+安卓 2.70G] PC端的解压码：007721 安卓没有解压码",
    "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/8.11pcaz/img_12.webp",
    "images": [
     "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/8.11pcaz/img_12.webp"
@@ -12960,7 +12960,7 @@
    "links": [
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/1mk34k9LaXfOCMWgKhDX96Q?pwd=txch"
+     "url": "https://pan.baidu.com/s/1Ee_SIoRiwE-PfZuvAbI4hg?pwd=839m"
     }
    ],
    "post": "8月11号黄油 43款（PC+安卓）下载链接已恢复",
@@ -14224,7 +14224,7 @@
    "links": [
     {
      "label": "百度网盘",
-     "url": "https://pan.baidu.com/s/10-dowjkNr-kJgwSTVvVBvw?pwd=txch"
+     "url": "https://pan.baidu.com/s/1O9-5DSlYA244JsUjSxBcfQ?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
@@ -15583,6 +15583,42 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1lUY-Q8INH3NIWBxN4Gxtpg?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-89",
+   "name": "女仆和少女",
+   "platform": "PC+安卓",
+   "desc": "解压码007721 [更新/亚洲风SLG/]女仆和少女 Maids and Maidens v0.13.0【PC+安卓 8.94G】【13120】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/18vkc9xfve.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/18vkc9xfve.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1bW-ZFUOhPHG6qEZW-1wa8Q?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-90",
+   "name": "但我是坏人",
+   "platform": "PC+安卓",
+   "desc": "解压码007721 [欧美SLG/萝莉/汉化版]但我是坏人 But I’m the Bad Guy v0.081 【PC+安卓】【14337】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/s80u0y2z10.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/s80u0y2z10.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1bbGmY8K89WyVSR6WnFaSxw?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
