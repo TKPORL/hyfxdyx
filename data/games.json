@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-21 14:02:34",
- "total": 748,
+ "updated_at": "2026-09-21 22:39:37",
+ "total": 750,
  "games": [
   {
    "id": "2026920pcaz-0",
@@ -15655,6 +15655,46 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1CLIkG7bDO6jTdwsp4HepLw?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-93",
+   "name": "蓝色皮肤的森林",
+   "platform": "PC",
+   "desc": "更新[日式ACT/像素动态] 蓝色皮肤的森林 Forest of the Blue Skin v26.05.30 生肉版 [PC 480M] 更新日志： 2026年05月30日 更新 •[新增内容] •・新增1个Boss角色（遗迹守护者） •・新增2个H动画（遗迹守护者、沙之魔导士/法师（原猫沙）） •・为部分角色追加了动作 •[BUG修复] •・部分音效在画面变透明后仍残留在地图上，导致游戏发生卡顿。（日文版） •・在空中被击倒时，角色的朝向会发生改变。 •[变更/调整] •・名称变更：猫沙 → 沙之魔导士/法师 •击败Boss怪物没有奖励。 •因此，Boss怪物的出现位置和行为模式在今后可能会有所变更。 •角色介绍 •该角色的动作和设定在今后也可能会有所变更。 •遗迹守护者 •统领荒野巡逻队的怪物。 •她率领着荒野战士和沙之法师作为部下，共同监视着遗迹。 •想要进入遗迹必须获得她的许可。",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/w1pavvg293.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/w1pavvg293.webp"
+   ],
+   "links": [
+    {
+     "label": "移动云盘（不限速）",
+     "url": "https://yun.139.com/shareweb/#/w/i/2xTrEnW243Awc"
+    },
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1I9UOWQfhxTiI4R6G_3lsVg?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-94",
+   "name": "变身女英雄蹂躏监狱都市",
+   "platform": "PC+安卓",
+   "desc": "新汉化[猎奇RPG/战斗H/AI汉化版] 变身女英雄蹂躏监狱都市 変身ヒロイン蹂躙監獄都市 [PC+安卓-4.10G]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/h0urhxogxa.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/h0urhxogxa.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/17bvvfdTGIqqwGEaMnz2C-A?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
