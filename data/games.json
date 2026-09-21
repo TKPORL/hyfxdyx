@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-20 19:25:38",
- "total": 746,
+ "updated_at": "2026-09-21 14:02:34",
+ "total": 748,
  "games": [
   {
    "id": "2026920pcaz-0",
@@ -15619,6 +15619,42 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1bbGmY8K89WyVSR6WnFaSxw?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-91",
+   "name": "女仆和少女（v0.13 修复版）",
+   "platform": "PC+安卓",
+   "desc": "更新【亚洲SLG/后宫/动态】女仆和少女 侍女与少女 Maids and Maidens v0.13 修复【PC+安卓8.94G】",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/3da8t5hlsa.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/3da8t5hlsa.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1V8wa4SWzXZjM0RWE36Fn2A?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-92",
+   "name": "女仆和少女（Ver0.12.0 汉化版）",
+   "platform": "PC+安卓",
+   "desc": "更新[亚洲风SLG/动态] 女仆和少女 侍女与少女 Maids and Maidens Ver0.12.0 汉化版 [PC+安卓 7.70G]",
+   "cover": "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/plp40vovyq.webp",
+   "images": [
+    "https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/plp40vovyq.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1CLIkG7bDO6jTdwsp4HepLw?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
