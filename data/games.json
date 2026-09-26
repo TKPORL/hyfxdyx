@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-09-26 07:01:40",
- "total": 933,
+ "updated_at": "2026-09-26 12:12:03",
+ "total": 934,
  "games": [
   {
    "id": "2026926pcaz-0",
@@ -19141,6 +19141,24 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1A6JPHhISGZwmM0xoSnTgsg?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-105",
+   "name": "傲娇少女与看不见的幽灵",
+   "platform": "PC+安卓",
+   "desc": "[爆款互动SLG/3D动态/官方中文去码版+DLC] 傲娇少女与看不见的幽灵 なまいき娘と見えない幽霊 v2.7.1[PC+安卓盖世]15864",
+   "cover": "https://cloudflare-imgbed-e3b.pages.dev/file/qzt/1790417627439_6091202055063585383_121.webp",
+   "images": [
+    "https://cloudflare-imgbed-e3b.pages.dev/file/qzt/1790417627439_6091202055063585383_121.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ifOCViOMUgfaRvBYAlhrRg?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
