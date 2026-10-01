@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="3;url=https://tkporl.github.io/hyfxdyx/">
+<title>页面不存在 · Tsinho黄油站</title>
+<link rel="icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;background:#faf9f7;color:#555}
+.box{text-align:center;padding:40px 24px;max-width:420px}
+.icon{font-size:64px;margin-bottom:16px;animation:float 2s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+h1{font-size:42px;font-weight:800;color:#e5484d;margin:0 0 8px;letter-spacing:-1px}
+.sub{font-size:15px;color:#888;margin-bottom:28px;line-height:1.6}
+.sub em{font-style:normal;color:#e5484d;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:6px;background:#e5484d;color:#fff;text-decoration:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:600;transition:all .2s;box-shadow:0 4px 14px rgba(229,72,77,.2)}
+.btn:hover{background:#c93a3f;transform:translateY(-1px);box-shadow:0 6px 20px rgba(229,72,77,.3)}
+.timer{font-size:12px;color:#bbb;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="icon">🍬</div>
+  <h1>404</h1>
+  <p class="sub">页面不存在或已被移除<br>正在跳转到<em>Tsinho黄油站</em>首页…</p>
+  <a class="btn" href="https://tkporl.github.io/hyfxdyx/">返回首页</a>
+  <p class="timer"><span id="cd">3</span> 秒后自动跳转</p>
+</div>
+<script>
+(function(){
+  var s=document.getElementById('cd'),n=3;
+  var t=setInterval(function(){n--;if(n<=0){clearInterval(t);return}if(s)s.textContent=n;},1000);
+})();
+</script>
+</body>
+</html>
