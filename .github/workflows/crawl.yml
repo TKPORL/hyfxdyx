@@ -31,6 +31,27 @@ jobs:
       - name: 爬取游戏卡片（自动同步新增与删除）
         run: python scripts/crawl.py
 
+      - name: 发布前数据校验（结构异常或卡片骤减则中止，不上线垃圾数据）
+        run: |
+          python - <<'PY'
+          import json, sys
+
+          def check(path, min_games):
+              with open(path, encoding='utf-8') as f:
+                  d = json.load(f)
+              games = d.get('games')
+              assert isinstance(games, list), path + ': games 不是数组'
+              assert len(games) >= min_games, path + ': 卡片数 %d 低于下限 %d，疑似抓取/解析异常' % (len(games), min_games)
+              for g in games:
+                  assert g.get('id'), path + ': 存在缺 id 的卡片'
+                  assert isinstance(g.get('name'), str) and g.get('name'), path + ': 存在缺 name 的卡片'
+              print(path + ': %d 张卡片校验通过' % len(games))
+
+          check('data/games.json', 20)
+          check('data/games.slim.json', 20)
+          print('数据校验全部通过')
+          PY
+
       - name: 检测数据是否变化
         id: changed
         run: |
