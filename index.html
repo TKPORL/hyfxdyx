@@ -418,10 +418,24 @@ footer a:hover{text-decoration:underline}
       } catch (e) {}
       return null;
     }
+    // 后台「保存并应用」的本地预览：仅当数据带 __src:'admin' 标记时优先生效
+    // （标记只存在于站长浏览器，访客不受影响；旧版无标记的残留缓存会被忽略）
+    function getAdminPreview() {
+      try {
+        var ov = localStorage.getItem('tsinhoht_data');
+        if (ov) {
+          var od = JSON.parse(ov);
+          if (od && od.__src === 'admin' && Object.prototype.toString.call(od.games) === '[object Array]') return od;
+        }
+      } catch (e) {}
+      return null;
+    }
     function applyAndCache(d) {
       applyData(d);
       try { localStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch (e) {}
     }
+    var preview = getAdminPreview();
+    if (preview) { applyData(preview); return; }
     // cache:'no-cache' 走 ETag/304 协商缓存；不再用 ?v=时间戳 强制穿透（那会让每次访问都重下全量数据）
     fetch('data/games.slim.json', { cache: 'no-cache' })
       .then(function (r) { return r.json(); })

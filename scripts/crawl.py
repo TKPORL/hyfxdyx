@@ -216,19 +216,33 @@ def main():
         games = merge_override(games, override)
 
     # 后台编辑的首页公告随覆盖文件一并生效
+    # 语义：覆盖文件显式提供 announce（含 null/空 lines）→ 以覆盖为准（可清空）；
+    #       未提供该字段 → 保留线上现有公告，避免旧覆盖文件静默抹掉公告
     announce = None
-    ov_announce = (override or {}).get('announce')
-    if isinstance(ov_announce, dict) and ov_announce.get('lines'):
-        announce = {
-            'title': str(ov_announce.get('title') or '【公告】'),
-            'lines': [str(x) for x in ov_announce['lines']],
-        }
+    if override is not None and 'announce' in override:
+        ov_announce = override.get('announce')
+        if isinstance(ov_announce, dict) and ov_announce.get('lines'):
+            announce = {
+                'title': str(ov_announce.get('title') or '【公告】'),
+                'lines': [str(x) for x in ov_announce['lines']],
+            }
+    else:
+        old_announce0 = old_data.get('announce') if isinstance(old_data, dict) else None
+        if isinstance(old_announce0, dict) and old_announce0.get('lines'):
+            announce = old_announce0
 
     # 后台设置的置顶/推荐位（游戏 id 列表，按顺序置顶展示）
+    # 语义：覆盖文件显式提供 pinned（含空数组）→ 以覆盖为准（空数组=清空）；
+    #       未提供该字段 → 保留线上现有置顶
     pinned = None
-    ov_pinned = (override or {}).get('pinned')
-    if isinstance(ov_pinned, list):
-        pinned = [str(x) for x in ov_pinned]
+    if override is not None and 'pinned' in override:
+        ov_pinned = override.get('pinned')
+        if isinstance(ov_pinned, list):
+            pinned = [str(x) for x in ov_pinned] or None
+    else:
+        old_pinned0 = old_data.get('pinned') if isinstance(old_data, dict) else None
+        if isinstance(old_pinned0, list) and old_pinned0:
+            pinned = [str(x) for x in old_pinned0]
 
     # 发布前数量护栏：卡片数较旧数据骤降时中止写入，避免抓取/解析异常覆盖线上数据
     old_count, new_count = len(old_games), len(games)

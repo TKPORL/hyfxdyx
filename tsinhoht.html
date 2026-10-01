@@ -893,10 +893,12 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     var p = {
       site: DATA.site, source: DATA.source,
       updated_at: now(), total: DATA.games.length,
-      games: DATA.games
+      games: DATA.games,
+      // 显式写出：pinned 空数组=清空置顶，announce null=清空公告
+      // （爬虫语义：字段缺失=保留线上值，空值=清空，非空=设置）
+      pinned: Object.prototype.toString.call(DATA.pinned) === '[object Array]' ? DATA.pinned : [],
+      announce: (DATA.announce && typeof DATA.announce === 'object' && (DATA.announce.lines || []).length) ? DATA.announce : null
     };
-    if (DATA.announce) p.announce = DATA.announce;
-    if (DATA.pinned && DATA.pinned.length) p.pinned = DATA.pinned;
     return p;
   }
   function download(name, obj) {
