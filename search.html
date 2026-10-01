@@ -57,6 +57,7 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 60px}
 <body>
 <header><div id="siteNav"></div></header>
 <main>
+  <div id="histWrap"></div>
   <div class="sect"><h2>搜索结果</h2><span id="count" role="status" aria-live="polite" aria-atomic="true"></span></div>
   <div id="res" aria-busy="false"></div>
 </main>
@@ -131,6 +132,9 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
     resBox.innerHTML = '';
     var data = (d && d.games) || [];
     saveHist(q);
+    // 渲染搜索历史（之前 renderHist 只定义没调用，历史 UI 一直不显示）
+    var hw = document.getElementById('histWrap');
+    if (hw) { hw.innerHTML = renderHist(); bindHistClick(); }
     var kw = q.toLowerCase();
     function fuzzyMatch(text, pattern) {
       var t = (text || '').toLowerCase();

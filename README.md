@@ -51,8 +51,19 @@ scripts/crawl.py
 改动生效流程：
 
 1. 后台编辑 → 「保存并应用」→ 打开首页立即预览（仅本浏览器可见）
-2. 确认无误 → 「导出 games.override.json」→ 提交到仓库 `data/games.override.json`
+2. 确认无误 → 「保存并发布到 GitHub」（后台一键发布，自动把 override 提交到仓库 `data/games.override.json`；需先在「设置」里配好 GitHub Token）；「导出 games.override.json」手动提交仍作为备用方式
 3. 爬虫每次自动同步时会合并该文件：同 ID 覆盖、新 ID 追加到最前、`remove_ids` 中的条目被移除，因此后台改动不会被自动同步覆盖
+
+## 前台页面
+
+| 页面 | 说明 |
+| --- | --- |
+| `index.html` | 首页：游戏卡片网格、平台筛选、随机模式、点封面图弹「游戏介绍」弹窗 |
+| `search.html` | 独立搜索页：点顶部导航搜索图标进入，支持模糊匹配 / 搜索历史 / 加载更多，无结果时随机推荐 12 款 |
+| `tools.html` | 游戏工具页（移植自主站） |
+| `tutorial.html` | 解压教程页（移植自主站） |
+
+顶部导航（logo + 菜单 + 搜索）由 `assets/js/nav.js` 统一注入，四个公开页共用，改菜单/断点只改这一个文件。
 
 ## 本地运行爬虫
 
@@ -67,15 +78,20 @@ python scripts/crawl.py
 | 内容 | 位置 |
 | --- | --- |
 | 检测频率 | `.github/workflows/crawl.yml` 里的 `cron`（当前每15分钟） |
-| 站点导航链接 | `index.html` 头部 `<nav>` |
+| 全站导航菜单/断点 | `assets/js/nav.js`（四页共用，单点维护） |
 | 每页显示数量 | `index.html` 里 `PAGE_SIZE` |
+| 游戏介绍弹窗样式/逻辑 | `index.html` 内 `.mrhx-detail` 相关 |
 
 ## 目录结构
 
 ```
 ├── .github/workflows/crawl.yml   # 定时爬取 + 发布工作流
 ├── scripts/crawl.py              # 爬虫脚本（自动合并后台覆盖数据）
-├── index.html                    # 首页（渲染游戏卡片）
+├── index.html                    # 首页（渲染游戏卡片 + 详情弹窗）
+├── search.html                   # 独立搜索页
+├── tools.html                    # 游戏工具页
+├── tutorial.html                 # 解压教程页
 ├── tsinhoht.html                 # 后台管理页
-└── data/games.json               # 爬取生成的数据
+├── assets/js/nav.js              # 全站统一导航（样式+结构+交互单点维护）
+└── data/games.json               # 爬取生成的数据（games.slim.json 为前台瘦身版）
 ```
