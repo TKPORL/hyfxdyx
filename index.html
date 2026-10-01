@@ -406,9 +406,11 @@ footer a:hover{text-decoration:underline}
     render();
   }
   (function () {
+    // 前台专用缓存 key（勿用后台的 tsinhoht_data，避免被后台误判为「本地覆盖」）
+    var CACHE_KEY = 'tsinhoht_front_cache';
     function getCache() {
       try {
-        var ov = localStorage.getItem('tsinhoht_data');
+        var ov = localStorage.getItem(CACHE_KEY);
         if (ov) {
           var od = JSON.parse(ov);
           if (od && Object.prototype.toString.call(od.games) === '[object Array]') return od;
@@ -418,9 +420,10 @@ footer a:hover{text-decoration:underline}
     }
     function applyAndCache(d) {
       applyData(d);
-      try { localStorage.setItem('tsinhoht_data', JSON.stringify(d)); } catch (e) {}
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(d)); } catch (e) {}
     }
-    fetch('data/games.json?v=' + Date.now())
+    // cache:'no-cache' 走 ETag/304 协商缓存；不再用 ?v=时间戳 强制穿透（那会让每次访问都重下全量数据）
+    fetch('data/games.slim.json', { cache: 'no-cache' })
       .then(function (r) { return r.json(); })
       .then(applyAndCache)
       .catch(function () {

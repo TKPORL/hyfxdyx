@@ -12,6 +12,7 @@ import urllib.request
 BASE = 'https://tkporl.github.io/mrhyfx/'
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'data')
 OUT_FILE = os.path.join(DATA_DIR, 'games.json')
+SLIM_FILE = os.path.join(DATA_DIR, 'games.slim.json')
 OVERRIDE_FILE = os.path.join(DATA_DIR, 'games.override.json')
 UA = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36'}
 
@@ -250,14 +251,37 @@ def main():
         payload['announce'] = announce
     if pinned:
         payload['pinned'] = pinned
+
+    # 前台瘦身版：去掉前台不用的 images / post_url（后台仍读全量版 games.json）
+    slim = dict(payload)
+    slim['games'] = [
+        {k: g[k] for k in ('id', 'name', 'platform', 'desc', 'cover', 'links', 'post')}
+        for g in payload['games']
+    ]
+    # slim 是否需要写入：文件缺失/损坏/内容（不含 updated_at，避免每轮时间戳造成假变化）有差异
+    slim_changed = True
+    try:
+        with open(SLIM_FILE, encoding='utf-8') as f:
+            old_slim = json.load(f)
+        cmp_keys = [k for k in slim if k != 'updated_at']
+        slim_changed = any(old_slim.get(k) != slim[k] for k in cmp_keys)
+    except Exception:
+        slim_changed = True
+
     old_announce = old_data.get('announce') if isinstance(old_data, dict) else None
     old_pinned = old_data.get('pinned') if isinstance(old_data, dict) else None
-    if old_games == payload['games'] and old_announce == payload.get('announce') and old_pinned == payload.get('pinned'):
+    data_changed = not (old_games == payload['games'] and old_announce == payload.get('announce') and old_pinned == payload.get('pinned'))
+    if not data_changed and not slim_changed:
         print('数据无变化（源站没有新增/修改/删除），跳过写入')
         return
-    with open(OUT_FILE, 'w', encoding='utf-8') as f:
-        json.dump(payload, f, ensure_ascii=False, indent=1)
-    print('检测到变化（卡片数 %+d），已更新 data/games.json' % (new_count - old_count))
+    if data_changed:
+        with open(OUT_FILE, 'w', encoding='utf-8') as f:
+            json.dump(payload, f, ensure_ascii=False, indent=1)
+        print('检测到变化（卡片数 %+d），已更新 data/games.json' % (new_count - old_count))
+    if slim_changed:
+        with open(SLIM_FILE, 'w', encoding='utf-8') as f:
+            json.dump(slim, f, ensure_ascii=False, indent=1)
+        print('已更新 data/games.slim.json（前台瘦身版）')
     print('完成: %d 帖子 / %d 张卡片, 用时 %.1fs' % (len(posts), len(games), time.time() - t0))
 
 

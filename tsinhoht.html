@@ -546,9 +546,25 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     var saved = null;
     try { saved = JSON.parse(localStorage.getItem(LS_DATA) || 'null'); } catch (e) {}
     if (saved && Array.isArray(saved.games)) {
-      DATA = saved;
-      if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
-      log('载入本地覆盖数据（' + DATA.games.length + ' 条）');
+      if (saved.__src === 'admin') {
+        delete saved.__src;
+        DATA = saved;
+        if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
+        log('载入本地覆盖数据（' + DATA.games.length + ' 条）');
+      } else {
+        // 无 admin 标记 = 旧版前台缓存误写入（前台现已改用专属 key）：
+        // 与官方数据一致则直接清掉，不一致则保留但提示核对
+        var sameAsBase = BASE && Array.isArray(BASE.games) &&
+          JSON.stringify(saved.games) === JSON.stringify(BASE.games.map(normalizeGame));
+        if (sameAsBase) {
+          try { localStorage.removeItem(LS_DATA); } catch (e) {}
+          log('检测到前台残留缓存（与官方数据一致），已自动清理');
+        } else {
+          DATA = saved;
+          if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
+          log('警告：载入无标记的旧数据（' + DATA.games.length + ' 条）。若这不是你的改动，请点「恢复官方数据」');
+        }
+      }
     } else if (BASE && Array.isArray(BASE.games)) {
       DATA = {
         site: BASE.site || 'Tsinho黄油站',
@@ -677,7 +693,10 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   function renderDataPane() {
     if (!DATA) return;
     var isLocal = false;
-    try { isLocal = !!localStorage.getItem(LS_DATA); } catch (e) {}
+    try {
+      var raw = JSON.parse(localStorage.getItem(LS_DATA) || 'null');
+      isLocal = !!(raw && raw.__src === 'admin');
+    } catch (e) {}
     var tag = $('srcTag');
     if (isLocal) { tag.innerHTML = '<span class="tag-src local">本地覆盖版（含你的改动）</span>'; }
     else { tag.innerHTML = '<span class="tag-src remote">官方同步数据（data/games.json）</span>'; }
@@ -891,7 +910,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   }
   function saveLocal(silent) {
     try {
-      localStorage.setItem(LS_DATA, JSON.stringify(DATA));
+      localStorage.setItem(LS_DATA, JSON.stringify(Object.assign({}, DATA, { __src: 'admin' })));
     } catch (e) { toast('保存失败：浏览器存储不可用', true); return; }
     SNAP = JSON.stringify(DATA);
     DATA.updated_at = DATA.updated_at || now();
