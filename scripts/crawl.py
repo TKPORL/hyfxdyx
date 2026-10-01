@@ -154,6 +154,23 @@ def merge_override(games, override):
 
 def main():
     t0 = time.time()
+
+    # 先读取旧数据：供「单帖抓取失败时回退」与「发布前数量护栏」使用
+    old_data = None
+    if os.path.exists(OUT_FILE):
+        try:
+            with open(OUT_FILE, encoding='utf-8') as f:
+                old_data = json.load(f)
+        except Exception:
+            old_data = None
+    old_games = old_data.get('games') if isinstance(old_data, dict) and isinstance(old_data.get('games'), list) else []
+    # 按 slug 前缀索引旧卡片：抓取失败的帖子用其回退，避免临时网络抖动导致整帖游戏消失
+    old_by_slug = {}
+    for g in old_games:
+        gid = g.get('id')
+        if isinstance(gid, str) and '-' in gid:
+            old_by_slug.setdefault(gid.rsplit('-', 1)[0], []).append(g)
+
     print('抓取首页: %s' % BASE)
     index_html = fetch(BASE + 'index.html', binary=False)
     posts = parse_posts(index_html)
@@ -163,16 +180,20 @@ def main():
         sys.exit(1)
 
     games = []
+    failed = 0
 
     for p in posts:
         url = BASE + p['slug']
+        slug_core = p['slug'][:-5] if p['slug'].lower().endswith('.html') else p['slug']
         print('帖子: %s (%s)' % (p['title'], p['slug']))
         try:
             post_html = fetch(url, binary=False)
         except Exception as e:
-            print('  [跳过] 抓取失败: %s' % e)
+            fallback = old_by_slug.get(slug_core, [])
+            print('  [回退] 抓取失败，沿用旧数据 %d 张: %s' % (len(fallback), e))
+            games.extend(fallback)
+            failed += 1
             continue
-        slug_core = p['slug'][:-5] if p['slug'].lower().endswith('.html') else p['slug']
         cards = parse_cards(post_html)
         print('  卡片 x%d' % len(cards))
         for idx, c in enumerate(cards):
@@ -208,6 +229,15 @@ def main():
     if isinstance(ov_pinned, list):
         pinned = [str(x) for x in ov_pinned]
 
+    # 发布前数量护栏：卡片数较旧数据骤降时中止写入，避免抓取/解析异常覆盖线上数据
+    old_count, new_count = len(old_games), len(games)
+    if old_count >= 20 and new_count < old_count * 0.7:
+        print('警告: 卡片数骤降 %d -> %d（%.0f%%），疑似抓取或解析异常，中止写入以免造成数据事故' % (
+            old_count, new_count, new_count * 100.0 / old_count))
+        sys.exit(1)
+    if failed:
+        print('提示: 本次有 %d 个帖子抓取失败，已沿用其旧数据' % failed)
+
     os.makedirs(DATA_DIR, exist_ok=True)
     payload = {
         'site': 'Tsinho黄油站',
@@ -220,14 +250,6 @@ def main():
         payload['announce'] = announce
     if pinned:
         payload['pinned'] = pinned
-    old_data = None
-    if os.path.exists(OUT_FILE):
-        try:
-            with open(OUT_FILE, encoding='utf-8') as f:
-                old_data = json.load(f)
-        except Exception:
-            old_data = None
-    old_games = old_data.get('games') if isinstance(old_data, dict) else None
     old_announce = old_data.get('announce') if isinstance(old_data, dict) else None
     old_pinned = old_data.get('pinned') if isinstance(old_data, dict) else None
     if old_games == payload['games'] and old_announce == payload.get('announce') and old_pinned == payload.get('pinned'):
@@ -235,8 +257,7 @@ def main():
         return
     with open(OUT_FILE, 'w', encoding='utf-8') as f:
         json.dump(payload, f, ensure_ascii=False, indent=1)
-    diff = len(games) - (len(old_games) if isinstance(old_games, list) else 0)
-    print('检测到变化（卡片数 %+d），已更新 data/games.json' % diff)
+    print('检测到变化（卡片数 %+d），已更新 data/games.json' % (new_count - old_count))
     print('完成: %d 帖子 / %d 张卡片, 用时 %.1fs' % (len(posts), len(games), time.time() - t0))
 
 
