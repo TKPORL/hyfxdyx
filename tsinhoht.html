@@ -214,7 +214,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
 
   <!-- 仪表盘 -->
   <section class="pane on" id="pane-dash">
-    <div class="dirtybar" id="dirtyBar"><span>有未保存的更改（仅在本浏览器生效）</span><button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">立即保存并应用</button></div>
+    <div class="dirtybar" id="dirtyBar"><span>有未保存的更改（仅在本浏览器生效）</span><button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布到 GitHub</button><button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">仅保存本地预览</button></div>
     <div class="stats" id="statBox"></div>
     <div class="panel">
       <h3>快捷操作</h3>
@@ -301,9 +301,10 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">保存并应用</button>
       </div>
       <div class="dl-item">
-        <b>② 导出 games.override.json（推荐）</b>
-        <p>提交到仓库 data/games.override.json 后，爬虫每次自动同步都会保留你的新增、修改和删除，不会被覆盖。</p>
-        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.exportOverride()">导出 Override</button>
+        <b>② 一键发布到 GitHub（推荐，一步到位）</b>
+        <p>把当前改动（新增 / 修改 / 删除 / 置顶 / 公告）直接提交到仓库 data/games.override.json，云端爬虫自动合并后 <b>1~3 分钟全站生效</b>。需先在「设置」页配置 GitHub Token（repo 权限）。</p>
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布到 GitHub</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.exportOverride()">导出 Override 文件（备用）</button>
       </div>
       <div class="dl-item">
         <b>③ 导出 games.json（全量备份）</b>
@@ -346,10 +347,10 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <textarea id="annLines" placeholder="各位老师好，欢迎收藏本站 防迷路！&#10;官方QQ群：1081159850&#10;https://t.me/Tsinhox"
           style="width:100%;max-width:560px;min-height:140px;padding:9px 11px;border:1px solid #e2e0dc;border-radius:10px;font-size:13px;background:#faf9f7;color:#333;outline:none;line-height:1.8;resize:vertical"></textarea></div>
       <button type="button" class="btn btn-pri" onclick="ADM.saveAnnounce()">保存公告</button>
-      <p style="font-size:11.5px;color:#bbb;margin-top:12px;line-height:1.8">保存后：① 数据管理 →「保存并应用」可立即在前台预览；② 「导出 Override」提交仓库后全站生效。</p>
+      <p style="font-size:11.5px;color:#bbb;margin-top:12px;line-height:1.8">保存后：① 打开首页立即预览（仅本浏览器）；② 数据管理 →「保存并发布到 GitHub」一步全站生效（约 1~3 分钟）。</p>
     </div>
     <div class="panel">
-      <h3>图床上传（GitHub 仓库直链）</h3>
+      <h3>GitHub Token（一键发布 + 图床上传共用）</h3>
       <div class="form-row"><label>GitHub Token（fine-grained，需对 TKPORL/hyfxdyx 的 Contents 读写权限）</label>
         <input type="password" id="ghTokenInput" autocomplete="off" placeholder="粘贴 Token 后点击保存，仅存于本浏览器" style="max-width:380px"></div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
@@ -357,7 +358,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.clearGhToken()">清除</button>
         <span id="ghState" style="font-size:12px;font-weight:600"></span>
       </div>
-      <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">配置后，在「游戏管理」新增/编辑弹窗里点「上传本地图片」即可把图片提交到仓库 assets/admin/ 目录并自动转成 jsDelivr 直链填入表单；首次上传会触发一次自动部署，新链接若短暂打不开是 CDN 缓存延迟。</p>
+      <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">配置后可用「数据管理 → 保存并发布到 GitHub」一步把改动提交到仓库（全站生效）；也可在「游戏管理」新增/编辑弹窗里点「上传本地图片」把图片提交到仓库 assets/admin/ 并自动转成 jsDelivr 直链。Token 只保存在本浏览器，不会写进网站文件。</p>
     </div>
     <div class="panel">
       <h3>修改后台密码</h3>
@@ -1194,6 +1195,41 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     if (e.key === 'Escape') closeEditor();
   });
 
+  /* ---------- 一键发布到 GitHub ---------- */
+  var REPO = 'TKPORL/hyfxdyx';
+  function payloadOverride() {
+    var o = payloadFull();
+    o.remove_ids = DATA.remove_ids || [];
+    return o;
+  }
+  function ghToken() {
+    try { return localStorage.getItem(LS_GH) || ''; } catch (e) { return ''; }
+  }
+  // GitHub Contents API 提交文件：422（已存在）时自动取 sha 重试（移植自参考站发布中心）
+  async function ghPutFile(path, contentB64, msg, statusEl, step) {
+    var token = ghToken();
+    if (!token) throw new Error('尚未配置 GitHub Token，请到「设置」页配置（需 repo 权限）');
+    var api = 'https://api.github.com/repos/' + REPO + '/contents/' + encodeURIComponent(path);
+    var body = { message: msg, content: contentB64 };
+    var headers = { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' };
+    var res = await fetch(api, { method: 'PUT', headers: headers, body: JSON.stringify(body) });
+    if (res.status === 422) {
+      var exist = await fetch(api, { headers: { 'Authorization': 'token ' + token } });
+      if (exist.ok) {
+        var info = await exist.json();
+        body.sha = info.sha;
+        res = await fetch(api, { method: 'PUT', headers: headers, body: JSON.stringify(body) });
+      }
+    }
+    if (!res.ok) {
+      var err = null;
+      try { err = await res.json(); } catch (e) {}
+      throw new Error((err && err.message) || ('HTTP ' + res.status));
+    }
+    if (statusEl) show(statusEl, '[' + step + '] ' + path + ' 已提交 ✓', 'ok');
+    return true;
+  }
+
   window.ADM = {
     goto: goto,
     openEditor: function (g) { openEditor(g); },
@@ -1210,11 +1246,23 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     saveLocal: saveLocal,
     exportFull: function () { download('games.json', payloadFull()); log('导出 games.json 全量备份'); toast('已开始下载 games.json'); },
     exportOverride: function () {
-      var o = payloadFull();
-      o.remove_ids = DATA.remove_ids || [];
+      var o = payloadOverride();
       download('games.override.json', o);
       log('导出 games.override.json');
-      toast('已下载，提交到仓库 data/ 目录即可长期生效');
+      toast('已下载，提交到仓库 data/ 目录即可长期生效（或直接用「一键发布」）');
+    },
+    publishOverride: async function () {
+      try {
+        saveLocal(true);
+        var json = JSON.stringify(payloadOverride(), null, 1);
+        await ghPutFile('data/games.override.json', btoa(unescape(encodeURIComponent(json))), 'publish: 后台数据更新 ' + now());
+        log('已发布到 GitHub：data/games.override.json');
+        toast('发布成功！云端爬虫合并后全站生效（约 1~3 分钟）');
+      } catch (e) {
+        var msg = (e && e.message) ? e.message : String(e);
+        log('发布失败：' + msg);
+        toast('发布失败：' + msg + '（改动已保存到本地预览）', true);
+      }
     },
     batchDelete: function () {
       var ids = Object.keys(sel);

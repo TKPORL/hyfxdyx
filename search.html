@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>搜索 · Tsinho黄油站</title>
+<meta name="description" content="Tsinho黄油站（Tsinho工作室）单机黄油游戏每日分享：PC+安卓双平台，支持游戏搜索，没有找到时会推荐类似游戏。">
+<meta name="author" content="Tsinho">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://tkporl.github.io/hyfxdyx/search.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tsinho黄油站">
+<meta property="og:title" content="搜索 · Tsinho黄油站">
+<meta property="og:description" content="Tsinho黄油站单机黄油游戏每日分享：PC+安卓双平台，支持游戏搜索与推荐。">
+<meta property="og:url" content="https://tkporl.github.io/hyfxdyx/search.html">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/qzt/img_02.webp">
+<link rel="icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
+/* 顶部导航由 assets/js/nav.js 统一注入（样式/结构/交互单点维护） */
+main{max-width:900px;margin:0 auto;padding:28px 20px 60px}
+.sect{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.sect h2{font-size:19px;color:#2b2b2b;position:relative;padding-left:12px;white-space:nowrap}
+.sect h2::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:4px;border-radius:2px;background:#e5484d}
+.sect span{font-size:13px;color:#aaa;white-space:nowrap}
+.result{border:1px solid #ecebe9;border-radius:14px;background:#fff;padding:18px 20px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.result .rt{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.result .rt .name{font-size:16px;color:#2b2b2b;font-weight:600;padding-bottom:1px}
+.result .rt .src{font-size:11px;color:#fff;background:#e5484d;border-radius:99px;padding:2px 10px}
+.result .intro{font-size:13px;color:#666;line-height:1.8;margin-bottom:10px;word-break:break-word}
+.result .dl{display:flex;gap:8px;flex-wrap:wrap}
+.result .img{margin-top:10px}
+.result .img img{max-width:100%;border-radius:10px;border:1px solid #ecebe9}
+.result.exact{border-left:3px solid #e5484d}
+.btn-dl{display:inline-flex;align-items:center;padding:8px 16px;border-radius:9px;font-size:13px;font-weight:600;text-decoration:none}
+.btn-dl-m{background:#e5484d;color:#fff}
+.btn-dl-b{background:#e6f4ea;color:#1a7f37;border:1px solid #b7e2c4}
+.empty{text-align:center;color:#999;padding:40px 0;font-size:14px}
+.empty-box{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:28px 20px;margin-bottom:18px;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.empty-box h3{font-size:15px;color:#2b2b2b;margin-bottom:8px}
+.empty-box p{font-size:13px;color:#999;margin-bottom:14px}
+.loading-box{text-align:center;padding:40px 0;color:#aaa;font-size:14px}
+.loading-box .spinner{display:inline-block;width:22px;height:22px;border:2.5px solid #ecebe9;border-top-color:#e5484d;border-radius:50%;animation:spin .7s linear infinite;margin-bottom:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.search-hist{display:flex;align-items:center;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.search-hist span{font-size:12px;color:#bbb}
+.hist-tag{display:inline-block;background:#fff;border:1px solid #ecebe9;border-radius:9px;padding:4px 12px;font-size:12px;color:#888;text-decoration:none;transition:.2s}
+.hist-tag:hover{border-color:#e5484d;color:#e5484d}
+.hist-tag .del{margin-left:4px;font-size:10px;color:#ccc;cursor:pointer}
+.hist-tag .del:hover{color:#e5484d}
+.no-hist{text-align:center;color:#ccc;font-size:12px;padding:10px 0}
+@media (max-width:720px){main{padding:18px 14px 32px}}
+</style>
+</head>
+<body>
+<header><div id="siteNav"></div></header>
+<main>
+  <div class="sect"><h2>搜索结果</h2><span id="count" role="status" aria-live="polite" aria-atomic="true"></span></div>
+  <div id="res" aria-busy="false"></div>
+</main>
+<footer style="text-align:center;color:#999;font-size:12px;padding:24px 20px;border-top:1px solid #ecebe9">by Tsinho 发布 · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版</footer>
+<script src="assets/js/nav.js"></script>
+<script>
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+(function () {
+  var q = new URLSearchParams(location.search).get('q') || '';
+  var input = document.querySelector('#mrhxSearchDrop input[name="q"]');
+  if (input) input.value = q;
+  var resBox = document.getElementById('res');
+  var countEl = document.getElementById('count');
+  var ALL = 30;
+  var _hits = [];
+  var _page = 0;
+  var HIST_KEY = 'hyfx_search_hist';
+  var MAX_HIST = 8;
+  function getHist() { try { return JSON.parse(localStorage.getItem(HIST_KEY)) || []; } catch(e) { return []; } }
+  function saveHist(kw) {
+    if (!kw) return;
+    var h = getHist().filter(function (v) { return v !== kw; });
+    h.unshift(kw);
+    if (h.length > MAX_HIST) h = h.slice(0, MAX_HIST);
+    try { localStorage.setItem(HIST_KEY, JSON.stringify(h)); } catch(e) {}
+  }
+  function clearHist() { try { localStorage.removeItem(HIST_KEY); } catch(e) {} }
+  function renderHist() {
+    var h = getHist();
+    if (!h.length) return '';
+    var tags = h.map(function (kw) {
+      return '<a class="hist-tag" href="search.html?q=' + encodeURIComponent(kw) + '">' + esc(kw) + '<span class="del" data-kw="' + esc(kw) + '">×</span></a>';
+    }).join('');
+    return '<div class="search-hist"><span>搜索历史</span>' + tags + '<a class="hist-tag" href="javascript:void(0)" id="clear-hist" style="color:#e5484d;border-color:#e5484d">清空</a></div>';
+  }
+  function rowHtml(g, isExact) {
+    var dl = (g.links || []).map(function (l) {
+      var cls = l.url.indexOf('pan.baidu.com') > -1 ? 'btn-dl btn-dl-b' : 'btn-dl btn-dl-m';
+      return '<a class="' + cls + '" href="' + esc(l.url) + '" target="_blank" rel="noreferrer">' + esc(l.label) + '</a>';
+    }).join('');
+    return '<div class="result' + (isExact ? ' exact' : '') + '"><div class="rt"><span class="name">' + esc(g.name) + '</span><span class="src">' + esc(g.post || 'Tsinho黄油站') + '</span></div>' +
+      (g.desc ? '<div class="intro">' + esc(g.desc) + '</div>' : '') +
+      (dl ? '<div class="dl">' + dl + '</div>' : '') +
+      (g.cover ? '<div class="img"><img src="' + esc(g.cover) + '" alt="" loading="lazy"></div>' : '') +
+      '</div>';
+  }
+  function setMore(show) {
+    var b = document.getElementById('hyfx-more');
+    if (b) b.style.display = show ? '' : 'none';
+  }
+  function renderMore() {
+    var slice = _hits.slice(_page * ALL, (_page + 1) * ALL);
+    resBox.insertAdjacentHTML('beforeend', slice.map(function (g) { return rowHtml(g, g._exact); }).join(''));
+    // 「加载更多」必须始终待在列表最下面：新结果是用 beforeend 追加的，
+    // 所以每轮渲染完要把按钮重新挪到末尾，否则点一次它就被顶到上面去了
+    resBox.appendChild(moreWrap);
+    _page++;
+    setMore(_page * ALL < _hits.length);
+  }
+  var moreWrap = document.createElement('div');
+  moreWrap.innerHTML = '<button id="hyfx-more" type="button" class="btn-dl btn-dl-m" style="border:none;cursor:pointer;padding:10px 28px;border-radius:9px;font-size:14px;font-weight:600">加载更多</button>';
+  moreWrap.style.textAlign = 'center';
+  moreWrap.style.marginTop = '6px';
+  moreWrap.style.marginBottom = '6px';
+  resBox.appendChild(moreWrap);
+  document.getElementById('hyfx-more').onclick = renderMore;
+  setMore(false);
+  if (!q) { countEl.textContent = ''; resBox.innerHTML = '<div class="empty-box"><h3>请使用上方搜索框搜索游戏</h3><p>点顶部搜索图标，输入游戏名称或关键词即可搜索</p><a class="btn-dl btn-dl-m" href="index.html" style="border:none;cursor:pointer">回到首页</a></div>'; setMore(false); bindHistClick(); return; }
+  resBox.innerHTML = '<div class="loading-box"><span class="spinner"></span><br>正在搜索…</div>';
+  fetch('data/games.slim.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+    // 清掉「正在搜索…」加载占位：renderMore 用 insertAdjacentHTML 追加结果，不清这里转圈会一直留着
+    resBox.innerHTML = '';
+    var data = (d && d.games) || [];
+    saveHist(q);
+    var kw = q.toLowerCase();
+    function fuzzyMatch(text, pattern) {
+      var t = (text || '').toLowerCase();
+      var p = pattern.toLowerCase();
+      if (t.indexOf(p) > -1) return true;
+      var pi = 0;
+      for (var ti = 0; ti < t.length && pi < p.length; ti++) {
+        if (t[ti] === p[pi]) pi++;
+      }
+      return pi === p.length;
+    }
+    function matchScore(g) {
+      var nameLower = (g.name || '').toLowerCase();
+      var descLower = (g.desc || '').toLowerCase();
+      if (nameLower === kw) return 0;
+      if (nameLower.indexOf(kw) > -1) return 1;
+      if (descLower.indexOf(kw) > -1) return 2;
+      if (nameLower.indexOf(kw.split('').join('%')) > -1) return 3;
+      return 4;
+    }
+    _hits = data.filter(function (g) {
+      return fuzzyMatch(g.name, kw) || fuzzyMatch(g.desc, kw) || fuzzyMatch(g.platform, kw);
+    });
+    if (_hits.length) {
+      _hits.sort(function (a, b) { return matchScore(a) - matchScore(b); });
+      _hits.forEach(function (g) { g._exact = matchScore(g) <= 1; });
+    }
+    countEl.textContent = '（找到 ' + _hits.length + ' 个）';
+    if (!_hits.length) {
+      // 没有找到：随机推荐一批类似游戏，避免用户空手而归
+      var shuffled = data.slice().sort(function () { return 0.5 - Math.random(); });
+      _hits = shuffled.slice(0, 12);
+      _hits.forEach(function (g) { g._exact = false; });
+      resBox.innerHTML = '<div class="empty-box"><h3>没有找到与「' + esc(kw) + '」相关的游戏</h3><p>为你推荐以下游戏</p></div>';
+      renderMore();
+      return;
+    }
+    renderMore();
+  }).catch(function () { resBox.innerHTML = '<div class="empty-box"><h3>搜索数据加载失败</h3><p>请检查网络后刷新页面</p><a class="btn-dl btn-dl-m" href="javascript:location.reload()" style="border:none;cursor:pointer">重新加载</a> <a class="btn-dl btn-dl-m" href="index.html" style="border:none;cursor:pointer;margin-left:6px">回到首页</a></div>'; setMore(false); });
+  function bindHistClick() {
+    var delBtns = document.querySelectorAll('.hist-tag .del');
+    delBtns.forEach(function (el) {
+      el.onclick = function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var kw = el.getAttribute('data-kw');
+        var h = getHist().filter(function (v) { return v !== kw; });
+        try { localStorage.setItem(HIST_KEY, JSON.stringify(h)); } catch(e) {}
+        el.parentElement.remove();
+      };
+    });
+    var clearBtn = document.getElementById('clear-hist');
+    if (clearBtn) clearBtn.onclick = function () { clearHist(); var c = document.querySelector('.search-hist'); if (c) c.remove(); };
+  }
+  bindHistClick();
+})();
+</script>
+</body>
+</html>

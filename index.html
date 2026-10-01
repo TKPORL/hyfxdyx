@@ -17,23 +17,7 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
-header{background:#fff;border-bottom:1px solid #ecebe9;position:sticky;top:0;z-index:10}
-.hwrap{max-width:900px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;gap:20px}
-.site{font-size:21px;font-weight:800;letter-spacing:1px;color:#2b2b2b;text-decoration:none;flex-shrink:0;white-space:nowrap}
-.site em{font-style:normal;color:#e5484d}
-.site-header-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex:1;min-width:0}
-nav{width:100%;display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-nav a{padding:7px 14px;border-radius:99px;font-size:13px;color:#666;text-decoration:none;border:1px solid #ecebe9;background:#faf9f7;transition:.2s}
-.mrhx-search{display:flex;align-items:center;gap:5px;width:100%;justify-content:flex-end}
-.mrhx-search input{padding:5px 10px;border:1px solid #e2e0dc;border-radius:99px;font-size:12px;font-family:inherit;background:#faf9f7;color:#333;width:140px;outline:none;transition:.2s}
-.mrhx-search input:focus{border-color:#e5484d;background:#fff}
-.mrhx-search button{border:none;background:#e5484d;color:#fff;padding:5px 12px;border-radius:99px;font-size:12px;font-weight:600;cursor:pointer;transition:.2s}
-.mrhx-search button:hover{background:#c93a3f}
-.mrhx-search-toggle{display:none;align-items:center;border:1px solid #ecebe9;background:#faf9f7;color:#666;border-radius:99px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0;font-family:inherit;transition:.2s}
-.mrhx-search-toggle:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}
-nav a:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3;transform:translateY(-1px)}
-nav a.nav-req{color:#e58d0a;border-color:#f0ddb8;background:#fdf8ee;font-weight:600}
-nav a.nav-req:hover{color:#c47a05;border-color:#e58d0a;background:#fdf3e3;transform:translateY(-1px)}
+/* 顶部导航由 assets/js/nav.js 统一注入（样式/结构/交互单点维护） */
 @keyframes mrhxCard{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .upd{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2e2e2;border-left:4px solid #e5484d;border-radius:12px;padding:14px 18px;margin-bottom:12px;font-size:14px;color:#666;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .5s ease both}
@@ -64,7 +48,7 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .gcard{display:flex;flex-direction:column;background:#fff;border:1px solid #ecebe9;border-radius:14px;overflow:hidden;text-decoration:none;transition:.25s;box-shadow:0 1px 2px rgba(0,0,0,.03);animation:mrhxCard .5s ease both}
 .gcard:hover{border-color:#f0b4b6;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
 .g-cover{width:100%;aspect-ratio:4/3;overflow:hidden;background:#f4f2ef}
-.g-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s}
+.g-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s;cursor:pointer}
 .gcard:hover .g-cover img{transform:scale(1.04)}
 .g-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
 .g-title{font-size:14px;font-weight:700;color:#2b2b2b;line-height:1.45;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px}
@@ -103,6 +87,22 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .mrhx-popup-ok:hover{background:#c93a3f;transform:translateY(-2px)}
 @keyframes mrhxPopFade{from{opacity:0}to{opacity:1}}
 @keyframes mrhxPopSlide{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
+/* 游戏介绍弹窗（移植自 mrhyfx：点击封面图看完整介绍，FLIP 动画） */
+.mrhx-detail{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:9998;animation:mrhxDimIn .2s ease both}
+.mrhx-detail.show{display:flex}
+/* box 的位移缩放由脚本按触发卡片位置逐帧设置（FLIP），这里不能加 animation 盖掉 transform */
+.mrhx-detail-box{background:#fff;border-radius:16px;max-width:520px;width:100%;max-height:80vh;overflow:auto;padding:24px 26px;position:relative}
+.mrhx-detail-box .mrhx-detail-close{position:absolute;top:14px;right:16px;border:none;background:#f4f2ef;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;color:#666;display:flex;align-items:center;justify-content:center;transition:.2s}
+.mrhx-detail-box .mrhx-detail-close:hover{background:#e5484d;color:#fff}
+.mrhx-detail-box h2{font-size:15px;margin-bottom:12px;color:#2b2b2b;padding-right:36px}
+.mrhx-detail-box .mrhx-detail-from{font-size:12px;color:#999;margin-bottom:10px;line-height:1.5}
+.mrhx-detail-box .mrhx-detail-from b{color:#e5484d;font-weight:600}
+.mrhx-detail-box .mrhx-detail-text{font-size:14px;line-height:1.9;color:#444;white-space:pre-wrap;word-break:break-word}
+.mrhx-detail-box .mrhx-detail-back{margin-top:18px;width:100%;border:none;background:#e5484d;color:#fff;padding:11px 0;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s}
+.mrhx-detail-box .mrhx-detail-back:hover{background:#c93a3f}
+@media (hover:none){.mrhx-detail-box .mrhx-detail-close:hover,.mrhx-detail-box .mrhx-detail-back:hover{transform:none !important}}
+@media (prefers-reduced-motion: reduce){.mrhx-detail{animation:none}}
+@keyframes mrhxDimIn{from{opacity:0}to{opacity:1}}
 footer{border-top:1px solid #ecebe9;padding:24px 20px;text-align:center;color:#999;font-size:12px}
 footer b{color:#e5484d}
 footer .seo-line{margin-top:8px;color:#bbb;font-size:11px}
@@ -110,18 +110,6 @@ footer a{color:#e5484d;text-decoration:none}
 footer a:hover{text-decoration:underline}
 .seo-h1{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 @media (max-width:720px){
-  header{position:static}
-  .hwrap{padding:12px 14px 10px;gap:10px;flex-wrap:wrap}
-  .site{font-size:17px;order:1}
-  .mrhx-search-toggle{order:2;display:inline-flex;margin-left:auto}
-  body.search-open .mrhx-search-toggle{display:none}
-  .site-header-right{order:3;flex:1 1 100%;min-width:0;gap:8px}
-  nav{width:100%;gap:5px;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;padding-bottom:2px;justify-content:flex-start}
-  nav a{padding:4px 9px;font-size:12px;white-space:nowrap;flex-shrink:0}
-  nav::-webkit-scrollbar{display:none}
-  .mrhx-search{display:none;width:100%;margin-left:0}
-  body.search-open .mrhx-search{display:flex}
-  .mrhx-search input{flex:1;width:auto}
   main{padding:18px 14px 32px}
   .upd{padding:12px 14px;font-size:13px}
   .req{padding:12px 14px;font-size:13px;margin:-4px 0 20px}
@@ -129,42 +117,25 @@ footer a:hover{text-decoration:underline}
   .g-title{font-size:13px}
 }
 </style>
-<link rel="icon" href="favicon.webp" type="image/webp">
-<link rel="apple-touch-icon" href="favicon.webp">
+<link rel="icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp" type="image/webp">
+<link rel="apple-touch-icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp">
 </head>
 <body>
 <h1 class="seo-h1">Tsinho黄油站 - Tsinho工作室 单机黄油游戏每日分享（PC/安卓下载）</h1>
-<header>
-  <div class="hwrap">
-    <a class="site" href="index.html"><span>Tsinho<em>黄油站</em></span></a>
-    <button type="button" class="mrhx-search-toggle" id="searchToggle">搜索</button>
-    <div class="site-header-right">
-      <form class="mrhx-search" onsubmit="return false;" role="search">
-        <input type="text" id="kw" placeholder="搜索游戏…" autocomplete="off">
-        <button type="submit">搜索</button>
-      </form>
-      <nav>
-        <a class="nav-req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">求助区</a>
-        <a href="https://link3.cc/Tsinho" target="_blank" rel="noreferrer">官网</a>
-        <a href="https://yun.139.com/shareweb/#/w/i/2uR1zzgWrrPy9" target="_blank" rel="noreferrer">全部黄油</a>
-        <a href="https://yun.139.com/shareweb/#/w/i/2wFGs9i5mE1mr" target="_blank" rel="noreferrer">解压教程</a>
-      </nav>
-    </div>
-  </div>
-</header>
+<header><div id="siteNav"></div></header>
 <main>
   <div class="upd"><span class="tag">游戏资源</span><span class="txt">本站收录 <b id="totalNum">…</b> 款游戏 · 更新于 <b id="updAt"></b></span></div>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
     <span class="tag">求助资源区</span>
     <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上 →</span>
   </a>
-  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；顶部可搜索（搜"关键词"而非全名）</div>
+  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；点顶部 <b>搜索图标</b> 搜游戏（搜"关键词"而非全名）</div>
   <div class="sect"><h2>全部游戏</h2><span id="cnt"></span></div>
   <div class="pfbar" id="pfbar">
     <button type="button" class="pbtn on" data-pf="">全部</button>
     <button type="button" class="pbtn" data-pf="PC">PC</button>
-    <button type="button" class="pbtn" data-pf="安卓">安卓</button>
-    <button type="button" class="pbtn" id="randBtn">随机看看</button>
+    <button type="button" class="pbtn" data-pf="安卓">PC+安卓</button>
+    <button type="button" class="pbtn" id="randBtn">随机</button>
     <button type="button" class="pbtn" id="againBtn" style="display:none">换一批</button>
   </div>
   <div class="ggrid" id="grid"></div>
@@ -180,13 +151,12 @@ footer a:hover{text-decoration:underline}
   <div class="mrhx-popup-inner">
     <button type="button" class="mrhx-popup-close" aria-label="关闭公告">×</button>
     <div class="mrhx-popup-content">
-      <h3>【公告】</h3>
-      <p>各位老师好，欢迎收藏本站 防迷路！</p>
-      <p>本站每天自动同步 Tsinho黄油站 的游戏资源</p>
-      <p>纯公益 · 无任何付费内容</p>
-      <p>找不到想玩的游戏？点顶部「求助区」留言求游戏</p>
-      <p>官方QQ群：1081159850</p>
-      <p>Telegram频道：<a href="https://t.me/Tsinhox" target="_blank" rel="noreferrer">t.me/Tsinhox</a></p>
+      <h3>收藏防迷路 · 公益无付费</h3>
+      <p><b>一、游戏求助</b><br>求游戏可在任意文章评论区留言<br>所有求助的游戏将发布至「求助贴」</p>
+      <p><b>二、进度通知</b><br>游戏发布后系统自动邮件通知！还请填写常用邮箱！<br>链接失效请评论区留言，我下班会补上</p>
+      <p>站长QQ：3496454360<br>站长邮箱：<a href="mailto:Tsinhos@qq.com">Tsinhos@qq.com</a><br>Telegram频道：<a href="https://t.me/Tsinhox" target="_blank" rel="noreferrer">t.me/Tsinhox</a></p>
+      <p>⚠️服务器在国外，图片加载慢请开VPN</p>
+      <p>觉得不错帮忙推广一下，感谢！<br>-Tsinho黄油站-</p>
     </div>
     <button type="button" class="mrhx-popup-ok">我知道了</button>
   </div>
@@ -226,8 +196,8 @@ footer a:hover{text-decoration:underline}
   }
 
   function cardHtml(g, i) {
-    var h = '<div class="gcard" style="animation-delay:' + Math.min(i * 0.04, 0.6) + 's">';
-    h += '<div class="g-cover">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '">' : '') + '</div>';
+    var h = '<div class="gcard" data-id="' + esc(g.id) + '" style="animation-delay:' + Math.min(i * 0.04, 0.6) + 's">';
+    h += '<div class="g-cover">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '" title="点击查看完整介绍" tabindex="0" role="button" aria-label="查看完整介绍：' + esc(g.name) + '">' : '') + '</div>';
     h += '<div class="g-body">';
     h += '<div class="g-title">' + esc(g.name) +
       (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') +
@@ -350,31 +320,6 @@ footer a:hover{text-decoration:underline}
     render();
   });
 
-  var timer = null;
-  document.getElementById('kw').addEventListener('input', function () {
-    clearTimeout(timer);
-    timer = setTimeout(function () {
-      var kw = document.getElementById('kw').value.trim().toLowerCase();
-      if (!kw) { filtered = null; }
-      else {
-        filtered = GAMES.filter(function (g) {
-          return (g.name + ' ' + g.desc + ' ' + g.platform + ' ' + (g.post || '')).toLowerCase().indexOf(kw) > -1;
-        });
-      }
-      shuffledCache = null;
-      cur = 0;
-      render();
-    }, 200);
-  });
-
-  var st = document.getElementById('searchToggle');  if (st) st.onclick = function () {
-    document.body.classList.toggle('search-open');
-    if (document.body.classList.contains('search-open')) {
-      var kw = document.getElementById('kw');
-      if (kw) kw.focus();
-    }
-  };
-
   var tb = document.getElementById('mrhxTopBtn');
   window.addEventListener('scroll', function () {
     tb.classList.toggle('show', (window.scrollY || document.documentElement.scrollTop) > 300);
@@ -452,19 +397,143 @@ footer a:hover{text-decoration:underline}
   })();
 
   (function () {
-    var k = 'hyfx_ann_dismissed';
-    var v = localStorage.getItem(k);
-    if (v) {
-      var t = parseInt(v, 10);
-      if (!isNaN(t) && Date.now() - t < 10800000) return;
+    // 游戏介绍弹窗：点卡片封面图弹出（移植自 mrhyfx，FLIP 从触发卡片长出/收回）
+    var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var modal = document.createElement('div');
+    modal.className = 'mrhx-detail';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', '游戏介绍');
+    modal.innerHTML = '<div class="mrhx-detail-box"><button type="button" class="mrhx-detail-close" aria-label="关闭">✕</button><h2></h2><div class="mrhx-detail-from"></div><div class="mrhx-detail-text"></div><button type="button" class="mrhx-detail-back">返回</button></div>';
+    document.body.appendChild(modal);
+    var box = modal.querySelector('.mrhx-detail-box');
+    var closeBtn = box.querySelector('.mrhx-detail-close');
+    var backBtn = box.querySelector('.mrhx-detail-back');
+    var ANIM_IN = 'transform .36s cubic-bezier(.2,1.16,.32,1),opacity .18s ease';
+    var ANIM_OUT = 'transform .26s cubic-bezier(.4,0,.72,.35),opacity .2s ease';
+    var trigger = null;
+    var isOpen = false;
+    var closing = false;
+
+    // 弹窗动画途中关闭时直接量会拿到缩小后的矩形，临时清掉 transform 再量、同帧还原
+    function boxRect() {
+      var prev = box.style.transform;
+      box.style.transform = 'none';
+      var r = box.getBoundingClientRect();
+      box.style.transform = prev;
+      return r;
     }
+    function anchor() {
+      if (!trigger || !trigger.getBoundingClientRect) return null;
+      var t = trigger.getBoundingClientRect();
+      var b = boxRect();
+      if (!b.width || !b.height) return null;
+      // 触发卡片滚出视口后把锚点夹回视口内，避免弹窗朝屏幕外飞走
+      var cx = Math.min(Math.max(t.left + t.width / 2, 0), window.innerWidth);
+      var cy = Math.min(Math.max(t.top + t.height / 2, 0), window.innerHeight);
+      var sx = Math.max(Math.min(t.width / b.width, 1), .04);
+      var sy = Math.max(Math.min(t.height / b.height, 1), .04);
+      return { dx: cx - (b.left + b.width / 2), dy: cy - (b.top + b.height / 2), sx: sx, sy: sy };
+    }
+    function at(a) {
+      return 'translate(' + a.dx.toFixed(1) + 'px,' + a.dy.toFixed(1) + 'px) scale(' + a.sx.toFixed(4) + ',' + a.sy.toFixed(4) + ')';
+    }
+    function openFrom(el) {
+      trigger = el;
+      isOpen = true;
+      box.style.willChange = 'transform';
+      modal.classList.add('show');
+      var a = reduce ? null : anchor();
+      box.style.transition = 'none';
+      if (a) {
+        box.style.transformOrigin = 'center center';
+        box.style.transform = at(a);
+        box.style.opacity = '0';
+        void box.offsetWidth;
+        box.style.transition = ANIM_IN;
+        box.style.transform = 'translate(0px,0px) scale(1,1)';
+        box.style.opacity = '1';
+      } else {
+        box.style.transform = 'none';
+        box.style.opacity = '1';
+      }
+      try { closeBtn.focus({ preventScroll: true }); } catch (err) { closeBtn.focus(); }
+    }
+    function restore() {
+      box.style.transition = 'none';
+      box.style.transform = 'none';
+      box.style.opacity = '1';
+      box.style.willChange = '';
+      modal.classList.remove('show');
+      isOpen = false;
+      closing = false;
+      if (trigger && trigger.focus) {
+        try { trigger.focus({ preventScroll: true }); } catch (err) { trigger.focus(); }
+      }
+      trigger = null;
+    }
+    function closeModal() {
+      if (!isOpen || closing) return;
+      closing = true;
+      var a = reduce ? null : anchor();
+      if (!a) { restore(); return; }
+      var finished = false;
+      var finish = function () {
+        if (finished) return;
+        finished = true;
+        box.removeEventListener('transitionend', onEnd);
+        restore();
+      };
+      var onEnd = function (e) {
+        if (e && (e.target !== box || e.propertyName !== 'transform')) return;
+        finish();
+      };
+      box.style.transition = ANIM_OUT;
+      box.style.transform = at(a);
+      box.style.opacity = '0';
+      box.addEventListener('transitionend', onEnd);
+      setTimeout(finish, 420);
+    }
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal || e.target === closeBtn || e.target === backBtn) closeModal();
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeModal(); });
+
+    function openDetail(img) {
+      var card = img.closest('.gcard');
+      if (!card) return;
+      var id = card.getAttribute('data-id');
+      var g = null;
+      for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].id === id) { g = GAMES[i]; break; } }
+      if (!g) return;
+      box.querySelector('h2').textContent = g.name + (g.platform ? ' [' + g.platform + ']' : '');
+      box.querySelector('.mrhx-detail-from').innerHTML = '<b>游戏介绍</b>';
+      box.querySelector('.mrhx-detail-text').textContent = g.desc || '暂无介绍';
+      openFrom(img);
+    }
+    // 卡片是动态渲染的，用事件委托挂在 grid 上
+    var grid = document.getElementById('grid');
+    grid.addEventListener('click', function (e) {
+      var img = e.target.closest('.g-cover img');
+      if (!img) return;
+      e.preventDefault();
+      openDetail(img);
+    });
+    grid.addEventListener('keydown', function (e) {
+      if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+      var img = e.target.closest('.g-cover img');
+      if (!img) return;
+      e.preventDefault();
+      openDetail(img);
+    });
+  })();
+
+  (function () {
+    // 公告每次进站都弹（2026-10-01 用户要求：之前是 3 小时内关过就不再弹）
     var el = document.getElementById('annPopup');
     if (!el) return;
     el.classList.add('show');
-    var close = function () {
-      try { localStorage.setItem(k, String(Date.now())); } catch (e) {}
-      el.classList.remove('show');
-    };
+    var close = function () { el.classList.remove('show'); };
     el.querySelector('.mrhx-popup-close').onclick = close;
     el.querySelector('.mrhx-popup-ok').onclick = close;
   })();
@@ -498,5 +567,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
+<script src="assets/js/nav.js"></script>
 </body>
 </html>
