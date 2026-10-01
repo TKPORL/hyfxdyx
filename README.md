@@ -38,7 +38,7 @@ scripts/crawl.py
 
 ## 后台管理（tsinhoht.html）
 
-访问 `https://tkporl.github.io/hyfxdyx/tsinhoht.html` 进入后台（默认密码 `tsinho123`，登录后可在「设置」修改）。
+访问 `https://tkporl.github.io/hyfxdyx/tsinhoht.html` 进入后台。后台密码仅站长本人知晓，登录后可在「设置」中修改（改密码只对当前浏览器生效，这是纯静态站的固有限制）。
 
 功能：仪表盘统计（含本站总访问量 PV / 独立访客 UV、每日更新趋势图）、游戏增删改查（搜索 / 筛选 / 排序 / 批量删除 / 复制 / **一键置顶推荐**）、**首页公告编辑**、**本地图片上传转直链**（GitHub Token 配置后，编辑游戏时可上传本地图到仓库 assets/admin/ 并自动填入 jsDelivr 直链）、**求助区留言同步**、数据导入导出、操作日志、修改密码。
 
