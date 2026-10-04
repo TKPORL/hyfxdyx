@@ -1,9 +1,1571 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-10-03 16:42:10",
- "total": 1262,
+ "updated_at": "2026-10-04 13:19:42",
+ "total": 1357,
  "games": [
+  {
+   "id": "2026104pc-0",
+   "name": "异界迷宫：Alien Maze",
+   "platform": "PC",
+   "desc": "【SLG/官中步兵版】异界迷宫：Alien Maze.V1.0.0【PC 191M】 【25397】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/4b8jm5m06j.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/4b8jm5m06j.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/100p87iGofAogWAxXmIsAbQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-1",
+   "name": "曾经是勇者的妻子们",
+   "platform": "PC",
+   "desc": "【RPG/2D/日式/官中步兵版】致曾经是勇者的妻子们 かつて勇者だった妻達へ ST【PC 2.87G】 【AA6454】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/5ys2b6yd45.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/5ys2b6yd45.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1PY5vKfIJRs5RhmG_mevCWA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-2",
+   "name": "间谍任务",
+   "platform": "PC",
+   "desc": "【RPG/2D/日式/官中步兵版】间谍任务 ～女友竟沦为贵族大叔的专属女仆～ スパイ・ミッション ～彼女は貴族(オッサン)のメイド～ ST【PC 2.27G】 【AA6453】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/tiu3ayo57k.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/tiu3ayo57k.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1D5y_0V_EWC5yFHj5mUshwQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-3",
+   "name": "汉堡店的四个夜晚",
+   "platform": "PC",
+   "desc": "【SLG/官中版/动态】汉堡店的四个夜晚1.2+【PC 378M】 【25394】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/ldjt4gxo0r.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/ldjt4gxo0r.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ai7nOJ7kzjb5e3KiRKdFjw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-4",
+   "name": "伊德拉之血",
+   "platform": "PC",
+   "desc": "【ACT/动态/官中】伊德拉之血.v20260922【PC 675M】 【25302】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/wvovdlo1lb.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/wvovdlo1lb.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1derobQzenIlvt0tLRF3J0w?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-5",
+   "name": "绝对合格！洗脑宿舍",
+   "platform": "PC",
+   "desc": "【SLG/2D/日式/AI汉化版/存档】绝对合格！洗脑宿舍 絶対合格！洗悩寮 v1.00 +【PC 1G】 【AA6402】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/hjg0lzcque.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/hjg0lzcque.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1qbWZ4iq0cxucquQVlcM9UA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-6",
+   "name": "莉迪亚的旅馆",
+   "platform": "PC",
+   "desc": "【RPG/2D/日式/内嵌AI汉化版】莉迪亚的旅馆 リディアの宿屋 ～淫魔の宿帳～【PC 1G】 【AA6455】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/xjex2upaa1.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/xjex2upaa1.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1-dVWTNORpOrOxqpWAk3cVw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-7",
+   "name": "救生员狂热",
+   "platform": "PC",
+   "desc": "【精品互动SLG/中文/动态/官中步兵版】救生员狂热.V1.5.0+【PC 1.86G】 【25386】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/m0t1wt5gbs.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/m0t1wt5gbs.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1kWP2fUd6LKFhRzz8c13GRg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-8",
+   "name": "妹妹是性欲的发泄口",
+   "platform": "PC",
+   "desc": "【SLG/AI汉化】妹妹是性欲的发泄口v1.0(20260426)【PC 1.58G】 【25392】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/93dqm7barj.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/93dqm7barj.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/18YowK-V_nf5NinABoHD2xg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-9",
+   "name": "淫魔再诞",
+   "platform": "PC",
+   "desc": "【SLG/官中版/动态】淫魔再诞.v20260928a【PC 1.19G】 【25393】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/vwljhv6s6a.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/vwljhv6s6a.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1f1Cq92i_XfS7H1zoQWXuWg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-10",
+   "name": "接触米伊酱",
+   "platform": "PC",
+   "desc": "【新作/互动SLG/抚摸触摸/动态/官中版】接触米伊酱 ふれあいミイちゃん v1.0.3【PC 230M】 【C255999】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/4aoonh5itp.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/4aoonh5itp.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1d27KSzhj40K4CvNE45n4ZQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-11",
+   "name": "欲求不满少女 GAME版",
+   "platform": "PC",
+   "desc": "【新作/日式3D/梅麻呂/动态/重制版/官中版/存档】欲求不满少女 GAME版 Horny Girl リマスター・エディション +【PC 3.10G】 【C255333】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/eebb4ph6h5.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/eebb4ph6h5.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1cZlkRwz8ffAePTDf-UkFsA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-12",
+   "name": "NTR政治",
+   "platform": "PC",
+   "desc": "【SLG/2D/日式】NTR政治 JP NTR POLITICS JP 〜爆乳政治家の選挙活動記録！政敵に負けるなんてアリエナイ〜 V2.1 官文版【PC 719M】 【AA6458】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/422xx7mwtw.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/422xx7mwtw.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1fxDtRDNufJkuE5tzK5AUCg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-13",
+   "name": "极道无赖EX女警鮎川光",
+   "platform": "PC",
+   "desc": "【SLG/动态/官中步兵版】极道无赖EX女警鮎川光1.3.1【PC 974M】 【25387】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/cz099qdj1c.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/cz099qdj1c.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1fyYaT4PpiEIrJY9zJcN8sg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-14",
+   "name": "扶她炼金师艾夏的自慰生活",
+   "platform": "PC",
+   "desc": "解压码悦悦 【RPG/PC/步兵/TacosStore/989.81MB】扶她炼金师艾夏的自慰生活",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/jso6bs7ry2.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/jso6bs7ry2.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1j35Hrwr6l8FHAO3U3k0Esw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-15",
+   "name": "我的抖S女友",
+   "platform": "PC",
+   "desc": "解压码悦悦 【ADV/PC/步兵/Lune-soft/761.05MB】我的抖S女友【PC】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/6qkadfq6nm.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/6qkadfq6nm.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1TfepOoTo6wwicgdPqgofeQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-16",
+   "name": "Taffy Tales Redux : The Morning After",
+   "platform": "PC",
+   "desc": "解压码悦悦 【SLG/PC/步兵/UberPie/3.66GB】Taffy Tales Redux : The Morning After",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/soe6345h4z.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/soe6345h4z.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1vey0BJqtJ6RIR4bN9FxBqw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-17",
+   "name": "路人娘公会制作器",
+   "platform": "PC",
+   "desc": "【SLG/2D/日式/官中版】路人娘公会制作器 モブ娘ギルドメーカー v1.0.32【PC 474M】 【AA6403】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/6dlsdo6awk.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/6dlsdo6awk.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1MHU8KHd5N_v9Vwf1qogVVw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-18",
+   "name": "退役骑士与魔物娘的悠闲日常",
+   "platform": "PC",
+   "desc": "【RPG/2D/日式/内嵌AI汉化版】退役骑士与魔物娘的悠闲日常 カルティベーター ～引退騎士とモン娘のにぎやか開拓記～ ver1.2【PC 3.5G】 【AA6457】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/3xud4hm3cw.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/3xud4hm3cw.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1vebS9NtmU2pVnXAFpLT_3w?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-19",
+   "name": "双人妻（妈妈）生活",
+   "platform": "PC",
+   "desc": "解压码悦悦 【PC/AI汉化版/拨作/RPG游戏/920M】双人妻（妈妈）生活 （ダブル人妻(ママ)らいふ） +拔作RPG游戏+920M",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/dxj7q9gm25.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/dxj7q9gm25.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/10bEeSkp0CeedD0cZH1TcWA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-20",
+   "name": "女装侦探叶语嫣3",
+   "platform": "PC",
+   "desc": "【ACT/动态/官中】女装侦探叶语嫣3.V0.0.2【PC 206M】 【25388】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/thw9qmleb3.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/thw9qmleb3.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/12CkcZydj4My60VNCS8q_Yg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pc-21",
+   "name": "情色按摩诊所",
+   "platform": "PC",
+   "desc": "解压码悦悦 【ADV/PC/步兵/FantasyGames/1.18GB】情色按摩诊所",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pc/qpqdfkls9n.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pc/qpqdfkls9n.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1lB67xmczuK6kH6V0zLeqdw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pc.html"
+  },
+  {
+   "id": "2026104pcaz-0",
+   "name": "堕落圣树的少女塞蕾娜",
+   "platform": "PC+安卓",
+   "desc": "【RPG/2D/日式/内嵌AI汉化版】堕落圣树的少女塞蕾娜 堕ちた聖樹の乙女 セレナ +作弊码【PC+安卓 1.4G】 【AA6404】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/tk3u3rsy51.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/tk3u3rsy51.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/18NSpD2EhyxgmSiayJj-zuw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-1",
+   "name": "新世界乐园",
+   "platform": "PC+安卓",
+   "desc": "【SLG/2D/欧美/AI汉化版】新世界乐园 New World Paradise v0.2.9.1.1【PC+安卓 3.12G】 【AA6466】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/cwy0e6yuc5.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/cwy0e6yuc5.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1AW8OvZpRziyCL87p4y-OLA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-2",
+   "name": "罪恶谷",
+   "platform": "PC+安卓",
+   "desc": "【日系/SLG/沙盒/更新/AI汉化版】罪恶谷v0.4.3【PC+安卓 2.29G】 【25338】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/8fg2avwn6n.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/8fg2avwn6n.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1GJ7th06-5BDka0QbF14Z2w?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-3",
+   "name": "甜蜜的复仇",
+   "platform": "PC+安卓",
+   "desc": "【SLG/3D/欧美/AI汉化版】甜蜜的复仇 Sweet Revenge v0.0.2【PC+安卓 1.38G】 【AA6391】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/fmexa2gxvf.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/fmexa2gxvf.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1sMhZ9OYyADnRQ0EDj1efjg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-4",
+   "name": "母娘陷落",
+   "platform": "PC+安卓",
+   "desc": "【ADV/2D/日式/AI汉化版】母娘陷落 母娘陥落 v20260924【PC+安卓 2.88G】 【AA6465】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/a6e4av0sjs.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/a6e4av0sjs.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1GCx5QCtyyprOk7G0V__0VA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-5",
+   "name": "梦落",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG/AI汉化】梦落.在色情学校的梦境之中v20260731【PC+安卓 968M】 【25322】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/a2fxc1qd01.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/a2fxc1qd01.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1J99Eo-rkZDl1S-lfCq0bFA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-6",
+   "name": "丝绸与诱惑之城",
+   "platform": "PC+安卓",
+   "desc": "【SLG/2D/欧美/AI汉化版】丝绸与诱惑之城 Silk and the City of Seduction v3.31 Public【PC+安卓 4.92G】 【AA6470】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/cefiluzbiv.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/cefiluzbiv.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1qgEwcCx003TrFWxc_N08qw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-7",
+   "name": "和存在感薄弱妹妹一起的简单生活",
+   "platform": "PC+安卓",
+   "desc": "【SLG/动态/官中版/作弊/存档】和存在感薄弱妹妹一起的简单生活 存在感薄い妹との簡単生活 1.2.12 rev.4+ +作弊 【PC/安卓3.16G】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/25l55q1bnl.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/25l55q1bnl.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1D8cXw8Q6cTei-j4Bd4USdg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-8",
+   "name": "状态异常3",
+   "platform": "PC+安卓",
+   "desc": "【日系/RPG/AI汉化】状态异常3=AbnormalA酩酊/凭依/改变/苗床篇V1.0.3【PC+安卓 2.73G】 【25329】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/aaubc8dzb6.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/aaubc8dzb6.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1THB9SkGHlw6CuS1pVJg6-g?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-9",
+   "name": "爸爸的手机",
+   "platform": "PC+安卓",
+   "desc": "【PC/安卓/汉化版/日式/SLG游戏/1.0G】爸爸的手机 （Dad’s Phone） Ver0.6.2 +PC+安卓+日式SLG游戏+1.0G 解压码悦悦 一位父亲在女儿留学后学会放手，通过电话与消息远距离支持她 爸爸的手机 （Dad’s Phone） Ver0.6.2 汉化版+PC+安卓+日式SLG游戏+1.0G 你深入探讨了一位尽责父亲在失去妻子后如何应对生活的情感旅程。他一直是十几岁女儿莉迪亚的唯一照顾者， 莉迪亚即将踏上改变人生的旅程，前往一所著名大学留学。当莉迪亚踏上她在异国他乡的新冒险时， 父女俩都在努力面对第一次分离的现实。游戏探讨了他们深厚的羁绊，他们依靠科技来弥合距离。 通过真挚的电话短信，你见证了莉迪亚适应大学生活的挣扎与胜利，而你则学会放手，远距离支持她。 他在机场送别莉迪亚后，在回家的路上经过了一家还在营业的咖啡馆，他停下来买了一杯咖啡，然后在车里坐了一会儿才发动引擎。当晚他收到了莉迪亚发来的第一条消息，说她已经到达宿舍，并附上了一张房间的照片。他在回复中提醒她注意时差和饮食，并告诉她有事随时联系。在接下来的几周里，他们通过电话和消息保持联系，他会在她提到课程压力时给出一些建议，也会在她分享新朋友的事情时认真听完。他在一次通话后坐在书桌前，翻开了她小时候的相册，看了一会儿后合上相册，将手机放在旁边，准备等她下一次的消息。 当前版本：v1.0 官方中文版 平台支持：PC平台",
+   "cover": "",
+   "images": [],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ElJzxhhy2U78tumPwGcdAQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-10",
+   "name": "异世界乐园",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 穿越至奇幻异世界，管理特色经营场所，招募魅力角色，在自由探索中打造专属梦幻乐园。《异世界乐园》 Ver0.91 AI汉化版双端更新，沙盒经营与多线互动结合，带你沉浸于一场关于管理、邂逅与成长的奇幻旅程。 异世界乐园 (Isekai Brothel) Ver0.91 AI汉化版+PC+安卓+日系SLG游戏+4.64G 游戏介绍 《异世界乐园》是一款融合了经营策略与沙盒探索的日系奇幻互动叙事游戏。你将穿越至充满异域风情的奇 幻世界，化身为一家特色经营场所的管理者。游戏采用精致的3D动画风格，提供极高的自由度，让你能够招 募各式各样的魅力角色，打造专属的梦幻团队。通过策略经营与互动养成，体验深度的沉浸式剧情。本次更 新至v0.91版本，并已完成AI汉化，支持PC与安卓双端游玩，无论是在电脑前还是掌中，都能随时开启你的 异世界经营之旅，享受丰富多样的互动玩法与视觉盛宴。 游戏特色 穿越至奇幻异世界，管理特色经营场所，通过策略经营与互动逐步扩大影响力，体验从初来乍到到掌控全局的完整历程。 在广阔的异世界中自由行动，触发多样化的剧情事件，与多位性格鲜明的角色建立羁绊，解锁专属故事线。 招募并培养多位魅力角色，通过对话与选择影响彼此情感的走向，解锁专属亲密互动场景。 精美的3D画面：高质量的3D动画风格，细腻呈现角色形象与异世界氛围，带来沉浸式视觉体验。 故事背景 我们不仅仅是特色场所，我们使用一种穿越宇宙的技术！有了这项技术，你可以传送到想要的宇宙，或者把我们的伙伴 传送到你的宇宙。在这里，你可以与来自其他宇宙的角色一起满足你的各种幻想，包括约会、亲密交流、特殊喜好等等…… 主要更新内容 新增角色。 新增抢先看。 增加了有无服装的动画。 修正了拼写错误和漏洞。 【PC/安卓/AI汉化版/日系/SLG游戏/4.64G】异世界乐园 (Isekai Brothel) Ver0.91 +PC+安卓+日系SLG游戏+4.64G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/g55px3u45w.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/g55px3u45w.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/15gN63Z6yscohWT-OxNzT5Q?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-11",
+   "name": "新家庭",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】新家庭 New Family V1.0.0 完结版【PC+安卓 4.90G】 【C258111】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/swqxoy6xd5.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/swqxoy6xd5.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ZCkytlhm9vV01VaZ17QG6w?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-12",
+   "name": "魔物娘之欲",
+   "platform": "PC+安卓",
+   "desc": "【SLG/AI汉化】魔物娘之欲v0.01【PC+安卓 1.37G】 【25328】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/jxbf6mzkns.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/jxbf6mzkns.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1IE-o8B0qvDeVszelQq-lFw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-13",
+   "name": "员工的家庭",
+   "platform": "PC+安卓",
+   "desc": "【PC/安卓/AI汉化版/欧美/SLG游戏/9.60G】员工的家庭 (My Employee’s Family) Ep.8b +【PC+安卓】+欧美SLG游戏+9.60G 解压码悦悦 职场与家庭的交织，在信任与抉择中书写你的故事。《员工的家庭》Ep.8b AI汉化版双端发布，精美的 3D画面与多线互动，你的选择将决定主角与员工家庭的最终关系。 员工的家庭 (My Employee’s Family) Ep.8b AI汉化版+PC+安卓+欧美SLG游戏+9.60G 游戏介绍 《员工的家庭》是一款以职场与家庭关系为主题的欧美风格互动叙事游戏。你将扮演主角，在与员工及其 家庭的日常互动中，逐渐了解他们各自的生活与情感世界。游戏以精美的3D动画风格呈现，细腻刻画角色 与场景，带你深入体验一段关于信任、选择与成长的复杂故事。AI汉化版确保了流畅的中文剧情，让你无 障碍沉浸其中。支持PC和安卓双平台，随时随地享受这场策略与情感交织的盛宴。 游戏特色 职场与家庭双线叙事：在职业责任与私人情感之间寻找平衡，你的选择将影响员工及其家人的命运。 多线角色互动：与多位性格鲜明的女性角色建立联系，通过对话与选择影响彼此关系的走向。 选择驱动发展：你的每一个决定都将影响故事走向、角色命运以及人际关系的深度。 精美的3D画面：高质量的3D动画风格，生动呈现角色形象与职场、家庭场景。 故事背景 您可以在游戏中与员工的家庭成员建立联系，通过日常互动逐步揭开他们隐藏的秘密与真实需求。在这 个充满挑战与机遇的环境里，你的每一个选择都将决定你与他们的关系走向。 主要更新内容 本版本为Ep.8b Bugfix，修复了之前版本中的问题，具体更新细节未提供。",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/s4aptitd3f.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/s4aptitd3f.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1pZif6Z3IjVGnoZM5WzZwAA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-14",
+   "name": "塔玛拉曝光-番外篇",
+   "platform": "PC+安卓",
+   "desc": "【SLG/3D/欧美/AI汉化版】塔玛拉曝光-番外篇 Tamara Exposed SideStory v0.2【PC+安卓 2.69G】 【AA6468】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/2j6qmnl5yc.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/2j6qmnl5yc.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1Rg_HVJlpKB-IoHoHmnfwOg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-15",
+   "name": "只是一个打开状态栏的迷你游戏",
+   "platform": "PC+安卓",
+   "desc": "只是一个打开状态栏的迷你游戏&ステータス開くだけのミニゲーム Ver0.72【PC+安卓】 解压码悦悦 ▫️名称：只是一个打开状态栏的迷你游戏 ▫️原名：ステータス開くだけのミニゲーム ▫️版本：072版 像是像素风RPG的迷你游戏，其实只是打开状态栏！ 这个游戏原本是作为像素风迷你CG集制作的，后来被改编成了简单的游戏。 游戏本身非常简陋，但状态栏角色做得很用心！开始游戏后，请用画面右下角的按钮，放大到刚好合适的大小再玩！在手机上看起来非常漂亮☆",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/r6tzo0w5ts.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/r6tzo0w5ts.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1c8mCtsBHsiTBqLzExflFWw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-16",
+   "name": "魔界洞露露・法蕾雅",
+   "platform": "PC+安卓",
+   "desc": "【RPG/2D/日式】魔界洞露露・法蕾雅 新星 魔界洞ルル・ファレア 新星 V1.0.1 精翻简中完结篇【PC+安卓 1.22G】 【AA6451】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/7nt76wo72s.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/7nt76wo72s.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1LVoVOYjGrORgZf3N4zZSEQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-17",
+   "name": "深海欲望",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/亚洲/SLG游戏/4.38G】深海欲望 (Abyssal Lust) Ver0.4.2 +PC+安卓+亚洲SLG游戏+4.38G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/bjhagwsw7i.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/bjhagwsw7i.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1VO80WPeF9jDxaWKy3DmUFQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-18",
+   "name": "无人岛NTR求生记 SS",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/官中步兵版/日式/SLG游戏/2.0G/存档】无人岛NTR求生记 SS （無人島サバイバーズ SS） + +日式SLG游戏+2.0G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/lidz8mf8dn.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/lidz8mf8dn.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1t4EbAhP7HrJc6dxrHbs2_A?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-19",
+   "name": "行动：确立统治地位",
+   "platform": "PC+安卓",
+   "desc": "【日系/SLG/动态/更新/AI汉化版】行动：确立统治地位v0.35【PC+安卓 830M】 【25383】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/eqjgzp58yp.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/eqjgzp58yp.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1bvNyUyH6Vjwm2G3BZwrfYA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-20",
+   "name": "后宫扭蛋",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/汉化版/日式/SLG游戏/5.60G】后宫扭蛋（Harem Gacha） Ver0.7.0 +【PC+安卓】+日式SLG游戏+5.60G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/d7s3x9qh13.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/d7s3x9qh13.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1LkdFiamxHHaEKCgVvpvvUQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-21",
+   "name": "学院34",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/汉化版/欧美/SLG游戏/1.40G】学院34 （Academy34） Ver0.36.1.3 +【PC+安卓】+欧美SLG游戏+1.40G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/h6ayzw914h.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/h6ayzw914h.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1WzyFxqw2MwxMcIKttCnipw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-22",
+   "name": "郊区王子 完结版",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/乱伦/动态/汉化版】郊区王子 Prince of Suburbia v1.5.4 P1-P2+ s 完结版【PC+安卓 9.0G】 【C257444】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/ds6c0a9rw6.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/ds6c0a9rw6.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1McpHI08IQFAx284RUYGbRA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-23",
+   "name": "追逐欲望",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/亚洲/SLG游戏/3.80G】追逐欲望 Ver0.35赞助 +【PC+安卓】+亚洲SLG游戏+3.80G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/bo8ztbgd5y.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/bo8ztbgd5y.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1SPFPxeOZb3tH7XNzB1yMRQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-24",
+   "name": "后宫之家",
+   "platform": "PC+安卓",
+   "desc": "【同人/无码/SLG/动态/更新/AI汉化版】后宫之家v0.1.7【PC+安卓 1.01G】 【25401】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/z67823c9kc.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/z67823c9kc.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1EKue7mZj9tJjNsbJk_useQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-25",
+   "name": "成为尼克斯",
+   "platform": "PC+安卓",
+   "desc": "【SLG/3D/欧美/AI汉化版】成为尼克斯 Being Nyx Ep.1【PC+安卓 717M】 【AA6462】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/tj4qi5pgvd.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/tj4qi5pgvd.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1yQt-39IPXvpDcHXCGl8LmA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-26",
+   "name": "梦与起源的炼金术",
+   "platform": "PC+安卓",
+   "desc": "【RPG/2D/日式/AI汉化版】梦与起源的炼金术 Sexchmia～夢と始まりの錬金術～ v2.14【PC+安卓 2.28G】 【AA6456】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/pcjelejcnp.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/pcjelejcnp.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1gOxwQM8THoA-Et86S2aopw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-27",
+   "name": "圣洁堕落",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【安卓/PC游戏】圣洁堕落&Saintly Corruption v0.12【PC+安卓】",
+   "cover": "",
+   "images": [],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1SK447WHDxS_6AzXOzMqfZA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-28",
+   "name": "时间狂喜",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/步兵版】时间狂喜 Chrono Ecstasy v0.4.35 生肉【PC+安卓 3.0G】 【C256666】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/yyeba8kevn.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/yyeba8kevn.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/10sRGhW6LkLcaNZDm5_ggFQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-29",
+   "name": "桌下风云",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/官中步兵版/拨作/SLG游戏/1.30G】桌下风云 （Under the Desk） Ver0.5.0 +【PC+安卓】+拔作SLG游戏+1.30G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/meekr7q8sn.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/meekr7q8sn.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/10I0j_3a1ujEeoM30NEKMsA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-30",
+   "name": "新珊瑚城",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/欧美/SLG游戏/7.30G】新珊瑚城 (New Coral City) S2 Ver0.43 +【PC+安卓】+欧美SLG游戏+7.30G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/6gjo4bx7f8.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/6gjo4bx7f8.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1IfHaQE-bZNHDoJn-NpGQgA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-31",
+   "name": "潇洒女孩的告白",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/欧美/SLG游戏/4.53G】潇洒女孩的告白 (Confessions of a Sassy Girl) Ver0.8.1 +【PC+安卓】+欧美SLG游戏+4.53G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/lgpvatq66o.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/lgpvatq66o.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1YcT_U8Su4ZEyIWn7CmGGtg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-32",
+   "name": "青春回响",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/日系/SLG游戏/3.93G】青春回响 (Echoes of Youth) Ver1.8.2 ++日系SLG游戏+3.93G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/embwq5zp85.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/embwq5zp85.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1IHwDybT-t0xWLvL-V56qqg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-33",
+   "name": "伊织感质",
+   "platform": "PC+安卓",
+   "desc": "【PC/安卓/AI汉化/日式/RPG游戏/310M/内嵌AI汉化版】伊织感质 （IORIQUALIA） +【PC+安卓】+日式RPG游戏+310M",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/w6qfkboxgp.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/w6qfkboxgp.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1edqGnXQzngh3GBtZ66ijxA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-34",
+   "name": "异界现实",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】异界现实 Paracosmic Reality v1.16.1【PC+安卓 2.80G】 【C258333】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/u3p7exc8qk.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/u3p7exc8qk.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/18XTFL_4hyusU27hPUrRtjg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-35",
+   "name": "破碎的心灵",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】破碎的心灵 Shattered Minds v0.29 Beta【PC+安卓 6.60G】 【C257555】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/odxnjimpfj.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/odxnjimpfj.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1g8icpKSzYyWhnD8satkFOg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-36",
+   "name": "阿瑞斯之陨",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/汉化/沙盒/SLG游戏/870M/步兵版】阿瑞斯之陨 （The Ares Fall） Ver0.11 +【PC+安卓】+沙盒SLG游戏+870M",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/fzoef2biob.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/fzoef2biob.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1mzkeqifnI7RR4X3MlVOXrg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-37",
+   "name": "NSFW:财富与性爱学校",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】NSFW:财富与性爱学校 NSFW: National School for Wealth … and Fuckery v0.8.1.1【PC+安卓 2.70G】 【C256888】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/fp20oeh34z.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/fp20oeh34z.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1NGiVe2Hk_wC_34D-YeVR_g?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-38",
+   "name": "星梦 Stellar Dream",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】星梦 Stellar Dream v1.12【PC+安卓 2.0G】 【C258222】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/6c0s5otgzb.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/6c0s5otgzb.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1IUTvCOonFyJFpWe4uiKg6Q?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-39",
+   "name": "湿沙",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/欧美/SLG游戏/3.60G】湿沙 (Wet Sand) Ver0.8.7f +【PC+安卓】+欧美SLG游戏+3.60G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/0t56vec1yz.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/0t56vec1yz.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1pBcSYgcJAQ8fbTyg7axG-g?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-40",
+   "name": "世界驯服者",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【PC/安卓/AI汉化版/日系/SLG游戏/7.01G】世界驯服者 (World Tamer) Ver0.44.0 +【PC+安卓】+日系SLG游戏+7.01G",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/qsorf635z7.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/qsorf635z7.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1oWwk4dCiH_yL74g7O-ijWg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-41",
+   "name": "出撃！狼耳警探",
+   "platform": "PC+安卓",
+   "desc": "解压码悦悦 【安卓/PC游戏】出撃！狼耳警探 v1.2",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/2woe33yxml.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/2woe33yxml.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1JVdydNevdchha9AKJOuh_A?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-42",
+   "name": "回合间诱",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】回合间诱 Between Rounds v3.0【PC+安卓 5.70G】 【C257111】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/9c9ammycgm.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/9c9ammycgm.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1-Ax9JQemuRLjhoy3GJ-xrg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-43",
+   "name": "地雷系女友酱之绝境逃脱",
+   "platform": "PC+安卓",
+   "desc": "作弊码：430564 【汉化/动态/内嵌AI汉化版】新 【日式RPG】 地雷系女友酱之绝境逃脱 【Live2D】地雷系彼女ちゃん、ききいっぱつ! v1.02 +作弊码【PC+安卓 4.90G】 【C256000】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/b7mr548bze.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/b7mr548bze.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1G2a3TmlnL6qZMiN3tt9c1g?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-44",
+   "name": "回廊彼岸",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】回廊彼岸 Across the Hall v0.81【PC+安卓 1.0G】 【C257222】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/nirftgax2c.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/nirftgax2c.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1HgB9ll3lA3eH8u-uZ0dRuQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-45",
+   "name": "后宫之家",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】后宫之家 Harem House v0.1.7【PC+安卓 1.20G】 【C257000】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/xom0yzfdz2.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/xom0yzfdz2.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1S0-lyn6CrqDrloTfYF55yw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-46",
+   "name": "啄木鸟侦探",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】啄木鸟侦探 Pecker PI v0.6 +攻略模组【PC+安卓 5.70G】 【C258555】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/o9fk5aju4p.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/o9fk5aju4p.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ylPQ-RiINmpA0OVgGzR14Q?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-47",
+   "name": "人生的十字路口-莉莉",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】人生的十字路口-莉莉 At the Crossroads of Life: Lily c0.11a +乱伦补丁+图库解锁【PC+安卓 3.60G】 【C257666】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/9vd990sxcd.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/9vd990sxcd.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1VRBoeeZjYhJ5mA74BpL8MA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-48",
+   "name": "文艺复兴",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】文艺复兴 The Renaissance v0.9【PC+安卓 3.60G】 【C257999】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/zae2hz00li.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/zae2hz00li.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1iw5Kj43xRZpqgPGIJUpVsA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-49",
+   "name": "善欲邪恶",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】善欲邪恶 Good Lust Evil v0.8【PC+安卓 4.20G】 【C257777】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/31xs8025jp.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/31xs8025jp.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ePZrhX-8r6EIMo8sYrebAA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-50",
+   "name": "系统猎人",
+   "platform": "PC+安卓",
+   "desc": "【更新/亚洲风SLG/动态/汉化版】系统猎人 Glitched Hunter v0.2.5b【PC+安卓 1.70G】 【C258000】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/eidn7fn8kx.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/eidn7fn8kx.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/148bYWQXlMxbp6Eey2G5YyA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-51",
+   "name": "不谙世事的猫咪艾露莎",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式RPG/异种X/内嵌AI汉化版/存档】不谙世事的猫咪艾露莎 世間知らずの猫エルーシャ ver1.07 +【PC+安卓 1.60G】 【C259000】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/1xcbe61ste.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/1xcbe61ste.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1xE0aJox8yAiswxwbOzrSJA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-52",
+   "name": "花屋的花魁想要钱",
+   "platform": "PC+安卓",
+   "desc": "解压码xiaoqiqi69 【RPG/PC/安卓joi/汉化】花屋的花魁想要钱 v1.2/花屋のマドンナはお金が欲しい【299MB】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/q1vb0m8wky.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/q1vb0m8wky.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/16eHGaLXrCOEdES7Qc4Tu-g?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-53",
+   "name": "一周后青梅竹马被NTR",
+   "platform": "PC+安卓",
+   "desc": "解压码xiaoqiqi69 【RPG/PC/安卓/汉化】一周后青梅竹马被NTR/幼馴染が寝取られるまでの一週間【PC 1.19GB】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/a9cvdau8hq.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/a9cvdau8hq.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1AmFtsWWM9VhpAA6bc-2MIg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-54",
+   "name": "挥动欧金金的甜蜜性生活",
+   "platform": "PC+安卓",
+   "desc": "解压码xiaoqiqi69 【RPG/PC/安卓joi/汉化】挥动欧金金的甜蜜性生活/よわよわチンチンのあまあま性活【PC+安卓 585MB】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/m3yobn8atv.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/m3yobn8atv.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1g6uB2SCEbADZlOp-eNCZvg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-55",
+   "name": "大江户托卵淫棒录",
+   "platform": "PC+安卓",
+   "desc": "解压码唯ai雪莉酒 【PC+安卓/汉化/NTR/ADV/存档】大江户托卵淫棒录 大江戸托卵淫棒録【PC+安卓 860M】 【A1560】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/j83nqlgtwm.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/j83nqlgtwm.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/16Kaji-9YdhQh1Qv3kLLlzA?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-56",
+   "name": "菲涅与封印书库",
+   "platform": "PC+安卓",
+   "desc": "解压码唯ai雪莉酒 作弊码：164819 【PC+安卓/汉化/RPG】菲涅与封印书库フィーネと封じられた書庫【+作弊码】【PC+安卓 520M】 【A1566】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/9txc98ccx5.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/9txc98ccx5.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1a12F5zNUhukFDJ-WxCyuPQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-57",
+   "name": "熟女杀手",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】熟女杀手 Jack Hunter v0.3【PC+安卓 1.0G】 【C257888】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/z7n4w0ri01.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/z7n4w0ri01.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1gfT-BILs4YEGPqv9Aaqs0A?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-58",
+   "name": "欲望之罪",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】欲望之罪 Lustful Sin v0.10.1【PC+安卓 4.80G】 【C262777】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/72suee4xb3.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/72suee4xb3.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1ef38iMyDlLVsx6dboW5b2Q?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-59",
+   "name": "欲望之路",
+   "platform": "PC+安卓",
+   "desc": "火影的【更新/日式SLG/动态/汉化版】欲望之路 Path of Desire v0.8.0【PC+安卓 2.60G】 【C262666】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/61qebpfs33.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/61qebpfs33.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1hzj6BFxMmZXOzkPYl0SDdQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-60",
+   "name": "一周之后 One Week Away",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】一周之后 One Week Away v0.9.0【PC+安卓 2.90G】 【C262555】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/0i4z0jxtax.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/0i4z0jxtax.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/17nqNz888g-qVR_Huc88a2g?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-61",
+   "name": "卡瓦女士家的愉快闘病生活",
+   "platform": "PC+安卓",
+   "desc": "【内嵌AI汉化版/存档】增添AZ【日式RPG/被NTR/调教露出】 卡瓦女士家的愉快闘病生活UC カーヴァさんちの楽しい闘病生活UC v26.09.29 +【PC+安卓 1.60G】 【C255444】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/y6dj3qb4pp.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/y6dj3qb4pp.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/13W_O1hTq13hkWJZoEQ4gAQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-62",
+   "name": "被遗忘的",
+   "platform": "PC+安卓",
+   "desc": "【更新/日式SLG/动态/汉化版】被遗忘的 OverLooked v0.2【PC+安卓 2.20G】 【C262000】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/6i4pmyimun.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/6i4pmyimun.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1DUo1o64F1kLkXZXrOcCKHg?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-63",
+   "name": "光之公主 蒂亚丽普莉兹姆",
+   "platform": "PC+安卓",
+   "desc": "【更新/动作ACT/异种X/动态/AI汉化版/存档】光之公主 蒂亚丽普莉兹姆 光のプリンセス ティアリープリズム v1.02 +【PC+安卓 1.70G】 【C261000】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/bshrbk3ez0.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/bshrbk3ez0.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1_rENB194FmubpR9Z8SKPZQ?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
+  {
+   "id": "2026104pcaz-64",
+   "name": "隔壁的女人",
+   "platform": "PC+安卓",
+   "desc": "【更新/欧美SLG/动态/汉化版】隔壁的女人 Ms Morisson S1Ep.6【PC+安卓 3.10G】 【C262111】",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/kv5bx2cafr.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/2026104pcaz/kv5bx2cafr.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1jKCSJdCT8yQnhqZMPuBhGw?pwd=839m"
+    }
+   ],
+   "post": "10月4号黄油（PC+安卓）",
+   "post_url": "https://tkporl.github.io/mrhyfx/2026104pcaz.html"
+  },
   {
    "id": "2026102pcaz-0",
    "name": "室友P2",
@@ -25063,6 +26625,150 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/192ar_b-iJ3nNvTAVFWhPwQ?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-161",
+   "name": "一诺千劫-阿雅版（一个最好无法实现的承诺）",
+   "platform": "PC",
+   "desc": "大更新[亚洲风SLG/动态] 一诺千劫-阿雅版 一个最好无法实现的承诺 A Promise Best Left Unkept – Aya Edition v1.0.0s 官方中文版 完结版+扩展结局 [PC 6.50G]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/7npgzann78.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/7npgzann78.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/16q9XFmfeadEW-_TmjmpVhA?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-162",
+   "name": "降临战纪",
+   "platform": "PC+安卓",
+   "desc": "12243【大型精品RPG/动态/官中】降临战纪（Befall Saga）v1.0.8无码作弊+攻略+CG包(454CG)[PC+安卓][10G]8176",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/xrh02z84v4.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/xrh02z84v4.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1Xg_1in1ZUQpyUEgacNkcAg?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-163",
+   "name": "女拳主义",
+   "platform": "PC",
+   "desc": "补档[亚洲风ACT/动态] 女拳主义F-ist! -V23.12.25- 国语官方中文步兵版 [PC 3.3G]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/4v8jm3jfh9.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/4v8jm3jfh9.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1YakkIppZHx0qsmTnm5c0fA?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-164",
+   "name": "尼特与天使与色色家族",
+   "platform": "PC+安卓",
+   "desc": "新作[精品SLG/互动养成/动态] 尼特与天使与色色家族 死宅天使 NEET, Angel, and Ero Family v1.45 官中步兵版+DLC+全回想 [PC+安卓 9.0G]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/gidf0vot5j.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/gidf0vot5j.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1Ggy2bkDaSdVFrl5nmO3DMw?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-165",
+   "name": "淫乱学院：你与我的6月",
+   "platform": "PC",
+   "desc": "[探索SLG/淫乱/动态] 淫乱学院：你与我的6月 6月の君と僕 精翻汉化版 [PC 220M]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/q7drt3ic8c.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/q7drt3ic8c.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1LVrVo-9s3lCs9kWhcA7SRA?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-166",
+   "name": "Ecchi Craft（H版我的世界）",
+   "platform": "PC",
+   "desc": "PS：由于DLC文件需要安装在本地C盘中，所以请各位解压后自行进行安装DLC。 [动作ACT/Live2D动画/官方中文版+全DLC+存档] Ecchi Craft [H版我的世界] えちクラ～えっち&クラフト V1.30 [PC 5.50G]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/j0ce0zexiu.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/j0ce0zexiu.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1yFb1DwakpnJIHyCEWIvTPA?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-167",
+   "name": "亚洲之子：东方之乡（SOA就是个混蛋）",
+   "platform": "PC",
+   "desc": "更新[大型亚洲风QSP/真人互动/动态] 亚洲之子：东方之乡 SOA就是个混蛋 V89 官中版 全MOD整合版 [PC 75.0G]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/u5b2zqhozv.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/u5b2zqhozv.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1TSLjIjWf7C1VNZJxFOdmUQ?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "post_url": "https://tkporl.github.io/mrhyfx/qzt.html"
+  },
+  {
+   "id": "qzt-168",
+   "name": "SOB 就是个混蛋",
+   "platform": "PC",
+   "desc": "更新[欧美QSP/真人/动态] SOB 就是个混蛋 Ver0.33 完整汉化版 欧美版 [PC 16.20G]",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/qzt/ez3dy4h970.webp",
+   "images": [
+    "https://tkporl.github.io/mrhyfx/assets/qzt/ez3dy4h970.webp"
+   ],
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/17sYVRsOg6hiaAZ21tJDXXA?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
