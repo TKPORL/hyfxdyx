@@ -18,7 +18,7 @@
 '.hd-bar .logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}' +
 '.hd-bar .logo img{width:118px;height:auto;border-radius:8px;display:block}' +
 '.hd-bar .menu{display:flex;align-items:center;justify-content:space-evenly;gap:1px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden;max-width:1000px;transition:max-width .34s cubic-bezier(.2,.8,.2,1),transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}' +
-'.hd-bar .menu a{font-size:13px;color:#555;text-decoration:none;padding:9px 26px;border:1px solid #ecebe9;background:#fff;border-radius:10px;white-space:nowrap;transition:color .18s ease,background .18s ease,border-color .18s ease,opacity .26s ease,transform .3s cubic-bezier(.2,.8,.2,1)}' +
+'.hd-bar .menu a{font-size:13px;color:#555;text-decoration:none;padding:9px 12px;border:1px solid #ecebe9;background:#fff;border-radius:10px;white-space:nowrap;transition:color .18s ease,background .18s ease,border-color .18s ease}' +
 '.hd-bar .menu a:nth-child(1){transition-delay:0s,0s,0s,.12s,.12s}' +
 '.hd-bar .menu a:nth-child(2){transition-delay:0s,0s,0s,.08s,.08s}' +
 '.hd-bar .menu a:nth-child(3){transition-delay:0s,0s,0s,.04s,.04s}' +
@@ -59,11 +59,15 @@
 '@media (max-width:720px){header{padding:0 14px 0}.hd-bar{padding:7px 12px;gap:10px}.hd-bar .logo img{width:100px}.hd-bar .icon-btn{width:34px;height:34px}.nav-drop .drop-menu a{font-size:13px;padding:8px 10px}}' +
 '@media (prefers-reduced-motion: reduce){.hd-bar .dot,.nav-drop,.nav-drop .drop-inner,.hd-bar .more-btn,.hd-bar .menu,.hd-bar .menu a{transition:none}}';
 
-  // 菜单项：顺序固定，外链自动加 target=_blank
+  // 菜单项：顺序固定，外链自动加 target=_blank（求助贴/下载说明/免责声明/赞助在主站，外链过去）
   var ITEMS = [
     { label: '首页', url: 'index.html' },
+    { label: '求助贴', url: 'https://tkporl.github.io/mrhyfx/qzt.html', ext: true },
     { label: '解压教程', url: 'tutorial.html' },
-    { label: '游戏工具', url: 'tools.html' }
+    { label: '游戏工具', url: 'tools.html' },
+    { label: '下载说明', url: 'https://tkporl.github.io/mrhyfx/download.html', ext: true },
+    { label: '免责声明', url: 'https://tkporl.github.io/mrhyfx/mianze.html', ext: true },
+    { label: '赞助', url: 'https://tkporl.github.io/mrhyfx/sponsor.html', ext: true }
   ];
 
   function esc(s) {

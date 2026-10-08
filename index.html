@@ -122,6 +122,18 @@ footer a:hover{text-decoration:underline}
   .ggrid{grid-template-columns:repeat(2,1fr);gap:10px}
   .g-title{font-size:13px}
 }
+/* ===== Hero（Demo 同款深色统计条） ===== */
+.hero{margin:26px 0 24px;background:linear-gradient(120deg,#2a2622 0%,#3d2a28 60%,#52302e 100%);border-radius:22px;padding:34px 38px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(229,72,77,.4),transparent 70%)}
+.hero h1{font-size:27px;font-weight:800;letter-spacing:.5px}
+.hero p{margin-top:9px;font-size:14px;color:rgba(255,255,255,.72);line-height:1.7;max-width:520px}
+.hero .stats{display:flex;gap:30px;position:relative;z-index:1;flex-shrink:0}
+.stat{text-align:center}
+.stat b{display:block;font-size:26px;font-weight:800;color:#ff8f93}
+.stat span{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;display:block}
+.filterbar{display:flex;align-items:center;margin-bottom:16px}
+.filterbar .count{margin-left:auto;font-size:13px;color:#999}
+.filterbar .count b{color:#e5484d}
 /* ===== 顶部平台下拉（仅首页注入；桌面 hover / 手机点按） ===== */
 .plat-dd{position:relative;flex-shrink:0}
 .plat-btn{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid #ecebe9;border-radius:10px;padding:9px 14px;cursor:pointer;font-family:inherit;transition:.18s;white-space:nowrap}
@@ -134,6 +146,7 @@ footer a:hover{text-decoration:underline}
 .plat-menu button:hover{background:#fdf3f3;color:#e5484d}
 .plat-menu button.on{color:#e5484d;background:#fdf3f3;font-weight:600}
 .plat-menu button.on::after{content:'✓';font-size:12px}
+.plat-sep{height:1px;background:#ecebe9;margin:5px 8px}
 </style>
 <link rel="icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp" type="image/webp">
 <link rel="apple-touch-icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp">
@@ -142,17 +155,22 @@ footer a:hover{text-decoration:underline}
 <h1 class="seo-h1">Tsinho黄油站 - Tsinho工作室 单机黄油游戏每日分享（PC/安卓下载）</h1>
 <header><div id="siteNav"></div></header>
 <main>
-  <div class="upd"><span class="tag">游戏资源</span><span class="txt">本站收录 <b id="totalNum">…</b> 款游戏 · 更新于 <b id="updAt"></b></span></div>
+  <section class="hero">
+    <div>
+      <h1>Tsinho黄油游戏库</h1>
+      <p>每天自动同步主站全部帖子里的游戏卡片；每款游戏都有独立页面，点进封面就是下载。找不到的游戏去求助贴留言。</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b id="stTotal">…</b><span>在库游戏</span></div>
+      <div class="stat"><b id="stToday">—</b><span>最近一批</span></div>
+      <div class="stat"><b id="stPlat">—</b><span>双端支持</span></div>
+    </div>
+  </section>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
     <span class="tag">置顶</span>
     <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上</span>
   </a>
-  <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；点顶部 <b>搜索图标</b> 搜游戏（搜"关键词"而非全名）</div>
-  <div class="sect"><h2>全部游戏</h2><span id="cnt"></span></div>
-  <div class="pfbar" id="pfbar">
-    <button type="button" class="pbtn" id="randBtn">随机</button>
-    <button type="button" class="pbtn" id="againBtn" style="display:none">换一批</button>
-  </div>
+  <div class="filterbar"><span class="count" id="cnt"></span></div>
   <div class="ggrid" id="grid"></div>
   <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
   <div class="pgbar" id="pgbar" style="display:none"></div>
@@ -236,13 +254,8 @@ footer a:hover{text-decoration:underline}
     h += '<a class="g-title" href="' + go + '">' + esc(g.name) +
       (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') +
       (g.platform ? ' <span class="g-plat">' + esc(g.platform) + '</span>' : '') + '</a>';
-    if (g.desc) h += '<div class="g-desc" title="点击查看完整介绍">' + esc(g.desc) + '</div>';
     h += '<div class="g-meta"><span>' + relTime(g.time) + '</span><span class="g-views"><b>' + fmtV(views(g.id)) + '</b> 人看过</span></div>';
-    h += '<div class="g-dls">';
-    (g.links || []).forEach(function (l) {
-      h += '<a class="' + linkCls(l.url) + '" href="' + esc(l.url) + '" target="_blank" rel="noreferrer">' + esc(shortLabel(l.label)) + '</a>';
-    });
-    h += '</div></div></div>';
+    h += '</div></div>';
     return h;
   }
 
@@ -325,31 +338,11 @@ footer a:hover{text-decoration:underline}
     RANDOM = on;
     shuffledCache = null;
     cur = 0;
-    document.getElementById('randBtn').classList.toggle('on', RANDOM);
-    document.getElementById('againBtn').style.display = RANDOM ? '' : 'none';
     render();
   }
 
-  document.getElementById('pfbar').addEventListener('click', function (e) {
-    var b = e.target.closest('.pbtn');
-    if (!b) return;
-    if (b.id === 'randBtn') {
-      setRandom(!RANDOM);
-      if (RANDOM) window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-    if (b.id === 'againBtn') {
-      if (!RANDOM) return;
-      shuffledCache = null;
-      cur = 0;
-      render();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
-  });
-
   // 平台筛选：注入顶部导航的「平台 ▾」下拉（nav.js 渲染完成后执行）
-  // 桌面 hover 展开（CSS :hover），手机/触屏点按展开；选中打勾，逻辑沿用原 platOk
+  // 桌面 hover 展开（CSS :hover），手机/触屏点按展开；随机/换一批并入同一菜单
   window.addEventListener('load', function () {
     var bar = document.querySelector('.hd-bar');
     if (!bar) return;
@@ -361,20 +354,39 @@ footer a:hover{text-decoration:underline}
       '<button type="button" data-pf="" class="on">全部平台</button>' +
       '<button type="button" data-pf="安卓">PC + 安卓</button>' +
       '<button type="button" data-pf="PC">仅 PC</button>' +
+      '<div class="plat-sep"></div>' +
+      '<button type="button" data-act="rand">随机看看</button>' +
+      '<button type="button" data-act="again" style="display:none">换一批</button>' +
       '</div>';
     var acts = bar.querySelector('.acts');
     bar.insertBefore(dd, acts || null);
     var btn = dd.querySelector('.plat-btn'), menu = dd.querySelector('.plat-menu');
+    var againItem = menu.querySelector('[data-act="again"]');
     btn.addEventListener('click', function () {
       var open = dd.classList.toggle('open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     menu.addEventListener('click', function (e) {
-      var b = e.target.closest('button[data-pf]');
+      var b = e.target.closest('button');
       if (!b) return;
+      if (b.dataset.act === 'rand') {
+        setRandom(!RANDOM);
+        againItem.style.display = RANDOM ? '' : 'none';
+        dd.classList.remove('open');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      if (b.dataset.act === 'again') {
+        if (!RANDOM) return;
+        shuffledCache = null;
+        cur = 0;
+        render();
+        dd.classList.remove('open');
+        return;
+      }
       PF = b.getAttribute('data-pf') || '';
       dd.querySelector('.pl').textContent = PF === '安卓' ? 'PC + 安卓' : (PF === 'PC' ? '仅 PC' : '全部');
-      [].slice.call(menu.querySelectorAll('button')).forEach(function (x) { x.classList.toggle('on', x === b); });
+      [].slice.call(menu.querySelectorAll('button[data-pf]')).forEach(function (x) { x.classList.toggle('on', x === b); });
       shuffledCache = null;
       cur = 0;
       dd.classList.remove('open');
@@ -411,8 +423,13 @@ footer a:hover{text-decoration:underline}
     PINNED = Object.prototype.toString.call(d.pinned) === '[object Array]'
       ? d.pinned.filter(function (x) { return typeof x === 'string'; }) : [];
     LOADING = false;
-    document.getElementById('totalNum').textContent = d.total != null ? d.total : GAMES.length;
-    document.getElementById('updAt').textContent = d.updated_at || '—';
+    document.getElementById('stTotal').textContent = d.total != null ? d.total : GAMES.length;
+    // 最近一批 = 数据里最新一帖的款数；双端支持 = 平台含「安卓」的款数
+    var az = 0, firstPost = GAMES.length ? GAMES[0].post : '';
+    var firstCount = 0;
+    GAMES.forEach(function (g) { if (/安卓/i.test(g.platform || '')) az++; if (g.post === firstPost) firstCount++; });
+    document.getElementById('stToday').textContent = firstCount;
+    document.getElementById('stPlat').textContent = az;
     applyAnnounce(d.announce);
     render();
   }
@@ -460,138 +477,6 @@ footer a:hover{text-decoration:underline}
         document.getElementById('empty').style.display = '';
         document.getElementById('empty').textContent = '数据加载失败，请稍后刷新重试';
       });
-  })();
-
-  (function () {
-    // 游戏介绍弹窗：点卡片封面图弹出（移植自 mrhyfx，FLIP 从触发卡片长出/收回）
-    var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    var modal = document.createElement('div');
-    modal.className = 'mrhx-detail';
-    modal.setAttribute('role', 'dialog');
-    modal.setAttribute('aria-modal', 'true');
-    modal.setAttribute('aria-label', '游戏介绍');
-    modal.innerHTML = '<div class="mrhx-detail-box"><button type="button" class="mrhx-detail-close" aria-label="关闭">✕</button><h2></h2><div class="mrhx-detail-from"></div><div class="mrhx-detail-text"></div><button type="button" class="mrhx-detail-back">返回</button></div>';
-    document.body.appendChild(modal);
-    var box = modal.querySelector('.mrhx-detail-box');
-    var closeBtn = box.querySelector('.mrhx-detail-close');
-    var backBtn = box.querySelector('.mrhx-detail-back');
-    var ANIM_IN = 'transform .36s cubic-bezier(.2,1.16,.32,1),opacity .18s ease';
-    var ANIM_OUT = 'transform .26s cubic-bezier(.4,0,.72,.35),opacity .2s ease';
-    var trigger = null;
-    var isOpen = false;
-    var closing = false;
-
-    // 弹窗动画途中关闭时直接量会拿到缩小后的矩形，临时清掉 transform 再量、同帧还原
-    function boxRect() {
-      var prev = box.style.transform;
-      box.style.transform = 'none';
-      var r = box.getBoundingClientRect();
-      box.style.transform = prev;
-      return r;
-    }
-    function anchor() {
-      if (!trigger || !trigger.getBoundingClientRect) return null;
-      var t = trigger.getBoundingClientRect();
-      var b = boxRect();
-      if (!b.width || !b.height) return null;
-      // 触发卡片滚出视口后把锚点夹回视口内，避免弹窗朝屏幕外飞走
-      var cx = Math.min(Math.max(t.left + t.width / 2, 0), window.innerWidth);
-      var cy = Math.min(Math.max(t.top + t.height / 2, 0), window.innerHeight);
-      var sx = Math.max(Math.min(t.width / b.width, 1), .04);
-      var sy = Math.max(Math.min(t.height / b.height, 1), .04);
-      return { dx: cx - (b.left + b.width / 2), dy: cy - (b.top + b.height / 2), sx: sx, sy: sy };
-    }
-    function at(a) {
-      return 'translate(' + a.dx.toFixed(1) + 'px,' + a.dy.toFixed(1) + 'px) scale(' + a.sx.toFixed(4) + ',' + a.sy.toFixed(4) + ')';
-    }
-    function openFrom(el) {
-      trigger = el;
-      isOpen = true;
-      box.style.willChange = 'transform';
-      modal.classList.add('show');
-      var a = reduce ? null : anchor();
-      box.style.transition = 'none';
-      if (a) {
-        box.style.transformOrigin = 'center center';
-        box.style.transform = at(a);
-        box.style.opacity = '0';
-        void box.offsetWidth;
-        box.style.transition = ANIM_IN;
-        box.style.transform = 'translate(0px,0px) scale(1,1)';
-        box.style.opacity = '1';
-      } else {
-        box.style.transform = 'none';
-        box.style.opacity = '1';
-      }
-      try { closeBtn.focus({ preventScroll: true }); } catch (err) { closeBtn.focus(); }
-    }
-    function restore() {
-      box.style.transition = 'none';
-      box.style.transform = 'none';
-      box.style.opacity = '1';
-      box.style.willChange = '';
-      modal.classList.remove('show');
-      isOpen = false;
-      closing = false;
-      if (trigger && trigger.focus) {
-        try { trigger.focus({ preventScroll: true }); } catch (err) { trigger.focus(); }
-      }
-      trigger = null;
-    }
-    function closeModal() {
-      if (!isOpen || closing) return;
-      closing = true;
-      var a = reduce ? null : anchor();
-      if (!a) { restore(); return; }
-      var finished = false;
-      var finish = function () {
-        if (finished) return;
-        finished = true;
-        box.removeEventListener('transitionend', onEnd);
-        restore();
-      };
-      var onEnd = function (e) {
-        if (e && (e.target !== box || e.propertyName !== 'transform')) return;
-        finish();
-      };
-      box.style.transition = ANIM_OUT;
-      box.style.transform = at(a);
-      box.style.opacity = '0';
-      box.addEventListener('transitionend', onEnd);
-      setTimeout(finish, 420);
-    }
-    modal.addEventListener('click', function (e) {
-      if (e.target === modal || e.target === closeBtn || e.target === backBtn) closeModal();
-    });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeModal(); });
-
-    function openDetail(el) {
-      var card = el.closest('.gcard');
-      if (!card) return;
-      var id = card.getAttribute('data-id');
-      var g = null;
-      for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].id === id) { g = GAMES[i]; break; } }
-      if (!g) return;
-      box.querySelector('h2').textContent = g.name + (g.platform ? ' [' + g.platform + ']' : '');
-      box.querySelector('.mrhx-detail-from').innerHTML = '<b>游戏介绍</b>' + (g.time ? ' · 发布于 ' + g.time.slice(0, 10) : '');
-      box.querySelector('.mrhx-detail-text').textContent = g.desc || '暂无介绍';
-      openFrom(el);
-    }
-    // 卡片是动态渲染的，用事件委托挂在 grid 上：点介绍文字弹窗看全文（卡片本体跳独立页）
-    var grid = document.getElementById('grid');
-    grid.addEventListener('click', function (e) {
-      var desc = e.target.closest('.g-desc');
-      if (!desc) return;
-      e.preventDefault();
-      openDetail(desc);
-    });
-    grid.addEventListener('keydown', function (e) {
-      if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
-      var desc = e.target.closest('.g-desc');
-      if (!desc) return;
-      e.preventDefault();
-      openDetail(desc);
-    });
   })();
 
   (function () {
