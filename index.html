@@ -136,7 +136,7 @@ footer a:hover{text-decoration:underline}
   .stat b{font-size:21px}
 }
 /* ===== Hero（Demo 同款深色统计条） ===== */
-.hero{margin:26px 0 24px;background:linear-gradient(120deg,#2a2622 0%,#3d2a28 60%,#52302e 100%);border-radius:22px;padding:34px 38px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
+.hero{margin:14px 0 22px;background:linear-gradient(120deg,#2a2622 0%,#3d2a28 60%,#52302e 100%);border-radius:22px;padding:34px 38px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(229,72,77,.4),transparent 70%)}
 .hero h1{font-size:27px;font-weight:800;letter-spacing:.5px}
 .hero p{margin-top:9px;font-size:14px;color:rgba(255,255,255,.72);line-height:1.7;max-width:520px}
@@ -186,9 +186,14 @@ footer a:hover{text-decoration:underline}
 .hot-item .hv b{color:#e5484d}
 .hot-empty{font-size:12.5px;color:#aaa;padding:6px 4px}
 @media (max-width:1080px){
-  .cols{grid-template-columns:1fr}
-  .side{position:static}
-  .spanel{max-width:420px}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .side{position:static;min-width:0}
+  .spanel{max-width:100%}
+}
+@media (max-width:720px){
+  .ggrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  main{padding-top:16px}
+  .hero{margin:14px 0 18px}
 }
 /* ===== 顶部平台下拉（仅首页注入；桌面 hover / 手机点按） ===== */
 .plat-dd{position:relative;flex-shrink:0}
@@ -659,6 +664,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261009c"></script>
+<script src="assets/js/nav.js?v=20261009d"></script>
 </body>
 </html>
