@@ -66,15 +66,38 @@ main.adm{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .trend .bar{width:100%;max-width:16px;background:#e5484d;border-radius:3px 3px 0 0;opacity:.85;min-height:2px;transition:.2s}
 .trend .tb:hover .bar{opacity:1;background:#c93a3f}
 .trend .blab{font-size:9px;color:#bbb;white-space:nowrap}
-/* 求助区留言 */
+/* 评论管理 */
+.cm-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
 .cm-item{border:1px solid #ecebe9;border-radius:12px;padding:10px 14px;margin-bottom:8px;background:#fff}
 .cm-meta{display:flex;gap:8px;align-items:center;font-size:12px;color:#999;margin-bottom:4px;flex-wrap:wrap}
 .cm-nick{font-weight:700;color:#2b2b2b}
 .cm-badge{border-radius:99px;padding:1px 8px;font-size:10.5px;font-weight:700;flex-shrink:0}
 .cm-badge.admin{background:#fdf3e3;color:#e58d0a}
 .cm-badge.pin{background:#fdf1f1;color:#e5484d}
+.cm-game{background:#f1efe9;color:#666;border-radius:99px;padding:1px 9px;font-size:10.5px;font-weight:600;text-decoration:none;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.cm-game:hover{background:#fdf1f1;color:#e5484d}
 .cm-content{font-size:13px;color:#444;line-height:1.7;white-space:pre-wrap;word-break:break-word}
 .cm-reply{margin-left:20px;border-left:3px solid #f0eae4}
+.cm-acts{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.cm-acts .btn{padding:3px 10px;font-size:11.5px;border-radius:8px}
+.cm-replybox{display:none;margin-top:8px;padding:8px 10px;background:#faf9f7;border:1px solid #ecebe9;border-radius:10px}
+.cm-replybox.show{display:block}
+.cm-replybox textarea{width:100%;min-height:56px;padding:7px 9px;border:1px solid #e2e0dc;border-radius:8px;font-size:12.5px;background:#fff;color:#333;outline:none;resize:vertical;font-family:inherit;line-height:1.7}
+.cm-replybox textarea:focus{border-color:#e5484d}
+.cm-replybox .row{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+.cm-del{color:#e5484d !important}
+/* 热门游戏 */
+.hotlist{list-style:none}
+.hotlist li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:13px}
+.hotlist li:last-child{border-bottom:none}
+.hotlist .no{width:20px;height:20px;border-radius:6px;background:#f1efe9;color:#888;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hotlist li:nth-child(1) .no{background:#e5484d;color:#fff}
+.hotlist li:nth-child(2) .no{background:#e58d0a;color:#fff}
+.hotlist li:nth-child(3) .no{background:#e8b64c;color:#fff}
+.hotlist .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#444;text-decoration:none}
+.hotlist .nm:hover{color:#e5484d}
+.hotlist .ct{color:#999;font-size:12px;white-space:nowrap}
+.hotlist .ct b{color:#e5484d;font-weight:700}
 .loglist{list-style:none}.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:12.5px;color:#666}
 .loglist li:last-child{border-bottom:none}
 .loglist .lt{color:#bbb;flex-shrink:0;font-family:Consolas,monospace}
@@ -221,7 +244,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   <button type="button" class="tab on" data-tab="dash">仪表盘</button>
   <button type="button" class="tab" data-tab="games">游戏管理</button>
   <button type="button" class="tab" data-tab="data">数据管理</button>
-  <button type="button" class="tab" data-tab="cm">求助区留言</button>
+  <button type="button" class="tab" data-tab="cm">评论管理</button>
   <button type="button" class="tab" data-tab="set">设置</button>
 </nav>
 <main class="adm">
@@ -241,13 +264,18 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       </div>
     </div>
     <div class="panel">
-      <h3>访问统计</h3>
+      <h3>站点数据（实时统计）</h3>
       <div class="stats" style="margin-bottom:6px">
         <div class="stat"><div class="num red" id="visPv">--</div><div class="lab">本站总访问量（PV）</div></div>
-        <div class="stat"><div class="num blu" id="visUv">--</div><div class="lab">独立访客数（UV）</div></div>
-        <div class="stat"><div class="num" id="visT" style="font-size:14px;color:#999;line-height:1.9">暂无记录</div><div class="lab">数据记录时间</div></div>
+        <div class="stat"><div class="num blu" id="visToday">--</div><div class="lab">今日访问（北京时间）</div></div>
+        <div class="stat"><div class="num" id="visCm">--</div><div class="lab">评论总数</div></div>
+        <div class="stat"><div class="num org" id="visPend">--</div><div class="lab">待回复评论</div></div>
       </div>
-      <p style="font-size:11.5px;color:#bbb;line-height:1.7">数据由前台页面访问时自动缓存到本浏览器；后台不加载计数脚本，避免污染统计数据。</p>
+      <p style="font-size:11.5px;color:#bbb;line-height:1.7">数据来自 Supabase（page_views / comments，仅统计本站 /hyfxdyx/ 页面），进入后台自动加载，点统计数字旁的刷新可手动更新。</p>
+    </div>
+    <div class="panel">
+      <h3>热门游戏 Top5（按访问量）</h3>
+      <ul class="hotlist" id="hotList"><li style="border:none;color:#bbb;font-size:12.5px">加载中…</li></ul>
     </div>
     <div class="panel">
       <h3>每日更新趋势</h3>
@@ -268,6 +296,9 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       <button type="button" class="pbtn on" data-pf="">全部</button>
       <button type="button" class="pbtn" data-pf="PC">PC</button>
       <button type="button" class="pbtn" data-pf="安卓">安卓</button>
+      <button type="button" class="pbtn" data-qf="nocover" title="没有封面图的条目">缺封面</button>
+      <button type="button" class="pbtn" data-qf="nolink" title="没有下载链接的条目">缺链接</button>
+      <button type="button" class="pbtn" data-qf="nodesc" title="没有简介的条目">缺简介</button>
       <select class="selctl" id="sortSel">
         <option value="default">默认排序（新→旧）</option>
         <option value="name">按名称 A→Z</option>
@@ -340,16 +371,22 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     </div>
   </section>
 
-  <!-- 求助区留言 -->
+  <!-- 评论管理（仅本站 /hyfxdyx/ 页面评论） -->
   <section class="pane" id="pane-cm">
     <div class="panel">
-      <h3>求助区最新留言</h3>
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
-        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.loadComments()">刷新留言</button>
-        <a class="btn btn-ghost btn-sm" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">打开求助区</a>
+      <h3>评论管理</h3>
+      <div class="cm-toolbar">
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.loadSiteComments()">刷新</button>
+        <div class="searchbox" style="max-width:220px"><input type="text" id="cmKw" placeholder="搜索昵称 / 内容…"></div>
+        <select class="selctl" id="cmGameSel"><option value="">全部游戏</option></select>
+        <button type="button" class="pbtn" id="cmPendBtn" onclick="ADM.toggleCmPend()">只看待回复</button>
         <span id="cmState" style="font-size:12px;color:#999"></span>
       </div>
       <div id="cmList"><div class="empty-box">加载中…</div></div>
+      <p style="font-size:11.5px;color:#bbb;margin-top:12px;line-height:1.7">
+        仅显示本站游戏页（game.html?id=…）收到的评论，不含主站求助区。回复以「Tsinho · 站长」身份发出；
+        删除父评论会同时删除其下所有回复。删除 / 回复 / 置顶需要「设置 → 评论管理 Token」。
+      </p>
     </div>
   </section>
 
@@ -374,6 +411,21 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <span id="ghState" style="font-size:12px;font-weight:600"></span>
       </div>
       <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">配置后可用「数据管理 → 保存并发布到 GitHub」一步把改动提交到仓库（全站生效）；也可在「游戏管理」新增/编辑弹窗里点「上传本地图片」把图片提交到仓库 assets/admin/ 并自动转成 jsDelivr 直链。Token 只保存在本浏览器，不会写进网站文件。</p>
+    </div>
+    <div class="panel">
+      <h3>评论管理 Token（回复 / 删除 / 置顶评论用）</h3>
+      <div class="form-row"><label>管理 Token（来自 Supabase admin_tokens 表）</label>
+        <input type="password" id="cmTokenInput" autocomplete="off" placeholder="粘贴后点击保存，仅存于本浏览器" style="max-width:380px"></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.saveCmToken()">保存 Token</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.clearCmToken()">清除</button>
+        <span id="cmTokenState" style="font-size:12px;font-weight:600"></span>
+      </div>
+      <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">
+        获取方式：在 Supabase SQL Editor 运行仓库里的 supabase_hyfx.sql（会自动生成一个随机 Token），
+        再执行 <code>select token from admin_tokens;</code> 复制结果粘贴到这里。
+        Token 用于受控 RPC 校验身份，评论表对匿名访客没有删除 / 修改权限。
+      </p>
     </div>
     <div class="panel">
       <h3>修改后台密码</h3>
@@ -460,7 +512,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   var BASE = null;   // 官方同步原始数据 {games:[...]}
   var DATA = null;   // 当前工作数据（含 remove_ids）
   var SNAP = '';     // 上次保存时的快照（脏检查）
-  var kw = '', PF = '', sortMode = 'default', cur = 0;
+  var kw = '', PF = '', qf = '', sortMode = 'default', cur = 0;
   var sel = {};      // id -> true
   var loading = true;
 
@@ -534,6 +586,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       links: Array.isArray(g.links) ? g.links.filter(function (l) { return l && l.url; }).map(function (l) {
         return { label: String(l.label || '下载'), url: String(l.url) };
       }) : [],
+      time: String(g.time || ''),
       post: String(g.post || ''),
       post_url: String(g.post_url || '')
     };
@@ -667,6 +720,9 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     });
     if (PF === '安卓') arr = arr.filter(function (g) { return /安卓/.test(g.platform); });
     else if (PF === 'PC') arr = arr.filter(function (g) { return /PC/i.test(g.platform) && !/安卓/.test(g.platform); });
+    if (qf === 'nocover') arr = arr.filter(function (g) { return !g.cover; });
+    else if (qf === 'nolink') arr = arr.filter(function (g) { return !(g.links || []).length; });
+    else if (qf === 'nodesc') arr = arr.filter(function (g) { return !g.desc; });
     if (sortMode === 'name') arr.sort(function (a, b) { return a.name.localeCompare(b.name, 'zh-Hans-CN'); });
     else if (sortMode === 'plat') arr.sort(function (a, b) { return (a.platform || '').localeCompare(b.platform || ''); });
     return arr;
@@ -692,7 +748,8 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         '<div style="margin-top:3px"><span class="plat-tag ' + platClass(g.platform) + (custom ? ' custom-add' : '') + '">' +
         (custom ? '自定义·' : '') + esc(g.platform || '无平台') + '</span></div>' +
         (g.desc ? '<div class="gt-desc" style="margin-top:3px">' + esc(g.desc) + '</div>' : '') + '</td>';
-      h += '<td style="font-size:12px;color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(g.post || '—') + '</td>';
+      h += '<td style="font-size:12px;color:#888;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(g.post || '—') +
+        (g.time ? '<div style="font-size:11px;color:#bbb;margin-top:2px">' + esc(String(g.time).replace('T', ' ').slice(0, 16)) + '</div>' : '') + '</td>';
       h += '<td>' + g.links.length + '</td>';
       h += '<td class="gt-acts">' +
            '<button type="button" class="btn btn-ghost btn-sm' + (isPin ? ' pined' : '') + '" onclick="ADM.togglePin(\'' + esc(g.id) + '\')">' + (isPin ? '已置顶' : '置顶') + '</button>' +
@@ -779,7 +836,6 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     }).join('');
     $('logEmpty').style.display = arr.length ? 'none' : '';
   }
-  function fmtNum(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
   function renderTrend() {
     var box = $('trendBox');
     if (!box || !DATA) return;
@@ -811,21 +867,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         '<div class="blab">' + (+pp[1]) + '/' + (+pp[2]) + '</div></div>';
     }).join('');
   }
-  function renderVisit() {
-    var d = null;
-    try { d = JSON.parse(localStorage.getItem('tsinhoht_visit') || 'null'); } catch (e) {}
-    if (d && d.pv && d.uv) {
-      $('visPv').textContent = fmtNum(d.pv);
-      $('visUv').textContent = fmtNum(d.uv);
-      var dt = new Date(d.t), p2 = function (x) { return (x < 10 ? '0' : '') + x; };
-      $('visT').textContent = dt.getFullYear() + '-' + p2(dt.getMonth() + 1) + '-' + p2(dt.getDate()) +
-        ' ' + p2(dt.getHours()) + ':' + p2(dt.getMinutes());
-    } else {
-      $('visPv').textContent = '--';
-      $('visUv').textContent = '--';
-      $('visT').textContent = '暂无记录（前台被访问后自动更新）';
-    }
-  }
+  function renderVisit() { loadDashStats(); }
   function renderAll() {
     renderStat();
     renderGames();
@@ -894,6 +936,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       cover: cover,
       images: imgs,
       links: links,
+      time: editing ? (editing.time || '') : '',
       post: $('fPost').value.trim(),
       post_url: $('fPostUrl').value.trim()
     };
@@ -1060,40 +1103,192 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     renderDirty();
   }
 
-  /* ---------- 求助区留言（Supabase 公开只读接口） ---------- */
-  var SB_URL = 'https://kydmccknlbpczeqppbtc.supabase.co/rest/v1/comments';
+  /* ---------- Supabase 公共配置 ---------- */
+  var SB = 'https://kydmccknlbpczeqppbtc.supabase.co/rest/v1';
   var SB_KEY = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
-  var cmLoaded = false;
-  function loadComments() {
+  var SITE_PREFIX = '/hyfxdyx/'; // 只统计 / 管理本站页面的数据（主站数据不进这个后台）
+  function sbHeaders(extra) {
+    var h = { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY };
+    if (extra) for (var k in extra) h[k] = extra[k];
+    return h;
+  }
+  function sbGet(q) {
+    return fetch(SB + q, { headers: sbHeaders() }).then(function (r) {
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    });
+  }
+  function sbRpc(fn, body) {
+    return fetch(SB + '/rpc/' + fn, {
+      method: 'POST',
+      headers: sbHeaders({ 'Content-Type': 'application/json' }),
+      body: JSON.stringify(body || {})
+    }).then(function (r) {
+      if (!r.ok) {
+        return r.text().then(function (t) {
+          var msg = t || ('HTTP ' + r.status);
+          try { msg = JSON.parse(t).message || msg; } catch (e) {}
+          if (/TOKEN_INVALID/i.test(msg)) msg = '管理 Token 无效，请到「设置」检查';
+          throw new Error(msg);
+        });
+      }
+      return r.json();
+    });
+  }
+
+  /* ---------- 仪表盘真数据（page_views / daily_page_views / comments） ---------- */
+  function bjDay() { return new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10); }
+  function fmtNum(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  function gameIdOfUrl(u) {
+    var m = /[?&]id=([^&]*)/.exec(String(u || ''));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  var cmStatsCache = null; // 仪表盘与评论列表共用一次拉取
+  function loadDashStats() {
+    var pvQ = '?select=url,count&url=like.' + encodeURIComponent(SITE_PREFIX + '*') + '&order=count.desc&limit=1000';
+    var dvQ = '?select=count&day=eq.' + bjDay() + '&url=like.' + encodeURIComponent(SITE_PREFIX + '*') + '&limit=1000';
+    Promise.all([
+      sbGet('/page_views' + pvQ),
+      sbGet('/daily_page_views' + dvQ).catch(function () { return []; })
+    ]).then(function (res) {
+      var rows = res[0] || [], today = res[1] || [];
+      var pv = 0; rows.forEach(function (r) { pv += (r.count || 0); });
+      var td = 0; today.forEach(function (r) { td += (r.count || 0); });
+      $('visPv').textContent = fmtNum(pv);
+      $('visToday').textContent = fmtNum(td);
+      // 热门 Top5：映射游戏名
+      var hl = $('hotList');
+      if (!rows.length) { hl.innerHTML = '<li style="border:none;color:#bbb;font-size:12.5px">还没有访问记录</li>'; }
+      else {
+        hl.innerHTML = rows.slice(0, 5).map(function (r, i) {
+          var gid = gameIdOfUrl(r.url);
+          var nm = nameOf(gid);
+          if (nm === gid) nm = '未知游戏（' + (gid || r.url) + '）';
+          return '<li><span class="no">' + (i + 1) + '</span>' +
+            '<a class="nm" href="game.html?id=' + encodeURIComponent(gid) + '" target="_blank" title="' + esc(nm) + '">' + esc(nm) + '</a>' +
+            '<span class="ct"><b>' + fmtNum(r.count || 0) + '</b> 次浏览</span></li>';
+        }).join('');
+      }
+    }).catch(function (e) {
+      $('visPv').textContent = '--';
+      $('visToday').textContent = '--';
+      $('hotList').innerHTML = '<li style="border:none;color:#c93a3f;font-size:12.5px">统计加载失败：' + esc(e.message || e) + '</li>';
+    });
+    // 评论数：与评论列表共用缓存，避免重复请求
+    var apply = function (arr) {
+      $('visCm').textContent = fmtNum(arr.length);
+      var pend = 0, reps = {};
+      arr.forEach(function (c) { if (c.pid) reps[c.pid] = 1; });
+      arr.forEach(function (c) { if (!c.pid && !reps[c.id]) pend++; });
+      $('visPend').textContent = fmtNum(pend);
+    };
+    if (cmStatsCache) { apply(cmStatsCache); return; }
+    var cQ = '?select=id,pid,url,created_at&url=like.' + encodeURIComponent(SITE_PREFIX + '*') + '&order=created_at.desc&limit=1000';
+    sbGet('/comments' + cQ).then(function (arr) {
+      cmStatsCache = arr || [];
+      apply(cmStatsCache);
+    }).catch(function () {
+      $('visCm').textContent = '--';
+      $('visPend').textContent = '--';
+    });
+  }
+
+  /* ---------- 评论管理（仅本站 /hyfxdyx/ 页面评论） ---------- */
+  var LS_CM_TOK = 'tsinhoht_cm_token';
+  var cmLoaded = false, cmGame = '', cmPendOnly = false, cmKw2 = '';
+  function cmToken() { try { return localStorage.getItem(LS_CM_TOK) || ''; } catch (e) { return ''; } }
+  function renderCmTokenState() {
+    var ok = !!cmToken(), el = $('cmTokenState');
+    if (!el) return;
+    el.textContent = ok ? '已配置' : '未配置（回复 / 删除 / 置顶不可用）';
+    el.style.color = ok ? '#21a35d' : '#e58d0a';
+    $('cmTokenInput').placeholder = ok ? '已保存（重新粘贴可覆盖）' : '粘贴后点击保存，仅存于本浏览器';
+  }
+  function cmGameName(url) {
+    var gid = gameIdOfUrl(url);
+    if (!gid) return '未知页面';
+    var nm = nameOf(gid);
+    return nm === gid ? '未知游戏' : nm;
+  }
+  function loadSiteComments() {
     var list = $('cmList'), st = $('cmState');
-    if (!list || !st) return;
     st.textContent = '加载中…';
     list.innerHTML = '<div class="empty-box">加载中…</div>';
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', SB_URL + '?url=eq./qzt.html&select=id,pid,nick,is_admin,pinned,content,created_at&order=created_at.desc');
-    xhr.setRequestHeader('apikey', SB_KEY);
-    xhr.setRequestHeader('Authorization', 'Bearer ' + SB_KEY);
-    xhr.onload = function () {
+    var q = '?select=id,pid,url,nick,is_admin,pinned,content,created_at&url=like.' +
+      encodeURIComponent(SITE_PREFIX + '*') + '&order=created_at.desc&limit=1000';
+    sbGet('/comments' + q).then(function (arr) {
       cmLoaded = true;
-      if (xhr.status < 200 || xhr.status >= 300) {
-        st.textContent = '加载失败 HTTP ' + xhr.status;
-        list.innerHTML = '<div class="empty-box">加载失败，请稍后点「刷新留言」重试</div>';
-        return;
-      }
-      var arr = [];
-      try { arr = JSON.parse(xhr.responseText) || []; } catch (e) {}
+      cmStatsCache = arr || [];
+      // 同步仪表盘评论卡
+      var pend = 0, reps2 = {};
+      (arr || []).forEach(function (c) { if (c.pid) reps2[c.pid] = 1; });
+      (arr || []).forEach(function (c) { if (!c.pid && !reps2[c.id]) pend++; });
+      $('visCm').textContent = fmtNum((arr || []).length);
+      $('visPend').textContent = fmtNum(pend);
+      renderComments(arr || []);
       st.textContent = '共 ' + arr.length + ' 条 · 同步于 ' + now();
-      if (!arr.length) { list.innerHTML = '<div class="empty-box">还没有留言</div>'; return; }
-      var tops = arr.filter(function (c) { return !c.pid; });
-      var reps = {};
-      arr.forEach(function (c) { if (c.pid) (reps[c.pid] = reps[c.pid] || []).push(c); });
-      list.innerHTML = tops.map(function (c) { return cmHtml(c, reps[c.id] || []); }).join('');
-    };
-    xhr.onerror = function () {
-      st.textContent = '网络错误';
-      list.innerHTML = '<div class="empty-box">网络错误，请稍后重试</div>';
-    };
-    xhr.send();
+    }).catch(function (e) {
+      st.textContent = '加载失败';
+      list.innerHTML = '<div class="empty-box">加载失败：' + esc(e.message || e) + '<br>请稍后点「刷新」重试</div>';
+    });
+  }
+  function cmFilterList() {
+    var tops = cmStatsCache.filter(function (c) { return !c.pid; });
+    var reps = {};
+    cmStatsCache.forEach(function (c) { if (c.pid) (reps[c.pid] = reps[c.pid] || []).push(c); });
+    if (cmPendOnly) tops = tops.filter(function (c) { return !(reps[c.id] || []).length; });
+    if (cmGame) tops = tops.filter(function (c) { return gameIdOfUrl(c.url) === cmGame; });
+    var k = cmKw2.toLowerCase();
+    if (k) tops = tops.filter(function (c) {
+      var all = c.nick + ' ' + c.content + ' ' + (reps[c.id] || []).map(function (r) { return r.nick + ' ' + r.content; }).join(' ');
+      return all.toLowerCase().indexOf(k) > -1;
+    });
+    return { tops: tops, reps: reps };
+  }
+  function renderComments(arr) {
+    var list = $('cmList');
+    var sel = $('cmGameSel');
+    // 游戏筛选下拉：以现有评论的 url 为准
+    var seen = {}, opts = '';
+    arr.forEach(function (c) {
+      var gid = gameIdOfUrl(c.url);
+      if (!gid || seen[gid]) return;
+      seen[gid] = 1;
+      opts += '<option value="' + esc(gid) + '"' + (cmGame === gid ? ' selected' : '') + '>' + esc(cmGameName(c.url)) + '</option>';
+    });
+    sel.innerHTML = '<option value="">全部游戏</option>' + opts;
+    var f = cmFilterList();
+    if (!arr.length) { list.innerHTML = '<div class="empty-box">本站还没有收到评论</div>'; return; }
+    if (!f.tops.length) { list.innerHTML = '<div class="empty-box">没有符合筛选条件的评论</div>'; return; }
+    list.innerHTML = f.tops.map(function (c) { return cmCard(c, f.reps[c.id] || []); }).join('');
+  }
+  function cmCard(c, replies) {
+    var h = '<div class="cm-item" data-cmid="' + esc(c.id) + '">';
+    h += '<div class="cm-meta"><span class="cm-nick">' + esc(c.nick || '匿名') + '</span>' +
+      (c.is_admin ? '<span class="cm-badge admin">站长</span>' : '') +
+      (c.pinned ? '<span class="cm-badge pin">置顶</span>' : '') +
+      '<a class="cm-game" href="game.html?id=' + encodeURIComponent(gameIdOfUrl(c.url)) + '" target="_blank">' + esc(cmGameName(c.url)) + '</a>' +
+      '<span>' + esc(cmTime(c.created_at)) + '</span>' +
+      '<span class="cm-acts">' +
+      '<button type="button" class="btn btn-ghost" onclick="ADM.cmReplyOpen(' + JSON.stringify(c.id).replace(/"/g, '&quot;') + ',this)">回复</button>' +
+      '<button type="button" class="btn btn-ghost" onclick="ADM.cmPin(' + JSON.stringify(c.id).replace(/"/g, '&quot;') + ',' + (!c.pinned) + ')">' + (c.pinned ? '取消置顶' : '置顶') + '</button>' +
+      '<button type="button" class="btn btn-ghost cm-del" onclick="ADM.cmDel(' + JSON.stringify(c.id).replace(/"/g, '&quot;') + ')">删除</button>' +
+      '</span></div>';
+    h += '<div class="cm-content">' + esc(c.content || '') + '</div>';
+    h += '<div class="cm-replybox" data-replyfor="' + esc(c.id) + '"><textarea placeholder="以「Tsinho · 站长」身份回复…"></textarea>' +
+      '<div class="row"><button type="button" class="btn btn-ghost btn-sm" onclick="ADM.cmReplyClose(this)">取消</button>' +
+      '<button type="button" class="btn btn-pri btn-sm" onclick="ADM.cmReplySend(' + JSON.stringify(c.id).replace(/"/g, '&quot;') + ',this)">发送回复</button></div></div>';
+    if (replies.length) {
+      h += replies.map(function (r) {
+        return '<div class="cm-item cm-reply"><div class="cm-meta"><span class="cm-nick">' + esc(r.nick || '匿名') + '</span>' +
+          (r.is_admin ? '<span class="cm-badge admin">站长</span>' : '') +
+          '<span>' + esc(cmTime(r.created_at)) + '</span>' +
+          '<span class="cm-acts"><button type="button" class="btn btn-ghost cm-del" onclick="ADM.cmDel(' + JSON.stringify(r.id).replace(/"/g, '&quot;') + ')">删除</button></span></div>' +
+          '<div class="cm-content">' + esc(r.content || '') + '</div></div>';
+      }).join('');
+    }
+    h += '</div>';
+    return h;
   }
   function cmTime(s) {
     var d = new Date(s);
@@ -1101,23 +1296,50 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     function p2(x) { return (x < 10 ? '0' : '') + x; }
     return d.getFullYear() + '-' + p2(d.getMonth() + 1) + '-' + p2(d.getDate()) + ' ' + p2(d.getHours()) + ':' + p2(d.getMinutes());
   }
-  function cmHtml(c, replies) {
-    var h = '<div class="cm-item">';
-    h += '<div class="cm-meta"><span class="cm-nick">' + esc(c.nick || '匿名') + '</span>' +
-      (c.is_admin ? '<span class="cm-badge admin">站长</span>' : '') +
-      (c.pinned ? '<span class="cm-badge pin">置顶</span>' : '') +
-      '<span>' + esc(cmTime(c.created_at)) + '</span></div>';
-    h += '<div class="cm-content">' + esc(c.content || '') + '</div>';
-    if (replies.length) {
-      h += replies.map(function (r) {
-        return '<div class="cm-item cm-reply"><div class="cm-meta"><span class="cm-nick">' + esc(r.nick || '匿名') + '</span>' +
-          (r.is_admin ? '<span class="cm-badge admin">站长</span>' : '') +
-          '<span>' + esc(cmTime(r.created_at)) + '</span></div>' +
-          '<div class="cm-content">' + esc(r.content || '') + '</div></div>';
-      }).join('');
-    }
-    h += '</div>';
-    return h;
+  function cmReplyOpen(id, btn) {
+    var box = document.querySelector('.cm-replybox[data-replyfor="' + id + '"]');
+    if (!box) return;
+    var was = box.classList.contains('show');
+    document.querySelectorAll('.cm-replybox.show').forEach(function (b) { b.classList.remove('show'); });
+    if (!was) { box.classList.add('show'); var ta = box.querySelector('textarea'); if (ta) ta.focus(); }
+  }
+  function cmReplyClose(btn) {
+    var box = btn.closest('.cm-replybox');
+    box.classList.remove('show');
+    box.querySelector('textarea').value = '';
+  }
+  function cmReplySend(id, btn) {
+    var box = btn.closest('.cm-replybox');
+    var ta = box.querySelector('textarea');
+    var content = ta.value.trim();
+    if (!content) { toast('请输入回复内容', true); return; }
+    if (!cmToken()) { goto('set'); toast('请先在「设置」配置评论管理 Token', true); return; }
+    var parent = null;
+    for (var i = 0; i < cmStatsCache.length; i++) { if (String(cmStatsCache[i].id) === String(id)) { parent = cmStatsCache[i]; break; } }
+    if (!parent) { toast('找不到原评论，请刷新', true); return; }
+    btn.disabled = true; btn.textContent = '发送中…';
+    sbRpc('admin_reply_comment', { p_token: cmToken(), p_url: parent.url, p_pid: parent.id, p_nick: 'Tsinho', p_content: content })
+      .then(function () {
+        toast('回复成功');
+        loadSiteComments();
+      })
+      .catch(function (e) {
+        btn.disabled = false; btn.textContent = '发送回复';
+        toast('回复失败：' + (e.message || e), true);
+      });
+  }
+  function cmDel(id) {
+    if (!confirm('确定删除这条评论吗？（父评论会连带删除其下所有回复）')) return;
+    if (!cmToken()) { goto('set'); toast('请先在「设置」配置评论管理 Token', true); return; }
+    sbRpc('admin_delete_comment', { p_token: cmToken(), p_id: id })
+      .then(function () { toast('已删除'); loadSiteComments(); })
+      .catch(function (e) { toast('删除失败：' + (e.message || e), true); });
+  }
+  function cmPin(id, pin) {
+    if (!cmToken()) { goto('set'); toast('请先在「设置」配置评论管理 Token', true); return; }
+    sbRpc('admin_pin_comment', { p_token: cmToken(), p_id: id, p_pin: pin })
+      .then(function () { toast(pin ? '已置顶' : '已取消置顶'); loadSiteComments(); })
+      .catch(function (e) { toast('操作失败：' + (e.message || e), true); });
   }
 
   /* ---------- GitHub 图床上传 ---------- */
@@ -1211,8 +1433,8 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       p.classList.toggle('on', p.id === 'pane-' + name);
     });
     if (name === 'data') renderDataPane();
-    if (name === 'set') { loadAnnForm(); renderGhState(); }
-    if (name === 'cm' && !cmLoaded) loadComments();
+    if (name === 'set') { loadAnnForm(); renderGhState(); renderCmTokenState(); }
+    if (name === 'cm' && !cmLoaded) loadSiteComments();
   }
 
   var tmr = null;
@@ -1223,12 +1445,27 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
   document.getElementById('pane-games').querySelector('.toolbar').addEventListener('click', function (e) {
     var b = e.target.closest('.pbtn');
     if (!b || b.classList.contains('on')) return;
-    PF = b.getAttribute('data-pf') || '';
-    [].slice.call(this.querySelectorAll('.pbtn')).forEach(function (x) { x.classList.toggle('on', x === b); });
+    if (b.hasAttribute('data-qf')) {
+      qf = b.getAttribute('data-qf');
+      [].slice.call(this.querySelectorAll('.pbtn[data-qf]')).forEach(function (x) { x.classList.toggle('on', x === b); });
+    } else {
+      PF = b.getAttribute('data-pf') || '';
+      [].slice.call(this.querySelectorAll('.pbtn[data-pf]')).forEach(function (x) { x.classList.toggle('on', x === b); });
+    }
     cur = 0;
     renderGames();
   });
   $('sortSel').onchange = function () { sortMode = this.value; cur = 0; renderGames(); };
+  /* 评论管理面板：搜索 / 游戏筛选 / 只看待回复 */
+  var cmTmr = null;
+  $('cmKw').addEventListener('input', function () {
+    clearTimeout(cmTmr);
+    cmTmr = setTimeout(function () { cmKw2 = $('cmKw').value.trim(); if (cmStatsCache) renderComments(cmStatsCache); }, 200);
+  });
+  $('cmGameSel').addEventListener('change', function () {
+    cmGame = this.value;
+    if (cmStatsCache) renderComments(cmStatsCache);
+  });
   $('admPg').addEventListener('click', function (e) {
     var b = e.target.closest('.pg');
     if (!b || b.classList.contains('off')) return;
@@ -1352,7 +1589,31 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     changePw: changePw,
     saveAnnounce: saveAnnounce,
     pickUpload: pickUpload,
-    loadComments: loadComments,
+    loadSiteComments: loadSiteComments,
+    toggleCmPend: function () {
+      cmPendOnly = !cmPendOnly;
+      $('cmPendBtn').classList.toggle('on', cmPendOnly);
+      if (cmStatsCache) renderComments(cmStatsCache);
+    },
+    cmReplyOpen: cmReplyOpen,
+    cmReplyClose: cmReplyClose,
+    cmReplySend: cmReplySend,
+    cmDel: cmDel,
+    cmPin: cmPin,
+    saveCmToken: function () {
+      var v = $('cmTokenInput').value.trim();
+      if (!v) { toast('请先粘贴 Token', true); return; }
+      try { localStorage.setItem(LS_CM_TOK, v); } catch (e) { toast('保存失败：浏览器存储不可用', true); return; }
+      $('cmTokenInput').value = '';
+      renderCmTokenState();
+      log('配置了评论管理 Token');
+      toast('Token 已保存，评论回复 / 删除 / 置顶已可用');
+    },
+    clearCmToken: function () {
+      try { localStorage.removeItem(LS_CM_TOK); } catch (e) {}
+      renderCmTokenState();
+      toast('已清除评论管理 Token');
+    },
     saveGhToken: function () {
       var v = $('ghTokenInput').value.trim();
       if (!v) { toast('请先粘贴 Token', true); return; }
