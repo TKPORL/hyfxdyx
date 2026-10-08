@@ -234,6 +234,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       <h3>快捷操作</h3>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button type="button" class="btn btn-pri btn-sm" onclick="ADM.goto('games');ADM.openEditor(null)">＋ 新增游戏</button>
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布到 GitHub</button>
         <button type="button" class="btn btn-blue btn-sm" onclick="ADM.exportOverride()">导出 override 文件</button>
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('games')">管理游戏列表</button>
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('data')">导入 / 导出数据</button>
@@ -590,12 +591,29 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         }
       } else {
         // 无 admin 标记 = 旧版前台缓存误写入（前台现已改用专属 key）：
-        // 与官方数据一致则直接清掉，不一致则保留但提示核对
+        // 与官方数据一致则直接清掉；官方更新则自动采用官方；仅当无法判定时才保留并提示核对
         var sameAsBase = BASE && Array.isArray(BASE.games) &&
           JSON.stringify(saved.games) === JSON.stringify(BASE.games.map(normalizeGame));
+        var staleOld = !sameAsBase && BASE && Array.isArray(BASE.games) &&
+          (!saved.updated_at || String(BASE.updated_at || '') > String(saved.updated_at));
         if (sameAsBase) {
           try { localStorage.removeItem(LS_DATA); } catch (e) {}
           log('检测到前台残留缓存（与官方数据一致），已自动清理');
+        } else if (staleOld) {
+          // 官方数据比这份无标记缓存新 → 直接采用官方（保留可能存在的删除标记/公告/置顶）
+          DATA = {
+            site: BASE.site || 'Tsinho黄油站',
+            source: BASE.source || '',
+            updated_at: BASE.updated_at || now(),
+            total: BASE.games.length,
+            games: BASE.games.map(normalizeGame),
+            remove_ids: Array.isArray(saved.remove_ids) ? saved.remove_ids : []
+          };
+          if (saved.announce !== undefined) DATA.announce = saved.announce;
+          if (saved.pinned !== undefined) DATA.pinned = saved.pinned;
+          try { localStorage.removeItem(LS_DATA); } catch (e) {}
+          log('本地残留缓存（' + saved.games.length + ' 条，' + (saved.updated_at || '无时间标记') +
+            '）已落后官方数据，自动更新为最新（' + DATA.games.length + ' 条，' + DATA.updated_at + '）');
         } else {
           DATA = saved;
           if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];

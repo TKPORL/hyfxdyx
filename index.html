@@ -140,13 +140,38 @@ footer a:hover{text-decoration:underline}
 .hero::after{content:"";position:absolute;right:-70px;top:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(229,72,77,.4),transparent 70%)}
 .hero h1{font-size:27px;font-weight:800;letter-spacing:.5px}
 .hero p{margin-top:9px;font-size:14px;color:rgba(255,255,255,.72);line-height:1.7;max-width:520px}
-.hero .stats{display:flex;gap:30px;position:relative;z-index:1;flex-shrink:0}
+.hero .stats{display:flex;flex-wrap:wrap;gap:26px;position:relative;z-index:1;flex-shrink:0}
 .stat{text-align:center}
 .stat b{display:block;font-size:26px;font-weight:800;color:#ff8f93}
 .stat span{font-size:12px;color:rgba(255,255,255,.6);margin-top:3px;display:block}
 .filterbar{display:flex;align-items:center;margin-bottom:16px}
 .filterbar .count{margin-left:auto;font-size:13px;color:#999}
+.pg-gap{color:#bbb;font-size:13px;padding:0 2px;display:flex;align-items:center}
 .filterbar .count b{color:#e5484d}
+/* ===== 分节标题（分割线 + 标题） ===== */
+.sect-title{display:flex;align-items:center;gap:14px;margin:4px 0 18px}
+.sect-title::before,.sect-title::after{content:'';height:1px;background:#ecebe9;flex:1}
+.sect-title span{font-size:15px;font-weight:800;color:#2b2b2b;letter-spacing:1px;display:flex;align-items:center;gap:8px}
+.sect-title span::before{content:'';width:4px;height:15px;border-radius:2px;background:#e5484d}
+/* ===== 双栏：卡片墙 + 热门榜 ===== */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) 252px;gap:22px;align-items:start}
+.side{position:sticky;top:76px}
+.spanel{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:14px 14px 10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.spanel h3{font-size:14.5px;font-weight:800;color:#2b2b2b;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.spanel h3::before{content:'';width:4px;height:15px;border-radius:2px;background:#e5484d}
+.hot-item{display:flex;align-items:center;gap:10px;padding:8px 4px;border-bottom:1px dashed #f0eeec;text-decoration:none}
+.hot-item:last-child{border-bottom:none}
+.hot-item .rk{width:20px;text-align:center;font-size:13px;font-weight:800;color:#bbb;flex-shrink:0}
+.hot-item:nth-child(-n+3) .rk{color:#e5484d}
+.hot-item .hn{flex:1;min-width:0;font-size:13px;color:#444;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.15s}
+.hot-item:hover .hn{color:#e5484d}
+.hot-item .hv{font-size:11.5px;color:#aaa;flex-shrink:0}
+.hot-item .hv b{color:#e5484d}
+.hot-empty{font-size:12.5px;color:#aaa;padding:6px 4px}
+@media (max-width:1080px){
+  .cols{grid-template-columns:1fr}
+  .side{display:none}
+}
 /* ===== 顶部平台下拉（仅首页注入；桌面 hover / 手机点按） ===== */
 .plat-dd{position:relative;flex-shrink:0}
 .plat-btn{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid #ecebe9;border-radius:10px;padding:9px 14px;cursor:pointer;font-family:inherit;transition:.18s;white-space:nowrap}
@@ -171,10 +196,12 @@ footer a:hover{text-decoration:underline}
   <section class="hero">
     <div>
       <h1>Tsinho黄油游戏库</h1>
-      <p>收录 1600+ 款黄油游戏，每款都有独立页面，点进封面就是下载。</p>
+      <p>收录 <b id="heroN">…</b> 款黄油游戏，每款都有独立页面，点进封面就是下载。</p>
     </div>
     <div class="stats">
       <div class="stat"><b id="stTotal">…</b><span>在库游戏</span></div>
+      <div class="stat"><b id="stPC">—</b><span>PC</span></div>
+      <div class="stat"><b id="stAZ">—</b><span>双端</span></div>
     </div>
   </section>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
@@ -182,10 +209,21 @@ footer a:hover{text-decoration:underline}
     <span class="bt"><b>求助贴 · 免费帮找游戏</b><br>库里没有想要的？去求助贴留言，看到就找，纯公益不收费。</span>
     <span class="go">去留言求助</span>
   </a>
-  <div class="filterbar"><span class="count" id="cnt"></span></div>
-  <div class="ggrid" id="grid"></div>
-  <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
-  <div class="pgbar" id="pgbar" style="display:none"></div>
+  <div class="sect-title"><span>最新游戏</span></div>
+  <div class="cols">
+    <div class="colmain">
+      <div class="filterbar"><span class="count" id="cnt"></span></div>
+      <div class="ggrid" id="grid"></div>
+      <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
+      <div class="pgbar" id="pgbar" style="display:none"></div>
+    </div>
+    <aside class="side">
+      <div class="spanel">
+        <h3>热门榜单</h3>
+        <div id="hot"><div class="hot-empty">统计加载中…</div></div>
+      </div>
+    </aside>
+  </div>
 </main>
 <footer>数据自动同步自 <b><a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">Tsinho黄油站</a></b> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版
   <div class="seo-line">Tsinho黄油站 · Tsinho工作室 | 每日更新黄油游戏：PC黄油 · 安卓黄油 · 单机黄油游戏下载</div>
@@ -250,13 +288,68 @@ footer a:hover{text-decoration:underline}
     if (diff < 30) return diff + ' 天前';
     return d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate();
   }
-  // 「N 人看过」演示值：按 id 稳定生成（900~6999），正式版接统计后替换
-  function views(id) {
-    var h = 0, s = String(id);
-    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
-    return 900 + h % 6100;
-  }
+  // 「N 人看过」：真数据，来自主站同一套 Supabase page_views（键与独立页一致）
+  var SB = 'https://kydmccknlbpczeqppbtc.supabase.co';
+  var SBK = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
+  var viewCache = {};   // id -> count
+  var viewKey = function (id) { return '/hyfxdyx/game.html?id=' + id; };
+  function views(id) { return viewCache[id]; }
   function fmtV(n) { return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n); }
+  function sbGet(q) {
+    return fetch(SB + q, { headers: { 'apikey': SBK, 'Authorization': 'Bearer ' + SBK } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  // 当前页卡片批量查一次；热门榜单独取全库 top10（按 count 倒序）
+  var hotLoaded = false;
+  function loadViewCounts() {
+    var ids = [];
+    document.querySelectorAll('#grid .gcard').forEach(function (c) { ids.push(c.getAttribute('data-id')); });
+    if (!ids.length) return;
+    var q = '/rest/v1/page_views?select=url,count&url=in.(' +
+      ids.map(function (id) { return encodeURIComponent(viewKey(id)); }).join(',') + ')';
+    sbGet(q).then(function (rows) {
+      (rows || []).forEach(function (r) {
+        var m = /id=(.+)$/.exec(r.url || '');
+        if (m) viewCache[decodeURIComponent(m[1])] = r.count || 0;
+      });
+      ids.forEach(function (id) {
+        var el = document.querySelector('#grid .gcard[data-id="' + id.replace(/"/g, '\\"') + '"] .g-views');
+        if (el && viewCache[id] !== undefined) el.innerHTML = '<b>' + fmtV(viewCache[id]) + '</b> 人看过';
+      });
+      renderHot();
+    }).catch(function () {});
+  }
+  function renderHot() {
+    var host = document.getElementById('hot');
+    if (!host) return;
+    var rows = [];
+    GAMES.forEach(function (g) {
+      if (viewCache[g.id] !== undefined) rows.push({ g: g, c: viewCache[g.id] });
+    });
+    if (rows.length < 3) {
+      // 当前页样本太少，直接拉全库 top10
+      sbGet('/rest/v1/page_views?select=url,count&order=count.desc&limit=12').then(function (rs) {
+        var byKey = {};
+        GAMES.forEach(function (g) { byKey[viewKey(g.id)] = g; });
+        var h = '';
+        (rs || []).forEach(function (r, i) {
+          var g = byKey[r.url];
+          if (!g) return;
+          h += '<a class="hot-item" href="game.html?id=' + encodeURIComponent(g.id) + '"><span class="rk">' + (i + 1) +
+            '</span><span class="hn">' + esc(g.name) + '</span><span class="hv"><b>' + fmtV(r.count || 0) + '</b> 看</span></a>';
+        });
+        host.innerHTML = h || '<div class="hot-empty">暂无浏览数据</div>';
+      }).catch(function () { host.innerHTML = '<div class="hot-empty">暂无浏览数据</div>'; });
+      return;
+    }
+    rows.sort(function (a, b) { return b.c - a.c; });
+    var h = '';
+    rows.slice(0, 10).forEach(function (r, i) {
+      h += '<a class="hot-item" href="game.html?id=' + encodeURIComponent(r.g.id) + '"><span class="rk">' + (i + 1) +
+        '</span><span class="hn">' + esc(r.g.name) + '</span><span class="hv"><b>' + fmtV(r.c) + '</b> 看</span></a>';
+    });
+    host.innerHTML = h;
+  }
 
   function cardHtml(g, i) {
     var go = 'game.html?id=' + encodeURIComponent(g.id);
@@ -267,7 +360,7 @@ footer a:hover{text-decoration:underline}
     h += '<div class="g-body">';
     h += '<a class="g-title" href="' + go + '">' + esc(g.name) +
       (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') + '</a>';
-    h += '<div class="g-meta"><span>' + relTime(g.time) + '</span><span class="g-views"><b>' + fmtV(views(g.id)) + '</b> 人看过</span></div>';
+    h += '<div class="g-meta"><span>' + relTime(g.time) + '</span><span class="g-views"></span></div>';
     h += '</div></div>';
     return h;
   }
@@ -320,18 +413,31 @@ footer a:hover{text-decoration:underline}
     document.getElementById('empty').style.display = data.length ? 'none' : '';
     document.getElementById('cnt').textContent = data.length + ' 款';
     var bar = document.getElementById('pgbar');
-    if (pages <= 1) { bar.style.display = 'none'; return; }
-    bar.style.display = '';
-    var h = '<button type="button" class="pg" data-p="-1">&lsaquo; 上一页</button>';
-    for (var p = 0; p < pages; p++) h += '<button type="button" class="pg" data-p="' + p + '">' + (p + 1) + '</button>';
-    h += '<button type="button" class="pg" data-p="' + pages + '">下一页 &rsaquo;</button>';
-    h += '<span class="pginfo">共 ' + pages + ' 页 · 每页 ' + PAGE_SIZE + ' 个</span>';
-    bar.innerHTML = h;
-    [].slice.call(bar.querySelectorAll('.pg')).forEach(function (b) {
-      var bp = parseInt(b.getAttribute('data-p'), 10);
-      b.classList.toggle('on', bp === cur);
-      b.classList.toggle('off', (bp === -1 && cur === 0) || (bp === pages && cur === pages - 1));
-    });
+    if (pages <= 1) { bar.style.display = 'none'; } else {
+      bar.style.display = '';
+      // 紧凑分页：首页/末页恒显 + 当前页±1，其余用省略号（不再 46 页全铺）
+      var want = {}; want[0] = want[pages - 1] = want[cur] = true;
+      if (cur - 1 >= 0) want[cur - 1] = true;
+      if (cur + 1 < pages) want[cur + 1] = true;
+      var seq = Object.keys(want).map(Number).sort(function (a, b) { return a - b; });
+      var h = '<button type="button" class="pg' + (cur === 0 ? ' off' : '') + '" data-p="-1">&lsaquo;</button>';
+      var prev = -1;
+      seq.forEach(function (p) {
+        if (prev >= 0 && p - prev > 1) h += '<span class="pg-gap">…</span>';
+        h += '<button type="button" class="pg" data-p="' + p + '">' + (p + 1) + '</button>';
+        prev = p;
+      });
+      h += '<button type="button" class="pg' + (cur === pages - 1 ? ' off' : '') + '" data-p="' + pages + '">&rsaquo;</button>';
+      h += '<span class="pginfo">' + (cur + 1) + ' / ' + pages + ' 页</span>';
+      bar.innerHTML = h;
+      [].slice.call(bar.querySelectorAll('.pg')).forEach(function (b) {
+        var bp = parseInt(b.getAttribute('data-p'), 10);
+        b.classList.toggle('on', bp === cur);
+        b.classList.toggle('off', (bp === -1 && cur === 0) || (bp === pages && cur === pages - 1));
+      });
+    }
+    loadViewCounts();
+    if (!hotLoaded) { hotLoaded = true; renderHot(); }
   }
 
   document.addEventListener('click', function (e) {
@@ -439,10 +545,17 @@ footer a:hover{text-decoration:underline}
       ? d.pinned.filter(function (x) { return typeof x === 'string'; }) : [];
     LOADING = false;
     document.getElementById('stTotal').textContent = d.total != null ? d.total : GAMES.length;
-    // 最近一批 = 数据里最新一帖的款数；双端支持 = 平台含「安卓」的款数
-    var az = 0, firstPost = GAMES.length ? GAMES[0].post : '';
-    var firstCount = 0;
-    GAMES.forEach(function (g) { if (/安卓/i.test(g.platform || '')) az++; if (g.post === firstPost) firstCount++; });
+    var hn = document.getElementById('heroN');
+    if (hn) hn.textContent = d.total != null ? d.total : GAMES.length;
+    // PC = 仅 PC（不含安卓）；双端 = PC+安卓
+    var pcOnly = 0, az = 0;
+    GAMES.forEach(function (g) {
+      var p = g.platform || '';
+      if (/安卓/i.test(p)) az++;
+      else if (/PC/i.test(p)) pcOnly++;
+    });
+    document.getElementById('stPC').textContent = pcOnly;
+    document.getElementById('stAZ').textContent = az;
     applyAnnounce(d.announce);
     render();
   }
@@ -538,6 +651,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008g"></script>
+<script src="assets/js/nav.js?v=20261008h"></script>
 </body>
 </html>
