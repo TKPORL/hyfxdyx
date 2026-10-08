@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-10-07 13:54:07",
- "total": 1651,
+ "updated_at": "2026-10-08 10:48:05",
+ "total": 1653,
  "games": [
   {
    "id": "2026107pcaz-0",
@@ -25473,6 +25473,24 @@
     }
    ],
    "post": "求助贴-可在此贴求游戏"
+  },
+  {
+   "id": "Tsinhogb-0",
+   "name": "游戏详情页",
+   "platform": "",
+   "desc": "我想把整个网站重新改造一下 比较现在用户越来越多 合集贴已经太落后了 你觉得改成这样如何？可以在评论区反馈一下 https://tkporl.github.io/mrhyfx/assets/Tsinhogb/pixldyduvs.webp 访问这个链接可以看原图",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/Tsinhogb/pixldyduvs.webp",
+   "links": [],
+   "post": "Tsinho黄油站改版征求意见"
+  },
+  {
+   "id": "Tsinhogb-1",
+   "name": "首页",
+   "platform": "",
+   "desc": "我想把整个网站重新改造一下 比较现在用户越来越多 合集贴已经太落后了 你觉得改成这样如何？可以在评论区反馈一下 https://tkporl.github.io/mrhyfx/assets/Tsinhogb/bu4u780btu.webp 访问这个链接可以看原图",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/Tsinhogb/bu4u780btu.webp",
+   "links": [],
+   "post": "Tsinho黄油站改版征求意见"
   }
  ]
 }
