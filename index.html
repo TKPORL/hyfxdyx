@@ -25,10 +25,10 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .upd .tag{background:#fdf1f1;color:#e5484d;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
 .upd .txt{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .upd-note{font-size:12.5px;color:#999;margin:0 0 22px;padding-left:4px;line-height:1.7}
-.req{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f2ead9;border-left:4px solid #e58d0a;border-radius:12px;padding:14px 18px;margin-bottom:14px;font-size:14px;color:#666;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .55s ease both;transition:.25s}
-.req:hover{border-color:#ecc987;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
-.req b{color:#e58d0a}
-.req .tag{background:#fdf3e3;color:#e58d0a;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
+.req{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #f0b4b6;border-radius:12px;padding:14px 18px;margin-bottom:14px;font-size:14px;color:#666;text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.04);animation:mrhxCard .55s ease both;transition:.25s}
+.req:hover{border-color:#e5484d;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.07)}
+.req b{color:#e5484d}
+.req .tag{background:#e5484d;color:#fff;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
 .req .txt{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:22px 0 6px}
 .pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:.2s}
@@ -44,18 +44,24 @@ main{max-width:900px;margin:0 auto;padding:28px 20px 44px}
 .sect h2{font-size:19px;color:#2b2b2b;position:relative;padding-left:12px}
 .sect h2::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:4px;border-radius:2px;background:#e5484d}
 .sect span{font-size:13px;color:#aaa}
-.ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:10px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:14px;margin-bottom:10px}
 .gcard{display:flex;flex-direction:column;background:#fff;border:1px solid #ecebe9;border-radius:14px;overflow:hidden;text-decoration:none;transition:.25s;box-shadow:0 1px 2px rgba(0,0,0,.03);animation:mrhxCard .5s ease both}
 .gcard:hover{border-color:#f0b4b6;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
-.g-cover{width:100%;aspect-ratio:4/3;overflow:hidden;background:#f4f2ef}
+.g-cover{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f4f2ef}
 .g-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s;cursor:pointer}
 .gcard:hover .g-cover img{transform:scale(1.04)}
 .g-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
-.g-title{font-size:14px;font-weight:700;color:#2b2b2b;line-height:1.45;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px}
+.g-title{font-size:14px;font-weight:700;color:#2b2b2b;line-height:1.45;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;text-decoration:none}
+.g-title:hover{color:#e5484d}
 .g-plat{display:inline-block;padding:1px 8px;border-radius:99px;font-size:10px;font-weight:600;color:#fff;background:#e5484d;white-space:nowrap;vertical-align:2px}
 .g-plat.g-pin{background:#e58d0a}
 .g-desc{font-size:12px;color:#888;line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .g-post{font-size:11px;color:#aaa}
+/* 卡片 meta 行：相对时间 + 「N 人看过」（演示值），替代旧「来自：xx帖子」 */
+.g-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:11.5px;color:#999;margin-top:auto;padding-top:2px}
+.g-meta>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g-meta .g-views b{color:#e5484d;font-weight:700}
+.g-desc{cursor:pointer}
 .g-dls{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
 .g-dl{display:inline-flex;align-items:center;padding:5px 11px;border-radius:99px;font-size:11px;font-weight:600;color:#fff;background:#e5484d;text-decoration:none;transition:.2s}
 .g-dl:hover{background:#c93a3f;transform:translateY(-1px)}
@@ -116,6 +122,18 @@ footer a:hover{text-decoration:underline}
   .ggrid{grid-template-columns:repeat(2,1fr);gap:10px}
   .g-title{font-size:13px}
 }
+/* ===== 顶部平台下拉（仅首页注入；桌面 hover / 手机点按） ===== */
+.plat-dd{position:relative;flex-shrink:0}
+.plat-btn{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#555;background:#fff;border:1px solid #ecebe9;border-radius:10px;padding:9px 14px;cursor:pointer;font-family:inherit;transition:.18s;white-space:nowrap}
+.plat-btn:hover,.plat-dd.open .plat-btn{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}
+.plat-btn .chev{width:12px;height:12px;stroke:#999;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .2s}
+.plat-dd.open .plat-btn .chev{transform:rotate(180deg)}
+.plat-menu{position:absolute;top:calc(100% + 8px);right:0;min-width:150px;background:#fff;border:1px solid #ecebe9;border-radius:12px;box-shadow:0 10px 28px rgba(0,0,0,.12);padding:6px;z-index:80;opacity:0;transform:translateY(-6px);pointer-events:none;transition:opacity .18s,transform .18s}
+.plat-dd.open .plat-menu,.plat-dd:hover .plat-menu{opacity:1;transform:none;pointer-events:auto}
+.plat-menu button{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;font-size:13.5px;color:#555;background:none;border:none;border-radius:8px;padding:9px 13px;cursor:pointer;font-family:inherit;transition:.15s}
+.plat-menu button:hover{background:#fdf3f3;color:#e5484d}
+.plat-menu button.on{color:#e5484d;background:#fdf3f3;font-weight:600}
+.plat-menu button.on::after{content:'✓';font-size:12px}
 </style>
 <link rel="icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp" type="image/webp">
 <link rel="apple-touch-icon" href="https://tsinho.us.ci/file/1790008576207_80AE7775A1BFBF55701C9E76FBD31274.webp">
@@ -126,15 +144,12 @@ footer a:hover{text-decoration:underline}
 <main>
   <div class="upd"><span class="tag">游戏资源</span><span class="txt">本站收录 <b id="totalNum">…</b> 款游戏 · 更新于 <b id="updAt"></b></span></div>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
-    <span class="tag">求助资源区</span>
-    <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上 →</span>
+    <span class="tag">置顶</span>
+    <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上</span>
   </a>
   <div class="upd-note">每天自动同步 Tsinho黄油站 全部帖子里的游戏卡片；点顶部 <b>搜索图标</b> 搜游戏（搜"关键词"而非全名）</div>
   <div class="sect"><h2>全部游戏</h2><span id="cnt"></span></div>
   <div class="pfbar" id="pfbar">
-    <button type="button" class="pbtn on" data-pf="">全部</button>
-    <button type="button" class="pbtn" data-pf="PC">PC</button>
-    <button type="button" class="pbtn" data-pf="安卓">PC+安卓</button>
     <button type="button" class="pbtn" id="randBtn">随机</button>
     <button type="button" class="pbtn" id="againBtn" style="display:none">换一批</button>
   </div>
@@ -194,16 +209,35 @@ footer a:hover{text-decoration:underline}
     if (/yun\.139\.com|caiyun/i.test(u)) return 'g-dl';
     return 'g-dl g-dl-o';
   }
+  // 相对时间（与主站 Demo 一致：今天/昨天/N 天前/超 30 天显日期）
+  function relTime(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    var diff = Math.floor((Date.now() - d.getTime()) / 864e5);
+    if (diff <= 0) return '今天';
+    if (diff === 1) return '昨天';
+    if (diff < 30) return diff + ' 天前';
+    return d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate();
+  }
+  // 「N 人看过」演示值：按 id 稳定生成（900~6999），正式版接统计后替换
+  function views(id) {
+    var h = 0, s = String(id);
+    for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+    return 900 + h % 6100;
+  }
+  function fmtV(n) { return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k' : String(n); }
 
   function cardHtml(g, i) {
+    var go = 'game.html?id=' + encodeURIComponent(g.id);
     var h = '<div class="gcard" data-id="' + esc(g.id) + '" style="animation-delay:' + Math.min(i * 0.04, 0.6) + 's">';
-    h += '<div class="g-cover">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '" title="点击查看完整介绍" tabindex="0" role="button" aria-label="查看完整介绍：' + esc(g.name) + '">' : '') + '</div>';
+    h += '<a class="g-cover" href="' + go + '" aria-label="查看 ' + esc(g.name) + ' 详情">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '">' : '') + '</a>';
     h += '<div class="g-body">';
-    h += '<div class="g-title">' + esc(g.name) +
+    h += '<a class="g-title" href="' + go + '">' + esc(g.name) +
       (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') +
-      (g.platform ? ' <span class="g-plat">' + esc(g.platform) + '</span>' : '') + '</div>';
-    if (g.desc) h += '<div class="g-desc">' + esc(g.desc) + '</div>';
-    h += '<div class="g-post">来自：' + esc(g.post || '') + '</div>';
+      (g.platform ? ' <span class="g-plat">' + esc(g.platform) + '</span>' : '') + '</a>';
+    if (g.desc) h += '<div class="g-desc" title="点击查看完整介绍">' + esc(g.desc) + '</div>';
+    h += '<div class="g-meta"><span>' + relTime(g.time) + '</span><span class="g-views"><b>' + fmtV(views(g.id)) + '</b> 人看过</span></div>';
     h += '<div class="g-dls">';
     (g.links || []).forEach(function (l) {
       h += '<a class="' + linkCls(l.url) + '" href="' + esc(l.url) + '" target="_blank" rel="noreferrer">' + esc(shortLabel(l.label)) + '</a>';
@@ -312,12 +346,44 @@ footer a:hover{text-decoration:underline}
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
-    if (b.classList.contains('on')) return;
-    PF = b.getAttribute('data-pf') || '';
-    [].slice.call(this.querySelectorAll('.pbtn')).forEach(function (x) { x.classList.toggle('on', x === b || (RANDOM && x.id === 'randBtn')); });
-    shuffledCache = null;
-    cur = 0;
-    render();
+  });
+
+  // 平台筛选：注入顶部导航的「平台 ▾」下拉（nav.js 渲染完成后执行）
+  // 桌面 hover 展开（CSS :hover），手机/触屏点按展开；选中打勾，逻辑沿用原 platOk
+  window.addEventListener('load', function () {
+    var bar = document.querySelector('.hd-bar');
+    if (!bar) return;
+    var dd = document.createElement('div');
+    dd.className = 'plat-dd';
+    dd.innerHTML = '<button type="button" class="plat-btn" aria-expanded="false">平台：<span class="pl">全部</span>' +
+      '<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></button>' +
+      '<div class="plat-menu">' +
+      '<button type="button" data-pf="" class="on">全部平台</button>' +
+      '<button type="button" data-pf="安卓">PC + 安卓</button>' +
+      '<button type="button" data-pf="PC">仅 PC</button>' +
+      '</div>';
+    var acts = bar.querySelector('.acts');
+    bar.insertBefore(dd, acts || null);
+    var btn = dd.querySelector('.plat-btn'), menu = dd.querySelector('.plat-menu');
+    btn.addEventListener('click', function () {
+      var open = dd.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-pf]');
+      if (!b) return;
+      PF = b.getAttribute('data-pf') || '';
+      dd.querySelector('.pl').textContent = PF === '安卓' ? 'PC + 安卓' : (PF === 'PC' ? '仅 PC' : '全部');
+      [].slice.call(menu.querySelectorAll('button')).forEach(function (x) { x.classList.toggle('on', x === b); });
+      shuffledCache = null;
+      cur = 0;
+      dd.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      render();
+    });
+    document.addEventListener('click', function (e) {
+      if (!dd.contains(e.target)) { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+    });
   });
 
   var tb = document.getElementById('mrhxTopBtn');
@@ -499,32 +565,32 @@ footer a:hover{text-decoration:underline}
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && isOpen) closeModal(); });
 
-    function openDetail(img) {
-      var card = img.closest('.gcard');
+    function openDetail(el) {
+      var card = el.closest('.gcard');
       if (!card) return;
       var id = card.getAttribute('data-id');
       var g = null;
       for (var i = 0; i < GAMES.length; i++) { if (GAMES[i].id === id) { g = GAMES[i]; break; } }
       if (!g) return;
       box.querySelector('h2').textContent = g.name + (g.platform ? ' [' + g.platform + ']' : '');
-      box.querySelector('.mrhx-detail-from').innerHTML = '<b>游戏介绍</b>';
+      box.querySelector('.mrhx-detail-from').innerHTML = '<b>游戏介绍</b>' + (g.time ? ' · 发布于 ' + g.time.slice(0, 10) : '');
       box.querySelector('.mrhx-detail-text').textContent = g.desc || '暂无介绍';
-      openFrom(img);
+      openFrom(el);
     }
-    // 卡片是动态渲染的，用事件委托挂在 grid 上
+    // 卡片是动态渲染的，用事件委托挂在 grid 上：点介绍文字弹窗看全文（卡片本体跳独立页）
     var grid = document.getElementById('grid');
     grid.addEventListener('click', function (e) {
-      var img = e.target.closest('.g-cover img');
-      if (!img) return;
+      var desc = e.target.closest('.g-desc');
+      if (!desc) return;
       e.preventDefault();
-      openDetail(img);
+      openDetail(desc);
     });
     grid.addEventListener('keydown', function (e) {
       if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
-      var img = e.target.closest('.g-cover img');
-      if (!img) return;
+      var desc = e.target.closest('.g-desc');
+      if (!desc) return;
       e.preventDefault();
-      openDetail(img);
+      openDetail(desc);
     });
   })();
 
