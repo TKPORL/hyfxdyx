@@ -1132,7 +1132,8 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
           throw new Error(msg);
         });
       }
-      return r.json();
+      // void RPC 返回空响应体（204），不能直接 r.json()
+      return r.text().then(function (t) { return t ? JSON.parse(t) : null; });
     });
   }
 
