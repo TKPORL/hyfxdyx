@@ -63,6 +63,10 @@ main{max-width:900px;margin:0 auto;padding:22px 20px 44px}
 .rcard:hover .t{color:#e5484d}
 .rcard .m{margin-top:6px;display:flex;justify-content:space-between;gap:8px;font-size:11.5px;color:#999}
 .rcard .m b{color:#e5484d}
+/* 子评论与父评论完全同款（站长 2026-10-09）：同白底、同边框、同 padding，覆盖主站 site.css 的粉底+左线窄样式 */
+.mrhx-creply-item{width:100%;border:1px solid #ecebe9;border-left:1px solid #ecebe9;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03);padding:12px 14px}
+.mrhx-creply-item:hover{border-color:#f0b4b6;box-shadow:0 6px 18px rgba(229,72,77,.08)}
+@media (max-width:720px){.mrhx-creply-item{padding:12px 14px}}
 .empty-tip{text-align:center;color:#999;padding:60px 0;font-size:14px}
 footer{border-top:1px solid #ecebe9;padding:22px 20px;text-align:center;color:#999;font-size:12px}
 footer a{color:#e5484d;text-decoration:none}
