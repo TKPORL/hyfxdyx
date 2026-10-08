@@ -563,9 +563,31 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     if (saved && Array.isArray(saved.games)) {
       if (saved.__src === 'admin') {
         delete saved.__src;
-        DATA = saved;
-        if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
-        log('载入本地覆盖数据（' + DATA.games.length + ' 条）');
+        // 官方数据比本地覆盖缓存新（Actions 每 15 分钟自动同步会更新 updated_at）
+        // → 自动采用官方数据，仅保留本地的删除标记/公告/置顶，避免后台一直显示 9/29 式旧数据
+        var baseNewer = BASE && Array.isArray(BASE.games) &&
+          String(BASE.updated_at || '') > String(saved.updated_at || '') &&
+          JSON.stringify(saved.games) !== JSON.stringify(BASE.games.map(normalizeGame));
+        if (baseNewer) {
+          DATA = {
+            site: BASE.site || 'Tsinho黄油站',
+            source: BASE.source || '',
+            updated_at: BASE.updated_at || now(),
+            total: BASE.games.length,
+            games: BASE.games.map(normalizeGame),
+            remove_ids: Array.isArray(saved.remove_ids) ? saved.remove_ids : []
+          };
+          if (saved.announce !== undefined) DATA.announce = saved.announce;
+          if (saved.pinned !== undefined) DATA.pinned = saved.pinned;
+          try { localStorage.removeItem(LS_DATA); } catch (e) {}
+          log('本地覆盖数据（' + saved.games.length + ' 条，' + (saved.updated_at || '未知时间') +
+            '）已落后官方数据，自动更新为最新（' + DATA.games.length + ' 条，' + DATA.updated_at +
+            '）；删除标记/公告/置顶已保留');
+        } else {
+          DATA = saved;
+          if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
+          log('载入本地覆盖数据（' + DATA.games.length + ' 条）');
+        }
       } else {
         // 无 admin 标记 = 旧版前台缓存误写入（前台现已改用专属 key）：
         // 与官方数据一致则直接清掉，不一致则保留但提示核对

@@ -25,6 +25,7 @@
 '.hd-bar .menu a:nth-child(4){transition-delay:0s,0s,0s,0s,0s}' +
 '.hd-bar .menu a:hover,.hd-bar .menu a.on{color:#e5484d;background:#fdf3f3;border-color:#f0b4b6}' +
 '.hd-bar .acts{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}' +
+'.hd-bar .plat-head{display:none}' +
 '.hd-bar .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;font:inherit;padding:0}' +
 '.hd-bar .icon-btn:hover{background:#fdf3f3;border-color:#f0b4b6}' +
 '.hd-bar .icon-btn svg{width:18px;height:18px;stroke:#666;fill:none;stroke-width:1.6;stroke-linecap:round}' +
@@ -65,21 +66,41 @@
 '.nav-drop#mrhxMoreDrop.open>div{transform:translateX(0)}' +
 '.nav-drop#mrhxMoreDrop .drop-inner{max-width:none;margin:0;border:none;border-radius:0;box-shadow:none;padding:0;opacity:1;transform:none}' +
 '.nav-drop#mrhxMoreDrop .drop-menu{flex-direction:column;align-items:stretch;gap:4px;padding:0}' +
-'#mrhxMoreDrop .plat-dd{display:block;margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #ecebe9}' +
-'#mrhxMoreDrop .plat-dd::before{content:"平台筛选";display:block;font-size:12px;font-weight:700;color:#999;letter-spacing:1px;margin:2px 0 8px}' +
+'#mrhxMoreDrop .plat-dd{display:block;margin:0 0 10px;padding:0 0 10px;border-bottom:1px solid #ecebe9}' +
+'#mrhxMoreDrop .plat-head{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;font:inherit;font-size:13px;font-weight:700;color:#888;letter-spacing:1px;padding:4px 2px;cursor:pointer}' +
+'#mrhxMoreDrop .plat-head .chev{width:13px;height:13px;stroke:#999;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .2s}' +
+'#mrhxMoreDrop .plat-dd.plat-open .plat-head .chev{transform:rotate(180deg)}' +
+'#mrhxMoreDrop .plat-head:hover{color:#e5484d}' +
 '#mrhxMoreDrop .plat-btn{display:none}' +
-'#mrhxMoreDrop .plat-menu{position:static;display:flex;flex-direction:column;gap:2px;min-width:0;border:none;box-shadow:none;padding:0;opacity:1;transform:none;pointer-events:auto}}' +
+'#mrhxMoreDrop .plat-dd:not(.plat-open) .plat-menu{display:none}' +
+'#mrhxMoreDrop .plat-menu{position:static;display:flex;flex-direction:column;gap:2px;min-width:0;border:none;box-shadow:none;padding:6px 0 0;opacity:1;transform:none;pointer-events:auto}' +
+'.drawer-head{display:none}' +
+'@media (max-width:680px){' +
+'.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:0 2px 12px;margin-bottom:12px;border-bottom:1px solid #ecebe9}' +
+'.drawer-head img{width:96px;border-radius:8px}' +
+'.drawer-head .drawer-x{width:34px;height:34px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;color:#666;font-size:17px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.18s}' +
+'.drawer-head .drawer-x:hover{background:#fdf1f1;border-color:#f0b4b6;color:#e5484d}' +
+'.nav-drop#mrhxMoreDrop .drop-menu a{display:flex;align-items:center;gap:10px}' +
+'.nav-drop#mrhxMoreDrop .drop-menu a .nic{width:16px;height:16px;stroke:#999;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}' +
+'.nav-drop#mrhxMoreDrop .drop-menu a:hover .nic,.nav-drop#mrhxMoreDrop .drop-menu a.on .nic{stroke:#e5484d}}' +
 '@media (prefers-reduced-motion: reduce){.hd-bar .dot,.nav-drop,.nav-drop .drop-inner,.hd-bar .more-btn,.hd-bar .menu,.hd-bar .menu a{transition:none}}';
 
   // 菜单项：顺序固定，全部为本站内页（风格统一，不再外链主站）
   // 「首页」不进菜单：本站左上角 logo 即回首页，子页另有明显「返回首页」悬浮按钮
+  // ic = 抽屉里的菜单图标（stroke path，16px）
   var ITEMS = [
-    { label: '求助贴', url: 'https://tkporl.github.io/mrhyfx/qzt.html', ext: true },
-    { label: '解压教程', url: 'tutorial.html' },
-    { label: '游戏工具', url: 'tools.html' },
-    { label: '下载说明', url: 'download.html' },
-    { label: '免责声明', url: 'mianze.html' },
-    { label: '赞助', url: 'sponsor.html' }
+    { label: '求助贴', url: 'https://tkporl.github.io/mrhyfx/qzt.html', ext: true,
+      ic: '<circle cx="12" cy="12" r="9"/><path d="M9.3 9a2.8 2.8 0 1 1 3.9 2.6c-.8.35-1.2.9-1.2 1.9"/><path d="M12 17h.01"/>' },
+    { label: '解压教程', url: 'tutorial.html',
+      ic: '<path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 0 2 2h13"/><path d="M9 7h6"/>' },
+    { label: '游戏工具', url: 'tools.html',
+      ic: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17v3h3l5.3-5.3a4 4 0 0 0 5.4-5.4L15 12l-3-3 2.7-2.7Z"/>' },
+    { label: '下载说明', url: 'download.html',
+      ic: '<path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M5 21h14"/>' },
+    { label: '免责声明', url: 'mianze.html',
+      ic: '<path d="M12 3 4.5 6v5.2c0 4.6 3.2 8 7.5 9.8 4.3-1.8 7.5-5.2 7.5-9.8V6L12 3Z"/>' },
+    { label: '赞助', url: 'sponsor.html',
+      ic: '<path d="M12 20s-7-4.3-9.2-8.5C1.4 8.4 3.3 5 6.7 5c2.1 0 3.5 1.1 4.3 2.4h2C13.8 6.1 15.2 5 17.3 5c3.4 0 5.3 3.4 3.9 6.5C19 15.7 12 20 12 20Z"/>' }
   ];
 
   function esc(s) {
@@ -88,10 +109,12 @@
     });
   }
 
-  function linksHtml(indent, current) {
+  function linksHtml(indent, current, withIcon) {
     return ITEMS.map(function (n) {
       return indent + '<a href="' + esc(n.url) + '"' + (n.ext ? ' target="_blank" rel="noreferrer"' : '') +
-        (current === n.url ? ' class="on" aria-current="page"' : '') + '>' + esc(n.label) + '</a>';
+        (current === n.url ? ' class="on" aria-current="page"' : '') + '>' +
+        (withIcon && n.ic ? '<svg class="nic" viewBox="0 0 24 24">' + n.ic + '</svg>' : '') +
+        esc(n.label) + '</a>';
     }).join('\n');
   }
 
@@ -119,7 +142,9 @@
       '<button class="x" type="button" data-nav-close aria-label="关闭搜索">×</button>' +
       '</form></div></div></div>' +
       '<div class="nav-drop" id="mrhxMoreDrop"><div><div class="drop-inner">' +
-      '<nav class="drop-menu" aria-label="站点导航">\n' + linksHtml('  ', current) + '\n' +
+      '<div class="drawer-head"><img src="' + LOGO + '" alt="' + esc(SITE_NAME) + '">' +
+      '<button type="button" class="drawer-x" data-nav-close2 aria-label="关闭菜单">×</button></div>' +
+      '<nav class="drop-menu" aria-label="站点导航">\n' + linksHtml('  ', current, true) + '\n' +
       '  </nav></div></div></div>';
   }
 
@@ -204,13 +229,26 @@
   // 手机端（≤680px）：把页面注入的「平台筛选」下拉搬进「⋯」抽屉；桌面端放回顶栏。
   // 平台下拉由 index.html 在 window load 后注入并派发 plat-dd-ready 事件
   var mqMobile = window.matchMedia('(max-width: 680px)');
+  function prepDrawerPlat(dd) {
+    if (dd.querySelector('.plat-head')) return;
+    var head = document.createElement('button');
+    head.type = 'button';
+    head.className = 'plat-head';
+    head.innerHTML = '平台筛选<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
+    head.addEventListener('click', function () { dd.classList.toggle('plat-open'); });
+    dd.insertBefore(head, dd.querySelector('.plat-menu'));
+  }
   function placePlat() {
     var dd = document.querySelector('.hd-bar .plat-dd');
     if (!dd) dd = moreDrop.querySelector('.plat-dd');
     if (!dd) return;
     if (mqMobile.matches) {
       var inner = moreDrop.querySelector('.drop-inner');
-      if (inner && dd.parentNode !== inner) inner.appendChild(dd);
+      if (inner && dd.parentNode !== inner) {
+        prepDrawerPlat(dd);
+        dd.classList.remove('plat-open'); // 默认收起，点「平台筛选」才展开
+        inner.appendChild(dd);
+      }
     } else {
       var bar = document.querySelector('.hd-bar');
       if (bar && dd.parentNode !== bar) {
@@ -225,7 +263,9 @@
   if (mqMobile.addEventListener) { mqMobile.addEventListener('change', onMobileBreak); }
   else if (mqMobile.addListener) { mqMobile.addListener(onMobileBreak); }
 
-  // 抽屉内交互：点遮罩 / 选平台 / 点导航项后收起抽屉
+  // 抽屉内交互：点遮罩 / X / 选平台 / 点导航项后收起抽屉
+  var drawerX = moreDrop.querySelector('[data-nav-close2]');
+  if (drawerX) drawerX.addEventListener('click', function () { setMore(false); });
   moreDrop.addEventListener('click', function (e) {
     if (e.target === moreDrop) { setMore(false); return; }
     if (e.target.closest && (e.target.closest('.plat-menu button') || e.target.closest('.drop-menu a'))) {

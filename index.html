@@ -130,6 +130,10 @@ footer a:hover{text-decoration:underline}
   .req{padding:12px 14px;font-size:13px;margin:-4px 0 20px}
   .ggrid{grid-template-columns:repeat(2,1fr);gap:10px}
   .g-title{font-size:13px}
+  .hero{margin:16px 0 18px;padding:18px 18px 16px;border-radius:16px;gap:14px}
+  .hero h1{font-size:19px}
+  .hero p{margin-top:6px;font-size:12.5px;line-height:1.6}
+  .stat b{font-size:22px}
 }
 /* ===== Hero（Demo 同款深色统计条） ===== */
 .hero{margin:26px 0 24px;background:linear-gradient(120deg,#2a2622 0%,#3d2a28 60%,#52302e 100%);border-radius:22px;padding:34px 38px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
@@ -167,12 +171,10 @@ footer a:hover{text-decoration:underline}
   <section class="hero">
     <div>
       <h1>Tsinho黄油游戏库</h1>
-      <p>每天自动同步主站全部帖子里的游戏卡片；每款游戏都有独立页面，点进封面就是下载。找不到的游戏去求助贴留言。</p>
+      <p>收录 1600+ 款黄油游戏，每款都有独立页面，点进封面就是下载。</p>
     </div>
     <div class="stats">
       <div class="stat"><b id="stTotal">…</b><span>在库游戏</span></div>
-      <div class="stat"><b id="stToday">—</b><span>最近一批</span></div>
-      <div class="stat"><b id="stPlat">—</b><span>双端支持</span></div>
     </div>
   </section>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
@@ -441,8 +443,6 @@ footer a:hover{text-decoration:underline}
     var az = 0, firstPost = GAMES.length ? GAMES[0].post : '';
     var firstCount = 0;
     GAMES.forEach(function (g) { if (/安卓/i.test(g.platform || '')) az++; if (g.post === firstPost) firstCount++; });
-    document.getElementById('stToday').textContent = firstCount;
-    document.getElementById('stPlat').textContent = az;
     applyAnnounce(d.announce);
     render();
   }
@@ -493,11 +493,18 @@ footer a:hover{text-decoration:underline}
   })();
 
   (function () {
-    // 公告每次进站都弹（2026-10-01 用户要求：之前是 3 小时内关过就不再弹）
+    // 公告每小时弹一次（2026-10-08 用户要求：此前改为每次进站都弹，太扰人）
     var el = document.getElementById('annPopup');
     if (!el) return;
+    var KEY = 'hyfx_ann_seen';
+    var last = 0;
+    try { last = Number(localStorage.getItem(KEY) || 0); } catch (e) {}
+    if (Date.now() - last < 36e5) return; // 1 小时内看过不再弹
     el.classList.add('show');
-    var close = function () { el.classList.remove('show'); };
+    var close = function () {
+      el.classList.remove('show');
+      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+    };
     el.querySelector('.mrhx-popup-close').onclick = close;
     el.querySelector('.mrhx-popup-ok').onclick = close;
   })();
@@ -531,6 +538,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008f"></script>
+<script src="assets/js/nav.js?v=20261008g"></script>
 </body>
 </html>
