@@ -24,6 +24,8 @@
 '.hd-bar .menu a:nth-child(3){transition-delay:0s,0s,0s,.04s,.04s}' +
 '.hd-bar .menu a:nth-child(4){transition-delay:0s,0s,0s,0s,0s}' +
 '.hd-bar .menu a:hover,.hd-bar .menu a.on{color:#e5484d;background:#fdf3f3;border-color:#f0b4b6}' +
+'.hd-bar .back-home{display:inline-flex;align-items:center;flex-shrink:0;font-size:13px;font-weight:700;color:#fff;background:#e5484d;border-radius:10px;padding:9px 16px;text-decoration:none;transition:.18s;white-space:nowrap}' +
+'.hd-bar .back-home:hover{background:#c93a3f;transform:translateY(-1px)}' +
 '.hd-bar .acts{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}' +
 '.hd-bar .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;font:inherit;padding:0}' +
 '.hd-bar .icon-btn:hover{background:#fdf3f3;border-color:#f0b4b6}' +
@@ -60,8 +62,8 @@
 '@media (prefers-reduced-motion: reduce){.hd-bar .dot,.nav-drop,.nav-drop .drop-inner,.hd-bar .more-btn,.hd-bar .menu,.hd-bar .menu a{transition:none}}';
 
   // 菜单项：顺序固定，外链自动加 target=_blank（求助贴/下载说明/免责声明/赞助在主站，外链过去）
+  // 「首页」不进菜单：本站左上角 logo 即回首页，子页另有明显「返回首页」按钮
   var ITEMS = [
-    { label: '首页', url: 'index.html' },
     { label: '求助贴', url: 'https://tkporl.github.io/mrhyfx/qzt.html', ext: true },
     { label: '解压教程', url: 'tutorial.html' },
     { label: '游戏工具', url: 'tools.html' },
@@ -84,8 +86,10 @@
   }
 
   function navHtml(current) {
+    var back = isHome ? '' :
+      '<a class="back-home" href="index.html">返回首页</a>';
     return '<div class="hd-bar">' +
-      '<a class="logo" href="index.html"><img src="' + LOGO + '" alt="' + esc(SITE_NAME) + '"></a>' +
+      '<a class="logo" href="index.html"><img src="' + LOGO + '" alt="' + esc(SITE_NAME) + '"></a>' + back +
       '<nav class="menu" aria-label="主导航">\n' + linksHtml('  ', current) + '\n' +
       '  </nav>' +
       '<div class="acts">' +
@@ -118,9 +122,11 @@
   style.textContent = NAV_CSS;
   document.head.appendChild(style);
 
-  // 当前页高亮
+  // 当前页高亮：tools/tutorial/search 各自高亮；其余页（首页/game 等）不高亮菜单项
+  // 「返回首页」按钮只在子页显示（首页本来就在首页）
   var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  var current = /^(tools|tutorial|search)\.html$/.test(path) ? path : 'index.html';
+  var isHome = (path === 'index.html' || path === '');
+  var current = /^(tools|tutorial|search)\.html$/.test(path) ? path : '';
   host.innerHTML = navHtml(current);
 
   // 交互：搜索/更多面板开合、Esc 与外点关闭、跨断点收起
