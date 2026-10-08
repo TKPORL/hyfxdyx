@@ -180,6 +180,16 @@ def main():
         print('未解析到任何帖子，中止（不改动现有数据）')
         sys.exit(1)
 
+    # 抓取主站 timestamps.json（帖子文件名 → 发布时间 ISO），失败不阻断（time 留空即可）
+    times = {}
+    try:
+        times = json.loads(fetch(BASE + 'timestamps.json', binary=False))
+        if not isinstance(times, dict):
+            times = {}
+        print('发布时间表: %d 条' % len(times))
+    except Exception as e:
+        print('  [提示] timestamps.json 抓取失败，本次数据不带发布时间: %s' % e)
+
     games = []
     failed = 0
 
@@ -208,6 +218,7 @@ def main():
                 'links': c['links'],
                 'post': p['title'],
                 'post_url': url,
+                'time': times.get(slug_core, ''),
             })
 
     # 应用后台管理页的覆盖数据（新增/修改/删除在自动同步时保留）
@@ -266,10 +277,10 @@ def main():
     if pinned:
         payload['pinned'] = pinned
 
-    # 前台瘦身版：去掉前台不用的 images / post_url（后台仍读全量版 games.json）
+    # 前台瘦身版：去掉前台不用的 images / post_url（后台仍读全量版 games.json）；保留 time 供前台显示
     slim = dict(payload)
     slim['games'] = [
-        {k: g[k] for k in ('id', 'name', 'platform', 'desc', 'cover', 'links', 'post')}
+        {k: g[k] for k in ('id', 'name', 'platform', 'desc', 'cover', 'links', 'post', 'time')}
         for g in payload['games']
     ]
     # slim 是否需要写入：文件缺失/损坏/内容（不含 updated_at，避免每轮时间戳造成假变化）有差异
