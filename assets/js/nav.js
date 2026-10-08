@@ -57,6 +57,18 @@
 '@media (min-width:681px){.hd-bar .more-btn{opacity:0;transform:scale(.88);width:0;border-width:0;pointer-events:none;visibility:hidden;transition:opacity .28s cubic-bezier(.2,.8,.2,1),transform .28s cubic-bezier(.2,.8,.2,1),width .28s cubic-bezier(.2,.8,.2,1),border-width .28s ease,visibility 0s linear .3s}}' +
 '@media (max-width:680px){.hd-bar .menu{max-width:0;transform:translateX(26px);pointer-events:none;visibility:hidden;transition:max-width .34s cubic-bezier(.2,.8,.2,1),transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear .38s}.hd-bar .menu a{opacity:0;transform:translateX(22px)}.hd-bar .menu a:nth-child(1){transition-delay:0s,0s,0s,0s}.hd-bar .menu a:nth-child(2){transition-delay:0s,0s,.03s,.03s}.hd-bar .menu a:nth-child(3){transition-delay:0s,0s,.06s,.06s}.hd-bar .menu a:nth-child(4){transition-delay:0s,0s,.09s,.09s}.nav-drop .drop-menu a{flex:1 1 auto;text-align:center}}' +
 '@media (max-width:720px){header{padding:0 14px 0}.hd-bar{padding:7px 12px;gap:10px}.hd-bar .logo img{width:100px}.hd-bar .icon-btn{width:34px;height:34px}.nav-drop .drop-menu a{font-size:13px;padding:8px 10px}}' +
+/* 手机端：「⋯」改成左侧抽屉；顶栏里的平台下拉藏进抽屉（桌面仍在顶栏） */
+'@media (max-width:680px){.hd-bar .plat-dd{display:none}' +
+'.nav-drop#mrhxMoreDrop{display:block;position:fixed;inset:0;background:rgba(20,18,16,.42);opacity:0;pointer-events:none;transition:opacity .26s ease;z-index:60}' +
+'.nav-drop#mrhxMoreDrop.open{opacity:1;pointer-events:auto}' +
+'.nav-drop#mrhxMoreDrop>div{position:absolute;left:0;top:0;bottom:0;width:min(80vw,330px);background:#fff;border-radius:0 14px 14px 0;box-shadow:8px 0 30px rgba(0,0,0,.14);transform:translateX(-102%);transition:transform .32s cubic-bezier(.2,.8,.2,1);overflow-y:auto;padding:16px 14px;min-height:0}' +
+'.nav-drop#mrhxMoreDrop.open>div{transform:translateX(0)}' +
+'.nav-drop#mrhxMoreDrop .drop-inner{max-width:none;margin:0;border:none;border-radius:0;box-shadow:none;padding:0;opacity:1;transform:none}' +
+'.nav-drop#mrhxMoreDrop .drop-menu{flex-direction:column;align-items:stretch;gap:4px;padding:0}' +
+'#mrhxMoreDrop .plat-dd{display:block;margin:0 0 10px;padding-bottom:10px;border-bottom:1px solid #ecebe9}' +
+'#mrhxMoreDrop .plat-dd::before{content:"平台筛选";display:block;font-size:12px;font-weight:700;color:#999;letter-spacing:1px;margin:2px 0 8px}' +
+'#mrhxMoreDrop .plat-btn{display:none}' +
+'#mrhxMoreDrop .plat-menu{position:static;display:flex;flex-direction:column;gap:2px;min-width:0;border:none;box-shadow:none;padding:0;opacity:1;transform:none;pointer-events:auto}}' +
 '@media (prefers-reduced-motion: reduce){.hd-bar .dot,.nav-drop,.nav-drop .drop-inner,.hd-bar .more-btn,.hd-bar .menu,.hd-bar .menu a{transition:none}}';
 
   // 菜单项：顺序固定，全部为本站内页（风格统一，不再外链主站）
@@ -188,4 +200,36 @@
   function onBreakpoint(e) { if (e.matches) { setMore(false); } }
   if (mq.addEventListener) { mq.addEventListener('change', onBreakpoint); }
   else if (mq.addListener) { mq.addListener(onBreakpoint); }
+
+  // 手机端（≤680px）：把页面注入的「平台筛选」下拉搬进「⋯」抽屉；桌面端放回顶栏。
+  // 平台下拉由 index.html 在 window load 后注入并派发 plat-dd-ready 事件
+  var mqMobile = window.matchMedia('(max-width: 680px)');
+  function placePlat() {
+    var dd = document.querySelector('.hd-bar .plat-dd');
+    if (!dd) dd = moreDrop.querySelector('.plat-dd');
+    if (!dd) return;
+    if (mqMobile.matches) {
+      var inner = moreDrop.querySelector('.drop-inner');
+      if (inner && dd.parentNode !== inner) inner.appendChild(dd);
+    } else {
+      var bar = document.querySelector('.hd-bar');
+      if (bar && dd.parentNode !== bar) {
+        var acts = bar.querySelector('.acts');
+        bar.insertBefore(dd, acts || null);
+      }
+    }
+  }
+  window.addEventListener('load', placePlat);
+  document.addEventListener('plat-dd-ready', placePlat);
+  function onMobileBreak(e) { setMore(false); placePlat(); }
+  if (mqMobile.addEventListener) { mqMobile.addEventListener('change', onMobileBreak); }
+  else if (mqMobile.addListener) { mqMobile.addListener(onMobileBreak); }
+
+  // 抽屉内交互：点遮罩 / 选平台 / 点导航项后收起抽屉
+  moreDrop.addEventListener('click', function (e) {
+    if (e.target === moreDrop) { setMore(false); return; }
+    if (e.target.closest && (e.target.closest('.plat-menu button') || e.target.closest('.drop-menu a'))) {
+      setMore(false);
+    }
+  });
 })();

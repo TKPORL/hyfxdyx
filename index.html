@@ -407,6 +407,8 @@ footer a:hover{text-decoration:underline}
     document.addEventListener('click', function (e) {
       if (!dd.contains(e.target)) { dd.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
     });
+    // 通知 nav.js：平台下拉已就绪（手机端会被搬进「⋯」抽屉）
+    document.dispatchEvent(new CustomEvent('plat-dd-ready'));
   });
 
   var tb = document.getElementById('mrhxTopBtn');
@@ -529,6 +531,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008e"></script>
+<script src="assets/js/nav.js?v=20261008f"></script>
 </body>
 </html>
