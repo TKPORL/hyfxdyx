@@ -13,8 +13,8 @@
   // 断点：≤680px 菜单收进「更多」，≥681px 平铺（与下方 CSS 中的 680/681 必须一致）
   var BREAKPOINT_MQ = '(min-width: 681px)';
 
-  var NAV_CSS = 'header{position:sticky;top:0;z-index:20;padding:0 20px 0}' +
-'.hd-bar{max-width:1320px;margin:0 auto;background:#fff;border:1px solid #ecebe9;border-radius:0 0 12px 12px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;align-items:center;gap:12px;padding:7px 12px;min-height:52px}' +
+  var NAV_CSS = 'header{position:sticky;top:0;z-index:20;padding:0 20px 0;background:rgba(250,249,247,.62);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border-bottom:1px solid rgba(236,235,233,.55)}' +
+'.hd-bar{max-width:1320px;margin:0 auto;background:transparent;border:none;box-shadow:none;display:flex;align-items:center;gap:12px;padding:7px 12px;min-height:52px}' +
 '.hd-bar .logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}' +
 '.hd-bar .logo img{width:118px;height:auto;border-radius:8px;display:block}' +
 '.hd-bar .menu{display:flex;align-items:center;justify-content:space-evenly;gap:1px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden;max-width:1000px;transition:max-width .34s cubic-bezier(.2,.8,.2,1),transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}' +
@@ -98,8 +98,6 @@
   // 「首页」不进菜单：本站左上角 logo 即回首页，子页另有明显「返回首页」悬浮按钮
   // ic = 抽屉里的菜单图标（stroke path，16px）
   var ITEMS = [
-    { label: '求助贴', url: 'https://tkporl.github.io/mrhyfx/qzt.html', ext: true,
-      ic: '<circle cx="12" cy="12" r="9"/><path d="M9.3 9a2.8 2.8 0 1 1 3.9 2.6c-.8.35-1.2.9-1.2 1.9"/><path d="M12 17h.01"/>' },
     { label: '解压教程', url: 'tutorial.html',
       ic: '<path d="M4 19V5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 19a2 2 0 0 0 2 2h13"/><path d="M9 7h6"/>' },
     { label: '游戏工具', url: 'tools.html',

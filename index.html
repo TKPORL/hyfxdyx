@@ -57,7 +57,7 @@ main{max-width:1440px;margin:0 auto;padding:28px 28px 44px}
 .g-cover{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f4f2ef;position:relative}
 .g-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s;cursor:pointer}
 .g-cover .g-plat{position:absolute;left:9px;top:9px;background:rgba(43,43,43,.72);backdrop-filter:blur(4px)}
-.g-new{position:absolute;right:9px;top:9px;background:#e5484d}
+.g-new{position:absolute;right:8px;top:8px;font-size:10px;font-weight:800;letter-spacing:1.5px;color:#fff;background:linear-gradient(120deg,#ff7074,#e5484d);border:none;border-radius:8px;padding:3px 9px;box-shadow:0 2px 8px rgba(229,72,77,.45)}
 .gcard:hover .g-cover img{transform:scale(1.04)}
 .g-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
 .g-title{font-size:14px;font-weight:700;color:#2b2b2b;line-height:1.45;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;text-decoration:none}
@@ -187,7 +187,8 @@ footer a:hover{text-decoration:underline}
 .hot-empty{font-size:12.5px;color:#aaa;padding:6px 4px}
 @media (max-width:1080px){
   .cols{grid-template-columns:1fr}
-  .side{display:none}
+  .side{position:static}
+  .spanel{max-width:420px}
 }
 /* ===== 顶部平台下拉（仅首页注入；桌面 hover / 手机点按） ===== */
 .plat-dd{position:relative;flex-shrink:0}
@@ -329,10 +330,6 @@ footer a:hover{text-decoration:underline}
         var m = /id=(.+)$/.exec(r.url || '');
         if (m) viewCache[decodeURIComponent(m[1])] = r.count || 0;
       });
-      ids.forEach(function (id) {
-        var el = document.querySelector('#grid .gcard[data-id="' + id.replace(/"/g, '\\"') + '"] .g-views');
-        if (el && viewCache[id] !== undefined) el.innerHTML = '<b>' + fmtV(viewCache[id]) + '</b> 人看过';
-      });
       renderHot();
     }).catch(function () {});
   }
@@ -380,7 +377,7 @@ footer a:hover{text-decoration:underline}
     h += '<div class="g-body">';
     h += '<a class="g-title" href="' + go + '">' + esc(g.name) +
       (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') + '</a>';
-    h += '<div class="g-meta"><span>' + relTime(g.time) + '</span><span class="g-views"></span></div>';
+    h += '<div class="g-meta"><span>' + relTime(g.time) + '</span></div>';
     h += '</div></div>';
     return h;
   }
@@ -662,6 +659,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261009a"></script>
+<script src="assets/js/nav.js?v=20261009b"></script>
 </body>
 </html>
