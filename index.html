@@ -25,16 +25,15 @@ main{max-width:1440px;margin:0 auto;padding:28px 28px 44px}
 .upd .tag{background:#fdf1f1;color:#e5484d;border-radius:99px;padding:3px 10px;font-size:12px;font-weight:600;flex-shrink:0}
 .upd .txt{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .upd-note{font-size:12.5px;color:#999;margin:0 0 22px;padding-left:4px;line-height:1.7}
-/* ===== 求助贴横幅（置顶；醒目红条，按钮白底加粗） ===== */
-.qzt-banner-req{}
-.req{display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#e5484d 0%,#c93640 100%);border-radius:14px;padding:16px 22px;margin-bottom:18px;color:#fff;text-decoration:none;box-shadow:0 6px 18px rgba(229,72,77,.28);position:relative;overflow:hidden}
-.req::after{content:"";position:absolute;right:-30px;top:-50px;width:150px;height:150px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%)}
-.req:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(229,72,77,.35)}
-.req b{color:#fff;font-weight:800}
-.req .tag{background:rgba(255,255,255,.25);color:#fff;border-radius:99px;padding:4px 12px;font-size:12px;font-weight:700;flex-shrink:0;position:relative;z-index:1}
-.req .txt{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14.5px;position:relative;z-index:1}
-.req .go{flex-shrink:0;background:#fff;color:#e5484d;font-size:13.5px;font-weight:800;border-radius:99px;padding:10px 22px;position:relative;z-index:1;transition:.16s}
-.req .go:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
+/* ===== 求助贴横幅（Demo 同款白底：红置顶胶囊+红字标题+右侧红按钮） ===== */
+.req{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #ecebe9;border-radius:16px;padding:16px 20px;margin-bottom:18px;color:var(--ink);text-decoration:none;box-shadow:0 1px 3px rgba(0,0,0,.04);position:relative}
+.req:hover{border-color:#f0b4b6;box-shadow:0 10px 28px rgba(0,0,0,.08)}
+.req .tag{font-size:11px;font-weight:700;color:#fff;background:var(--red);border-radius:6px;padding:3px 9px;flex-shrink:0}
+.req .bt{min-width:0;flex:1}
+.req h3{font-size:15px;font-weight:800;color:var(--red);white-space:nowrap}
+.req p{font-size:13px;color:var(--ink2);margin-top:2px;line-height:1.6}
+.req .go{margin-left:auto;flex-shrink:0;display:inline-flex;align-items:center;background:var(--red);color:#fff;font-size:13px;font-weight:600;border-radius:99px;padding:9px 20px;transition:.16s}
+.req .go:hover{background:#c93a3f;transform:translateY(-1px)}
 .pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:22px 0 6px}
 .pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;cursor:pointer;font-family:inherit;transition:.2s}
 .pg:hover:not(.off){border-color:#e5484d;color:#e5484d}
@@ -52,8 +51,10 @@ main{max-width:1440px;margin:0 auto;padding:28px 28px 44px}
 .ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-bottom:10px}
 .gcard{display:flex;flex-direction:column;background:#fff;border:1px solid #ecebe9;border-radius:14px;overflow:hidden;text-decoration:none;transition:.25s;box-shadow:0 1px 2px rgba(0,0,0,.03);animation:mrhxCard .5s ease both}
 .gcard:hover{border-color:#f0b4b6;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
-.g-cover{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f4f2ef}
+.g-cover{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f4f2ef;position:relative}
 .g-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s;cursor:pointer}
+.g-cover .g-plat{position:absolute;left:9px;top:9px;background:rgba(43,43,43,.72);backdrop-filter:blur(4px)}
+.g-cover .g-new{position:absolute;right:9px;top:9px;background:#e5484d}
 .gcard:hover .g-cover img{transform:scale(1.04)}
 .g-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
 .g-title{font-size:14px;font-weight:700;color:#2b2b2b;line-height:1.45;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;text-decoration:none}
@@ -173,7 +174,7 @@ footer a:hover{text-decoration:underline}
   </section>
   <a class="req" href="https://tkporl.github.io/mrhyfx/qzt.html" target="_blank" rel="noreferrer">
     <span class="tag">置顶</span>
-    <span class="txt">找不到想玩的游戏？去 <b>求助贴</b> 留言求游戏，站长会尽快补上</span>
+    <span class="bt"><b>求助贴 · 免费帮找游戏</b><br>库里没有想要的？去求助贴留言，看到就找，纯公益不收费。</span>
     <span class="go">去留言求助</span>
   </a>
   <div class="filterbar"><span class="count" id="cnt"></span></div>
@@ -254,12 +255,13 @@ footer a:hover{text-decoration:underline}
 
   function cardHtml(g, i) {
     var go = 'game.html?id=' + encodeURIComponent(g.id);
+    var isNew = i < 6 ? '<span class="g-plat g-new">NEW</span>' : '';
     var h = '<div class="gcard" data-id="' + esc(g.id) + '" style="animation-delay:' + Math.min(i * 0.04, 0.6) + 's">';
-    h += '<a class="g-cover" href="' + go + '" aria-label="查看 ' + esc(g.name) + ' 详情">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '">' : '') + '</a>';
+    h += '<a class="g-cover" href="' + go + '" aria-label="查看 ' + esc(g.name) + ' 详情">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '">' : '') +
+      '<span class="g-plat">' + esc(g.platform || '') + '</span>' + isNew + '</a>';
     h += '<div class="g-body">';
     h += '<a class="g-title" href="' + go + '">' + esc(g.name) +
-      (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') +
-      (g.platform ? ' <span class="g-plat">' + esc(g.platform) + '</span>' : '') + '</a>';
+      (PINNED.indexOf(g.id) > -1 ? ' <span class="g-plat g-pin">荐</span>' : '') + '</a>';
     h += '<div class="g-meta"><span>' + relTime(g.time) + '</span><span class="g-views"><b>' + fmtV(views(g.id)) + '</b> 人看过</span></div>';
     h += '</div></div>';
     return h;
@@ -524,6 +526,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008c"></script>
+<script src="assets/js/nav.js?v=20261008d"></script>
 </body>
 </html>

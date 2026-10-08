@@ -18,20 +18,13 @@
 '.hd-bar .logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}' +
 '.hd-bar .logo img{width:118px;height:auto;border-radius:8px;display:block}' +
 '.hd-bar .menu{display:flex;align-items:center;justify-content:space-evenly;gap:1px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden;max-width:1000px;transition:max-width .34s cubic-bezier(.2,.8,.2,1),transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}' +
-'.hd-bar .menu a{font-size:13px;color:#555;text-decoration:none;padding:9px 12px;border:1px solid #ecebe9;background:#fff;border-radius:10px;white-space:nowrap;transition:color .18s ease,background .18s ease,border-color .18s ease}' +
+'.hd-bar .menu a{font-size:13.5px;color:#666;text-decoration:none;padding:8px 14px;border:none;background:none;border-radius:10px;white-space:nowrap;transition:color .18s ease,background .18s ease}' +
 '.hd-bar .menu a:nth-child(1){transition-delay:0s,0s,0s,.12s,.12s}' +
 '.hd-bar .menu a:nth-child(2){transition-delay:0s,0s,0s,.08s,.08s}' +
 '.hd-bar .menu a:nth-child(3){transition-delay:0s,0s,0s,.04s,.04s}' +
 '.hd-bar .menu a:nth-child(4){transition-delay:0s,0s,0s,0s,0s}' +
 '.hd-bar .menu a:hover,.hd-bar .menu a.on{color:#e5484d;background:#fdf3f3;border-color:#f0b4b6}' +
-'.hd-bar .back-home{display:inline-flex;align-items:center;flex-shrink:0;font-size:13px;font-weight:700;color:#fff;background:#e5484d;border-radius:10px;padding:9px 16px;text-decoration:none;transition:.18s;white-space:nowrap}' +
-'.hd-bar .back-home:hover{background:#c93a3f;transform:translateY(-1px)}' +
 '.hd-bar .acts{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}' +
-/* 左上角悬浮「返回首页」（子页专用，不占顶栏）：固定在导航卡下方左侧 */
-'.back-float{position:fixed;left:14px;top:78px;z-index:45;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#fff;background:#e5484d;border-radius:99px;padding:9px 16px;text-decoration:none;box-shadow:0 4px 14px rgba(229,72,77,.35);transition:.18s}' +
-'.back-float:hover{background:#c93a3f;transform:translateY(-2px)}' +
-'.back-float svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round}' +
-'@media (max-width:720px){.back-float{top:72px;left:10px;padding:8px 13px;font-size:12.5px}}' +
 '.hd-bar .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;font:inherit;padding:0}' +
 '.hd-bar .icon-btn:hover{background:#fdf3f3;border-color:#f0b4b6}' +
 '.hd-bar .icon-btn svg{width:18px;height:18px;stroke:#666;fill:none;stroke-width:1.6;stroke-linecap:round}' +
@@ -121,14 +114,6 @@
   var host = document.getElementById('siteNav');
   if (!host) return;
 
-  // 子页左上角悬浮「返回首页」（首页不显示；不在顶部栏里，固定悬浮在导航卡下方左侧）
-  if (!isHome) {
-    var b = document.createElement('a');
-    b.className = 'back-float';
-    b.href = 'index.html';
-    b.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>返回首页';
-    document.body.appendChild(b);
-  }
 
   // 注入样式（晚于页面 <style>，同优先级后者胜，可覆盖页面遗留导航样式）
   var style = document.createElement('style');
