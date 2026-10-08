@@ -83,7 +83,7 @@ footer a{color:#e5484d;text-decoration:none}
   </section>
 </main>
 <footer>数据自动同步自 <a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">Tsinho黄油站</a> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版</footer>
-<script src="assets/js/nav.js?v=20261008b"></script>
+<script src="assets/js/nav.js?v=20261008c"></script>
 <script>
 (function () {
   var $ = function (s) { return document.querySelector(s); };
@@ -160,7 +160,8 @@ footer a{color:#e5484d;text-decoration:none}
     var b = $('#likeBtn'); if (!b) return;
     b.classList.toggle('liked', liked);
     b.disabled = liked; // 真数据只 +1：已赞后禁点，防止重复计数
-    $('#likeTxt').textContent = liked ? '已赞 ' + (base + 1) : '点赞 ' + base;
+    // base 即库中当前总数：点击后由 RPC 返回的新值直接写入，不再 +1（修「点一次显示 +2」的展示 bug）
+    $('#likeTxt').textContent = liked ? '已赞 ' + base : '点赞 ' + base;
   }
   var base = 0;
 

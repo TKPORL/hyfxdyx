@@ -27,6 +27,11 @@
 '.hd-bar .back-home{display:inline-flex;align-items:center;flex-shrink:0;font-size:13px;font-weight:700;color:#fff;background:#e5484d;border-radius:10px;padding:9px 16px;text-decoration:none;transition:.18s;white-space:nowrap}' +
 '.hd-bar .back-home:hover{background:#c93a3f;transform:translateY(-1px)}' +
 '.hd-bar .acts{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}' +
+/* 左上角悬浮「返回首页」（子页专用，不占顶栏）：固定在导航卡下方左侧 */
+'.back-float{position:fixed;left:14px;top:78px;z-index:45;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#fff;background:#e5484d;border-radius:99px;padding:9px 16px;text-decoration:none;box-shadow:0 4px 14px rgba(229,72,77,.35);transition:.18s}' +
+'.back-float:hover{background:#c93a3f;transform:translateY(-2px)}' +
+'.back-float svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round}' +
+'@media (max-width:720px){.back-float{top:72px;left:10px;padding:8px 13px;font-size:12.5px}}' +
 '.hd-bar .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;font:inherit;padding:0}' +
 '.hd-bar .icon-btn:hover{background:#fdf3f3;border-color:#f0b4b6}' +
 '.hd-bar .icon-btn svg{width:18px;height:18px;stroke:#666;fill:none;stroke-width:1.6;stroke-linecap:round}' +
@@ -61,15 +66,15 @@
 '@media (max-width:720px){header{padding:0 14px 0}.hd-bar{padding:7px 12px;gap:10px}.hd-bar .logo img{width:100px}.hd-bar .icon-btn{width:34px;height:34px}.nav-drop .drop-menu a{font-size:13px;padding:8px 10px}}' +
 '@media (prefers-reduced-motion: reduce){.hd-bar .dot,.nav-drop,.nav-drop .drop-inner,.hd-bar .more-btn,.hd-bar .menu,.hd-bar .menu a{transition:none}}';
 
-  // 菜单项：顺序固定，外链自动加 target=_blank（求助贴/下载说明/免责声明/赞助在主站，外链过去）
-  // 「首页」不进菜单：本站左上角 logo 即回首页，子页另有明显「返回首页」按钮
+  // 菜单项：顺序固定，全部为本站内页（风格统一，不再外链主站）
+  // 「首页」不进菜单：本站左上角 logo 即回首页，子页另有明显「返回首页」悬浮按钮
   var ITEMS = [
     { label: '求助贴', url: 'https://tkporl.github.io/mrhyfx/qzt.html', ext: true },
     { label: '解压教程', url: 'tutorial.html' },
     { label: '游戏工具', url: 'tools.html' },
-    { label: '下载说明', url: 'https://tkporl.github.io/mrhyfx/download.html', ext: true },
-    { label: '免责声明', url: 'https://tkporl.github.io/mrhyfx/mianze.html', ext: true },
-    { label: '赞助', url: 'https://tkporl.github.io/mrhyfx/sponsor.html', ext: true }
+    { label: '下载说明', url: 'download.html' },
+    { label: '免责声明', url: 'mianze.html' },
+    { label: '赞助', url: 'sponsor.html' }
   ];
 
   function esc(s) {
@@ -86,10 +91,9 @@
   }
 
   function navHtml(current) {
-    var back = isHome ? '' :
-      '<a class="back-home" href="index.html">返回首页</a>';
+    // 「返回首页」不放顶部栏：由脚本单独注入为左上角悬浮按钮（见下方 backHome）
     return '<div class="hd-bar">' +
-      '<a class="logo" href="index.html"><img src="' + LOGO + '" alt="' + esc(SITE_NAME) + '"></a>' + back +
+      '<a class="logo" href="index.html"><img src="' + LOGO + '" alt="' + esc(SITE_NAME) + '"></a>' +
       '<nav class="menu" aria-label="主导航">\n' + linksHtml('  ', current) + '\n' +
       '  </nav>' +
       '<div class="acts">' +
@@ -117,16 +121,24 @@
   var host = document.getElementById('siteNav');
   if (!host) return;
 
+  // 子页左上角悬浮「返回首页」（首页不显示；不在顶部栏里，固定悬浮在导航卡下方左侧）
+  if (!isHome) {
+    var b = document.createElement('a');
+    b.className = 'back-float';
+    b.href = 'index.html';
+    b.innerHTML = '<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>返回首页';
+    document.body.appendChild(b);
+  }
+
   // 注入样式（晚于页面 <style>，同优先级后者胜，可覆盖页面遗留导航样式）
   var style = document.createElement('style');
   style.textContent = NAV_CSS;
   document.head.appendChild(style);
 
-  // 当前页高亮：tools/tutorial/search 各自高亮；其余页（首页/game 等）不高亮菜单项
-  // 「返回首页」按钮只在子页显示（首页本来就在首页）
+  // 当前页高亮：tools/tutorial/search/download/mianze/sponsor 各自高亮；首页与 game 页不高亮菜单项
   var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   var isHome = (path === 'index.html' || path === '');
-  var current = /^(tools|tutorial|search)\.html$/.test(path) ? path : '';
+  var current = /^(tools|tutorial|search|download|mianze|sponsor)\.html$/.test(path) ? path : '';
   host.innerHTML = navHtml(current);
 
   // 交互：搜索/更多面板开合、Esc 与外点关闭、跨断点收起
