@@ -4,287 +4,298 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>后台管理 - Tsinho黄油站</title>
+<title>管理台 - Tsinho黄油站</title>
 <link rel="icon" href="favicon.webp" type="image/webp">
 <style>
+:root{--bg:#faf9f7;--card:#fff;--line:#ecebe9;--line2:#f0eeeb;--ink:#2b2b2b;--sub:#8a857e;--faint:#b8b2aa;--red:#e5484d;--red-d:#c93a3f;--red-bg:#fdf3f3;--red-line:#f0b4b6;--amber:#e58d0a;--amber-bg:#fdf3e3;--blue:#3da8f5;--green:#21a35d}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
-button{font-family:inherit}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
 input,select,textarea{font-family:inherit}
+a{color:inherit;text-decoration:none}
 /* ===== 登录 ===== */
-.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-.login-card{background:#fff;border:1px solid #ecebe9;border-radius:16px;padding:34px 30px 28px;width:100%;max-width:380px;box-shadow:0 10px 40px rgba(0,0,0,.06)}
-.login-card .logo{text-align:center;font-size:22px;font-weight:800;letter-spacing:1px;margin-bottom:4px}
-.login-card .logo em{font-style:normal;color:#e5484d}
-.login-card .sub{text-align:center;font-size:12.5px;color:#999;margin-bottom:24px}
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:
+  radial-gradient(600px 300px at 20% 10%,rgba(229,72,77,.05),transparent 70%),
+  radial-gradient(500px 260px at 85% 90%,rgba(229,141,10,.05),transparent 70%),var(--bg)}
+.login-card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:36px 32px 30px;width:100%;max-width:390px;box-shadow:0 14px 44px rgba(43,43,43,.07)}
+.login-card .logo{text-align:center;font-size:23px;font-weight:800;letter-spacing:1px;margin-bottom:5px}
+.login-card .logo em{font-style:normal;color:var(--red)}
+.login-card .sub{text-align:center;font-size:12.5px;color:var(--sub);margin-bottom:26px}
 .login-card label{display:block;font-size:12.5px;color:#666;margin:14px 0 6px;font-weight:600}
-.login-card input{width:100%;padding:10px 12px;border:1px solid #e2e0dc;border-radius:10px;font-size:14px;background:#faf9f7;color:#333;outline:none;transition:.2s}
-.login-card input:focus{border-color:#e5484d;background:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:10px;padding:9px 18px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;text-decoration:none}
-.btn-pri{background:#e5484d;color:#fff}
-.btn-pri:hover{background:#c93a3f;transform:translateY(-1px)}
+.login-card input{width:100%;padding:11px 13px;border:1px solid #e2e0dc;border-radius:11px;font-size:14px;background:var(--bg);color:#333;outline:none;transition:.2s}
+.login-card input:focus{border-color:var(--red);background:#fff;box-shadow:0 0 0 3px rgba(229,72,77,.08)}
+/* ===== 按钮 ===== */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:11px;padding:9px 18px;font-size:13px;font-weight:600;transition:.2s;text-decoration:none}
+.btn-pri{background:var(--red);color:#fff}
+.btn-pri:hover{background:var(--red-d);transform:translateY(-1px)}
 .btn-ghost{background:#fff;color:#666;border:1px solid #e2ded8}
-.btn-ghost:hover{border-color:#e5484d;color:#e5484d}
-.btn-warn{background:#e58d0a;color:#fff}
+.btn-ghost:hover{border-color:var(--red);color:var(--red)}
+.btn-warn{background:var(--amber);color:#fff}
 .btn-warn:hover{background:#cc7a05}
-.btn-blue{background:#3da8f5;color:#fff}
+.btn-blue{background:var(--blue);color:#fff}
 .btn-blue:hover{background:#2b90dd}
-.btn-sm{padding:5px 11px;border-radius:99px;font-size:12px}
-.btn-block{width:100%;padding:11px;font-size:14px;margin-top:20px}
+.btn-sm{padding:5px 12px;border-radius:9px;font-size:12px}
+.btn-block{width:100%;padding:12px;font-size:14px;margin-top:20px}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
-.login-err{display:none;margin-top:12px;text-align:center;font-size:12.5px;color:#e5484d;background:#fdf1f1;border-radius:8px;padding:7px 10px}
-.login-tip{margin-top:16px;text-align:center;font-size:11.5px;color:#bbb;line-height:1.7}
-/* ===== 主体布局 ===== */
+.login-err{display:none;margin-top:12px;text-align:center;font-size:12.5px;color:var(--red);background:var(--red-bg);border-radius:9px;padding:7px 10px}
+.login-tip{margin-top:16px;text-align:center;font-size:11.5px;color:var(--faint);line-height:1.7}
+/* ===== 布局：侧栏 + 主区 ===== */
 #app{display:none}
-header.adm{background:#fff;border-bottom:1px solid #ecebe9;position:sticky;top:0;z-index:20}
-.hwrap{max-width:1080px;margin:0 auto;padding:13px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.site{font-size:19px;font-weight:800;letter-spacing:1px;color:#2b2b2b;text-decoration:none;white-space:nowrap}
-.site em{font-style:normal;color:#e5484d}
-.badge-admin{font-size:10.5px;font-weight:700;color:#fff;background:#e58d0a;border-radius:99px;padding:2px 9px;letter-spacing:1px}
-.hright{margin-left:auto;display:flex;align-items:center;gap:8px}
-.tabs{max-width:1080px;margin:0 auto;padding:0 20px;display:flex;gap:6px;overflow-x:auto;background:#fff;border-bottom:1px solid #ecebe9}
-.tabs::-webkit-scrollbar{display:none}
-.tab{border:none;background:none;padding:12px 15px 10px;font-size:13.5px;font-weight:600;color:#888;cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.2s}
-.tab:hover{color:#e5484d}
-.tab.on{color:#e5484d;border-bottom-color:#e5484d}
-main.adm{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
+.shell{display:flex;min-height:100vh}
+.side{width:232px;flex-shrink:0;background:var(--card);border-right:1px solid var(--line);position:sticky;top:0;height:100vh;display:flex;flex-direction:column;padding:20px 14px 16px}
+.side .brand{font-size:18px;font-weight:800;letter-spacing:1px;padding:2px 10px 16px;border-bottom:1px solid var(--line2);margin-bottom:14px;white-space:nowrap}
+.side .brand em{font-style:normal;color:var(--red)}
+.side .brand small{display:block;font-size:10.5px;font-weight:600;color:var(--faint);letter-spacing:2px;margin-top:3px}
+#tabs{display:flex;flex-direction:column;gap:3px}
+.tab{display:flex;align-items:center;gap:10px;border:none;background:none;padding:10px 12px;font-size:13.5px;font-weight:600;color:#777;border-radius:11px;white-space:nowrap;transition:.18s;position:relative;text-align:left;width:100%}
+.tab:hover{color:var(--red);background:#faf4f3}
+.tab.on{color:var(--red);background:var(--red-bg)}
+.tab.on::before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:2px;background:var(--red)}
+.tab svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.side .foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line2);display:flex;flex-direction:column;gap:6px}
+.side .foot a,.side .foot button{display:flex;align-items:center;gap:9px;padding:9px 12px;font-size:12.5px;font-weight:600;color:#777;border-radius:10px;transition:.18s;width:100%;text-align:left}
+.side .foot a:hover,.side .foot button:hover{color:var(--red);background:#faf4f3}
+.side .foot svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+/* 主区 */
+.main{flex:1;min-width:0;padding:22px 26px 60px;max-width:1160px}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.menu-btn{display:none;width:38px;height:38px;border-radius:11px;background:var(--card);border:1px solid var(--line);align-items:center;justify-content:center}
+.menu-btn svg{width:18px;height:18px;stroke:var(--ink);stroke-width:2;fill:none;stroke-linecap:round}
+.topbar h1{font-size:19px;font-weight:800;letter-spacing:.5px}
+.topbar .sp{flex:1}
+.mask{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:90;display:none}
+/* ===== 通用组件 ===== */
 .pane{display:none}
 .pane.on{display:block}
-/* ===== 仪表盘 ===== */
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:22px}
-.stat{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:16px 18px}
-.stat .num{font-size:26px;font-weight:800;color:#2b2b2b}
-.stat .num.red{color:#e5484d}.stat .num.org{color:#e58d0a}.stat .num.blu{color:#3da8f5}
-.stat .lab{font-size:12px;color:#999;margin-top:3px}
-.panel{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:18px 20px;margin-bottom:16px}
-.panel h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.panel h3::before{content:'';width:4px;height:15px;border-radius:2px;background:#e5484d}
-.dirtybar{display:none;align-items:center;gap:12px;background:#fdf3e3;border:1px solid #f0ddb8;border-left:4px solid #e58d0a;border-radius:12px;padding:11px 16px;margin-bottom:16px;font-size:13px;color:#8a5a08}
+.dirtybar{display:none;align-items:center;gap:12px;background:var(--amber-bg);border:1px solid #f0ddb8;border-left:4px solid var(--amber);border-radius:13px;padding:11px 16px;margin-bottom:16px;font-size:13px;color:#8a5a08}
 .dirtybar.show{display:flex}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.stat .num{font-size:26px;font-weight:800;letter-spacing:.3px}
+.stat .num.red{color:var(--red)}.stat .num.org{color:var(--amber)}.stat .num.blu{color:var(--blue)}
+.stat .lab{font-size:12px;color:var(--sub);margin-top:3px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.panel h3{font-size:15px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.panel h3::before{content:'';width:4px;height:15px;border-radius:2px;background:var(--red)}
+.hint{font-size:11.5px;color:var(--faint);line-height:1.7}
+/* 趋势 */
 .trend{display:flex;align-items:flex-end;gap:4px;height:96px;padding-top:6px;overflow-x:auto}
 .trend .tb{flex:1 0 auto;min-width:10px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%}
-.trend .bar{width:100%;max-width:16px;background:#e5484d;border-radius:3px 3px 0 0;opacity:.85;min-height:2px;transition:.2s}
-.trend .tb:hover .bar{opacity:1;background:#c93a3f}
-.trend .blab{font-size:9px;color:#bbb;white-space:nowrap}
-/* 评论管理 */
-.cm-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.cm-item{border:1px solid #ecebe9;border-radius:12px;padding:10px 14px;margin-bottom:8px;background:#fff}
-.cm-meta{display:flex;gap:8px;align-items:center;font-size:12px;color:#999;margin-bottom:4px;flex-wrap:wrap}
-.cm-nick{font-weight:700;color:#2b2b2b}
-.cm-badge{border-radius:99px;padding:1px 8px;font-size:10.5px;font-weight:700;flex-shrink:0}
-.cm-badge.admin{background:#fdf3e3;color:#e58d0a}
-.cm-badge.pin{background:#fdf1f1;color:#e5484d}
-.cm-game{background:#f1efe9;color:#666;border-radius:99px;padding:1px 9px;font-size:10.5px;font-weight:600;text-decoration:none;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
-.cm-game:hover{background:#fdf1f1;color:#e5484d}
-.cm-content{font-size:13px;color:#444;line-height:1.7;white-space:pre-wrap;word-break:break-word}
-.cm-replyto-badge{background:#f1efe9;color:#666}
-.cm-badge.replyto{background:#f1efe9;color:#888;font-weight:500}
-.cm-group{border:1px solid #f0eae4;border-radius:14px;padding:8px;margin-bottom:10px;background:#fcfbfa}
-.cm-group .cm-item{margin-bottom:6px}
-.cm-group .cm-item:last-child{margin-bottom:0}
-.cm-acts{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
-.cm-acts .btn{padding:3px 10px;font-size:11.5px;border-radius:8px}
-.cm-replybox{display:none;margin-top:8px;padding:8px 10px;background:#faf9f7;border:1px solid #ecebe9;border-radius:10px}
-.cm-replybox.show{display:block}
-.cm-replybox textarea{width:100%;min-height:56px;padding:7px 9px;border:1px solid #e2e0dc;border-radius:8px;font-size:12.5px;background:#fff;color:#333;outline:none;resize:vertical;font-family:inherit;line-height:1.7}
-.cm-replybox textarea:focus{border-color:#e5484d}
-.cm-replybox .row{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
-.cm-del{color:#e5484d !important}
-/* 热门游戏 */
+.trend .bar{width:100%;max-width:16px;background:var(--red);border-radius:3px 3px 0 0;opacity:.85;min-height:2px;transition:.2s}
+.trend .tb:hover .bar{opacity:1;background:var(--red-d)}
+.trend .blab{font-size:9px;color:var(--faint);white-space:nowrap}
+/* 热门榜 */
 .hotlist{list-style:none}
-.hotlist li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:13px}
+.hotlist li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line2);font-size:13px}
 .hotlist li:last-child{border-bottom:none}
 .hotlist .no{width:20px;height:20px;border-radius:6px;background:#f1efe9;color:#888;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.hotlist li:nth-child(1) .no{background:#e5484d;color:#fff}
-.hotlist li:nth-child(2) .no{background:#e58d0a;color:#fff}
+.hotlist li:nth-child(1) .no{background:var(--red);color:#fff}
+.hotlist li:nth-child(2) .no{background:var(--amber);color:#fff}
 .hotlist li:nth-child(3) .no{background:#e8b64c;color:#fff}
-.hotlist .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#444;text-decoration:none}
-.hotlist .nm:hover{color:#e5484d}
-.hotlist .ct{color:#999;font-size:12px;white-space:nowrap}
-.hotlist .ct b{color:#e5484d;font-weight:700}
-.loglist{list-style:none}.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed #f0eeeb;font-size:12.5px;color:#666}
+.hotlist .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#444}
+.hotlist .nm:hover{color:var(--red)}
+.hotlist .ct{color:var(--sub);font-size:12px;white-space:nowrap}
+.hotlist .ct b{color:var(--red);font-weight:700}
+/* 日志 */
+.loglist{list-style:none}
+.loglist li{display:flex;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line2);font-size:12.5px;color:#666}
 .loglist li:last-child{border-bottom:none}
-.loglist .lt{color:#bbb;flex-shrink:0;font-family:Consolas,monospace}
-.empty-log{color:#bbb;font-size:12.5px;text-align:center;padding:14px 0}
+.loglist .lt{color:var(--faint);flex-shrink:0;font-family:Consolas,monospace}
+.empty-log{color:var(--faint);font-size:12.5px;text-align:center;padding:14px 0}
 /* ===== 游戏管理 ===== */
 .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.searchbox{display:flex;align-items:center;flex:1;min-width:200px;max-width:320px;background:#fff;border:1px solid #e2e0dc;border-radius:99px;padding:7px 14px;transition:.2s}
-.searchbox:focus-within{border-color:#e5484d}
+.searchbox{display:flex;align-items:center;flex:1;min-width:190px;max-width:320px;background:var(--card);border:1px solid #e2e0dc;border-radius:99px;padding:7px 14px;transition:.2s}
+.searchbox:focus-within{border-color:var(--red)}
 .searchbox input{border:none;background:none;outline:none;flex:1;font-size:13px;color:#333}
-.pbtn{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 14px;font-size:12.5px;cursor:pointer;transition:.2s}
-.pbtn:hover{border-color:#e5484d;color:#e5484d}
-.pbtn.on{border-color:#e5484d;background:#e5484d;color:#fff}
+.pbtn{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 14px;font-size:12.5px;transition:.2s}
+.pbtn:hover{border-color:var(--red);color:var(--red)}
+.pbtn.on{border-color:var(--red);background:var(--red);color:#fff}
 .selctl{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 12px;font-size:12.5px;outline:none;cursor:pointer}
-.batchbar{display:none;align-items:center;gap:10px;background:#fdf1f1;border:1px solid #f0b4b6;border-radius:12px;padding:9px 14px;margin-bottom:12px;font-size:13px;color:#c93a3f}
+.batchbar{display:none;align-items:center;gap:10px;background:var(--red-bg);border:1px solid var(--red-line);border-radius:13px;padding:9px 14px;margin-bottom:12px;font-size:13px;color:var(--red-d)}
 .batchbar.show{display:flex}
-table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px solid #ecebe9;border-radius:14px;overflow:hidden}
+.tablewrap{overflow-x:auto;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+table.gtable{width:100%;border-collapse:collapse}
 .gtable th,.gtable td{padding:10px 12px;font-size:13px;text-align:left;border-bottom:1px solid #f4f2ef;vertical-align:middle}
-.gtable th{background:#faf9f7;font-size:12px;color:#999;font-weight:600;white-space:nowrap}
+.gtable th{background:var(--bg);font-size:12px;color:var(--sub);font-weight:600;white-space:nowrap}
 .gtable tr:last-child td{border-bottom:none}
 .gtable tbody tr{transition:.15s}
 .gtable tbody tr:hover{background:#fdf8f8}
-.gt-cover{width:52px;height:39px;object-fit:cover;border-radius:6px;background:#f4f2ef;display:block}
-.gt-name{font-weight:600;color:#2b2b2b;max-width:300px}
-.gt-desc{font-size:11.5px;color:#999;max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.plat-tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:10px;font-weight:600;color:#fff;background:#e5484d;white-space:nowrap}
-.plat-tag.az{background:#3da8f5}
-.plat-tag.mix{background:#e58d0a}
-.plat-tag.custom-add{background:#21a35d}
+.gt-cover{width:52px;height:39px;object-fit:cover;border-radius:7px;background:#f4f2ef;display:block}
+.gt-name{font-weight:600;max-width:300px}
+.gt-desc{font-size:11.5px;color:var(--sub);max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plat-tag{display:inline-block;padding:1px 8px;border-radius:99px;font-size:10px;font-weight:600;color:#fff;background:var(--red);white-space:nowrap}
+.plat-tag.az{background:var(--blue)}
+.plat-tag.mix{background:var(--amber)}
+.plat-tag.custom-add{background:var(--green)}
 .gt-acts{white-space:nowrap}
 .gt-acts button{margin-right:4px}
-.gt-acts .btn.pined{color:#e58d0a;border-color:#f0ddb8;background:#fdf8ee}
-.link-mini{font-size:11px;color:#3da8f5;text-decoration:none}
-.tablewrap{overflow-x:auto;border-radius:14px;border:1px solid #ecebe9}
+.gt-acts .btn.pined{color:var(--amber);border-color:#f0ddb8;background:#fdf8ee}
+.empty-box{text-align:center;color:var(--sub);padding:50px 0;font-size:14px}
 .pgbar{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;align-items:center;margin:20px 0 6px}
-.pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;cursor:pointer;transition:.2s}
-.pg:hover:not(.off){border-color:#e5484d;color:#e5484d}
-.pg.on{border-color:#e5484d;background:#e5484d;color:#fff}
+.pg{border:1px solid #e2ded8;background:#fff;color:#666;border-radius:99px;padding:6px 13px;font-size:12.5px;transition:.2s}
+.pg:hover:not(.off){border-color:var(--red);color:var(--red)}
+.pg.on{border-color:var(--red);background:var(--red);color:#fff}
 .pg.off{opacity:.35;cursor:default}
-.pginfo{font-size:12px;color:#999;margin-left:6px}
-.empty-box{text-align:center;color:#999;padding:50px 0;font-size:14px}
+.pginfo{font-size:12px;color:var(--sub);margin-left:6px}
+/* ===== 评论管理 ===== */
+.cm-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.cm-group{border:1px solid #f0eae4;border-radius:14px;padding:8px;margin-bottom:10px;background:#fcfbfa}
+.cm-item{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:6px;background:#fff}
+.cm-group .cm-item:last-child{margin-bottom:0}
+.cm-meta{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--sub);margin-bottom:4px;flex-wrap:wrap}
+.cm-nick{font-weight:700;color:var(--ink)}
+.cm-badge{border-radius:99px;padding:1px 8px;font-size:10.5px;font-weight:700;flex-shrink:0}
+.cm-badge.admin{background:var(--amber-bg);color:var(--amber)}
+.cm-badge.pin{background:var(--red-bg);color:var(--red)}
+.cm-badge.replyto{background:#f1efe9;color:#888;font-weight:500}
+.cm-game{background:#f1efe9;color:#666;border-radius:99px;padding:1px 9px;font-size:10.5px;font-weight:600;white-space:nowrap;max-width:180px;overflow:hidden;text-overflow:ellipsis}
+.cm-game:hover{background:var(--red-bg);color:var(--red)}
+.cm-content{font-size:13px;color:#444;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+.cm-acts{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.cm-acts .btn{padding:3px 10px;font-size:11.5px;border-radius:8px}
+.cm-replybox{display:none;margin-top:8px;padding:8px 10px;background:var(--bg);border:1px solid var(--line);border-radius:10px}
+.cm-replybox.show{display:block}
+.cm-replybox textarea{width:100%;min-height:56px;padding:7px 9px;border:1px solid #e2e0dc;border-radius:8px;font-size:12.5px;background:#fff;color:#333;outline:none;resize:vertical;line-height:1.7}
+.cm-replybox textarea:focus{border-color:var(--red)}
+.cm-replybox .row{display:flex;gap:8px;justify-content:flex-end;margin-top:6px}
+.cm-del{color:var(--red)!important}
 /* ===== 数据管理 ===== */
 .dl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.dl-item{background:#fff;border:1px solid #ecebe9;border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.dl-item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
 .dl-item b{font-size:13.5px}
-.dl-item p{font-size:12px;color:#999;line-height:1.65;flex:1}
-.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed #f0eeeb;font-size:13px}
+.dl-item p{font-size:12px;color:var(--sub);line-height:1.65;flex:1}
+.kv{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--line2);font-size:13px}
 .kv:last-child{border-bottom:none}
-.kv span:first-child{color:#999}
+.kv span:first-child{color:var(--sub)}
 .kv span:last-child{font-weight:600}
 .tag-src{display:inline-block;padding:1px 9px;border-radius:99px;font-size:11px;font-weight:700}
-.tag-src.local{background:#fdf1f1;color:#e5484d}
-.tag-src.remote{background:#edf7ef;color:#21a35d}
+.tag-src.local{background:var(--red-bg);color:var(--red)}
+.tag-src.remote{background:#edf7ef;color:var(--green)}
 /* ===== 设置 ===== */
 .form-row{margin-bottom:14px}
 .form-row label{display:block;font-size:12.5px;color:#666;margin-bottom:6px;font-weight:600}
-.form-row input{width:100%;max-width:340px;padding:9px 12px;border:1px solid #e2e0dc;border-radius:10px;font-size:13.5px;background:#faf9f7;outline:none;transition:.2s}
-.form-row input:focus{border-color:#e5484d;background:#fff}
-.ann-ta{width:100%;max-width:560px;min-height:140px;padding:9px 11px;border:1px solid #e2e0dc;border-radius:10px;font-size:13px;background:#faf9f7;color:#333;outline:none;line-height:1.8;resize:vertical;font-family:inherit;transition:.2s}
-.ann-ta:focus{border-color:#e5484d;background:#fff}
-/* ===== 弹窗编辑器 ===== */
-.modal-mask{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.45);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
+.form-row input{width:100%;max-width:340px;padding:9px 12px;border:1px solid #e2e0dc;border-radius:10px;font-size:13.5px;background:var(--bg);outline:none;transition:.2s}
+.form-row input:focus{border-color:var(--red);background:#fff}
+.ann-ta{width:100%;max-width:560px;min-height:140px;padding:9px 11px;border:1px solid #e2e0dc;border-radius:10px;font-size:13px;background:var(--bg);color:#333;outline:none;line-height:1.8;resize:vertical;transition:.2s}
+.ann-ta:focus{border-color:var(--red);background:#fff}
+/* ===== 弹窗 ===== */
+.modal-mask{position:fixed;inset:0;z-index:9999;background:rgba(43,43,43,.45);display:none;align-items:flex-start;justify-content:center;overflow-y:auto;padding:30px 14px}
 .modal-mask.show{display:flex}
-.modal{background:#fff;border-radius:16px;width:100%;max-width:640px;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:popIn .25s ease both}
+.modal{background:#fff;border-radius:18px;width:100%;max-width:640px;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:popIn .25s ease both}
 @keyframes popIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
 .modal-h{display:flex;align-items:center;justify-content:space-between;padding:16px 20px 12px;border-bottom:1px solid #f2f0ee}
 .modal-h b{font-size:15px}
-.modal-x{width:30px;height:30px;border:none;border-radius:50%;background:#faf9f7;color:#666;font-size:17px;cursor:pointer}
-.modal-x:hover{background:#fdf1f1;color:#e5484d}
+.modal-x{width:30px;height:30px;border-radius:50%;background:var(--bg);color:#666;font-size:17px}
+.modal-x:hover{background:var(--red-bg);color:var(--red)}
 .modal-b{padding:16px 20px}
 .modal-f{padding:12px 20px 16px;border-top:1px solid #f2f0ee;display:flex;gap:10px;justify-content:flex-end}
 .frow{margin-bottom:13px}
 .frow label{display:block;font-size:12.5px;color:#666;margin-bottom:5px;font-weight:600}
-.frow label i{color:#e5484d;font-style:normal}
-.frow input[type=text],.frow select,.frow textarea{width:100%;padding:9px 11px;border:1px solid #e2e0dc;border-radius:9px;font-size:13px;background:#faf9f7;color:#333;outline:none;transition:.2s}
-.frow input:focus,.frow select:focus,.frow textarea:focus{border-color:#e5484d;background:#fff}
+.frow label i{color:var(--red);font-style:normal}
+.frow input[type=text],.frow select,.frow textarea{width:100%;padding:9px 11px;border:1px solid #e2e0dc;border-radius:9px;font-size:13px;background:var(--bg);color:#333;outline:none;transition:.2s}
+.frow input:focus,.frow select:focus,.frow textarea:focus{border-color:var(--red);background:#fff}
 .frow textarea{resize:vertical;min-height:64px;line-height:1.7}
 .fgrid{display:grid;grid-template-columns:1fr 150px;gap:10px}
 .linkrows .lrow{display:flex;gap:6px;margin-bottom:6px}
-.linkrows .lrow input{padding:8px 10px;border:1px solid #e2e0dc;border-radius:9px;font-size:12.5px;background:#faf9f7;outline:none;transition:.2s}
-.linkrows .lrow input:focus{border-color:#e5484d;background:#fff}
+.linkrows .lrow input{padding:8px 10px;border:1px solid #e2e0dc;border-radius:9px;font-size:12.5px;background:var(--bg);outline:none;transition:.2s}
+.linkrows .lrow input:focus{border-color:var(--red);background:#fff}
 .linkrows .lrow .lu{flex:1}
 .linkrows .lrow .ll{width:130px;flex-shrink:0}
-.lrow-del{width:32px;flex-shrink:0;border:none;border-radius:9px;background:#fdf1f1;color:#e5484d;font-size:14px;cursor:pointer}
+.lrow-del{width:32px;flex-shrink:0;border-radius:9px;background:var(--red-bg);color:var(--red);font-size:14px}
 .lrow-del:hover{background:#f9d9da}
-.addlink{border:1px dashed #d8d4ce;background:#faf9f7;color:#888;border-radius:9px;padding:7px 12px;font-size:12.5px;cursor:pointer;width:100%}
-.addlink:hover{border-color:#e5484d;color:#e5484d}
-.cover-prev{width:86px;height:64px;object-fit:cover;border-radius:8px;border:1px solid #ecebe9;background:#f4f2ef;margin-top:6px;display:none}
+.addlink{border:1px dashed #d8d4ce;background:var(--bg);color:#888;border-radius:9px;padding:7px 12px;font-size:12.5px;width:100%}
+.addlink:hover{border-color:var(--red);color:var(--red)}
+.cover-prev{width:86px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#f4f2ef;margin-top:6px;display:none}
 /* ===== Toast ===== */
 .toast{position:fixed;left:50%;bottom:36px;transform:translateX(-50%) translateY(20px);background:#2b2b2b;color:#fff;font-size:13px;padding:10px 20px;border-radius:99px;opacity:0;pointer-events:none;transition:.25s;z-index:99999;box-shadow:0 6px 20px rgba(0,0,0,.25)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast.err{background:#c93a3f}
-@media (max-width:720px){
-  .hwrap{padding:11px 14px}
-  main.adm{padding:16px 12px 50px}
-  .tabs{padding:0 8px}
+.toast.err{background:var(--red-d)}
+/* ===== 移动端 ===== */
+@media (max-width:960px){
+  .shell{display:block}
+  .side{position:fixed;left:0;top:0;bottom:0;z-index:95;transform:translateX(-105%);transition:transform .28s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 40px rgba(0,0,0,.12);height:100dvh}
+  body.nav-open .side{transform:none}
+  body.nav-open .mask{display:block}
+  .menu-btn{display:flex}
+  .main{padding:14px 14px 50px}
   .gt-desc{display:none}
   .fgrid{grid-template-columns:1fr}
   .gtable th:nth-child(4),.gtable td:nth-child(4){display:none}
 }
-
-/* ===== Demo 对齐覆盖层（2026-10-08）：只覆盖观感，不动任何功能类 ===== */
-.tabs .tab{border-bottom:none;border-radius:10px;padding:9px 16px;margin:6px 0;color:#666}
-.tabs .tab:hover{color:#e5484d;background:#fdf3f3}
-.tabs .tab.on{color:#e5484d;background:#fdf3f3;border-bottom:none;font-weight:700}
-.panel{box-shadow:0 1px 3px rgba(0,0,0,.04)}
-.panel h3{display:flex;align-items:center;gap:8px}
-.panel h3::before{content:'';width:4px;height:15px;border-radius:2px;background:#e5484d}
-.stat{border-color:#ecebe9}
-.stat .num{letter-spacing:.3px}
-.btn-pri{border-radius:10px}
-.btn{border-radius:10px}
-.login-card{border-radius:18px}
-.trend .bar,.trend i{background:#e5484d !important}
 </style>
 </head>
 <body>
 
-<!-- 登录界面 -->
+<!-- 登录 -->
 <div class="login-wrap" id="loginWrap">
   <div class="login-card">
     <div class="logo">Tsinho<em>黄油站</em></div>
-    <div class="sub">后台管理系统 · 仅限管理员访问</div>
+    <div class="sub">管理台 · 仅限管理员访问</div>
     <label for="pwInput">管理密码</label>
     <input type="password" id="pwInput" placeholder="请输入后台密码" autocomplete="current-password">
     <button type="button" class="btn btn-pri btn-block" id="loginBtn">登 录</button>
     <div class="login-err" id="loginErr"></div>
-    <div class="login-tip">请输入管理密码进入后台<br>数据仅保存在本浏览器，导出后提交仓库才对全站生效</div>
+    <div class="login-tip">数据仅保存在本浏览器，发布后提交仓库才对全站生效</div>
   </div>
 </div>
 
 <!-- 后台主体 -->
 <div id="app">
-<header class="adm">
-  <div class="hwrap">
-    <a class="site" href="index.html"><span>Tsinho<em>黄油站</em></span></a>
-    <span class="badge-admin">后台管理</span>
-    <div class="hright">
-      <a class="btn btn-ghost btn-sm" href="index.html" target="_blank">查看前台</a>
-      <button type="button" class="btn btn-ghost btn-sm" id="logoutBtn">退出登录</button>
+<div class="shell">
+
+  <aside class="side" id="sideNav">
+    <div class="brand">Tsinho<em>黄油站</em><small>ADMIN CONSOLE</small></div>
+    <nav id="tabs">
+      <button type="button" class="tab on" data-tab="dash"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg>仪表盘</button>
+      <button type="button" class="tab" data-tab="games"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="4"/><path d="M7 10v4M5 12h4M15.5 11.5h.01M17.5 13.5h.01"/></svg>游戏管理</button>
+      <button type="button" class="tab" data-tab="cm"><svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H4l2.5-3A8 8 0 1 1 21 12z"/></svg>评论管理</button>
+      <button type="button" class="tab" data-tab="data"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>数据管理</button>
+      <button type="button" class="tab" data-tab="set"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.51 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.51 1z"/></svg>设置</button>
+    </nav>
+    <div class="foot">
+      <a href="index.html" target="_blank"><svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>查看前台</a>
+      <button type="button" id="logoutBtn"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg>退出登录</button>
     </div>
-  </div>
-</header>
-<nav class="tabs" id="tabs">
-  <button type="button" class="tab on" data-tab="dash">仪表盘</button>
-  <button type="button" class="tab" data-tab="games">游戏管理</button>
-  <button type="button" class="tab" data-tab="data">数据管理</button>
-  <button type="button" class="tab" data-tab="cm">评论管理</button>
-  <button type="button" class="tab" data-tab="set">设置</button>
-</nav>
-<main class="adm">
+  </aside>
+  <div class="mask" id="navMask"></div>
+
+  <div class="main">
+    <div class="topbar">
+      <button type="button" class="menu-btn" id="menuBtn"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      <h1 id="pageTitle">仪表盘</h1>
+      <span class="sp"></span>
+      <button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">发布到 GitHub</button>
+    </div>
 
   <!-- 仪表盘 -->
   <section class="pane on" id="pane-dash">
-    <div class="dirtybar" id="dirtyBar"><span>有未保存的更改（仅在本浏览器生效）</span><button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布到 GitHub</button><button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">仅保存本地预览</button></div>
+    <div class="dirtybar" id="dirtyBar"><span>有未保存的更改（仅在本浏览器生效）</span><button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布</button><button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">仅保存本地预览</button></div>
     <div class="stats" id="statBox"></div>
+    <div class="stats">
+      <div class="stat"><div class="num red" id="visPv">--</div><div class="lab">本站总访问量（PV）</div></div>
+      <div class="stat"><div class="num blu" id="visToday">--</div><div class="lab">今日访问（北京时间）</div></div>
+      <div class="stat"><div class="num" id="visCm">--</div><div class="lab">评论总数</div></div>
+      <div class="stat"><div class="num org" id="visPend">--</div><div class="lab">待回复评论</div></div>
+    </div>
     <div class="panel">
       <h3>快捷操作</h3>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button type="button" class="btn btn-pri btn-sm" onclick="ADM.goto('games');ADM.openEditor(null)">＋ 新增游戏</button>
-        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布到 GitHub</button>
         <button type="button" class="btn btn-blue btn-sm" onclick="ADM.exportOverride()">导出 override 文件</button>
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('games')">管理游戏列表</button>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('cm')">管理评论</button>
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.goto('data')">导入 / 导出数据</button>
       </div>
     </div>
     <div class="panel">
-      <h3>站点数据（实时统计）</h3>
-      <div class="stats" style="margin-bottom:6px">
-        <div class="stat"><div class="num red" id="visPv">--</div><div class="lab">本站总访问量（PV）</div></div>
-        <div class="stat"><div class="num blu" id="visToday">--</div><div class="lab">今日访问（北京时间）</div></div>
-        <div class="stat"><div class="num" id="visCm">--</div><div class="lab">评论总数</div></div>
-        <div class="stat"><div class="num org" id="visPend">--</div><div class="lab">待回复评论</div></div>
-      </div>
-      <p style="font-size:11.5px;color:#bbb;line-height:1.7">数据来自 Supabase（page_views / comments，仅统计本站 /hyfxdyx/ 页面），进入后台自动加载，点统计数字旁的刷新可手动更新。</p>
-    </div>
-    <div class="panel">
       <h3>热门游戏 Top5（按访问量）</h3>
-      <ul class="hotlist" id="hotList"><li style="border:none;color:#bbb;font-size:12.5px">加载中…</li></ul>
+      <ul class="hotlist" id="hotList"><li style="border:none;color:var(--faint);font-size:12.5px">加载中…</li></ul>
     </div>
     <div class="panel">
       <h3>每日更新趋势</h3>
       <div class="trend" id="trendBox"></div>
-      <p style="font-size:11.5px;color:#bbb;margin-top:8px">按来源帖子日期统计每日收录游戏数（最近 30 个更新日，后台新增的暂无日期不计入）。</p>
+      <p class="hint" style="margin-top:8px">按来源帖子日期统计每日收录游戏数（最近 30 个更新日）。</p>
     </div>
     <div class="panel">
       <h3>操作日志</h3>
@@ -333,6 +344,25 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     <div class="pgbar" id="admPg"></div>
   </section>
 
+  <!-- 评论管理 -->
+  <section class="pane" id="pane-cm">
+    <div class="panel">
+      <h3>评论管理</h3>
+      <div class="cm-toolbar">
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.loadSiteComments()">刷新</button>
+        <div class="searchbox" style="max-width:220px"><input type="text" id="cmKw" placeholder="搜索昵称 / 内容…"></div>
+        <select class="selctl" id="cmGameSel"><option value="">全部游戏</option></select>
+        <button type="button" class="pbtn" id="cmPendBtn" onclick="ADM.toggleCmPend()">只看待回复</button>
+        <span id="cmState" style="font-size:12px;color:var(--sub)"></span>
+      </div>
+      <div id="cmList"><div class="empty-box">加载中…</div></div>
+      <p class="hint" style="margin-top:12px">
+        仅显示本站游戏页（game.html?id=…）收到的评论，不含主站求助区。回复以「Tsinho · 站长」身份发出；
+        删除父评论会同时删除其下所有回复。删除 / 回复 / 置顶需要「设置 → 评论管理 Token」。
+      </p>
+    </div>
+  </section>
+
   <!-- 数据管理 -->
   <section class="pane" id="pane-data">
     <div class="panel">
@@ -351,9 +381,9 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">保存并应用</button>
       </div>
       <div class="dl-item">
-        <b>② 一键发布到 GitHub（推荐，一步到位）</b>
-        <p>把当前改动（新增 / 修改 / 删除 / 置顶 / 公告）直接提交到仓库 data/games.override.json，云端爬虫自动合并后 <b>1~3 分钟全站生效</b>。需先在「设置」页配置 GitHub Token（repo 权限）。</p>
-        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布到 GitHub</button>
+        <b>② 一键发布到 GitHub（推荐）</b>
+        <p>把当前改动直接提交到仓库 data/games.override.json，云端爬虫自动合并后 <b>1~3 分钟全站生效</b>。需先在「设置」配置 GitHub Token。</p>
+        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布</button>
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.exportOverride()">导出 Override 文件（备用）</button>
       </div>
       <div class="dl-item">
@@ -375,35 +405,15 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     </div>
   </section>
 
-  <!-- 评论管理（仅本站 /hyfxdyx/ 页面评论） -->
-  <section class="pane" id="pane-cm">
-    <div class="panel">
-      <h3>评论管理</h3>
-      <div class="cm-toolbar">
-        <button type="button" class="btn btn-pri btn-sm" onclick="ADM.loadSiteComments()">刷新</button>
-        <div class="searchbox" style="max-width:220px"><input type="text" id="cmKw" placeholder="搜索昵称 / 内容…"></div>
-        <select class="selctl" id="cmGameSel"><option value="">全部游戏</option></select>
-        <button type="button" class="pbtn" id="cmPendBtn" onclick="ADM.toggleCmPend()">只看待回复</button>
-        <span id="cmState" style="font-size:12px;color:#999"></span>
-      </div>
-      <div id="cmList"><div class="empty-box">加载中…</div></div>
-      <p style="font-size:11.5px;color:#bbb;margin-top:12px;line-height:1.7">
-        仅显示本站游戏页（game.html?id=…）收到的评论，不含主站求助区。回复以「Tsinho · 站长」身份发出；
-        删除父评论会同时删除其下所有回复。删除 / 回复 / 置顶需要「设置 → 评论管理 Token」。
-      </p>
-    </div>
-  </section>
-
   <!-- 设置 -->
   <section class="pane" id="pane-set">
     <div class="panel">
       <h3>首页公告编辑</h3>
       <div class="form-row"><label>公告标题</label><input type="text" id="annTitle" placeholder="如：【公告】" style="max-width:340px"></div>
       <div class="form-row"><label>公告内容（每行一条，网址会自动变成可点击链接；全部清空并保存则恢复默认公告）</label>
-        <textarea id="annLines" placeholder="各位老师好，欢迎收藏本站 防迷路！&#10;官方QQ群：1081159850&#10;https://t.me/Tsinhox"
-          style="width:100%;max-width:560px;min-height:140px;padding:9px 11px;border:1px solid #e2e0dc;border-radius:10px;font-size:13px;background:#faf9f7;color:#333;outline:none;line-height:1.8;resize:vertical"></textarea></div>
+        <textarea id="annLines" class="ann-ta" placeholder="各位老师好，欢迎收藏本站 防迷路！&#10;官方QQ群：1081159850&#10;https://t.me/Tsinhox"></textarea></div>
       <button type="button" class="btn btn-pri" onclick="ADM.saveAnnounce()">保存公告</button>
-      <p style="font-size:11.5px;color:#bbb;margin-top:12px;line-height:1.8">保存后：① 打开首页立即预览（仅本浏览器）；② 数据管理 →「保存并发布到 GitHub」一步全站生效（约 1~3 分钟）。</p>
+      <p class="hint" style="margin-top:12px">保存后：① 打开首页立即预览（仅本浏览器）；② 数据管理 →「保存并发布」一步全站生效（约 1~3 分钟）。</p>
     </div>
     <div class="panel">
       <h3>GitHub Token（一键发布 + 图床上传共用）</h3>
@@ -414,7 +424,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.clearGhToken()">清除</button>
         <span id="ghState" style="font-size:12px;font-weight:600"></span>
       </div>
-      <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">配置后可用「数据管理 → 保存并发布到 GitHub」一步把改动提交到仓库（全站生效）；也可在「游戏管理」新增/编辑弹窗里点「上传本地图片」把图片提交到仓库 assets/admin/ 并自动转成 jsDelivr 直链。Token 只保存在本浏览器，不会写进网站文件。</p>
+      <p class="hint" style="margin-top:10px">配置后可用「发布到 GitHub」一步把改动提交到仓库；也可在编辑游戏时上传本地图片到仓库 assets/admin/ 并自动转成 jsDelivr 直链。Token 只保存在本浏览器。</p>
     </div>
     <div class="panel">
       <h3>评论管理 Token（回复 / 删除 / 置顶评论用）</h3>
@@ -425,10 +435,9 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         <button type="button" class="btn btn-ghost btn-sm" onclick="ADM.clearCmToken()">清除</button>
         <span id="cmTokenState" style="font-size:12px;font-weight:600"></span>
       </div>
-      <p style="font-size:11.5px;color:#bbb;margin-top:10px;line-height:1.7">
+      <p class="hint" style="margin-top:10px">
         获取方式：在 Supabase SQL Editor 运行仓库里的 supabase_hyfx.sql（会自动生成一个随机 Token），
         再执行 <code>select token from admin_tokens;</code> 复制结果粘贴到这里。
-        Token 用于受控 RPC 校验身份，评论表对匿名访客没有删除 / 修改权限。
       </p>
     </div>
     <div class="panel">
@@ -437,22 +446,13 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
       <div class="form-row"><label>新密码（至少 6 位）</label><input type="password" id="newPw" autocomplete="new-password"></div>
       <div class="form-row"><label>确认新密码</label><input type="password" id="newPw2" autocomplete="new-password"></div>
       <button type="button" class="btn btn-pri" onclick="ADM.changePw()">确认修改</button>
-      <p style="font-size:12px;color:#bbb;margin-top:14px;line-height:1.8">密码保存在浏览器本地（localStorage），仅保护此浏览器的后台入口；后台页面本身无服务器，请勿在公共电脑登录。</p>
-    </div>
-    <div class="panel">
-      <h3>关于本后台</h3>
-      <p style="font-size:12.5px;color:#888;line-height:2">
-        本后台为纯静态页面，配合 GitHub Pages 使用：<br>
-        1. 改动先保存在浏览器 → 前台即时预览；<br>
-        2. 确认无误后「导出 games.override.json」并提交到仓库 data/ 目录；<br>
-        3. 爬虫每次自动同步时会合并该文件：同 ID 覆盖、新 ID 追加到最前、remove_ids 中的条目被移除；<br>
-        4. 想彻底放弃某条删除标记，可在「恢复官方数据」后重新导出空的 override 文件。
-      </p>
+      <p class="hint" style="margin-top:14px">密码保存在浏览器本地（localStorage），仅保护此浏览器的后台入口；请勿在公共电脑登录。</p>
     </div>
   </section>
 
-</main>
-</div>
+  </div><!-- /main -->
+</div><!-- /shell -->
+</div><!-- /app -->
 
 <!-- 编辑弹窗 -->
 <div class="modal-mask" id="editMask">
@@ -503,6 +503,24 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
 <div class="toast" id="toast"></div>
 
 <script>
+/* ===== 壳交互：移动端抽屉 + 页面标题 ===== */
+(function () {
+  var TITLES = { dash: '仪表盘', games: '游戏管理', cm: '评论管理', data: '数据管理', set: '设置' };
+  var mb = document.getElementById('menuBtn');
+  if (mb) mb.onclick = function () { document.body.classList.toggle('nav-open'); };
+  var mask = document.getElementById('navMask');
+  if (mask) mask.onclick = function () { document.body.classList.remove('nav-open'); };
+  document.querySelectorAll('#tabs .tab').forEach(function (t) {
+    t.addEventListener('click', function () {
+      document.body.classList.remove('nav-open');
+      var pt = document.getElementById('pageTitle');
+      if (pt) pt.textContent = TITLES[t.getAttribute('data-tab')] || '';
+    });
+  });
+})();
+</script>
+<script>
+
 (function () {
   var LS_DATA = 'tsinhoht_data';
   var LS_PW = 'tsinhoht_pw';
@@ -1658,6 +1676,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     else setTimeout(function () { try { $('pwInput').focus(); } catch (e) {} }, 100);
   })();
 })();
+
 </script>
 </body>
 </html>
