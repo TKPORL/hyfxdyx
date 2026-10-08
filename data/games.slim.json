@@ -1,24 +1,9 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-10-08 15:58:00",
- "total": 1652,
+ "updated_at": "2026-10-08 16:00:52",
+ "total": 1651,
  "games": [
-  {
-   "id": "custom-muzox71t5rw",
-   "name": "测试",
-   "platform": "PC",
-   "desc": "测试",
-   "cover": "https://tkporl.github.io/mrhyfx/assets/2026107pcaz/0f8iskwq6t.webp",
-   "links": [
-    {
-     "label": "移动云盘（不限速）",
-     "url": "https://tkporl.github.io/hyfxdyx"
-    }
-   ],
-   "post": "",
-   "time": ""
-  },
   {
    "id": "2026107pcaz-0",
    "name": "新世界乐园",
