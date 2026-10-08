@@ -14,11 +14,11 @@
   var BREAKPOINT_MQ = '(min-width: 681px)';
 
   var NAV_CSS = 'header{position:sticky;top:0;z-index:20;padding:0 20px 0;background:rgba(250,249,247,.62);-webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);border-bottom:1px solid rgba(236,235,233,.55)}' +
-'.hd-bar{max-width:1320px;margin:0 auto;background:transparent;border:none;box-shadow:none;display:flex;align-items:center;gap:12px;padding:7px 12px;min-height:52px}' +
+'.hd-bar{max-width:1320px;margin:0 auto;background:transparent;border:none;box-shadow:none;display:flex;align-items:center;gap:14px;padding:10px 14px;min-height:62px}' +
 '.hd-bar .logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}' +
-'.hd-bar .logo img{width:118px;height:auto;border-radius:8px;display:block}' +
+'.hd-bar .logo img{width:134px;height:auto;border-radius:8px;display:block}' +
 '.hd-bar .menu{display:flex;align-items:center;justify-content:space-evenly;gap:1px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden;max-width:1000px;transition:max-width .34s cubic-bezier(.2,.8,.2,1),transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}' +
-'.hd-bar .menu a{font-size:13.5px;color:#666;text-decoration:none;padding:8px 14px;border:none;background:none;border-radius:10px;white-space:nowrap;transition:color .18s ease,background .18s ease}' +
+'.hd-bar .menu a{font-size:14.5px;color:#666;text-decoration:none;padding:9px 16px;border:none;background:none;border-radius:10px;white-space:nowrap;transition:color .18s ease,background .18s ease}' +
 '.hd-bar .menu a:nth-child(1){transition-delay:0s,0s,0s,.12s,.12s}' +
 '.hd-bar .menu a:nth-child(2){transition-delay:0s,0s,0s,.08s,.08s}' +
 '.hd-bar .menu a:nth-child(3){transition-delay:0s,0s,0s,.04s,.04s}' +
@@ -26,7 +26,7 @@
 '.hd-bar .menu a:hover,.hd-bar .menu a.on{color:#e5484d;background:#fdf3f3;border-color:#f0b4b6}' +
 '.hd-bar .acts{display:flex;align-items:center;gap:6px;flex-shrink:0;margin-left:auto}' +
 '.hd-bar .plat-head{display:none}' +
-'.hd-bar .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;font:inherit;padding:0}' +
+'.hd-bar .icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid #ecebe9;background:#faf9f7;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;font:inherit;padding:0}' +
 '.hd-bar .icon-btn:hover{background:#fdf3f3;border-color:#f0b4b6}' +
 '.hd-bar .icon-btn svg{width:18px;height:18px;stroke:#666;fill:none;stroke-width:1.6;stroke-linecap:round}' +
 '.hd-bar .icon-btn:hover svg{stroke:#e5484d}' +
@@ -157,6 +157,17 @@
 
   var host = document.getElementById('siteNav');
   if (!host) return;
+  // 手机端抽屉必须挂在 body 下：header 的 backdrop-filter 会把内部 fixed 的定位基准变成 header，
+  // 导致抽屉只在顶栏那一层显示
+  var mqMobile0 = window.matchMedia('(max-width: 680px)');
+  function moveMoreDrop() {
+    var md = document.getElementById('mrhxMoreDrop');
+    if (!md) return;
+    if (mqMobile0.matches) { if (md.parentNode !== document.body) document.body.appendChild(md); }
+    else if (md.parentNode !== host) { host.appendChild(md); }
+  }
+  window.addEventListener('load', moveMoreDrop);
+  document.addEventListener('DOMContentLoaded', moveMoreDrop);
 
 
   // 注入样式（晚于页面 <style>，同优先级后者胜，可覆盖页面遗留导航样式）
@@ -267,7 +278,7 @@
   }
   window.addEventListener('load', placePlat);
   document.addEventListener('plat-dd-ready', placePlat);
-  function onMobileBreak(e) { setMore(false); placePlat(); }
+  function onMobileBreak(e) { setMore(false); placePlat(); moveMoreDrop(); }
   if (mqMobile.addEventListener) { mqMobile.addEventListener('change', onMobileBreak); }
   else if (mqMobile.addListener) { mqMobile.addListener(onMobileBreak); }
 
