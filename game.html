@@ -106,11 +106,53 @@ footer a{color:#e5484d;text-decoration:none}
   var id = new URLSearchParams(location.search).get('id') || '';
   var G = null;
 
+  // ===== 真数据：复用主站同一套 Supabase（公开 anon key，与主站页面明文一致） =====
+  var SB = 'https://kydmccknlbpczeqppbtc.supabase.co';
+  var KEY = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
+  var PAGE_KEY = '/hyfxdyx/game.html?id=' + id; // 浏览量/评论的存储键
+  function sbGet(q) {
+    return fetch(SB + q, { headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  function sbRpc(fn, body) {
+    return fetch(SB + '/rest/v1/rpc/' + fn, {
+      method: 'POST',
+      headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body || {})
+    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+  }
+  // 浏览量：读（1 次请求）+ 写（每访客每天每页只 1 次请求，localStorage 去重）
+  function loadViews() {
+    sbGet('/rest/v1/page_views?select=count&url=eq.' + encodeURIComponent(PAGE_KEY))
+      .then(function (rows) {
+        var c = (rows && rows[0] && rows[0].count) || 0;
+        var el = $('#seenTxt'); if (el) el.textContent = fmtV(c) + ' 人看过这个页面';
+      })
+      .catch(function () { var el = $('#seenTxt'); if (el) el.textContent = ''; });
+    try {
+      var k = 'hyfx_pv_' + id, today = new Date().toDateString();
+      if (localStorage.getItem(k) !== today) {
+        localStorage.setItem(k, today);
+        sbRpc('inc_page_view', { p_url: PAGE_KEY }).catch(function () {});
+      }
+    } catch (e) {}
+  }
+  // 点赞：读（1 次请求）；点击走 RPC 只 +1（防刷：已赞后本浏览器禁点）
+  function loadLikes() {
+    sbGet('/rest/v1/game_likes?select=count&game_id=eq.' + encodeURIComponent(id))
+      .then(function (rows) {
+        base = (rows && rows[0] && rows[0].count) || 0;
+        renderLike();
+      })
+      .catch(function () { base = 0; renderLike(); });
+  }
+
   function renderLike() {
     var liked = false;
     try { liked = localStorage.getItem('hyfx_like_' + id) === '1'; } catch (e) {}
     var b = $('#likeBtn'); if (!b) return;
     b.classList.toggle('liked', liked);
+    b.disabled = liked; // 真数据只 +1：已赞后禁点，防止重复计数
     $('#likeTxt').textContent = liked ? '已赞 ' + (base + 1) : '点赞 ' + base;
   }
   var base = 0;
@@ -132,14 +174,14 @@ footer a{color:#e5484d;text-decoration:none}
         esc(l.label || '下载地址') + '</a>';
     }).join('') || '<span style="color:#999;font-size:14px">暂无下载链接</span>';
 
-    base = 120 + views(g.id) % 800;
+    base = 0;
     var h = '<section class="detail"><img class="d-cover" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '">' +
       '<div><h1 class="d-title">' + esc(g.name) + '</h1>' +
       '<div class="badges"><span class="badge plat">' + esc(g.platform || '') + '</span>' +
       (g.time ? '<span class="badge time">' + esc(fullTime(g.time)) + '</span>' : '') + '</div>' +
       '<div class="like-row"><button type="button" class="like-btn" id="likeBtn">' +
       '<svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.7-10-9.3C.6 8.6 2.6 5 6.2 5c2.2 0 3.7 1.2 4.6 2.6h2.4C14.1 6.2 15.6 5 17.8 5c3.6 0 5.6 3.6 4.2 6.7C19.5 16.3 12 21 12 21z"/></svg>' +
-      '<span id="likeTxt">点赞</span></button><span class="seen">' + fmtV(views(g.id)) + ' 人看过这个页面</span></div>' +
+      '<span id="likeTxt">点赞 …</span></button><span class="seen" id="seenTxt">…</span></div>' +
       '<div class="dl-title">下载地址</div><div class="dl-btns">' + dl + '</div>' +
       '<p class="dl-note">链接自动同步自主站每日分享，若失效请到求助贴留言。安卓游戏请先看解压教程再安装。</p>' +
       '<div class="intro"><h3>游戏介绍</h3><div class="txt">' + esc(g.desc || '暂无介绍。') + '</div></div></div></section>';
@@ -147,12 +189,35 @@ footer a{color:#e5484d;text-decoration:none}
     $('#box').outerHTML = h.replace('id="box"', '');
 
     renderLike();
+    loadViews();
+    loadLikes();
     $('#likeBtn').addEventListener('click', function () {
       var liked = false;
       try { liked = localStorage.getItem('hyfx_like_' + id) === '1'; } catch (e) {}
-      try { liked ? localStorage.removeItem('hyfx_like_' + id) : localStorage.setItem('hyfx_like_' + id, '1'); } catch (e) {}
-      renderLike();
+      if (liked) return; // 真数据只 +1，已赞后禁点防重复计数
+      var btn = $('#likeBtn');
+      btn.disabled = true;
+      $('#likeTxt').textContent = '点赞中…';
+      sbRpc('inc_game_like', { p_id: id })
+        .then(function (c) {
+          base = Number(c) || base + 1;
+          try { localStorage.setItem('hyfx_like_' + id, '1'); } catch (e) {}
+          renderLike();
+        })
+        .catch(function () {
+          btn.disabled = false;
+          $('#likeTxt').textContent = '点赞失败，请重试';
+        });
     });
+
+    // 评论区：复用主站同一套 Supabase comments 表 + 评论脚本（自带样式，挂哪显示哪）
+    var cmtHost = document.createElement('div');
+    cmtHost.style.marginTop = '28px';
+    $('.detail').insertAdjacentElement('afterend', cmtHost);
+    window.MRHXC = { sb: SB, key: KEY, path: PAGE_KEY, fold: 6 };
+    var cs = document.createElement('script');
+    cs.src = 'https://cdn.jsdelivr.net/gh/TKPORL/mrhyfx@main/assets/js/comments.js';
+    cmtHost.appendChild(cs);
 
     // 相关推荐：同帖优先，不足补同平台
     var rel = games.filter(function (x) { return x.id !== g.id && x.post === g.post; });
@@ -164,8 +229,21 @@ footer a{color:#e5484d;text-decoration:none}
         return '<a class="rcard" href="game.html?id=' + encodeURIComponent(x.id) + '">' +
           '<div class="c"><img loading="lazy" src="' + esc(x.cover) + '" alt="' + esc(x.name) + '"><span class="p">' + esc(x.platform || '') + '</span></div>' +
           '<div class="i"><div class="t">' + esc(x.name) + '</div>' +
-          '<div class="m"><span>' + relTime(x.time) + '</span><span><b>' + fmtV(views(x.id)) + '</b> 人看过</span></div></div></a>';
+          '<div class="m"><span>' + relTime(x.time) + '</span><span class="rv" data-id="' + esc(x.id) + '"></span></div></div></a>';
       }).join('');
+      // 相关卡浏览量：1 次批量查询（in 过滤），不逐卡发请求
+      var keys = rel.map(function (x) { return '"/hyfxdyx/game.html?id=' + x.id + '"'; });
+      sbGet('/rest/v1/page_views?select=url,count&url=in.(' + keys.join(',') + ')')
+        .then(function (rows) {
+          var map = {};
+          (rows || []).forEach(function (r) { map[r.url] = r.count; });
+          document.querySelectorAll('.rv').forEach(function (el) {
+            var k = '/hyfxdyx/game.html?id=' + el.getAttribute('data-id');
+            var c = map[k] || 0;
+            el.innerHTML = '<b>' + fmtV(c) + '</b> 人看过';
+          });
+        })
+        .catch(function () {});
     }
   }
 
