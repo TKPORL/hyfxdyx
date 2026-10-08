@@ -68,7 +68,7 @@
 '.nav-drop#mrhxMoreDrop .drop-menu{flex-direction:column;align-items:stretch;gap:4px;padding:0}' +
 '#mrhxMoreDrop .plat-dd{display:block;margin:0 0 8px}' +
 '#mrhxMoreDrop .plat-dd.plat-open{padding-bottom:10px;border-bottom:1px solid #ecebe9}' +
-'#mrhxMoreDrop .plat-head{display:flex;align-items:center;gap:10px;width:100%;background:#faf9f7;border:1px solid #f0eeec;border-radius:10px;padding:10px 14px;font:inherit;font-size:13.5px;color:#555;cursor:pointer;transition:.18s;text-align:left}' +
+'#mrhxMoreDrop .plat-head{display:flex;align-items:center;gap:10px;width:100%;background:#faf9f7;border:1px solid #f0eeec;border-radius:9px;padding:9px 13px;font:inherit;font-size:13.5px;line-height:1.4;color:#555;cursor:pointer;transition:.18s;text-align:left}' +
 '#mrhxMoreDrop .plat-head .pic{width:16px;height:16px;stroke:#999;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}' +
 '#mrhxMoreDrop .plat-head .chev{margin-left:auto;width:13px;height:13px;stroke:#999;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .2s}' +
 '#mrhxMoreDrop .plat-dd.plat-open .plat-head .chev{transform:rotate(180deg)}' +
@@ -79,7 +79,7 @@
 '#mrhxMoreDrop .plat-btn{display:none}' +
 '#mrhxMoreDrop .plat-dd:not(.plat-open) .plat-menu{display:none}' +
 '#mrhxMoreDrop .plat-menu{position:static;display:flex;flex-direction:column;gap:6px;min-width:0;border:none;box-shadow:none;padding:6px 0 0;opacity:1;transform:none;pointer-events:auto}' +
-'#mrhxMoreDrop .plat-menu button[data-pf],#mrhxMoreDrop .plat-menu button[data-act]{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;font-size:13.5px;color:#555;background:#faf9f7;border:1px solid #f0eeec;border-radius:10px;padding:10px 14px;cursor:pointer;font-family:inherit;transition:.18s;margin:0}' +
+'#mrhxMoreDrop .plat-menu button[data-pf],#mrhxMoreDrop .plat-menu button[data-act]{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;font-size:13.5px;line-height:1.4;color:#555;background:#faf9f7;border:1px solid #f0eeec;border-radius:9px;padding:9px 13px;cursor:pointer;font-family:inherit;transition:.18s;margin:0}' +
 '#mrhxMoreDrop .plat-menu button[data-pf]:hover,#mrhxMoreDrop .plat-menu button[data-act]:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}' +
 '#mrhxMoreDrop .plat-menu button.on{color:#e5484d;background:#fdf3f3;border-color:#f0b4b6;font-weight:700}' +
 '#mrhxMoreDrop .plat-sep{height:1px;background:#ecebe9;margin:4px 0}' +

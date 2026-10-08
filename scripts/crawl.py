@@ -139,6 +139,16 @@ def merge_override(games, override):
     remove_ids = set(i for i in (override.get('remove_ids') or []) if isinstance(i, str))
     if not ovgames and not remove_ids:
         return games
+    # 后台新增/编辑的游戏可能缺 time 等字段，统一补默认值（否则 slim 生成 KeyError 直接炸构建）
+    for g in ovgames:
+        g.setdefault('platform', '')
+        g.setdefault('desc', '')
+        g.setdefault('cover', '')
+        g.setdefault('images', [])
+        g.setdefault('links', [])
+        g.setdefault('post', '')
+        g.setdefault('post_url', '')
+        g.setdefault('time', '')
     by_id = {g['id']: g for g in ovgames}
     kept = []
     for g in games:
@@ -280,7 +290,7 @@ def main():
     # 前台瘦身版：去掉前台不用的 images / post_url（后台仍读全量版 games.json）；保留 time 供前台显示
     slim = dict(payload)
     slim['games'] = [
-        {k: g[k] for k in ('id', 'name', 'platform', 'desc', 'cover', 'links', 'post', 'time')}
+        {k: g.get(k, '') for k in ('id', 'name', 'platform', 'desc', 'cover', 'links', 'post', 'time')}
         for g in payload['games']
     ]
     # slim 是否需要写入：文件缺失/损坏/内容（不含 updated_at，避免每轮时间戳造成假变化）有差异

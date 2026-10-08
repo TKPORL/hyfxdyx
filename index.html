@@ -130,10 +130,10 @@ footer a:hover{text-decoration:underline}
   .req{padding:12px 14px;font-size:13px;margin:-4px 0 20px}
   .ggrid{grid-template-columns:repeat(2,1fr);gap:10px}
   .g-title{font-size:13px}
-  .hero{margin:16px 0 18px;padding:18px 18px 16px;border-radius:16px;gap:14px}
-  .hero h1{font-size:19px}
-  .hero p{margin-top:6px;font-size:12.5px;line-height:1.6}
-  .stat b{font-size:22px}
+  .hero{flex-direction:column;align-items:flex-start;margin:16px 0 18px;padding:18px 18px 16px;border-radius:16px;gap:14px}
+  .hero h1{font-size:20px}
+  .hero .stats{gap:24px}
+  .stat b{font-size:21px}
 }
 /* ===== Hero（Demo 同款深色统计条） ===== */
 .hero{margin:26px 0 24px;background:linear-gradient(120deg,#2a2622 0%,#3d2a28 60%,#52302e 100%);border-radius:22px;padding:34px 38px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;position:relative;overflow:hidden}
@@ -212,8 +212,7 @@ footer a:hover{text-decoration:underline}
 <main>
   <section class="hero">
     <div>
-      <h1>Tsinho黄油游戏库</h1>
-      <p>收录 <b id="heroN">…</b> 款黄油游戏，每款都有独立页面，点进封面就是下载。</p>
+      <h1>游戏库</h1>
     </div>
     <div class="stats">
       <div class="stat"><b id="stTotal">…</b><span>在库游戏</span></div>
@@ -229,7 +228,7 @@ footer a:hover{text-decoration:underline}
   <div class="sect-title"><span>最新游戏</span></div>
   <div class="cols">
     <div class="colmain">
-      <div class="filterbar"><span class="count" id="cnt"></span></div>
+      <div class="filterbar" style="display:none"><span class="count" id="cnt"></span></div>
       <div class="ggrid" id="grid"></div>
       <div class="empty" id="empty" style="display:none">没有找到匹配的游戏</div>
       <div class="pgbar" id="pgbar" style="display:none"></div>
@@ -446,8 +445,20 @@ footer a:hover{text-decoration:underline}
   document.addEventListener('click', function (e) {
     var b = e.target.closest('.btn-more');
     if (!b) return;
+    // 原地追加：只把新卡片接到后面，不重渲染已有卡片（页面停在被点按钮的位置，不跳位）
+    var data = list();
+    var start = Math.min(shown, data.length);
     shown += PAGE_SIZE;
-    render();
+    var h = '';
+    for (var i = start; i < Math.min(shown, data.length); i++) h += cardHtml(data[i], i);
+    document.getElementById('grid').insertAdjacentHTML('beforeend', h);
+    if (data.length > shown) {
+      b.disabled = false;
+      b.textContent = '加载更多';
+    } else {
+      b.remove();
+    }
+    loadViewCounts();
   });
 
   function setRandom(on) {
@@ -651,6 +662,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008i"></script>
+<script src="assets/js/nav.js?v=20261009a"></script>
 </body>
 </html>
