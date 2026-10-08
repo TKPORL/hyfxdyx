@@ -285,16 +285,14 @@ footer a{color:#e5484d;text-decoration:none}
       [].slice.call(list.children).forEach(function (el) {
         if (el.classList.contains('mrhx-group')) return;
         if (el.classList.contains('mrhx-citem') && !el.classList.contains('mrhx-creply-item')) {
+          // 先收集整组再移动：移动父卡后其 nextElementSibling 会失效
+          var grp = [el];
+          var n = el.nextElementSibling;
+          while (n && n.classList.contains('mrhx-creply-item')) { grp.push(n); n = n.nextElementSibling; }
           var w = document.createElement('div');
           w.className = 'mrhx-group';
           el.parentNode.insertBefore(w, el);
-          w.appendChild(el);
-          var n = el.nextElementSibling;
-          while (n && n.classList.contains('mrhx-creply-item')) {
-            var nx = n.nextElementSibling;
-            w.appendChild(n);
-            n = nx;
-          }
+          grp.forEach(function (x) { w.appendChild(x); });
         }
       });
     }
