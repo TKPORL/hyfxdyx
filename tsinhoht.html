@@ -621,17 +621,26 @@ table.gtable{width:100%;border-collapse:collapse}
   function boot() {
     loading = true;
     renderStat();
-    fetch('data/games.json?v=' + Date.now())
-      .then(function (r) { return r.json(); })
-      .then(function (d) {
-        BASE = d;
-        initWorking();
-      })
-      .catch(function () {
-        BASE = null;
-        initWorking();
-        toast('无法读取 data/games.json（请通过 http:// 访问），可先「导入JSON」', true);
-      });
+    // 线上生效的公告/置顶存在 games.override.json（后台发布写入），games.json 里没有
+    // → 启动时把 override 里的 announce/pinned 合进 BASE，设置页才能回显已有公告
+    var baseP = fetch('data/games.json?v=' + Date.now())
+      .then(function (r) { return r.json(); });
+    var ovgP = fetch('data/games.override.json?v=' + Date.now())
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+    Promise.all([baseP, ovgP]).then(function (res) {
+      BASE = res[0];
+      var ovg = res[1];
+      if (ovg && BASE) {
+        if (ovg.announce !== undefined) BASE.announce = ovg.announce;
+        if (ovg.pinned !== undefined) BASE.pinned = ovg.pinned;
+      }
+      initWorking();
+    }).catch(function () {
+      BASE = null;
+      initWorking();
+      toast('无法读取 data/games.json（请通过 http:// 访问），可先「导入JSON」', true);
+    });
   }
   function initWorking() {
     var saved = null;
