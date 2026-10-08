@@ -66,11 +66,16 @@
 '.nav-drop#mrhxMoreDrop.open>div{transform:translateX(0)}' +
 '.nav-drop#mrhxMoreDrop .drop-inner{max-width:none;margin:0;border:none;border-radius:0;box-shadow:none;padding:0;opacity:1;transform:none}' +
 '.nav-drop#mrhxMoreDrop .drop-menu{flex-direction:column;align-items:stretch;gap:4px;padding:0}' +
-'#mrhxMoreDrop .plat-dd{display:block;margin:0 0 10px;padding:0 0 10px;border-bottom:1px solid #ecebe9}' +
-'#mrhxMoreDrop .plat-head{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;font:inherit;font-size:13px;font-weight:700;color:#888;letter-spacing:1px;padding:4px 2px;cursor:pointer}' +
-'#mrhxMoreDrop .plat-head .chev{width:13px;height:13px;stroke:#999;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .2s}' +
+'#mrhxMoreDrop .plat-dd{display:block;margin:0 0 8px}' +
+'#mrhxMoreDrop .plat-dd.plat-open{padding-bottom:10px;border-bottom:1px solid #ecebe9}' +
+'#mrhxMoreDrop .plat-head{display:flex;align-items:center;gap:10px;width:100%;background:#faf9f7;border:1px solid #f0eeec;border-radius:10px;padding:10px 14px;font:inherit;font-size:13.5px;color:#555;cursor:pointer;transition:.18s;text-align:left}' +
+'#mrhxMoreDrop .plat-head .pic{width:16px;height:16px;stroke:#999;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}' +
+'#mrhxMoreDrop .plat-head .chev{margin-left:auto;width:13px;height:13px;stroke:#999;fill:none;stroke-width:2.2;stroke-linecap:round;transition:transform .2s}' +
 '#mrhxMoreDrop .plat-dd.plat-open .plat-head .chev{transform:rotate(180deg)}' +
-'#mrhxMoreDrop .plat-head:hover{color:#e5484d}' +
+'#mrhxMoreDrop .plat-head:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}' +
+'#mrhxMoreDrop .plat-head:hover .pic,#mrhxMoreDrop .plat-head:hover .chev{stroke:#e5484d}' +
+'#mrhxMoreDrop .plat-dd.plat-open .plat-head{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3}' +
+'#mrhxMoreDrop .plat-dd.plat-open .plat-head .pic,#mrhxMoreDrop .plat-dd.plat-open .plat-head .chev{stroke:#e5484d}' +
 '#mrhxMoreDrop .plat-btn{display:none}' +
 '#mrhxMoreDrop .plat-dd:not(.plat-open) .plat-menu{display:none}' +
 '#mrhxMoreDrop .plat-menu{position:static;display:flex;flex-direction:column;gap:6px;min-width:0;border:none;box-shadow:none;padding:6px 0 0;opacity:1;transform:none;pointer-events:auto}' +
@@ -238,7 +243,8 @@
     var head = document.createElement('button');
     head.type = 'button';
     head.className = 'plat-head';
-    head.innerHTML = '平台筛选<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
+    head.innerHTML = '<svg class="pic" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M7 12h10"/><path d="M10 19h4"/></svg>平台筛选' +
+      '<svg class="chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>';
     head.addEventListener('click', function () { dd.classList.toggle('plat-open'); });
     dd.insertBefore(head, dd.querySelector('.plat-menu'));
   }

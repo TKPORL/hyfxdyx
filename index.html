@@ -147,6 +147,23 @@ footer a:hover{text-decoration:underline}
 .filterbar{display:flex;align-items:center;margin-bottom:16px}
 .filterbar .count{margin-left:auto;font-size:13px;color:#999}
 .pg-gap{color:#bbb;font-size:13px;padding:0 2px;display:flex;align-items:center}
+.btn-more{display:block;margin:24px auto 8px;padding:11px 46px;border:1px solid #e2ded8;background:#fff;color:#555;border-radius:99px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
+.btn-more:hover{color:#e5484d;border-color:#f0b4b6;background:#fdf3f3;transform:translateY(-2px)}
+/* 热门榜：缩略图形态（Demo 同款） */
+.hot-item{display:flex;align-items:center;gap:9px;padding:7px 2px;border-bottom:1px dashed #f0eeec;text-decoration:none}
+.hot-item:last-child{border-bottom:none}
+.hot-item .th{width:46px;height:34px;object-fit:cover;border-radius:6px;flex-shrink:0;background:#f4f2ef}
+.hot-item .rk{width:16px;text-align:center;font-size:12px;font-weight:800;color:#c9c6c0;flex-shrink:0}
+.hot-item:nth-child(-n+3) .rk{color:#e5484d}
+.hot-item .hn{flex:1;min-width:0;font-size:12.5px;color:#444;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:.15s}
+.hot-item:hover .hn{color:#e5484d}
+.hot-item .hv{font-size:11px;color:#aaa;flex-shrink:0}
+.hot-item .hv b{color:#e5484d}
+.hot-empty{font-size:12.5px;color:#aaa;padding:6px 4px}
+/* 库内分布（热门榜底部） */
+.hot-dist{margin-top:10px;padding-top:10px;border-top:1px solid #ecebe9}
+.hot-dist .prow{display:flex;justify-content:space-between;font-size:12.5px;color:#888;padding:5px 2px}
+.hot-dist .prow b{color:#e5484d}
 .filterbar .count b{color:#e5484d}
 /* ===== 分节标题（分割线 + 标题） ===== */
 .sect-title{display:flex;align-items:center;gap:14px;margin:4px 0 18px}
@@ -221,6 +238,7 @@ footer a:hover{text-decoration:underline}
       <div class="spanel">
         <h3>热门榜单</h3>
         <div id="hot"><div class="hot-empty">统计加载中…</div></div>
+        <div class="hot-dist" id="hotDist"></div>
       </div>
     </aside>
   </div>
@@ -250,7 +268,7 @@ footer a:hover{text-decoration:underline}
   var GAMES = [];
   var PINNED = [];
   var filtered = null;
-  var cur = 0;
+  var shown = PAGE_SIZE;
   var LOADING = true;
   var PF = '';
   var RANDOM = false;
@@ -331,12 +349,14 @@ footer a:hover{text-decoration:underline}
       sbGet('/rest/v1/page_views?select=url,count&order=count.desc&limit=12').then(function (rs) {
         var byKey = {};
         GAMES.forEach(function (g) { byKey[viewKey(g.id)] = g; });
-        var h = '';
-        (rs || []).forEach(function (r, i) {
+        var h = '', n = 0;
+        (rs || []).forEach(function (r) {
           var g = byKey[r.url];
-          if (!g) return;
-          h += '<a class="hot-item" href="game.html?id=' + encodeURIComponent(g.id) + '"><span class="rk">' + (i + 1) +
-            '</span><span class="hn">' + esc(g.name) + '</span><span class="hv"><b>' + fmtV(r.count || 0) + '</b> 看</span></a>';
+          if (!g || n >= 10) return;
+          n++;
+          h += '<a class="hot-item" href="game.html?id=' + encodeURIComponent(g.id) + '"><span class="rk">' + n +
+            '</span>' + (g.cover ? '<img class="th" loading="lazy" src="' + esc(g.cover) + '" alt="">' : '') +
+            '<span class="hn">' + esc(g.name) + '</span><span class="hv"><b>' + fmtV(r.count || 0) + '</b> 看</span></a>';
         });
         host.innerHTML = h || '<div class="hot-empty">暂无浏览数据</div>';
       }).catch(function () { host.innerHTML = '<div class="hot-empty">暂无浏览数据</div>'; });
@@ -346,7 +366,8 @@ footer a:hover{text-decoration:underline}
     var h = '';
     rows.slice(0, 10).forEach(function (r, i) {
       h += '<a class="hot-item" href="game.html?id=' + encodeURIComponent(r.g.id) + '"><span class="rk">' + (i + 1) +
-        '</span><span class="hn">' + esc(r.g.name) + '</span><span class="hv"><b>' + fmtV(r.c) + '</b> 看</span></a>';
+        '</span>' + (r.g.cover ? '<img class="th" loading="lazy" src="' + esc(r.g.cover) + '" alt="">' : '') +
+        '<span class="hn">' + esc(r.g.name) + '</span><span class="hv"><b>' + fmtV(r.c) + '</b> 看</span></a>';
     });
     host.innerHTML = h;
   }
@@ -405,58 +426,34 @@ footer a:hover{text-decoration:underline}
       return;
     }
     var data = list();
-    var pages = Math.max(1, Math.ceil(data.length / PAGE_SIZE));
-    if (cur >= pages) cur = pages - 1;
     var s = '';
-    for (var i = cur * PAGE_SIZE; i < Math.min((cur + 1) * PAGE_SIZE, data.length); i++) s += cardHtml(data[i], i);
+    for (var i = 0; i < Math.min(shown, data.length); i++) s += cardHtml(data[i], i);
     document.getElementById('grid').innerHTML = s;
     document.getElementById('empty').style.display = data.length ? 'none' : '';
     document.getElementById('cnt').textContent = data.length + ' 款';
+    // Demo 形态：加载更多（不再用分页条）
     var bar = document.getElementById('pgbar');
-    if (pages <= 1) { bar.style.display = 'none'; } else {
+    if (data.length > shown) {
       bar.style.display = '';
-      // 紧凑分页：首页/末页恒显 + 当前页±1，其余用省略号（不再 46 页全铺）
-      var want = {}; want[0] = want[pages - 1] = want[cur] = true;
-      if (cur - 1 >= 0) want[cur - 1] = true;
-      if (cur + 1 < pages) want[cur + 1] = true;
-      var seq = Object.keys(want).map(Number).sort(function (a, b) { return a - b; });
-      var h = '<button type="button" class="pg' + (cur === 0 ? ' off' : '') + '" data-p="-1">&lsaquo;</button>';
-      var prev = -1;
-      seq.forEach(function (p) {
-        if (prev >= 0 && p - prev > 1) h += '<span class="pg-gap">…</span>';
-        h += '<button type="button" class="pg" data-p="' + p + '">' + (p + 1) + '</button>';
-        prev = p;
-      });
-      h += '<button type="button" class="pg' + (cur === pages - 1 ? ' off' : '') + '" data-p="' + pages + '">&rsaquo;</button>';
-      h += '<span class="pginfo">' + (cur + 1) + ' / ' + pages + ' 页</span>';
-      bar.innerHTML = h;
-      [].slice.call(bar.querySelectorAll('.pg')).forEach(function (b) {
-        var bp = parseInt(b.getAttribute('data-p'), 10);
-        b.classList.toggle('on', bp === cur);
-        b.classList.toggle('off', (bp === -1 && cur === 0) || (bp === pages && cur === pages - 1));
-      });
+      bar.innerHTML = '<button type="button" class="btn-more" id="moreBtn">加载更多</button>';
+    } else {
+      bar.style.display = 'none';
     }
     loadViewCounts();
     if (!hotLoaded) { hotLoaded = true; renderHot(); }
   }
 
   document.addEventListener('click', function (e) {
-    var b = e.target.closest('.pg');
-    if (!b || b.classList.contains('off')) return;
-    var pages = Math.max(1, Math.ceil(list().length / PAGE_SIZE));
-    var p = parseInt(b.getAttribute('data-p'), 10);
-    if (p === -1) p = cur - 1;
-    if (p === pages) p = cur + 1;
-    if (p < 0 || p >= pages) return;
-    cur = p;
+    var b = e.target.closest('.btn-more');
+    if (!b) return;
+    shown += PAGE_SIZE;
     render();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
   function setRandom(on) {
     RANDOM = on;
     shuffledCache = null;
-    cur = 0;
+    shown = PAGE_SIZE;
     render();
   }
 
@@ -498,7 +495,7 @@ footer a:hover{text-decoration:underline}
       if (b.dataset.act === 'again') {
         if (!RANDOM) return;
         shuffledCache = null;
-        cur = 0;
+        shown = PAGE_SIZE;
         render();
         dd.classList.remove('open');
         return;
@@ -556,6 +553,9 @@ footer a:hover{text-decoration:underline}
     });
     document.getElementById('stPC').textContent = pcOnly;
     document.getElementById('stAZ').textContent = az;
+    var hd = document.getElementById('hotDist');
+    if (hd) hd.innerHTML = '<div class="prow"><span>PC + 安卓</span><b>' + az + ' 款</b></div>' +
+      '<div class="prow"><span>PC</span><b>' + pcOnly + ' 款</b></div>';
     applyAnnounce(d.announce);
     render();
   }
@@ -651,6 +651,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008h"></script>
+<script src="assets/js/nav.js?v=20261008i"></script>
 </body>
 </html>

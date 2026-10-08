@@ -871,6 +871,11 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     row.querySelector('.lrow-del').onclick = function () { row.remove(); };
     $('linkRows').appendChild(row);
   }
+  // 关闭编辑弹窗（此前只有 ADM.closeEditor，裸调用三处全部抛 ReferenceError——保存/遮罩关/Esc 关全失效的老 bug）
+  function closeEditor() {
+    $('editMask').classList.remove('show');
+    editing = null;
+  }
   function saveEditor() {
     var name = $('fName').value.trim();
     if (!name) { toast('请填写游戏名称', true); $('fName').focus(); return; }
@@ -1302,7 +1307,7 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     togglePin: togglePin,
     dupById: dupGame,
     delById: delGame,
-    closeEditor: function () { $('editMask').classList.remove('show'); editing = null; },
+    closeEditor: function () { closeEditor(); },
     addLinkRow: addLinkRow,
     saveEditor: saveEditor,
     saveLocal: saveLocal,
