@@ -577,7 +577,15 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
         } else {
           DATA = saved;
           if (!Array.isArray(DATA.remove_ids)) DATA.remove_ids = [];
-          log('警告：载入无标记的旧数据（' + DATA.games.length + ' 条）。若这不是你的改动，请点「恢复官方数据」');
+          // 同一警告只记一次（24h 内不重复刷屏），避免每次进后台都追加同条日志
+          var warnKey = 'tsinhoht_oldwarn_seen';
+          var seen = '';
+          try { seen = localStorage.getItem(warnKey) || ''; } catch (e) {}
+          var fingerprint = 'old_' + DATA.games.length;
+          if (seen.indexOf(fingerprint) === -1 || Date.now() - Number(seen.split('|')[0] || 0) > 864e5) {
+            log('警告：载入无标记的旧数据（' + DATA.games.length + ' 条）。若这不是你的改动，请点「恢复官方数据」');
+            try { localStorage.setItem(warnKey, Date.now() + '|' + fingerprint); } catch (e) {}
+          }
         }
       }
     } else if (BASE && Array.isArray(BASE.games)) {

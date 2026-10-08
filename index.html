@@ -15,6 +15,7 @@
 {"@context":"https://schema.org","@type":"WebSite","name":"Tsinho黄油站","alternateName":["Tsinho","tsinho","Tsinho工作室","黄油站","黄油游戏站","单游戏黄油站","Tsinho黄油推荐站"],"url":"https://tkporl.github.io/hyfxdyx/","inLanguage":"zh-CN","description":"Tsinho黄油站每日更新黄油游戏资源，PC/安卓双平台网盘下载，免费无付费。"}
 </script>
 <style>
+:root{--red:#e5484d;--ink:#1c1a18;--ink2:#6b665f}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;min-height:100vh}
 /* 顶部导航由 assets/js/nav.js 统一注入（样式/结构/交互单点维护） */
@@ -30,6 +31,8 @@ main{max-width:1440px;margin:0 auto;padding:28px 28px 44px}
 .req:hover{border-color:#f0b4b6;box-shadow:0 10px 28px rgba(0,0,0,.08)}
 .req .tag{font-size:11px;font-weight:700;color:#fff;background:var(--red);border-radius:6px;padding:3px 9px;flex-shrink:0}
 .req .bt{min-width:0;flex:1}
+.req .bt b{color:var(--red);font-size:15px;font-weight:800}
+.req .bt{font-size:13px;color:var(--ink2);line-height:1.6}
 .req h3{font-size:15px;font-weight:800;color:var(--red);white-space:nowrap}
 .req p{font-size:13px;color:var(--ink2);margin-top:2px;line-height:1.6}
 .req .go{margin-left:auto;flex-shrink:0;display:inline-flex;align-items:center;background:var(--red);color:#fff;font-size:13px;font-weight:600;border-radius:99px;padding:9px 20px;transition:.16s}
@@ -48,13 +51,13 @@ main{max-width:1440px;margin:0 auto;padding:28px 28px 44px}
 .sect h2{font-size:19px;color:#2b2b2b;position:relative;padding-left:12px}
 .sect h2::before{content:'';position:absolute;left:0;top:2px;bottom:2px;width:4px;border-radius:2px;background:#e5484d}
 .sect span{font-size:13px;color:#aaa}
-.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-bottom:10px}
+.ggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;margin-bottom:10px}
 .gcard{display:flex;flex-direction:column;background:#fff;border:1px solid #ecebe9;border-radius:14px;overflow:hidden;text-decoration:none;transition:.25s;box-shadow:0 1px 2px rgba(0,0,0,.03);animation:mrhxCard .5s ease both}
 .gcard:hover{border-color:#f0b4b6;transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,.08)}
 .g-cover{display:block;width:100%;aspect-ratio:16/9;overflow:hidden;background:#f4f2ef;position:relative}
 .g-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:.3s;cursor:pointer}
 .g-cover .g-plat{position:absolute;left:9px;top:9px;background:rgba(43,43,43,.72);backdrop-filter:blur(4px)}
-.g-cover .g-new{position:absolute;right:9px;top:9px;background:#e5484d}
+.g-new{position:absolute;right:9px;top:9px;background:#e5484d}
 .gcard:hover .g-cover img{transform:scale(1.04)}
 .g-body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:7px;flex:1}
 .g-title{font-size:14px;font-weight:700;color:#2b2b2b;line-height:1.45;display:flex;align-items:flex-start;flex-wrap:wrap;gap:5px;text-decoration:none}
@@ -255,7 +258,7 @@ footer a:hover{text-decoration:underline}
 
   function cardHtml(g, i) {
     var go = 'game.html?id=' + encodeURIComponent(g.id);
-    var isNew = i < 6 ? '<span class="g-plat g-new">NEW</span>' : '';
+    var isNew = i < 6 ? '<span class="g-new">NEW</span>' : '';
     var h = '<div class="gcard" data-id="' + esc(g.id) + '" style="animation-delay:' + Math.min(i * 0.04, 0.6) + 's">';
     h += '<a class="g-cover" href="' + go + '" aria-label="查看 ' + esc(g.name) + ' 详情">' + (g.cover ? '<img loading="lazy" src="' + esc(g.cover) + '" alt="' + esc(g.name) + '">' : '') +
       '<span class="g-plat">' + esc(g.platform || '') + '</span>' + isNew + '</a>';
@@ -526,6 +529,6 @@ footer a:hover{text-decoration:underline}
   })();
 })();
 </script>
-<script src="assets/js/nav.js?v=20261008d"></script>
+<script src="assets/js/nav.js?v=20261008e"></script>
 </body>
 </html>
