@@ -14,7 +14,7 @@
   var BREAKPOINT_MQ = '(min-width: 681px)';
 
   var NAV_CSS = 'header{position:sticky;top:0;z-index:20;padding:0 20px 0}' +
-'.hd-bar{max-width:900px;margin:0 auto;background:#fff;border:1px solid #ecebe9;border-radius:0 0 12px 12px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;align-items:center;gap:12px;padding:7px 12px;min-height:52px}' +
+'.hd-bar{max-width:1320px;margin:0 auto;background:#fff;border:1px solid #ecebe9;border-radius:0 0 12px 12px;box-shadow:0 6px 18px rgba(0,0,0,.08);display:flex;align-items:center;gap:12px;padding:7px 12px;min-height:52px}' +
 '.hd-bar .logo{display:flex;align-items:center;flex-shrink:0;text-decoration:none}' +
 '.hd-bar .logo img{width:118px;height:auto;border-radius:8px;display:block}' +
 '.hd-bar .menu{display:flex;align-items:center;justify-content:space-evenly;gap:1px;flex:1;min-width:0;flex-wrap:nowrap;overflow:hidden;max-width:1000px;transition:max-width .34s cubic-bezier(.2,.8,.2,1),transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s linear 0s}' +
