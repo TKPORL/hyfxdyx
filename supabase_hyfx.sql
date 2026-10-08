@@ -49,6 +49,7 @@ select encode(gen_random_bytes(18), 'hex')
 where not exists (select 1 from admin_tokens);
 
 -- 站长回复：以「Tsinho · 站长」身份挂到指定父评论下
+-- 内部复用主站发评论 RPC guard_comment（email 非空约束 + 回复通知邮件逻辑都在里面）
 create or replace function admin_reply_comment(
   p_token text, p_url text, p_pid comments.pid%type, p_nick text, p_content text
 )
@@ -62,8 +63,20 @@ begin
   if coalesce(trim(p_content), '') = '' then
     raise exception '回复内容不能为空';
   end if;
-  insert into comments(url, pid, nick, is_admin, content, pinned)
-  values (p_url, p_pid, coalesce(nullif(trim(p_nick), ''), 'Tsinho'), true, trim(p_content), false);
+  perform guard_comment(
+    p_url,
+    coalesce(nullif(trim(p_nick), ''), 'Tsinho'),
+    'tsinho@users.noreply.github.com',
+    trim(p_content),
+    p_pid
+  );
+  -- guard_comment 是访客通道，可能固定 is_admin=false → 立刻把刚插入的这条标回站长身份
+  update comments set is_admin = true
+  where id = (
+    select id from comments
+    where url = p_url and pid = p_pid
+    order by created_at desc limit 1
+  );
 end;
 $$;
 revoke all on function admin_reply_comment(text, text, comments.pid%type, text, text) from public;
