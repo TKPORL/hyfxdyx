@@ -79,6 +79,9 @@ main.adm{max-width:1080px;margin:0 auto;padding:22px 20px 60px}
 .cm-content{font-size:13px;color:#444;line-height:1.7;white-space:pre-wrap;word-break:break-word}
 .cm-replyto-badge{background:#f1efe9;color:#666}
 .cm-badge.replyto{background:#f1efe9;color:#888;font-weight:500}
+.cm-group{border:1px solid #f0eae4;border-radius:14px;padding:8px;margin-bottom:10px;background:#fcfbfa}
+.cm-group .cm-item{margin-bottom:6px}
+.cm-group .cm-item:last-child{margin-bottom:0}
 .cm-acts{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
 .cm-acts .btn{padding:3px 10px;font-size:11.5px;border-radius:8px}
 .cm-replybox{display:none;margin-top:8px;padding:8px 10px;background:#faf9f7;border:1px solid #ecebe9;border-radius:10px}
@@ -1262,7 +1265,10 @@ table.gtable{width:100%;border-collapse:collapse;background:#fff;border:1px soli
     var f = cmFilterList();
     if (!arr.length) { list.innerHTML = '<div class="empty-box">本站还没有收到评论</div>'; return; }
     if (!f.tops.length) { list.innerHTML = '<div class="empty-box">没有符合筛选条件的评论</div>'; return; }
-    list.innerHTML = f.tops.map(function (c) { return cmCard(c, f.reps[c.id] || []); }).join('');
+    list.innerHTML = f.tops.map(function (c) {
+      var rs = f.reps[c.id] || [];
+      return '<div class="cm-group">' + cmCard(c, rs) + '</div>';
+    }).join('');
   }
   function cmCard(c, replies) {
     var h = '<div class="cm-item" data-cmid="' + esc(c.id) + '">';

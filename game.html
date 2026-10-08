@@ -67,6 +67,10 @@ main{max-width:900px;margin:0 auto;padding:22px 20px 44px}
 .mrhx-creply-item{width:100%;border:1px solid #ecebe9;border-left:1px solid #ecebe9;border-radius:10px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03);padding:12px 14px}
 .mrhx-creply-item:hover{border-color:#f0b4b6;box-shadow:0 6px 18px rgba(229,72,77,.08)}
 @media (max-width:720px){.mrhx-creply-item{padding:12px 14px}}
+/* 父评论与其回复共用一个外框（评论脚本渲染后由下方脚本自动分组） */
+.mrhx-group{border:1px solid #f0e6e2;border-radius:12px;padding:8px;margin-bottom:10px;background:#fcfaf8}
+.mrhx-group .mrhx-citem{margin-bottom:6px}
+.mrhx-group .mrhx-citem:last-child{margin-bottom:0}
 .empty-tip{text-align:center;color:#999;padding:60px 0;font-size:14px}
 footer{border-top:1px solid #ecebe9;padding:22px 20px;text-align:center;color:#999;font-size:12px}
 footer a{color:#e5484d;text-decoration:none}
@@ -272,6 +276,37 @@ footer a{color:#e5484d;text-decoration:none}
     .then(function (r) { return r.json(); })
     .then(render)
     .catch(function () { $('#box').className = 'empty-tip'; $('#box').textContent = '数据加载失败，请稍后刷新重试。'; });
+
+  // 父评论与其回复包进同一外框（评论脚本异步渲染 + 分页加载都持续生效）
+  (function () {
+    function regroup() {
+      var list = document.getElementById('mrhx-clist');
+      if (!list) return;
+      [].slice.call(list.children).forEach(function (el) {
+        if (el.classList.contains('mrhx-group')) return;
+        if (el.classList.contains('mrhx-citem') && !el.classList.contains('mrhx-creply-item')) {
+          var w = document.createElement('div');
+          w.className = 'mrhx-group';
+          el.parentNode.insertBefore(w, el);
+          w.appendChild(el);
+          var n = el.nextElementSibling;
+          while (n && n.classList.contains('mrhx-creply-item')) {
+            var nx = n.nextElementSibling;
+            w.appendChild(n);
+            n = nx;
+          }
+        }
+      });
+    }
+    var mo = new MutationObserver(regroup);
+    function arm() {
+      var list = document.getElementById('mrhx-clist');
+      if (list) { mo.observe(list, { childList: true }); regroup(); }
+      else setTimeout(arm, 300);
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', arm);
+    else arm();
+  })();
 })();
 </script>
 </body>
