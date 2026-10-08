@@ -111,15 +111,20 @@ footer a{color:#e5484d;text-decoration:none}
   var KEY = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
   var PAGE_KEY = '/hyfxdyx/game.html?id=' + id; // 浏览量/评论的存储键
   function sbGet(q) {
+    // 偶发网络抖动自动重试 1 次（Supabase 偶发连接重置，主站有前科）
     return fetch(SB + q, { headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } })
+      .catch(function () { return fetch(SB + q, { headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY } }); })
       .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
   }
   function sbRpc(fn, body) {
-    return fetch(SB + '/rest/v1/rpc/' + fn, {
+    var opts = {
       method: 'POST',
       headers: { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json' },
       body: JSON.stringify(body || {})
-    }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
+    };
+    return fetch(SB + '/rest/v1/rpc/' + fn, opts)
+      .catch(function () { return fetch(SB + '/rest/v1/rpc/' + fn, opts); })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); });
   }
   // 浏览量：读（1 次请求）+ 写（每访客每天每页只 1 次请求，localStorage 去重）
   function loadViews() {
