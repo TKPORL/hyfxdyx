@@ -17,7 +17,7 @@ body{background:#faf9f7;color:#2b2b2b;font-family:-apple-system,BlinkMacSystemFo
 img{display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
-main{max-width:900px;margin:0 auto;padding:22px 20px 44px}
+main{max-width:1080px;margin:0 auto;padding:22px 20px 44px}
 .crumbs{font-size:12.5px;color:#999;margin-bottom:16px}
 .crumbs a:hover{color:#e5484d}
 .detail{display:grid;grid-template-columns:280px minmax(0,1fr);gap:30px;background:#fff;border:1px solid #ecebe9;border-radius:16px;padding:26px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
@@ -85,6 +85,25 @@ footer a{color:#e5484d;text-decoration:none}
   main{padding:16px 14px 32px}
   .detail{grid-template-columns:1fr;padding:18px;gap:20px}
   .d-cover{max-width:260px}
+}
+/* 大屏放大一档：全屏桌面下 UI 不至于太小 */
+@media (min-width:1024px){
+  .detail{grid-template-columns:320px minmax(0,1fr);padding:30px;gap:34px}
+  .d-title{font-size:24px}
+  .badge{font-size:13px;padding:5px 13px}
+  .like-btn{font-size:14.5px;padding:10px 22px}
+  .dl-title{font-size:14px}
+  .dl-btn{font-size:15px;padding:11px 22px}
+  .dl-note{font-size:13px}
+  .intro h3,.rel h3{font-size:17px}
+  .intro .txt{font-size:15px;line-height:1.9}
+  .crumbs{font-size:13px}
+  .rel-grid{grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+  .rcard .t{font-size:14.5px}
+  .rcard .i{padding:12px 14px 14px}
+  .mrhx-ccontent{font-size:13.5px}
+  .mrhx-cmeta b{font-size:13px}
+  .mrhx-cbtn{font-size:11.5px}
 }
 </style>
 </head>
