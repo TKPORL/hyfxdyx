@@ -83,7 +83,7 @@ def parse_posts(index_html):
 def parse_cards(post_html):
     """解析详情页里所有 node.heading3 游戏卡片"""
     cards = []
-    blocks = re.split(r'<li class="node heading3">', post_html)[1:]
+    blocks = re.split(r'<li class="node heading3"(?: hidden)?>', post_html)[1:]
     for blk in blocks:
         m = re.search(r'<div class="content[^"]*"\s*>\s*<span>(.*?)</span>', blk, re.S)
         if not m:
@@ -100,7 +100,10 @@ def parse_cards(post_html):
         imgs = []
         im_seg = re.search(r'<ul class="image-list">(.*?)</ul>', blk, re.S)
         if im_seg:
-            imgs = [u.strip() for u in re.findall(r'<img[^>]*src="([^"]+)"', im_seg.group(1))]
+            # hidden 延迟卡的图片写的是 data-src（gen.js qztDeferImages），一并提取
+            imgs = [u.strip() for u in re.findall(r'<img[^>]*\ssrc="([^"]+)"', im_seg.group(1))]
+            if not imgs:
+                imgs = [u.strip() for u in re.findall(r'<img[^>]*\sdata-src="([^"]+)"', im_seg.group(1))]
 
         links = []
         dl = re.search(r'<div class="mrhx-dl">(.*?)</div>', blk, re.S)
