@@ -2,3 +2,34 @@ __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+
+# 备份文件（改名规则：<原名>.bak-<日期>-<说明>）
+*.bak-*
+
+# 内部文档 / 敏感文件（2026-10-13 移出仓库，改存 D:\Tsinho文件夹\Tsinho黄油站\_hyfxdyx-private\）
+# GitHub Pages 会发布仓库全部文件，放这里等于公开发布，故不进仓库。
+AGENTS.md
+README.md
+supabase_hyfx.sql
+【*.md
+
+# 临时脚本与截图产物
+__*.js
+__*.html
+__*.py
+__*.ps1
+adm-*.png
+adm-dash
+group-check
+grp-*.png
+newadm*.png
+shot-*.png
+
+# 工具目录
+.claude/
+.trae/
+.graphflow/
+graphflow-out/
+.playwright-cli/
+.workbuddy/
+.dsh-file-attachment/

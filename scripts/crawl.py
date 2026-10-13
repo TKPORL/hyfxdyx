@@ -158,7 +158,20 @@ def merge_override(games, override):
         gid = g.get('id')
         if gid in remove_ids and gid not in by_id:
             continue
-        kept.append(by_id[gid] if gid in by_id else g)
+        ov = by_id.get(gid)
+        if ov is None:
+            kept.append(g)
+            continue
+        # 字段级合并：null 视为「后台没填」→ 保留爬取值；
+        # 空字符串/空数组视为「后台显式清空」→ 覆盖；非空 → 覆盖。
+        # 修 2026-10-13：此前整体替换，导致 override 里 1651 条 time=null
+        # 把爬取到的发布时间全部清空。
+        merged_g = dict(g)
+        for k, v in ov.items():
+            if v is None:
+                continue
+            merged_g[k] = v
+        kept.append(merged_g)
     existing = set(g.get('id') for g in kept)
     additions = [g for g in ovgames if g['id'] not in existing]
     merged = additions + kept

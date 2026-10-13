@@ -70,6 +70,9 @@ a{color:inherit;text-decoration:none}
 .pane.on{display:block}
 .dirtybar{display:none;align-items:center;gap:12px;background:var(--amber-bg);border:1px solid #f0ddb8;border-left:4px solid var(--amber);border-radius:13px;padding:11px 16px;margin-bottom:16px;font-size:13px;color:#8a5a08}
 .dirtybar.show{display:flex}
+.onlinebar{display:none;align-items:center;gap:12px;flex-wrap:wrap;background:#fff8ec;border:1px solid #f0ddb8;border-left:4px solid var(--amber);border-radius:13px;padding:11px 16px;margin-bottom:16px;font-size:12.5px;color:#8a5a08}
+.onlinebar.show{display:flex}
+.onlinebar b{color:#c93a3f}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
 .stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
 .stat .num{font-size:26px;font-weight:800;letter-spacing:.3px}
@@ -270,6 +273,7 @@ table.gtable{width:100%;border-collapse:collapse}
 
   <!-- 仪表盘 -->
   <section class="pane on" id="pane-dash">
+    <div class="onlinebar" id="onlineBar"></div>
     <div class="dirtybar" id="dirtyBar"><span>有未保存的更改（仅在本浏览器生效）</span><button type="button" class="btn btn-pri btn-sm" onclick="ADM.publishOverride()">保存并发布</button><button type="button" class="btn btn-warn btn-sm" onclick="ADM.saveLocal()">仅保存本地预览</button></div>
     <div class="stats" id="statBox"></div>
     <div class="stats">
@@ -409,11 +413,29 @@ table.gtable{width:100%;border-collapse:collapse}
   <section class="pane" id="pane-set">
     <div class="panel">
       <h3>首页公告编辑</h3>
+      <div class="form-row"><label>线上当前生效</label><div id="annLive" style="font-size:12.5px;line-height:1.8;color:#555"></div></div>
       <div class="form-row"><label>公告标题</label><input type="text" id="annTitle" placeholder="如：【公告】" style="max-width:340px"></div>
-      <div class="form-row"><label>公告内容（每行一条，网址会自动变成可点击链接；全部清空并保存则恢复默认公告）</label>
+      <div class="form-row"><label>公告内容（每行一条，网址会自动变成可点击链接；全部清空并保存则回退默认公告）</label>
         <textarea id="annLines" class="ann-ta" placeholder="各位老师好，欢迎收藏本站 防迷路！&#10;官方QQ群：1081159850&#10;https://t.me/Tsinhox"></textarea></div>
-      <button type="button" class="btn btn-pri" onclick="ADM.saveAnnounce()">保存公告</button>
-      <p class="hint" style="margin-top:12px">保存后：① 打开首页立即预览（仅本浏览器）；② 数据管理 →「保存并发布」一步全站生效（约 1~3 分钟）。</p>
+      <div class="form-row" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <label style="display:flex;align-items:center;gap:7px;margin:0"><input type="checkbox" id="annEnabled" checked style="width:auto"> 启用公告弹窗</label>
+        <label style="display:flex;align-items:center;gap:7px;margin:0">延后按钮冷却（分钟）
+          <input type="number" id="annSnooze" value="60" min="1" max="1440" style="width:90px"></label>
+      </div>
+      <div class="form-row" style="display:flex;gap:14px;flex-wrap:wrap">
+        <label style="flex:1;min-width:180px">「关闭」按钮文案
+          <input type="text" id="annBtnClose" placeholder="关闭" style="width:100%"></label>
+        <label style="flex:1;min-width:180px">「延后」按钮文案
+          <input type="text" id="annBtnLater" placeholder="1 小时后显示" style="width:100%"></label>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <button type="button" class="btn btn-pri" onclick="ADM.saveAnnounce()">保存公告</button>
+        <a class="btn btn-ghost btn-sm" href="index.html?ann=1" target="_blank" rel="noreferrer">预览弹窗（绕过节流）</a>
+      </div>
+      <p class="hint" style="margin-top:12px">
+        <b>关闭</b> = 本次会话不再弹（重开浏览器恢复）；<b>延后</b> = 冷却期内不弹，超时恢复。
+        保存后：① 点「预览弹窗」立即看效果；② 数据管理 →「保存并发布」全站生效（约 1~3 分钟）。
+      </p>
     </div>
     <div class="panel">
       <h3>GitHub Token（一键发布 + 图床上传共用）</h3>
@@ -527,7 +549,9 @@ table.gtable{width:100%;border-collapse:collapse}
   var SS_LOGIN = 'tsinhoht_login';
   var LS_LOG = 'tsinhoht_log';
   var LS_GH = 'tsinhoht_gh_token';
-  var DEFAULT_PW = 'tsinho123';
+  // 默认密码（2026-10-13 更换）。注意：改这里只影响未设置过密码的浏览器；
+  // 已登录过的浏览器请到「设置 → 修改后台密码」走一遍，覆盖 localStorage 里的旧哈希。
+  var DEFAULT_PW = 'Tsinho123456@@@@';
   var PAGE_SIZE = 20;
   var GH_CONF = { owner: 'TKPORL', repo: 'hyfxdyx', branch: 'main', dir: 'assets/admin' };
 
@@ -618,9 +642,35 @@ table.gtable{width:100%;border-collapse:collapse}
     ((BASE && BASE.games) || []).forEach(function (g) { s[g.id] = 1; });
     return s;
   }
+  // 线上最新数据的时间戳（用于「本地落后」告警）。
+  // 本地 data/ 不随云端 Actions 同步，站长可能对着 3 天前的数据改。
+  function fetchOnlineMeta() {
+    var url = 'https://tkporl.github.io/hyfxdyx/data/games.json?_=' + Date.now();
+    return fetch(url, { cache: 'no-store' })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (d) { return d && d.updated_at ? { updated_at: d.updated_at, total: d.total } : null; })
+      .catch(function () { return null; });
+  }
+  var onlineMeta = null;
+  function renderOnlineBar(meta) {
+    if (meta !== undefined) onlineMeta = meta;
+    meta = onlineMeta;
+    var el = $('onlineBar');
+    if (!el) return;
+    if (!meta || !meta.updated_at) { el.className = 'onlinebar'; el.innerHTML = ''; return; }
+    var localTs = (DATA && DATA.updated_at) || '';
+    var behind = String(localTs) < String(meta.updated_at);
+    if (!behind) { el.className = 'onlinebar'; el.innerHTML = ''; return; }
+    el.className = 'onlinebar show';
+    el.innerHTML = '<b>本地数据落后线上</b>' +
+      '<span>本地 ' + esc(localTs || '未知') + ' · 线上 ' + esc(meta.updated_at) + '</span>' +
+      '<span>线上共 ' + (meta.total || '?') + ' 条，本地 ' + ((DATA && DATA.games.length) || 0) + ' 条</span>' +
+      '<span style="color:#8a5a08">点「恢复官方数据」或重新拉取仓库可消除</span>';
+  }
   function boot() {
     loading = true;
     renderStat();
+    fetchOnlineMeta().then(function (m) { renderOnlineBar(m); });
     // 线上生效的公告/置顶存在 games.override.json（后台发布写入），games.json 里没有
     // → 启动时把 override 里的 announce/pinned 合进 BASE，设置页才能回显已有公告
     var baseP = fetch('data/games.json?v=' + Date.now())
@@ -818,6 +868,21 @@ table.gtable{width:100%;border-collapse:collapse}
     $('selCnt').textContent = n;
     $('chkAll').checked = false;
   }
+  // 与官方数据有差异的条目数（新增 + 字段被改）。
+  // 修 2026-10-13：原先只数「新增」（!bid[id]），而 override 里 1651 条 ID
+  // 全部都在官方数据内，导致卡片恒为 0。
+  function diffCount(games) {
+    if (!BASE || !Array.isArray(BASE.games)) return 0;
+    var bm = {};
+    BASE.games.forEach(function (g) { bm[g.id] = g; });
+    var n = 0;
+    games.forEach(function (g) {
+      var b = bm[g.id];
+      if (!b) { n++; return; }
+      if (JSON.stringify(normalizeGame(g)) !== JSON.stringify(normalizeGame(b))) n++;
+    });
+    return n;
+  }
   function renderStat() {
     if (!DATA) {
       $('statBox').innerHTML = '<div class="stat"><div class="num">…</div><div class="lab">加载中</div></div>';
@@ -829,13 +894,12 @@ table.gtable{width:100%;border-collapse:collapse}
       if (/安卓/.test(g.platform)) az++;
       else if (/PC/i.test(g.platform)) pc++;
     });
-    var bid = baseIds();
-    var custom = games.filter(function (g) { return !bid[g.id]; }).length;
+    var custom = diffCount(games);
     var cards = [
       ['总游戏数', games.length, 'red'],
       ['PC 游戏', pc, ''],
       ['安卓游戏', az, 'blu'],
-      ['后台新增/修改', custom, 'org']
+      ['本地未发布改动', custom, 'org']
     ];
     $('statBox').innerHTML = cards.map(function (c) {
       return '<div class="stat"><div class="num ' + c[2] + '">' + c[1] + '</div><div class="lab">' + c[0] + '</div></div>';
@@ -867,6 +931,39 @@ table.gtable{width:100%;border-collapse:collapse}
     }).join('');
     $('logEmpty').style.display = arr.length ? 'none' : '';
   }
+  // 帖子命名 → 日期。兼容主站两种命名（原先只认旧格式，导致 10 月起趋势图全空）：
+  //   新：20261013pcaz / 20261011pc / 202691pc（YYYY + M + D，月日位数不定）
+  //   旧：8.25pc / 820PCAZ（M.D 或 MDD，无年份 → 由调用方按当前年推断）
+  function slugDate(postUrl) {
+    var s = String(postUrl || '').replace(/^.*\//, '').replace(/\.html?$/i, '');
+    if (!s || /^qzt/i.test(s)) return null;
+    var m = /^(\d{4})(\d{1,4})(?:pc|pcaz)?$/i.exec(s);
+    if (m) {
+      var y = +m[1], rest = m[2];
+      // 兼容 20269926 这类重复数字笔误
+      var cands = [rest, rest.replace(/^(\d)\1/, '$1')];
+      for (var ci = 0; ci < cands.length; ci++) {
+        var r = cands[ci];
+        // 优先按两位月份切分（1013 → 10/13），失败再按一位月份（920 → 9/20）
+        for (var cut = Math.min(2, r.length - 1); cut >= 1; cut--) {
+          var mo = +r.slice(0, cut), day = +r.slice(cut);
+          if (mo >= 1 && mo <= 12 && day >= 1 && day <= 31) return { y: y, m: mo, d: day };
+        }
+      }
+      return null;
+    }
+    m = /^(\d{1,2})\.(\d{1,2})(?:\.\d+)?(?:pc|pcaz)?$/i.exec(s);
+    if (m) {
+      var mo2 = +m[1], d2 = +m[2];
+      if (mo2 >= 1 && mo2 <= 12 && d2 >= 1 && d2 <= 31) return { y: null, m: mo2, d: d2 };
+    }
+    m = /^(\d{1,2})(\d{2})(?:pc|pcaz)?$/i.exec(s);
+    if (m) {
+      var mo3 = +m[1], d3 = +m[2];
+      if (mo3 >= 1 && mo3 <= 12 && d3 >= 1 && d3 <= 31) return { y: null, m: mo3, d: d3 };
+    }
+    return null;
+  }
   function renderTrend() {
     var box = $('trendBox');
     if (!box || !DATA) return;
@@ -874,12 +971,10 @@ table.gtable{width:100%;border-collapse:collapse}
     function p2(x) { return (x < 10 ? '0' : '') + x; }
     var map = {};
     DATA.games.forEach(function (g) {
-      var m = /\/(\d{1,2})\.(\d{1,2})(?:\.html|[^0-9.]|$)/.exec(String(g.post_url || ''));
-      if (!m) return;
-      var mo = +m[1], day = +m[2];
-      if (mo < 1 || mo > 12 || day < 1 || day > 31) return;
-      var y = y0;
-      if (mo > m0) y--;
+      var dt = slugDate(g.post_url);
+      if (!dt) return;
+      var y = dt.y, mo = dt.m, day = dt.d;
+      if (y === null) { y = y0; if (mo > m0) y--; }
       var k = y + '-' + p2(mo) + '-' + p2(day);
       map[k] = (map[k] || 0) + 1;
     });
@@ -899,6 +994,7 @@ table.gtable{width:100%;border-collapse:collapse}
     }).join('');
   }
   function renderVisit() { loadDashStats(); }
+  function renderAnnLiveSafe() { try { renderAnnLive(); } catch (e) {} }
   function renderAll() {
     renderStat();
     renderGames();
@@ -907,6 +1003,8 @@ table.gtable{width:100%;border-collapse:collapse}
     renderLog();
     renderVisit();
     renderTrend();
+    renderAnnLiveSafe();
+    renderOnlineBar();
   }
   function renderDirty() {
     $('dirtyBar').className = 'dirtybar' + (isDirty() ? ' show' : '');
@@ -1031,6 +1129,15 @@ table.gtable{width:100%;border-collapse:collapse}
   }
 
   /* ---------- 数据操作 ---------- */
+  var announceTouched = false;   // 本次会话是否动过公告（编辑/清空）
+  function announceForPayload() {
+    var cur = (DATA.announce && typeof DATA.announce === 'object' && (DATA.announce.lines || []).length) ? DATA.announce : null;
+    if (cur) return cur;
+    if (announceTouched) return null;          // 用户显式清空 → 允许写 null
+    var live = BASE && BASE.announce;
+    if (live && typeof live === 'object' && (live.lines || []).length) return live;   // 未编辑 → 保留线上值
+    return null;
+  }
   function payloadFull() {
     var p = {
       site: DATA.site, source: DATA.source,
@@ -1039,7 +1146,11 @@ table.gtable{width:100%;border-collapse:collapse}
       // 显式写出：pinned 空数组=清空置顶，announce null=清空公告
       // （爬虫语义：字段缺失=保留线上值，空值=清空，非空=设置）
       pinned: Object.prototype.toString.call(DATA.pinned) === '[object Array]' ? DATA.pinned : [],
-      announce: (DATA.announce && typeof DATA.announce === 'object' && (DATA.announce.lines || []).length) ? DATA.announce : null
+      // 修 2026-10-13：此前 DATA.announce 为 null 时直接写出 null，
+      // 会把线上已有公告覆盖成空。现在改为：
+      //   未编辑（announceTouched=false）→ 原样带回当前生效值
+      //   显式清空 → null（爬虫语义：字段存在且为 null = 清空）
+      announce: announceForPayload()
     };
     return p;
   }
@@ -1094,6 +1205,7 @@ table.gtable{width:100%;border-collapse:collapse}
     };
     DATA.announce = (BASE.announce && typeof BASE.announce === 'object') ? BASE.announce : null;
     DATA.pinned = Object.prototype.toString.call(BASE.pinned) === '[object Array]' ? BASE.pinned : null;
+    announceTouched = false;
     SNAP = JSON.stringify(DATA);
     sel = {};
     cur = 0;
@@ -1118,19 +1230,56 @@ table.gtable{width:100%;border-collapse:collapse}
     var a = DATA.announce || null;
     $('annTitle').value = a ? (a.title || '') : '';
     $('annLines').value = a && Array.isArray(a.lines) ? a.lines.join('\n') : '';
+    if ($('annEnabled')) $('annEnabled').checked = a ? (a.enabled !== false) : true;
+    if ($('annSnooze')) $('annSnooze').value = (a && a.snooze_minutes) || 60;
+    if ($('annBtnClose')) $('annBtnClose').value = (a && a.btn_close) || '关闭';
+    if ($('annBtnLater')) $('annBtnLater').value = (a && a.btn_later) || '1 小时后显示';
+    renderAnnLive();
+  }
+  // 线上当前生效的公告（来自 override 或 games.json），与本地编辑值区分展示
+  function renderAnnLive() {
+    var el = $('annLive');
+    if (!el) return;
+    var src = BASE && BASE.announce && Array.isArray(BASE.announce.lines) && BASE.announce.lines.length ? BASE.announce : null;
+    if (!src) {
+      el.innerHTML = '<b style="color:#c93a3f">线上当前没有公告</b><br>前台显示 index.html 里写死的默认内容。' +
+        '<br><span style="color:#8a857e">保存并发布后，这里的值会变成你编辑的内容。</span>';
+      return;
+    }
+    el.innerHTML = '<b>' + esc(src.title || '【公告】') + '</b>（' + src.lines.length + ' 行）' +
+      '<ul style="margin:6px 0 0 18px;padding:0;color:#555">' +
+      src.lines.slice(0, 6).map(function (l) { return '<li>' + esc(String(l)) + '</li>'; }).join('') +
+      (src.lines.length > 6 ? '<li>…还有 ' + (src.lines.length - 6) + ' 行</li>' : '') +
+      '</ul><div style="margin-top:6px;color:#8a857e">来源：' +
+      (BASE && BASE.announce === src ? '官方同步数据 games.json / override' : '当前工作数据') + '</div>';
   }
   function saveAnnounce() {
+    announceTouched = true;
     var title = $('annTitle').value.trim();
     var lines = $('annLines').value.split('\n').map(function (s) { return s.trim(); }).filter(Boolean);
+    var enabled = $('annEnabled') ? $('annEnabled').checked : true;
+    var snooze = $('annSnooze') ? (parseInt($('annSnooze').value, 10) || 60) : 60;
+    var btnClose = $('annBtnClose') ? $('annBtnClose').value.trim() : '';
+    var btnLater = $('annBtnLater') ? $('annBtnLater').value.trim() : '';
     if (!lines.length) {
       DATA.announce = null;
-      log('公告恢复为默认内容');
-      toast('已恢复默认公告（导出提交后全站生效）');
+      log('公告已清空（前台回退默认内容）');
+      toast('已清空公告（前台回退默认内容）');
     } else {
-      DATA.announce = { title: title || '【公告】', lines: lines };
+      DATA.announce = {
+        title: title || '【公告】',
+        lines: lines,
+        enabled: enabled,
+        snooze_minutes: snooze,
+        btn_close: btnClose || '关闭',
+        btn_later: btnLater || '1 小时后显示'
+      };
       log('保存首页公告（' + lines.length + ' 行）');
-      toast('公告已保存，记得「保存并应用」预览 / 导出提交全站生效');
+      toast('公告已保存到本地；点「保存并发布」后全站生效');
     }
+    // 修 2026-10-13：原先只改内存不落盘，官方数据一更新就把本地缓存整份删掉，
+    // 导致公告「下次打开就没了」。
+    saveLocal(true);
     renderDirty();
   }
 

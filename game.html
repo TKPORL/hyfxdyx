@@ -182,6 +182,10 @@ footer a{color:#e5484d;text-decoration:none}
       if (localStorage.getItem(k) !== today) {
         localStorage.setItem(k, today);
         sbRpc('inc_page_view', { p_url: PAGE_KEY }).catch(function () {});
+        // 按天表：后台「今日访问」读 daily_page_views，必须同时写 inc_daily_view
+        // （北京时间 UTC+8 切日，与后台 bjDay() 口径一致；此前只写 page_views → 今日访问恒为 0）
+        var bjDay = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+        sbRpc('inc_daily_view', { p_url: PAGE_KEY, p_day: bjDay }).catch(function () {});
       }
     } catch (e) {}
   }

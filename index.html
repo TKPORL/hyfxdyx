@@ -101,8 +101,13 @@ main{max-width:1440px;margin:0 auto;padding:28px 28px 44px}
 .mrhx-popup-content p{font-size:13px;color:#666;line-height:1.5;margin-bottom:2px}
 .mrhx-popup-content a{color:#e5484d;font-weight:600;text-decoration:none}
 .mrhx-popup-content a:hover{text-decoration:underline}
-.mrhx-popup-ok{margin-top:14px;padding:8px 24px;border:none;border-radius:10px;background:#e5484d;color:#fff;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.mrhx-popup-btns{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.mrhx-popup-ok,.mrhx-popup-cancel{padding:9px 22px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;border:none}
+.mrhx-popup-ok{background:#e5484d;color:#fff}
 .mrhx-popup-ok:hover{background:#c93a3f;transform:translateY(-2px)}
+.mrhx-popup-cancel{background:#faf9f7;color:#666;border:1px solid #e2ded8}
+.mrhx-popup-cancel:hover{border-color:#f0b4b6;color:#e5484d}
+@media (max-width:480px){.mrhx-popup-btns{flex-direction:column-reverse}.mrhx-popup-ok,.mrhx-popup-cancel{width:100%}}
 @keyframes mrhxPopFade{from{opacity:0}to{opacity:1}}
 @keyframes mrhxPopSlide{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:none}}
 /* 游戏介绍弹窗（移植自 mrhyfx：点击封面图看完整介绍，FLIP 动画） */
@@ -253,7 +258,6 @@ footer a:hover{text-decoration:underline}
 </main>
 <footer>数据自动同步自 <b><a href="https://tkporl.github.io/mrhyfx/" target="_blank" rel="noreferrer">Tsinho黄油站</a></b> · 本站仅供学习交流，请于下载后 24 小时内删除，支持正版
   <div class="seo-line">Tsinho黄油站 · Tsinho工作室 | 每日更新黄油游戏：PC黄油 · 安卓黄油 · 单机黄油游戏下载</div>
-  <div style="display:none" aria-hidden="true"><span id="vercount_value_site_pv"></span><span id="vercount_value_site_uv"></span></div>
 </footer>
 <button type="button" class="mrhx-top" id="mrhxTopBtn" title="回到顶部">↑</button>
 <div class="mrhx-popup" id="annPopup" role="dialog" aria-modal="true">
@@ -267,7 +271,10 @@ footer a:hover{text-decoration:underline}
       <p>⚠️服务器在国外，图片加载慢请开VPN</p>
       <p>觉得不错帮忙推广一下，感谢！<br>-Tsinho黄油站-</p>
     </div>
-    <button type="button" class="mrhx-popup-ok">我知道了</button>
+    <div class="mrhx-popup-btns">
+      <button type="button" class="mrhx-popup-ok mrhx-popup-later">1 小时后显示</button>
+      <button type="button" class="mrhx-popup-cancel">关闭</button>
+    </div>
   </div>
 </div>
 <script>
@@ -546,6 +553,12 @@ footer a:hover{text-decoration:underline}
 
   function applyAnnounce(a) {
     if (!a || !a.lines || !a.lines.length) return;
+    window.__ANN_CFG = {
+      enabled: a.enabled !== false,
+      snooze_minutes: a.snooze_minutes || 60,
+      btn_close: a.btn_close || '',
+      btn_later: a.btn_later || ''
+    };
     var box = document.querySelector('#annPopup .mrhx-popup-content');
     if (!box) return;
     var h = '<h3>' + esc(a.title || '【公告】') + '</h3>';
@@ -557,6 +570,7 @@ footer a:hover{text-decoration:underline}
       }) + '</p>';
     });
     box.innerHTML = h;
+    maybeShowAnn();
   }
   function applyData(d) {
     GAMES = d.games || [];
@@ -627,50 +641,76 @@ footer a:hover{text-decoration:underline}
       });
   })();
 
-  (function () {
-    // 公告每小时弹一次（2026-10-08 用户要求：此前改为每次进站都弹，太扰人）
+  // 公告弹窗（2026-10-13 改版）：两个按钮语义分开
+  //   关闭        → sessionStorage：本次会话不再弹，重开浏览器恢复
+  //   1 小时后显示 → localStorage：冷却期内不弹，超时恢复
+  //   ?ann=1      → 强制弹出，绕过节流（后台预览用）
+  // 由 applyAnnounce 调用（那时才拿到后台配置）；数据加载失败时有兜底定时器。
+  var annBound = false;
+  function maybeShowAnn() {
     var el = document.getElementById('annPopup');
     if (!el) return;
-    var KEY = 'hyfx_ann_seen';
-    var last = 0;
-    try { last = Number(localStorage.getItem(KEY) || 0); } catch (e) {}
-    if (Date.now() - last < 36e5) return; // 1 小时内看过不再弹
+    var CFG = window.__ANN_CFG || {};
+    if (CFG.enabled === false) return;
+    var SNOOZE_MIN = Number(CFG.snooze_minutes) > 0 ? Number(CFG.snooze_minutes) : 60;
+    var K_SNOOZE = 'hyfx_ann_snooze';
+    var K_CLOSED = 'hyfx_ann_closed';
+    var force = /[?&]ann=1/.test(location.search);
+    if (!force) {
+      try { if (sessionStorage.getItem(K_CLOSED) === '1') return; } catch (e) {}
+      var last = 0;
+      try { last = Number(localStorage.getItem(K_SNOOZE) || 0); } catch (e) {}
+      if (last && Date.now() - last < SNOOZE_MIN * 60000) return;
+    }
+    var bClose = el.querySelector('.mrhx-popup-cancel');
+    var bLater = el.querySelector('.mrhx-popup-later');
+    // 按钮文案可被后台配置覆盖
+    if (bClose && CFG.btn_close) bClose.textContent = CFG.btn_close;
+    if (bLater && CFG.btn_later) bLater.textContent = CFG.btn_later;
+    if (!annBound) {
+      annBound = true;
+      function hide() { el.classList.remove('show'); }
+      // 关闭：仅本次会话
+      var onClose = function () {
+        hide();
+        try { sessionStorage.setItem(K_CLOSED, '1'); } catch (e) {}
+      };
+      // 延后：写时间戳，冷却后恢复弹
+      var onLater = function () {
+        hide();
+        try { localStorage.setItem(K_SNOOZE, String(Date.now())); } catch (e) {}
+      };
+      if (bClose) bClose.onclick = onClose;
+      if (bLater) bLater.onclick = onLater;
+      var x = el.querySelector('.mrhx-popup-close');
+      if (x) x.onclick = onClose;   // 右上角 × 等同「关闭」
+    }
     el.classList.add('show');
-    var close = function () {
-      el.classList.remove('show');
-      try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
-    };
-    el.querySelector('.mrhx-popup-close').onclick = close;
-    el.querySelector('.mrhx-popup-ok').onclick = close;
-  })();
+  }
 
   (function () {
-    var GATE_KEY = 'tsinhoht_pv_last';
-    var WINDOW_MS = 6 * 60 * 60 * 1000;
-    var last = 0;
-    try { last = parseInt(localStorage.getItem(GATE_KEY) || '0', 10) || 0; } catch (e) {}
-    if (Date.now() - last > WINDOW_MS) {
-      var cs = document.createElement('script');
-      cs.src = 'https://cn.vercount.one/js';
-      cs.defer = true;
-      cs.onload = function () {
-        try { localStorage.setItem(GATE_KEY, String(Date.now())); } catch (e) {}
-      };
-      document.body.appendChild(cs);
+    // 首页浏览量上报：page_views（总量）+ daily_page_views（按天，供后台「今日访问」）
+    // 原 VerCount 第三方脚本已删除（它写的 tsinhoht_visit 无人读取，属死代码，且拖慢首页）
+    var PAGE_KEY = '/hyfxdyx/index.html';
+    var RPC = 'https://kydmccknlbpczeqppbtc.supabase.co/rest/v1/rpc/';
+    var KEY = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
+    var bjDay = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
+    var DEDUPE = 'hyfx_pv_index_' + bjDay;
+    try {
+      if (localStorage.getItem(DEDUPE) === '1') return;
+      localStorage.setItem(DEDUPE, '1');
+    } catch (e) {}
+    var h = { 'apikey': KEY, 'Authorization': 'Bearer ' + KEY, 'Content-Type': 'application/json' };
+    function rpc(fn, body) {
+      var opts = { method: 'POST', headers: h, body: JSON.stringify(body) };
+      return fetch(RPC + fn, opts).catch(function () { return fetch(RPC + fn, opts); });
     }
-    var pv = document.getElementById('vercount_value_site_pv');
-    var uv = document.getElementById('vercount_value_site_uv');
-    if (!pv || !uv) return;
-    var n = 0;
-    var tm = setInterval(function () {
-      n++;
-      var p = pv.textContent.trim(), u = uv.textContent.trim();
-      if (/^\d+$/.test(p) && /^\d+$/.test(u)) {
-        clearInterval(tm);
-        try { localStorage.setItem('tsinhoht_visit', JSON.stringify({ pv: p, uv: u, t: Date.now() })); } catch (e) {}
-      } else if (n > 12) clearInterval(tm);
-    }, 400);
+    rpc('inc_page_view', { p_url: PAGE_KEY }).catch(function () {});
+    rpc('inc_daily_view', { p_url: PAGE_KEY, p_day: bjDay }).catch(function () {});
   })();
+
+  // 兜底：数据加载慢或失败时，默认公告也要弹（配置已就位时本调用无副作用）
+  setTimeout(maybeShowAnn, 1500);
 })();
 </script>
 <script src="assets/js/nav.js?v=20261009e"></script>
