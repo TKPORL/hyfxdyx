@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: '*/15 * * * *' # 每15分钟检测源站更新；数据有变化才提交和发布
+    - cron: '0 */3 * * *' # 每3小时检测源站更新；数据有变化才提交和发布
   workflow_dispatch: {} # 允许在 Actions 页面手动触发
 
 permissions:
