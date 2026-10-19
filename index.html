@@ -322,7 +322,7 @@ footer a:hover{text-decoration:underline}
     return d.getFullYear() + '.' + (d.getMonth() + 1) + '.' + d.getDate();
   }
   // 「N 人看过」：真数据，来自主站同一套 Supabase page_views（键与独立页一致）
-  var SB = 'https://api.tiho.us.ci';
+  var SB = 'https://kydmccknlbpczeqppbtc.supabase.co';
   var SBK = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
   var viewCache = {};   // id -> count
   var viewKey = function (id) { return '/hyfxdyx/game.html?id=' + id; };
@@ -692,7 +692,7 @@ footer a:hover{text-decoration:underline}
     // 首页浏览量上报：page_views（总量）+ daily_page_views（按天，供后台「今日访问」）
     // 原 VerCount 第三方脚本已删除（它写的 tsinhoht_visit 无人读取，属死代码，且拖慢首页）
     var PAGE_KEY = '/hyfxdyx/index.html';
-    var RPC = 'https://api.tiho.us.ci/rest/v1/rpc/';
+    var RPC = 'https://kydmccknlbpczeqppbtc.supabase.co/rest/v1/rpc/';
     var KEY = 'sb_publishable_OfNqFNohTdrmzZ8dtu5bZQ_LcTk5iF9';
     var bjDay = new Date(Date.now() + 8 * 3600000).toISOString().slice(0, 10);
     var DEDUPE = 'hyfx_pv_index_' + bjDay;
