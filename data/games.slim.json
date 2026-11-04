@@ -1,8 +1,8 @@
 {
  "site": "Tsinho黄油站",
  "source": "https://tkporl.github.io/mrhyfx/",
- "updated_at": "2026-11-04 10:36:44",
- "total": 3896,
+ "updated_at": "2026-11-04 19:30:30",
+ "total": 3897,
  "games": [
   {
    "id": "20261104pcaz-0",
@@ -61076,6 +61076,21 @@
     {
      "label": "百度网盘",
      "url": "https://pan.baidu.com/s/1XEiejrQeMJmUnjRHTGxdXQ?pwd=839m"
+    }
+   ],
+   "post": "求助贴-可在此贴求游戏",
+   "time": "2026-09-20T18:16:27.213Z"
+  },
+  {
+   "id": "qzt-361",
+   "name": "疯狂岛",
+   "platform": "",
+   "desc": "疯狂岛 生存游戏 Mad Island v0.5.11.5 beta 官中版+DLC+去码+控制台代码 更新日志 v0.5.11.5 小型更新/补丁说明 发布于 6月30日周二 热修复程序 v0.5.11.5 [测试版] 修复与调整 修复了屏幕特效不再显示的问题。 修复了保存时可能出现无关错误消息的问题。 修复了在事件场景中，当身体部位被拆解并重新生成时，身体部位无法正确恢复的问题。 修复了几个视觉错误 解压码：上老王论坛当老王",
+   "cover": "https://tkporl.github.io/mrhyfx/assets/thumb/qzt__a8zjf75sr6@360x270.webp",
+   "links": [
+    {
+     "label": "百度网盘",
+     "url": "https://pan.baidu.com/s/1HBlMnY3PFeIWOq-83ShN2A?pwd=839m"
     }
    ],
    "post": "求助贴-可在此贴求游戏",
