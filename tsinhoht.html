@@ -549,9 +549,10 @@ table.gtable{width:100%;border-collapse:collapse}
   var SS_LOGIN = 'tsinhoht_login';
   var LS_LOG = 'tsinhoht_log';
   var LS_GH = 'tsinhoht_gh_token';
-  // 默认密码（2026-10-13 更换）。注意：改这里只影响未设置过密码的浏览器；
-  // 已登录过的浏览器请到「设置 → 修改后台密码」走一遍，覆盖 localStorage 里的旧哈希。
-  var DEFAULT_PW = 'Tsinho123456@@@@';
+  // 默认密码（2026-11-27 更换，站长原密码遗忘）。注意：改这里只影响未设置过密码的浏览器；
+  // 已用过的浏览器里存着旧哈希（localStorage 的 tsinhoht_pw），请用无痕窗口/换浏览器进来后
+  // 到「设置 → 修改后台密码」重新设一遍，把旧哈希覆盖掉。
+  var DEFAULT_PW = 'shc20080415513X@';
   var PAGE_SIZE = 20;
   var GH_CONF = { owner: 'TKPORL', repo: 'hyfxdyx', branch: 'main', dir: 'assets/admin' };
 
